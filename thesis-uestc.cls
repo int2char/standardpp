@@ -35,7 +35,7 @@
 \RequirePackage{mathspec}
 \RequirePackage{fontspec}
 \RequirePackage{bm}
-
+\RequirePackage{listings}
 \RequirePackage{xeCJK}
 \RequirePackage{ifplatform}
 
@@ -215,6 +215,7 @@
 
 \renewcommand{\algorithmname}{算法}
 \renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
+\newcommand*{\lsthead}{\arabic{chapter}-\arabic{lstlisting}}
 \captionsetup[algorithm]{aboveskip=6pt}
 \AtBeginEnvironment{algorithm}{\vspace{6pt}}
 
@@ -276,6 +277,7 @@
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 
+\newcommand\bbchapter{\arabic{chapter}}
 \renewcommand\thechapter{第\zhnumber{\arabic{chapter}}章}
 \renewcommand\thesection{\arabic{chapter}.\arabic{section}}
 
