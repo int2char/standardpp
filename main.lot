@@ -1,11 +1,15 @@
- \cftsetpnumwidth {\widthof {1}-1pt} 
- \cftsetpnumwidth {\widthof {2}-1pt} 
- \cftsetpnumwidth {\widthof {3}-1pt} 
- \cftsetpnumwidth {\widthof {4}-1pt} 
- \cftsetpnumwidth {\widthof {5}-1pt} 
- \cftsetpnumwidth {\widthof {6}-1pt} 
- \cftsetpnumwidth {\widthof {7}-1pt} 
- \cftsetpnumwidth {\widthof {8}-1pt} 
+ \cftsetpnumwidth {\widthof {I}-1pt} 
+ \cftsetpnumwidth {\widthof {II}-1pt} 
+ \cftsetpnumwidth {\widthof {III}-1pt} 
+ \cftsetpnumwidth {\widthof {IV}-1pt} 
+ \cftsetpnumwidth {\widthof {V}-1pt} 
+ \cftsetpnumwidth {\widthof {VI}-1pt} 
+ \cftsetpnumwidth {\widthof {VII}-1pt} 
+ \cftsetpnumwidth {\widthof {VIII}-1pt} 
+ \cftsetpnumwidth {\widthof {IX}-1pt} 
+ \cftsetpnumwidth {\widthof {X}-1pt} 
+ \cftsetpnumwidth {\widthof {XI}-1pt} 
+ \cftsetpnumwidth {\widthof {XII}-1pt} 
  \cftsetpnumwidth {\widthof {1}-1pt} 
 \addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {2}-1pt} 
@@ -20,11 +24,11 @@
  \cftsetpnumwidth {\widthof {10}-1pt} 
  \cftsetpnumwidth {\widthof {11}-1pt} 
  \cftsetpnumwidth {\widthof {12}-1pt} 
-\contentsline {table}{\numberline {2-1}{\ignorespaces CUDA特殊函数符号表\relax }}{12}{table.caption.10}
-\contentsline {table}{\numberline {2-2}{\ignorespaces CUDA特殊变量符号表\relax }}{12}{table.caption.11}
+\contentsline {table}{\numberline {2-1}{\ignorespaces CUDA特殊函数符号表\relax }}{12}{table.caption.12}
+\contentsline {table}{\numberline {2-2}{\ignorespaces CUDA特殊变量符号表\relax }}{12}{table.caption.13}
  \cftsetpnumwidth {\widthof {13}-1pt} 
  \cftsetpnumwidth {\widthof {14}-1pt} 
-\contentsline {table}{\numberline {2-3}{\ignorespaces CUDA 原子操作\relax }}{14}{table.caption.12}
+\contentsline {table}{\numberline {2-3}{\ignorespaces CUDA 原子操作\relax }}{14}{table.caption.14}
  \cftsetpnumwidth {\widthof {15}-1pt} 
  \cftsetpnumwidth {\widthof {16}-1pt} 
  \cftsetpnumwidth {\widthof {17}-1pt} 
@@ -51,10 +55,10 @@
  \cftsetpnumwidth {\widthof {37}-1pt} 
  \cftsetpnumwidth {\widthof {38}-1pt} 
  \cftsetpnumwidth {\widthof {39}-1pt} 
-\contentsline {table}{\numberline {3-1}{\ignorespaces 拉格朗日更新过程（1）\relax }}{39}{table.caption.29}
+\contentsline {table}{\numberline {3-1}{\ignorespaces 拉格朗日更新过程（1）\relax }}{39}{table.caption.31}
  \cftsetpnumwidth {\widthof {40}-1pt} 
  \cftsetpnumwidth {\widthof {41}-1pt} 
-\contentsline {table}{\numberline {3-2}{\ignorespaces 拉格朗日更新过程（2）\relax }}{41}{table.caption.31}
+\contentsline {table}{\numberline {3-2}{\ignorespaces 拉格朗日更新过程（2）\relax }}{41}{table.caption.33}
  \cftsetpnumwidth {\widthof {42}-1pt} 
  \cftsetpnumwidth {\widthof {43}-1pt} 
  \cftsetpnumwidth {\widthof {44}-1pt} 

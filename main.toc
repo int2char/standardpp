@@ -1,15 +1,19 @@
- \cftsetpnumwidth {\widthof {1}-1pt} 
- \cftsetpnumwidth {\widthof {2}-1pt} 
- \cftsetpnumwidth {\widthof {3}-1pt} 
- \cftsetpnumwidth {\widthof {4}-1pt} 
+ \cftsetpnumwidth {\widthof {I}-1pt} 
+ \cftsetpnumwidth {\widthof {II}-1pt} 
+ \cftsetpnumwidth {\widthof {III}-1pt} 
+ \cftsetpnumwidth {\widthof {IV}-1pt} 
+ \cftsetpnumwidth {\widthof {V}-1pt} 
+ \cftsetpnumwidth {\widthof {VI}-1pt} 
+ \cftsetpnumwidth {\widthof {VII}-1pt} 
+ \cftsetpnumwidth {\widthof {VIII}-1pt} 
+ \cftsetpnumwidth {\widthof {IX}-1pt} 
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{图目录}{4}{chapter*.2}
- \cftsetpnumwidth {\widthof {5}-1pt} 
- \cftsetpnumwidth {\widthof {6}-1pt} 
- \cftsetpnumwidth {\widthof {7}-1pt} 
+\contentsline {chapter}{图目录}{IX}{chapter*.4}
+ \cftsetpnumwidth {\widthof {X}-1pt} 
+ \cftsetpnumwidth {\widthof {XI}-1pt} 
+ \cftsetpnumwidth {\widthof {XII}-1pt} 
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{表目录}{7}{chapter*.3}
- \cftsetpnumwidth {\widthof {8}-1pt} 
+\contentsline {chapter}{表目录}{XII}{chapter*.5}
  \cftsetpnumwidth {\widthof {1}-1pt} 
 \setcounter {tocdepth}{4}
 \contentsline {chapter}{\numberline {第一章}绪\hspace {6pt}论}{1}{chapter.1}
@@ -170,7 +174,7 @@
  \cftsetpnumwidth {\widthof {84}-1pt} 
  \cftsetpnumwidth {\widthof {85}-1pt} 
  \cftsetpnumwidth {\widthof {86}-1pt} 
-\contentsline {chapter}{参考文献}{86}{chapter*.92}
+\contentsline {chapter}{参考文献}{86}{chapter*.94}
  \cftsetpnumwidth {\widthof {87}-1pt} 
  \cftsetpnumwidth {\widthof {88}-1pt} 
  \cftsetpnumwidth {\widthof {89}-1pt} 
