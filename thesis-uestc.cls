@@ -209,7 +209,7 @@
 }
 
 % Apply the new format to the algorithm environment
-\captionsetup[algorithm]{format=algrule}
+%\captionsetup[algorithm]{format=algrule}
 
 \makeatletter
 

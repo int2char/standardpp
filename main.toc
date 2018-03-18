@@ -2,6 +2,14 @@
  \cftsetpnumwidth {\widthof {2}-1pt} 
  \cftsetpnumwidth {\widthof {3}-1pt} 
  \cftsetpnumwidth {\widthof {4}-1pt} 
+\setcounter {tocdepth}{-1}
+\contentsline {chapter}{图目录}{4}{chapter*.2}
+ \cftsetpnumwidth {\widthof {5}-1pt} 
+ \cftsetpnumwidth {\widthof {6}-1pt} 
+ \cftsetpnumwidth {\widthof {7}-1pt} 
+\setcounter {tocdepth}{-1}
+\contentsline {chapter}{表目录}{7}{chapter*.3}
+ \cftsetpnumwidth {\widthof {8}-1pt} 
  \cftsetpnumwidth {\widthof {1}-1pt} 
 \setcounter {tocdepth}{4}
 \contentsline {chapter}{\numberline {第一章}绪\hspace {6pt}论}{1}{chapter.1}
@@ -77,24 +85,24 @@
  \cftsetpnumwidth {\widthof {33}-1pt} 
  \cftsetpnumwidth {\widthof {34}-1pt} 
  \cftsetpnumwidth {\widthof {35}-1pt} 
-\contentsline {subsection}{\numberline {3.4.3}链路权重更新}{35}{subsection.3.4.3}
-\contentsline {subsubsection}{\numberline {3.4.3.1}权重更新步长}{35}{subsubsection.3.4.3.1}
  \cftsetpnumwidth {\widthof {36}-1pt} 
  \cftsetpnumwidth {\widthof {37}-1pt} 
+\contentsline {subsection}{\numberline {3.4.3}链路权重更新}{37}{subsection.3.4.3}
+\contentsline {subsubsection}{\numberline {3.4.3.1}权重更新步长}{37}{subsubsection.3.4.3.1}
  \cftsetpnumwidth {\widthof {38}-1pt} 
-\contentsline {subsubsection}{\numberline {3.4.3.2}随机更新策略}{38}{subsubsection.3.4.3.2}
  \cftsetpnumwidth {\widthof {39}-1pt} 
+\contentsline {subsubsection}{\numberline {3.4.3.2}随机更新策略}{39}{subsubsection.3.4.3.2}
  \cftsetpnumwidth {\widthof {40}-1pt} 
 \contentsline {subsection}{\numberline {3.4.4}路径调整}{40}{subsection.3.4.4}
  \cftsetpnumwidth {\widthof {41}-1pt} 
  \cftsetpnumwidth {\widthof {42}-1pt} 
-\contentsline {subsection}{\numberline {3.4.5}仿真实验分析}{42}{subsection.3.4.5}
-\contentsline {subsubsection}{\numberline {3.4.5.1}仿真介绍}{42}{subsubsection.3.4.5.1}
  \cftsetpnumwidth {\widthof {43}-1pt} 
+\contentsline {subsection}{\numberline {3.4.5}仿真实验分析}{43}{subsection.3.4.5}
+\contentsline {subsubsection}{\numberline {3.4.5.1}仿真介绍}{43}{subsubsection.3.4.5.1}
  \cftsetpnumwidth {\widthof {44}-1pt} 
 \contentsline {subsubsection}{\numberline {3.4.5.2}目标函数比较}{44}{subsubsection.3.4.5.2}
-\contentsline {subsubsection}{\numberline {3.4.5.3}算法时间比较}{44}{subsubsection.3.4.5.3}
  \cftsetpnumwidth {\widthof {45}-1pt} 
+\contentsline {subsubsection}{\numberline {3.4.5.3}算法时间比较}{45}{subsubsection.3.4.5.3}
  \cftsetpnumwidth {\widthof {46}-1pt} 
  \cftsetpnumwidth {\widthof {47}-1pt} 
 \contentsline {subsubsection}{\numberline {3.4.5.4}算法收敛性}{47}{subsubsection.3.4.5.4}
@@ -119,14 +127,14 @@
  \cftsetpnumwidth {\widthof {60}-1pt} 
 \contentsline {section}{\numberline {4.4}无权图情况下的GPU算法设计}{60}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}相同速率业务的并行}{60}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}不同速率间业务的并行}{60}{subsection.4.4.2}
  \cftsetpnumwidth {\widthof {61}-1pt} 
+\contentsline {subsection}{\numberline {4.4.2}不同速率间业务的并行}{61}{subsection.4.4.2}
 \contentsline {subsection}{\numberline {4.4.3}GPU上kernel设计}{61}{subsection.4.4.3}
  \cftsetpnumwidth {\widthof {62}-1pt} 
  \cftsetpnumwidth {\widthof {63}-1pt} 
 \contentsline {section}{\numberline {4.5}带权图情况下的GPU算法设计}{63}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}带跳数限制的最短路算法}{63}{subsection.4.5.1}
  \cftsetpnumwidth {\widthof {64}-1pt} 
-\contentsline {subsection}{\numberline {4.5.1}带跳数限制的最短路算法}{64}{subsection.4.5.1}
  \cftsetpnumwidth {\widthof {65}-1pt} 
  \cftsetpnumwidth {\widthof {66}-1pt} 
 \contentsline {subsection}{\numberline {4.5.2}并行层次}{66}{subsection.4.5.2}
@@ -135,16 +143,16 @@
 \contentsline {subsection}{\numberline {4.5.4}GPU上kernel设计}{67}{subsection.4.5.4}
  \cftsetpnumwidth {\widthof {68}-1pt} 
  \cftsetpnumwidth {\widthof {69}-1pt} 
+\contentsline {section}{\numberline {4.6}实验仿真分析}{69}{section.4.6}
  \cftsetpnumwidth {\widthof {70}-1pt} 
-\contentsline {section}{\numberline {4.6}实验仿真分析}{70}{section.4.6}
 \contentsline {subsection}{\numberline {4.6.1}对比算法}{70}{subsection.4.6.1}
-\contentsline {subsection}{\numberline {4.6.2}无权图下的仿真结果}{70}{subsection.4.6.2}
-\contentsline {subsubsection}{\numberline {4.6.2.1}路径优化分析}{70}{subsubsection.4.6.2.1}
  \cftsetpnumwidth {\widthof {71}-1pt} 
-\contentsline {subsubsection}{\numberline {4.6.2.2}时间分析}{71}{subsubsection.4.6.2.2}
+\contentsline {subsection}{\numberline {4.6.2}无权图下的仿真结果}{71}{subsection.4.6.2}
+\contentsline {subsubsection}{\numberline {4.6.2.1}路径优化分析}{71}{subsubsection.4.6.2.1}
  \cftsetpnumwidth {\widthof {72}-1pt} 
  \cftsetpnumwidth {\widthof {73}-1pt} 
  \cftsetpnumwidth {\widthof {74}-1pt} 
+\contentsline {subsubsection}{\numberline {4.6.2.2}时间分析}{74}{subsubsection.4.6.2.2}
 \contentsline {subsubsection}{\numberline {4.6.2.3}阻塞率分析}{74}{subsubsection.4.6.2.3}
  \cftsetpnumwidth {\widthof {75}-1pt} 
  \cftsetpnumwidth {\widthof {76}-1pt} 
@@ -160,3 +168,10 @@
  \cftsetpnumwidth {\widthof {82}-1pt} 
  \cftsetpnumwidth {\widthof {83}-1pt} 
  \cftsetpnumwidth {\widthof {84}-1pt} 
+ \cftsetpnumwidth {\widthof {85}-1pt} 
+ \cftsetpnumwidth {\widthof {86}-1pt} 
+\contentsline {chapter}{参考文献}{86}{chapter*.92}
+ \cftsetpnumwidth {\widthof {87}-1pt} 
+ \cftsetpnumwidth {\widthof {88}-1pt} 
+ \cftsetpnumwidth {\widthof {89}-1pt} 
+ \cftsetpnumwidth {\widthof {90}-1pt} 

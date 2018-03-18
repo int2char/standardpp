@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  17 MAR 2018 14:59
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  18 MAR 2018 18:14
 entering extended mode
 **./main.tex
 (main.tex
@@ -1915,39 +1915,6 @@ LaTeX Warning: Label `u1' multiply defined.
 
 LaTeX Warning: Label `IterNum' multiply defined.
 
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
 ) (chapters/c3.aux
 
 LaTeX Warning: Label `KernelBFS' multiply defined.
@@ -1963,99 +1930,6 @@ LaTeX Warning: Label `ParaSPC' multiply defined.
 
 
 LaTeX Warning: Label `ParaSPC' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
-
-
-LaTeX Warning: Label `drk' multiply defined.
 
 ))
 \openout1 = `main.aux'.
@@ -2188,37 +2062,39 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 .................................................
 
 (main.toc
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 7.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 15.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 7.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 15.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 7.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 15.
+
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 7.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 15.
+
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 7.
+(Font)              <12> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 7.
+(Font)              <8> on input line 15.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 7.
-LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+(Font)              <6> on input line 15.
+LaTeX Font Info:    Try loading font information for U+msa on input line 15.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 7.
+LaTeX Font Info:    Try loading font information for U+msb on input line 15.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2232,7 +2108,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout8 = `main.toc'.
 
  [3]
-[4]
+(main.lof [4
+
+] [5])
+\tf@lof=\write9
+\openout9 = `main.lof'.
+
+ [6] (main.lot)
+\tf@lot=\write10
+\openout10 = `main.lot'.
+
+ [7
+
+] [8]
 Chapter 第一章.
 [1
 
@@ -2325,20 +2213,23 @@ LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
 ] [18]
 File: figures/GAprocess.pdf Graphic file (type pdf)
 <use figures/GAprocess.pdf>
+
+
+LaTeX Warning: Reference `ParaTE2' on page 19 undefined on input line 54.
+
 Missing character: There is no ， in font rm-lmr12!
- [19]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 59.
- [20] [21]
+put line 80.
+[19] [20] [21]
 File: figures/GPUfitness.pdf Graphic file (type pdf)
 <use figures/GPUfitness.pdf>
  [22] [23] [24]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 156--156
+Overfull \hbox (3.0pt too wide) in paragraph at lines 155--155
 [] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--156
+Underfull \hbox (badness 10000) in paragraph at lines 155--155
 
  []
 
@@ -2348,29 +2239,29 @@ File: figures/odd-even.pdf Graphic file (type pdf)
 Missing character: There is no 和 in font rm-lmr12!
 Missing character: There is no 和 in font rm-lmr12!
  [26]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 207--207
+Overfull \hbox (3.0pt too wide) in paragraph at lines 206--206
 [] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 207--207
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
 
  []
 
 [27]
-File: figures/choose.pdf Graphic file (type pdf)
-<use figures/choose.pdf>
+File: figures/GPUchoose.pdf Graphic file (type pdf)
+<use figures/GPUchoose.pdf>
 File: figures/GPUcross.pdf Graphic file (type pdf)
 <use figures/GPUcross.pdf>
 Missing character: There is no （ in font rm-lmr12!
 Missing character: There is no ） in font rm-lmr12!
  [28] [29]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 247--247
+Overfull \hbox (3.0pt too wide) in paragraph at lines 246--246
 [] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--247
+Underfull \hbox (badness 10000) in paragraph at lines 246--246
 
  []
 
@@ -2385,9 +2276,10 @@ File: figures/GPUimpl.pdf Graphic file (type pdf)
  [34]
 File: figures/SynPro.pdf Graphic file (type pdf)
 <use figures/SynPro.pdf>
+ [35] [36]
 File: figures/IterNum.pdf Graphic file (type pdf)
 <use figures/IterNum.pdf>
- [35] [36] [37]
+ [37]
 File: figures/random.pdf Graphic file (type pdf)
 <use figures/random.pdf>
  [38] [39]
@@ -2407,6 +2299,8 @@ File: figures/OB-TA.pdf Graphic file (type pdf)
 <use figures/OB-TA.pdf>
 File: figures/OB-CA.pdf Graphic file (type pdf)
 <use figures/OB-CA.pdf>
+ [44]
+[45] [46]
 File: figures/TI-ER-TA-1000.pdf Graphic file (type pdf)
 <use figures/TI-ER-TA-1000.pdf>
 File: figures/TI-BA-TA-1000.pdf Graphic file (type pdf)
@@ -2419,8 +2313,6 @@ File: figures/TI-BA-NO.pdf Graphic file (type pdf)
 <use figures/TI-BA-NO.pdf>
 File: figures/TI-ER-NO.pdf Graphic file (type pdf)
 <use figures/TI-ER-NO.pdf>
- [44]
-[45] [46]
 File: figures/CO-GA-1000.pdf Graphic file (type pdf)
 <use figures/CO-GA-1000.pdf>
 File: figures/CO-LR-1000.pdf Graphic file (type pdf)
@@ -2491,15 +2383,14 @@ File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
 File: figures/hbfs.pdf Graphic file (type pdf)
 <use figures/hbfs.pdf>
- [60] [61] [62] [63]
+ [60] [61] [62]
 Missing character: There is no ） in font rm-lmr12!
- [64]
+ [63] [64] [65]
 File: figures/circle.pdf Graphic file (type pdf)
 <use figures/circle.pdf>
- [65]
+ [66]
 File: figures/DRK.pdf Graphic file (type pdf)
 <use figures/DRK.pdf>
- [66]
 File: figures/BBK.pdf Graphic file (type pdf)
 <use figures/BBK.pdf>
  [67] [68] [69]
@@ -2514,7 +2405,7 @@ File: figures/B30H.pdf Graphic file (type pdf)
 File: figures/B40H.pdf Graphic file (type pdf)
 <use figures/B40H.pdf>
 
-[70]
+[70] [71] [72] [73]
 File: figures/B5T.pdf Graphic file (type pdf)
 <use figures/B5T.pdf>
 File: figures/B10T.pdf Graphic file (type pdf)
@@ -2525,7 +2416,6 @@ File: figures/B30T.pdf Graphic file (type pdf)
 <use figures/B30T.pdf>
 File: figures/B40T.pdf Graphic file (type pdf)
 <use figures/B40T.pdf>
- [71] [72] [73]
 File: figures/B10Z.pdf Graphic file (type pdf)
 <use figures/B10Z.pdf>
 File: figures/B20Z.pdf Graphic file (type pdf)
@@ -2551,7 +2441,7 @@ File: figures/H20H.pdf Graphic file (type pdf)
 <use figures/H20H.pdf>
 File: figures/H40H.pdf Graphic file (type pdf)
 <use figures/H40H.pdf>
- [76] [77] [78]
+ [76] [77] [78] [79]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H10T.pdf Graphic file (type pdf)
@@ -2562,7 +2452,7 @@ File: figures/H30T.pdf Graphic file (type pdf)
 <use figures/H30T.pdf>
 File: figures/H40T.pdf Graphic file (type pdf)
 <use figures/H40T.pdf>
- [79] [80]
+ [80]
 File: figures/H10Z.pdf Graphic file (type pdf)
 <use figures/H10Z.pdf>
 File: figures/H20Z.pdf Graphic file (type pdf)
@@ -2571,32 +2461,83 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [81] [82]) [83] [84]
+) [81] [82] [83] [84]
+[85]
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+\TU/TimesNewRoman(0)/m/n/12 /stories/downloads/sdn-resources/onf-specifications
+/openflow/openflow-switch-
+ []
+
+Missing character: There is no � in font Times New Roman/OT:script=latn;languag
+e=DFLT;mapping=tex-text;!
+
+Underfull \hbox (badness 5022) in paragraph at lines 95--96
+[]\TU/TimesNewRoman(0)/m/n/12 Cisco Visual Networking Index: Forecast and Metho
+dology, 2016�C2021,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
+\TU/TimesNewRoman(0)/m/n/12 http://www.cisco.com/c/en/us/solutions/collateral/s
+ervice-provider/visual-
+ []
+
+[86
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+[]\TU/TimesNewRoman(0)/m/n/12 Nvidia. Programming guide: CUDA toolkit documen-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+\TU/TimesNewRoman(0)/m/n/12 tation, http://docs.nvidia.com/cuda/cuda-c-programm
+ing-
+ []
+
+[87] [88]
+Underfull \hbox (badness 1102) in paragraph at lines 161--162
+[]\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
+ani. Beyond MLU: an
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+[]\TU/TimesNewRoman(0)/m/n/12 IBM ILOG CPLEX Optimization Studio, https://www.i
+bm.com/bs-
+ []
+
+[89]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
-(main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 69.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 69.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 188.
+[90]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 188.
+ (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 188.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 188.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 38072 strings out of 427836
- 684234 string characters out of 3152479
- 880979 words of memory out of 3000000
- 41429 multiletter control sequences out of 15000+200000
- 585189 words of font info for 132 fonts, out of 3000000 for 9000
+ 38183 strings out of 427836
+ 685342 string characters out of 3152479
+ 886957 words of memory out of 3000000
+ 41529 multiletter control sequences out of 15000+200000
+ 585213 words of font info for 135 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,82p,10492b,1114s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (88 pages).
+Output written on main.pdf (98 pages).
