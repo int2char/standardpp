@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  18 MAR 2018 18:14
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  18 MAR 2018 20:25
 entering extended mode
 **./main.tex
 (main.tex
@@ -1908,14 +1908,7 @@ Package: xeCJK-listings 2018/02/27 v3.6.1 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count357
 \l__xeCJK_listings_flag_int=\count358
 ) (main.aux
-(chapters/c1.aux) (chapters/c2.aux
-
-LaTeX Warning: Label `u1' multiply defined.
-
-
-LaTeX Warning: Label `IterNum' multiply defined.
-
-) (chapters/c3.aux
+(chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux
 
 LaTeX Warning: Label `KernelBFS' multiply defined.
 
@@ -2213,14 +2206,9 @@ LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
 ] [18]
 File: figures/GAprocess.pdf Graphic file (type pdf)
 <use figures/GAprocess.pdf>
-
-
-LaTeX Warning: Reference `ParaTE2' on page 19 undefined on input line 54.
-
-Missing character: There is no ， in font rm-lmr12!
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 80.
-[19] [20] [21]
+ [19] [20] [21]
 File: figures/GPUfitness.pdf Graphic file (type pdf)
 <use figures/GPUfitness.pdf>
  [22] [23] [24]
@@ -2238,7 +2226,7 @@ File: figures/odd-even.pdf Graphic file (type pdf)
 <use figures/odd-even.pdf>
 Missing character: There is no 和 in font rm-lmr12!
 Missing character: There is no 和 in font rm-lmr12!
- [26]
+ [26] [27]
 Overfull \hbox (3.0pt too wide) in paragraph at lines 206--206
 [] []
  []
@@ -2248,14 +2236,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--206
 
  []
 
-[27]
 File: figures/GPUchoose.pdf Graphic file (type pdf)
 <use figures/GPUchoose.pdf>
+[28]
 File: figures/GPUcross.pdf Graphic file (type pdf)
 <use figures/GPUcross.pdf>
 Missing character: There is no （ in font rm-lmr12!
 Missing character: There is no ） in font rm-lmr12!
- [28] [29]
+ [29]
 Overfull \hbox (3.0pt too wide) in paragraph at lines 246--246
 [] []
  []
@@ -2265,24 +2253,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 246--246
 
  []
 
-[30] [31]
+[30] [31] [32]
 File: figures/lagrange.pdf Graphic file (type pdf)
 <use figures/lagrange.pdf>
+ [33]
 File: figures/paframework.pdf Graphic file (type pdf)
 <use figures/paframework.pdf>
- [32] [33]
+ [34]
 File: figures/GPUimpl.pdf Graphic file (type pdf)
 <use figures/GPUimpl.pdf>
- [34]
 File: figures/SynPro.pdf Graphic file (type pdf)
 <use figures/SynPro.pdf>
  [35] [36]
 File: figures/IterNum.pdf Graphic file (type pdf)
 <use figures/IterNum.pdf>
- [37]
+ [37] [38]
 File: figures/random.pdf Graphic file (type pdf)
 <use figures/random.pdf>
- [38] [39]
+ [39]
 File: figures/PathAdj.pdf Graphic file (type pdf)
 <use figures/PathAdj.pdf>
 Missing character: There is no 的 in font rm-lmr12!
@@ -2300,6 +2288,9 @@ File: figures/OB-TA.pdf Graphic file (type pdf)
 File: figures/OB-CA.pdf Graphic file (type pdf)
 <use figures/OB-CA.pdf>
  [44]
+
+LaTeX Warning: Citation `CO-LR-1000' on page 45 undefined on input line 607.
+
 [45] [46]
 File: figures/TI-ER-TA-1000.pdf Graphic file (type pdf)
 <use figures/TI-ER-TA-1000.pdf>
@@ -2317,7 +2308,7 @@ File: figures/CO-GA-1000.pdf Graphic file (type pdf)
 <use figures/CO-GA-1000.pdf>
 File: figures/CO-LR-1000.pdf Graphic file (type pdf)
 <use figures/CO-LR-1000.pdf>
-) [47] [48] [49] [50] [51] [52] [53] [54]
+ [47] [48] [49] [50] [51] [52] [53]) [54]
 \openout2 = `chapters/c3.aux'.
 
  (chapters/c3.tex
@@ -2335,22 +2326,6 @@ Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr12!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
@@ -2361,15 +2336,31 @@ Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no （ in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no （ in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr12!
+Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no （ in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no （ in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr12!
+Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no （ in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr12!
 Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr12!
+Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
+Missing character: There is no （ in font rm-lmr8!
+Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
@@ -2383,9 +2374,14 @@ File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
 File: figures/hbfs.pdf Graphic file (type pdf)
 <use figures/hbfs.pdf>
- [60] [61] [62]
+ [60]
+
+LaTeX Warning: Command \l invalid in math mode on input line 159.
+
+Missing character: There is no ł in font lmmi12!
+[61] [62] [63]
 Missing character: There is no ） in font rm-lmr12!
- [63] [64] [65]
+ [64] [65]
 File: figures/circle.pdf Graphic file (type pdf)
 <use figures/circle.pdf>
  [66]
@@ -2404,8 +2400,7 @@ File: figures/B30H.pdf Graphic file (type pdf)
 <use figures/B30H.pdf>
 File: figures/B40H.pdf Graphic file (type pdf)
 <use figures/B40H.pdf>
-
-[70] [71] [72] [73]
+ [70] [71] [72] [73]
 File: figures/B5T.pdf Graphic file (type pdf)
 <use figures/B5T.pdf>
 File: figures/B10T.pdf Graphic file (type pdf)
@@ -2441,7 +2436,8 @@ File: figures/H20H.pdf Graphic file (type pdf)
 <use figures/H20H.pdf>
 File: figures/H40H.pdf Graphic file (type pdf)
 <use figures/H40H.pdf>
- [76] [77] [78] [79]
+
+[76] [77] [78] [79]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H10T.pdf Graphic file (type pdf)
@@ -2461,8 +2457,7 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
-) [81] [82] [83] [84]
-[85]
+) [81] [82] [83] [84] [85]
 Underfull \hbox (badness 10000) in paragraph at lines 76--77
 \TU/TimesNewRoman(0)/m/n/12 /stories/downloads/sdn-resources/onf-specifications
 /openflow/openflow-switch-
@@ -2532,12 +2527,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 38183 strings out of 427836
- 685342 string characters out of 3152479
- 886957 words of memory out of 3000000
- 41529 multiletter control sequences out of 15000+200000
+ 38159 strings out of 427836
+ 683704 string characters out of 3152479
+ 880957 words of memory out of 3000000
+ 41505 multiletter control sequences out of 15000+200000
  585213 words of font info for 135 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 58i,27n,82p,10492b,1114s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 58i,27n,82p,10492b,1122s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on main.pdf (98 pages).

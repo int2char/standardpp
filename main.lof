@@ -44,13 +44,13 @@
  \cftsetpnumwidth {\widthof {24}-1pt} 
  \cftsetpnumwidth {\widthof {25}-1pt} 
  \cftsetpnumwidth {\widthof {26}-1pt} 
-\contentsline {figure}{\numberline {3-3}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {并行奇偶排序例子}}\relax }}{26}{figure.caption.17}
  \cftsetpnumwidth {\widthof {27}-1pt} 
+\contentsline {figure}{\numberline {3-3}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {并行奇偶排序例子}}\relax }}{27}{figure.caption.17}
  \cftsetpnumwidth {\widthof {28}-1pt} 
-\contentsline {figure}{\numberline {3-4}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行父母选取过程}}\relax }}{28}{figure.caption.18}
  \cftsetpnumwidth {\widthof {29}-1pt} 
-\contentsline {figure}{\numberline {3-5}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行均匀交叉过程}}\relax }}{29}{figure.caption.19}
+\contentsline {figure}{\numberline {3-4}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行父母选取过程}}\relax }}{29}{figure.caption.18}
  \cftsetpnumwidth {\widthof {30}-1pt} 
+\contentsline {figure}{\numberline {3-5}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行均匀交叉过程}}\relax }}{30}{figure.caption.19}
  \cftsetpnumwidth {\widthof {31}-1pt} 
  \cftsetpnumwidth {\widthof {32}-1pt} 
  \cftsetpnumwidth {\widthof {33}-1pt} 
@@ -74,11 +74,11 @@
  \cftsetpnumwidth {\widthof {44}-1pt} 
  \cftsetpnumwidth {\widthof {45}-1pt} 
 \contentsline {figure}{\numberline {3-13}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {OB-TA-200}}\relax }}{45}{figure.caption.34}
-\contentsline {figure}{\numberline {3-14}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {OB-CA-200}}\relax }}{45}{figure.caption.35}
  \cftsetpnumwidth {\widthof {46}-1pt} 
+\contentsline {figure}{\numberline {3-14}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {OB-CA-200}}\relax }}{46}{figure.caption.35}
 \contentsline {figure}{\numberline {3-15}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {OB-TA}}\relax }}{46}{figure.caption.36}
-\contentsline {figure}{\numberline {3-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {OB-CA}}\relax }}{46}{figure.caption.37}
  \cftsetpnumwidth {\widthof {47}-1pt} 
+\contentsline {figure}{\numberline {3-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {OB-CA}}\relax }}{47}{figure.caption.37}
  \cftsetpnumwidth {\widthof {48}-1pt} 
 \contentsline {figure}{\numberline {3-17}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {TI-ER-TA-1000}}\relax }}{48}{figure.caption.38}
  \cftsetpnumwidth {\widthof {49}-1pt} 
@@ -91,8 +91,8 @@
 \contentsline {figure}{\numberline {3-21}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {TI-BA-NO}}\relax }}{52}{figure.caption.42}
  \cftsetpnumwidth {\widthof {53}-1pt} 
 \contentsline {figure}{\numberline {3-22}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {TI-ER-NO}}\relax }}{53}{figure.caption.43}
-\contentsline {figure}{\numberline {3-23}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {CO-GA-1000}}\relax }}{53}{figure.caption.44}
  \cftsetpnumwidth {\widthof {54}-1pt} 
+\contentsline {figure}{\numberline {3-23}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {CO-GA-1000}}\relax }}{54}{figure.caption.44}
 \contentsline {figure}{\numberline {3-24}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {CO-LR-1000}}\relax }}{54}{figure.caption.45}
  \cftsetpnumwidth {\widthof {55}-1pt} 
 \addvspace {10\p@ }
