@@ -1,7 +1,7 @@
 % !Mode:: "TeX:UTF-8"
 \chapter{SDN网络下的并行路由优化算法设计}
 \section{引言}
-对大规模业务的路由优化问题可以建模成一个多商品流问题，将网络路由业务作为输入，寻找最优的路由路径来最优化效用函数，效用函数通常设置为对网络拥塞程度的评价水平，比如，最常用的效用函数是最小化最大链路利用率（MLU），简单地被定义为利用率最高的那条链路的链路利用率 \cite{MLU1, MLU2},另外一些把所有链路的链路利用率的和作为效用函数 \cite{Convex1, Convex2}，这些效用函数的逻辑是：（1）低链路利用率意味着低的网络延迟。（2）维持低的链路利用率意味着预留更多的空间给其他将来到达的业务。但是大量基于实际拓扑的实验表明链路利用率效用函数，特别是链路利用率，在网络利用率没有达到拥塞程度的时候，不是对网络优化的较好评价函数 \cite{BeyondMLU}。在这个实验中，当链路利用率低于0.9的时候会造成不可忽略的网络性能中断，反之，在网络发生大量拥塞的情况下MLU只去优化最大的链路利用率，而不能给出一个可行（满足容量约束）的解。所以作为替代，本文采用路由代价作为目标函数，我们假设已经知道短时间内到达的一批业务，控制器需要计算出满足链路容量约束的路径，并且最优化链路路由总代价。为了使得加入网络的业务尽量多，我们设定被阻塞的业务代价为一个较大值。本文中考虑的优化问题是一个NP-hard问题，因为他等价于一般的带整数约束的商品流问题 \cite{NetworkFlow}。
+对大规模业务的路由优化问题可以建模成一个多商品流问题，将网络路由业务作为输入，寻找最优的路由路径来最优化效用函数，效用函数通常设置为对网络拥塞程度的评价水平，比如，最常用的效用函数是最小化最大链路利用率（MLU），简单地被定义为利用率最高的那条链路的链路利用率 \citing{MLU1, MLU2},另外一些把所有链路的链路利用率的和作为效用函数 \citing{Convex1, Convex2}，这些效用函数的逻辑是：（1）低链路利用率意味着低的网络延迟。（2）维持低的链路利用率意味着预留更多的空间给其他将来到达的业务。但是大量基于实际拓扑的实验表明链路利用率效用函数，特别是链路利用率，在网络利用率没有达到拥塞程度的时候，不是对网络优化的较好评价函数 \citing{BeyondMLU}。在这个实验中，当链路利用率低于0.9的时候会造成不可忽略的网络性能中断，反之，在网络发生大量拥塞的情况下MLU只去优化最大的链路利用率，而不能给出一个可行（满足容量约束）的解。所以作为替代，本文采用路由代价作为目标函数，我们假设已经知道短时间内到达的一批业务，控制器需要计算出满足链路容量约束的路径，并且最优化链路路由总代价。为了使得加入网络的业务尽量多，我们设定被阻塞的业务代价为一个较大值。本文中考虑的优化问题是一个NP-hard问题，因为他等价于一般的带整数约束的商品流问题 \citing{NetworkFlow}。
 
 本章主要设计两种路由优化算法，第一种是基于备选路径选择的路由优化算法，采用遗传算法来优化目标函数，并且设计了遗传算法的并行版本，获得10倍以上的加速比，第二种是基于拉格朗日松弛的优化算法，算法把链路容量约束松弛到目标函数，并把路由优化问题分解成一批业务的路由计算问题，从而采用GPU进行并行计算。
 \section{网络模型和问题建模}
@@ -19,7 +19,7 @@ f(\mathbf{d})=\begin{cases}
 其中$p_d$是计算出来的对应于业务$d$的路径，$c(p_d)$ ($c(p_d) = \sum_{(i,j)\in p_d} w_{ij}$) 表示的是此路径$p_d$ 的代价，$W$为一个较大的值，比如$W$远远大于业务所有可能的路径代价值。因为不知道带宽是否足够容纳所有业务，\ref{Obj1}有两个分支，为了使得表达式同一，方便表示，我们对$G(V, E)$构建辅助图$G_a(V_a, E_a)$，初始时，让$G_a(V_a, E_a) = G(V, E)$，然后，对每个点$v \in V$ 和 $u \in V$，在$G_a(V_a, E_a)$ 中添加一条链路 $(v, u)$，并且设置链路 $(u,v)$ 的容量和代价分别为 $\infty$和 $W$，这样，$G_a(V_a, E_a)$就有足够的容量来容纳业务需求，如果某条业务被路由到$G_a(V_a, E_a)$中，那么就表示这条业务被阻塞了，加入了辅助图$G_a(V_a, E_a)$后，路由优化的效用函数可以表示为：
 \begin{equation}\label{Obj2}
 z^* = minimize~f(\mathbf{d})=
-\sum\limits_{d \in D} c(p_d)=  \sum\limits_{d \in D}\sum\limits_{e \in p_d} w_e
+\sum\limits_{d \in D} c(p_d)= \sum\limits_{d \in D}\sum\limits_{e \in p_d} w_e
 \end{equation}
 在本文的路由优化问题中，每个业务只能够路由到一条路径上，如第二章中讨论的那样，这更符合于SDN网络的实际情况，以下整数约束能够保证每个业务只走一条路径
 \begin{equation}\label{FlowConv}
@@ -42,16 +42,16 @@ z^* = minimize~f(\mathbf{d})=
 遗传算法是一种模拟自然进化过程搜索问题最优解的启发式算法，遗传算法模仿达尔文进化论和自然选择过程来评价挑选最优解集合，从而找寻较优化的解，遗传算法从一个代表问题的可行解的种群出发，一个种群中不同个体代表了不同的解，每个个体实际上是一个染色体，染色体携带表达当前解的信息编码，初代种群产生后，对每个染色体个体进行评价，按照适者生存，优胜劣汰的原则，使得较优的个体更有可能把自己的遗传信息传递给下一代，从而得到更优化的后代，算法过程中，对一部分基因进行变异，好的变异能够提高解的质量，增加算法的搜索空间，避免算法收敛于局部最优解。遗传算法的步骤流程图如下 \ref{IterNum} 所示：
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=0.8 \textwidth]{figures/GAprocess.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GA算法流程图}}}
-  \label{IterNum}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/GAprocess.pdf}}
+\end{center}
+\caption{{\footnotesize{GA算法流程图}}}
+\label{IterNum}
 \end{figure}
 \subsection{遗传算法设计}
 \subsubsection{定义染色体结构}
 
-由前面的讨论可以知道，路由优化问题求解过程是寻找最优的业务路径集合，使得效用函数最小化，在论文 \cite{ParaTE2}中作者（效用函数是常见的最小化最大链路利用率）提出了一种路由优化算法，在文章中，为每一个业务$d \in D$,产生$K$ 条不同的备选路径作为备选路径集合$P_i={ {p^1_d,p^2_d,p^3_d...p^K_d} }$, 通过遗传算法过程来确定每个业务选择哪一条备选路径，从而找到最优解，本文采用相同的思想来求解路由优化问题，假设业务数量为$|D|$,初始染色体集合大小为$POP$，对于第$j$ （$j \in [1:POP]$）号染色体一个染色体$C_j$ 是一个$|D|$维数组，$C^i_j=k,k \in [1:K]$ 表示在第$j$号染色体中，业务$i$ 选择了第$k$条备选路径，$C^i_j=-1$表示业务$i$不加入网络中（在辅助图上路由），不占用链路资源，$|p^i_d|$表示业务$d$的第$i$ 条备选路的路径代价，$rp^i_d$ 表示路径$p^i_d$ 上的最小可用容量,$rp^i_d=min(r_e|e \in p^i_d)$,其中$e \in p^i_d$ 表示路径$p^i_d$上的边，$r_e$ 表示此边$e$ 上的剩余容量。
+由前面的讨论可以知道，路由优化问题求解过程是寻找最优的业务路径集合，使得效用函数最小化，在论文 \citing{ParaTE2}中作者（效用函数是常见的最小化最大链路利用率）提出了一种路由优化算法，在文章中，为每一个业务$d \in D$,产生$K$ 条不同的备选路径作为备选路径集合$P_i={ {p^1_d,p^2_d,p^3_d...p^K_d} }$, 通过遗传算法过程来确定每个业务选择哪一条备选路径，从而找到最优解，本文采用相同的思想来求解路由优化问题，假设业务数量为$|D|$,初始染色体集合大小为$POP$，对于第$j$ （$j \in [1:POP]$）号染色体一个染色体$C_j$ 是一个$|D|$维数组，$C^i_j=k,k \in [1:K]$ 表示在第$j$号染色体中，业务$i$ 选择了第$k$条备选路径，$C^i_j=-1$表示业务$i$不加入网络中（在辅助图上路由），不占用链路资源，$|p^i_d|$表示业务$d$的第$i$ 条备选路的路径代价，$rp^i_d$ 表示路径$p^i_d$ 上的最小可用容量,$rp^i_d=min(r_e|e \in p^i_d)$,其中$e \in p^i_d$ 表示路径$p^i_d$上的边，$r_e$ 表示此边$e$ 上的剩余容量。
 \subsubsection{初始可行解生成}
 可行解表示满足容量约束的解，为了使得遗传算法有效，初始解的质量很重要，产生的初始解要尽量好，要有更多的业务要能加入网络中，而且保证业务的路径代价较小，文章中采用一种简单的贪心算法产生出初始可行解，算法过程如下 \ref{alg:Framwork} 所示：
 \begin{algorithm}[htb]
@@ -93,13 +93,7 @@ z^* = minimize~f(\mathbf{d})=
 \subsection{基于GPU的并行遗传算法设计}
 \subsubsection{并行评价算法设计}
 遗传算法中最消耗时间的部分是染色体评价部分，由于需要评价大量的染色体，评价每个染色体都需要大量计算开销，但是幸运的是遗传算法具有天然的并行性，每个不同的染色体评价可以并行执行，更进一步，每个染色体中的不同基因的计算也可以并行执行，这样并行粒度是很大的。下面将介绍评价过程的具体并行实现算法，算法主要包括可行性判断和效用函数计算两个步骤，算法计算流程如下图 \ref{fitness} 所示：
-\begin{figure}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/GPUfitness.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GPU上遗传算法评价函数计算过程图}}}
-  \label{fitness}
-\end{figure}
+
 符号解释：
 
 染色体（chromosome）基因编号：$c^d_i$表示第$i$个染色体的第$d$个基因位置。
@@ -113,51 +107,56 @@ z^* = minimize~f(\mathbf{d})=
 链路单位代价（weight）,$w_e$表示链路$e$上的代价。
 
 共享内存中间数组（shared），$sh_e$表示链路$e$上的总代价。
-
-如图所示，由于每个染色体的计算过程是独立的，算法为每一个染色体开辟一个block，每个block 内部每个线程负责染色体上的相应业务，首先通过寻址备选路径集合找到这个业务选择的路径，路径上的每一个链路都需要被占用流量，于是遍历这条路径，将业务的流量加到相应的链路上，所有线程同时计算，最后得到链路上占用的流量大小为数组$flow$, 并行比较$flow$ 和$capacity$数组，如果某一线程发现容量超限，则设置链路代价为无穷大（INF）表示此染色体不可行，最后对得到的链路代价数组进行求和，求和采用GPU 上经典的并行规约算法，最后得到染色体对应的效用函数值。
+\begin{figure}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/GPUfitness.pdf}}
+\end{center}
+\caption{{\footnotesize{GPU上遗传算法评价函数计算过程图}}}
+\label{fitness}
+\end{figure}
+如图\ref{fitness} 所示，由于每个染色体的计算过程是独立的，算法为每一个染色体开辟一个block，每个block 内部每个线程负责染色体上的相应业务，首先通过寻址备选路径集合找到这个业务选择的路径，路径上的每一个链路都需要被占用流量，于是遍历这条路径，将业务的流量加到相应的链路上，所有线程同时计算，最后得到链路上占用的流量大小为数组$flow$, 并行比较$flow$ 和$capacity$数组，如果某一线程发现容量超限，则设置链路代价为无穷大（INF）表示此染色体不可行，最后对得到的链路代价数组进行求和，求和采用GPU 上经典的并行规约算法，最后得到染色体对应的效用函数值。
 
 其中$flow$和$shared$两个数组被同一个block内部的线程多次访问，利用程序访问的局部性，将两个数组分配到共享内存中，这样避免了对global memery的大量慢速访问，大大提高程序计算速度。
 \begin{lstlisting}[caption={遗传算法并行评价代码},captionpos=b,firstnumber=1,label={GAF}]
 void evaluate(float*capacity,
-		   float*bandwith,
-		   float*weight,
-		   int chromsome[][],
-		   int paths[][]
-		   int &objective[]){
+float*bandwith,
+float*weight,
+int chromsome[][],
+int paths[][]
+int &objective[]){
 
 __shared__ float flow[E]={};
 __shared__ float shared[E]={};
 for(i=threadid;i<|D|;i+=blockDim){
-	int p[]=paths[i][chromsome[blockid][i]];
-	for(j=0,j<length_of(p);j++)
-		{
-		int band=bandwidth[blockid];
-		atomicAdd(&flow[p[j]],band);
-		}		
+int p[]=paths[i][chromsome[blockid][i]];
+for(j=0,j<length_of(p);j++)
+{
+int band=bandwidth[blockid];
+atomicAdd(&flow[p[j]],band);
+} 
 }
 __syncthreads();
 for(i=threadid;i<E;i+=blockDim)
 {
-	if(flow[i]<capacity[i])
-		shared[i]=flow[i]*weight[i];	
-	else
-		shared[i]=INF;	
+if(flow[i]<capacity[i])
+shared[i]=flow[i]*weight[i]; 
+else
+shared[i]=INF; 
 }
 __syncthread();
 for(int s=E;s>1;s=(s+1)/2)
-{	if(e<s/2)
-		shared[e]+=shared[e+(s+1)/2];
-	__syncthreads();
+{ if(e<s/2)
+shared[e]+=shared[e+(s+1)/2];
+__syncthreads();
 }
 if(threadid==0)
-	objective[blockid]=shared[0];
+objective[blockid]=shared[0];
 }
 \end{lstlisting}
 以上代码\ref{GAF} GPU上的评价过程伪代码，算法开始时先开辟两个大小为边数大小的共享内存数组，然后每个线程负责一个基因点，寻址基因点选择的路径，对路径上的每一条边的流量加上业务的流量大小，注意到这个时候可能同时存在多个线程访问同一个$flow$位置，所以需要同步保护，使得每个线程的加法操作都能正确执行，使用CUDA 提供的atomicAdd函数来对$flow$数组进行加法操作，atomicAdd 保证其调用的操作是原子操作，从而多个线程对同一$flow$位置的加法操作必修是串行执行的，一个add 操作必修一次性执行完成（取址、译码、执行、访存、写回），在当前add操作执行完成之前，其他线程的add 操作必修排队等待。$blockDim$ 表示一个block内的线程数量，代码中的for循环每次迭代标号$i$偏移$blockDim$ 的长度，这是因为业务量数$|D|$可能大于$blockDim$, 如果这样的话，每个线程可能会负责多个业务的统计计算，每个业务标号相差$blockDim$ 大小。
 
 当线程$flow$大小统计完成之后，必修进行同步（syncthreads()）,同步操作保证block内部的所有线程执行到同一步骤，也就是统计完成的线程必修等待其他统计线程都执行完成后才能继续执行，因为只有所有线程都完成对$flow$ 数组的加法操作，$flow$ 数组的统计才完整，才能够进一步进行比较操作。
-  
-代码第19到25行计算每一条链路的路由代价，并把结果储存在$shared$数组中，如果链路上的流量小于其容量约束，那么链路代价就等于单位代价$weight$和链路流量$flow$的乘积，反之，如果流量超限，就设置$shared$为无穷大。同理，当线程计算完成后必修进行同步（syncthreads()）操作，以使得shared数组正确完整。	
+代码第19到25行计算每一条链路的路由代价，并把结果储存在$shared$数组中，如果链路上的流量小于其容量约束，那么链路代价就等于单位代价$weight$和链路流量$flow$的乘积，反之，如果流量超限，就设置$shared$为无穷大。同理，当线程计算完成后必修进行同步（syncthreads()）操作，以使得shared数组正确完整。 
 
 为了充分利用GPU多线程，代码最后进行并行规约操作进行求和，for循环中每次将后一半的$shared$ 数组加到前一半，规约过程中必修进行同步（syncthreads()），以保证加法过程计算完整，最终求和值规约到一个下标0，将shared[0] 中的值写入到$objective$ 数组中。
 
@@ -165,42 +164,42 @@ if(threadid==0)
 \subsubsection{并行排序，变异与交叉}
 由于遗传算法中最消耗时间的部分是评价部分，本设计中对其他部分的并行步骤采用较简单的算法。在评价部分结束后，需要对所有的染色体按照效用函数的大小降序排序，本文采用GPU上的odd-even算法进行排序操作，odd-even 算法的计算过程如下图\ref{oddeven}所示：
 \begin{figure}
-  \begin{center}
-    {\includegraphics[width=0.6\textwidth]{figures/odd-even.pdf}}
-    \end{center}
-  \caption{{\footnotesize{并行奇偶排序例子}}}
-  \label{oddeven}
+\begin{center}
+{\includegraphics[width=0.6\textwidth]{figures/odd-even.pdf}}
+\end{center}
+\caption{{\footnotesize{并行奇偶排序例子}}}
+\label{oddeven}
 \end{figure}
 
 如图所示，奇偶排序算法每次两两比较数组中的值的大小，然后将较小的那个值交换到前面，奇数次的时候比较下标为$2k$和$2k+1$ 的值,其中$k \in [0,POP/2]$,偶数次的时候比较下标为$2k-1$和$2k$的值，其中$k \in[1,POP/2]$，最终经过$POP/2$轮的奇偶比较，就可以得到排序好的数组，从奇偶排序的执行过程可以看出，每一轮比较中的$POP/2$次比较是是相互独立无关的，其具有天然的可并行性，而且其并行实现较简单。
 绍染色体排序算法的GPU代码实现如下 \ref{GAS}：
 \begin{lstlisting}[caption={并行排序算法},captionpos=b,firstnumber=1,label={GAS}]
 void sort_kernel(float*objective,
-	     int**chromsome,
-	     int round)
+int**chromsome,
+int round)
 {
 int id=2*threadid;
 if(round/2==0)
-  if(objective[id]<objective[id+1])
-  {
-	swap(objective[id],objective[id+1]);
-	swap(chromsome[id],chromsome[id+1]);
-  }
+if(objective[id]<objective[id+1])
+{
+swap(objective[id],objective[id+1]);
+swap(chromsome[id],chromsome[id+1]);
+}
 else
-  if(objective[id-1]>objective[id])
-  {
-	swap(objective[id-1],objective[id]);
-	swap(chromsome[id-1],chromsome[id]);
-  }
+if(objective[id-1]>objective[id])
+{
+swap(objective[id-1],objective[id]);
+swap(chromsome[id-1],chromsome[id]);
+}
 };
 void sort(float*weight,
-	     int**chromsome,
-	     int round,
-		int POP
-		)
+int**chromsome,
+int round,
+int POP
+)
 {
 for(int i=0;i<POP/2;i++)
-    sort_kernel(objective,chromsome,i);
+sort_kernel(objective,chromsome,i);
 }
 \end{lstlisting}
 
@@ -208,29 +207,29 @@ for(int i=0;i<POP/2;i++)
 
 交叉过程分为父母选取和交叉计算两个kernel，父母选取过程随机并行地选取$\beta$对父母，每个线程负责选取一对父母，并且将选取的父母下标记录到$father$和$monther$数组中,父母选取GPU计算示意图如下图\ref{pp}所示：
 \begin{figure}
-  \begin{center}
-    {\includegraphics[width=0.8\textwidth]{figures/GPUchoose.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GPU并行父母选取过程}}}
-  \label{pp}
+\begin{center}
+{\includegraphics[width=0.8\textwidth]{figures/GPUchoose.pdf}}
+\end{center}
+\caption{{\footnotesize{GPU并行父母选取过程}}}
+\label{pp}
 \end{figure}
 每个线程进行两次随机，$mother$标号只能在前$\alpha$个精英染色体中选取，$father$表号的选取在前$\alpha+\beta$ 中选取，这样既能够给予精英染色体更大的交叉几率，也可以保证解的搜索空间变化足够大，避免陷入局部最优值。
 
 父母选取过程结束后，在GPU端记录了所选取的$mother$和$father$数组，$mother$和$father$数组将用于交叉部分的计算，交叉部分的并行粒度更高，其中每个基因点的计算都是并行执行的，如下图 \ref{cross} 所示：
 \begin{figure}
-  \begin{center}
-    {\includegraphics[width=0.8\textwidth]{figures/GPUcross.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GPU并行均匀交叉过程}}}
-  \label{cross}
+\begin{center}
+{\includegraphics[width=0.8\textwidth]{figures/GPUcross.pdf}}
+\end{center}
+\caption{{\footnotesize{GPU并行均匀交叉过程}}}
+\label{cross}
 \end{figure}
 每个block负责一个新染色体的生成，通过之前的分析，一共需要生产$\beta$个新的染色体，所以GPU 端一共需要分配$\beta$ 个block，其中每一个block中有|D| 个线程来同时负责随机从$monther$和$father$ 的相应点位选择一个来作为新染色体相应点位的值，如前所说采用均匀交叉策略，选择父亲母亲遗传基因的概率都是50\%,这样，这样block 内部的并行度达到$|D|$,总的并行粒度达到$|D|*（\beta）$。
 \begin{lstlisting}[caption={并行交叉算法代码},captionpos=b,firstnumber=1,label={GAC}]
 void cross_kernel(float*monther,
-			  float*father,
-	     		  int**chromsome,
-                  int**newchromsome
-			  )
+float*father,
+int**chromsome,
+int**newchromsome
+)
 {
 int mid=monther[blockid];
 int fid=father[blockid];
@@ -238,9 +237,9 @@ int a=chromsome[mid][threadid];
 int b=chromsome[fid][threadid];
 int mark=rand()%100;
 if(mark<50)
-  newchromsome[blockid+alpha][threadid]=a;
+newchromsome[blockid+alpha][threadid]=a;
 else
-  newchromsome[blockid+alpha][threadid]=b;
+newchromsome[blockid+alpha][threadid]=b;
 }
 \end{lstlisting}
 
@@ -251,7 +250,7 @@ else
 
 基于遗传算法的路由优化算法，虽然过程简单，但是其具有以下缺点,第一，需要事先计算大量备选路径，不能很好地适应网络的动态变化，一旦网络链路发生变化，又要重新计算备选路径。第二，遗传算法从开始到收敛需要大量的迭代次数，虽然经过GPU加速计算，但是由于收敛缓慢，任然需要大量的计算时间，迭代次数，很大程度上是决定于初始染色体集合的好坏，而随机选择路径的方式很难得到好的初始集合。第三，遗传算法容易陷入局部最优解，交叉范围小，和变异范围小都会使得算法提前陷入局部最优解，而如果交叉范围太大，变异范围太大，又会使得算法收敛缓慢，而且路由优化问题中每一个业务都有大量备选路径，问题的解空间很大，即使增大搜索范围也很难找到更优化的解。于是本节通过分析采用基于拉格朗日乘子法的GPU并行方法来求解路由优化问题。
 \subsection{问题建模}
-  路由优化问题就是为每一个业务选取一条路径，以使得效用函数最小化。然而在MILP模型中，网络容量约束(Eq.\ref{Capcon})，把所有的路由变量联系到一起，因为这些变量的取值必修保证每一条链路$(i,j)$上占用的流量小于其容量$c_{ij}$,正是由于存在链路容量约束，每个业务的路由选取才变得不相互独立，但是要利用GPU 的并行特性，需要寻找独立计算的可能性，因此，本文采用拉格朗日松弛方法，把一个路由优化问题分解成一些单个业务的寻路问题，而这些单业务的寻路问题是相互独立的，很适合并行计算。将路由优化问题中的网络容量约束松弛进目标函数得到如下问题：
+路由优化问题就是为每一个业务选取一条路径，以使得效用函数最小化。然而在MILP模型中，网络容量约束(Eq.\ref{Capcon})，把所有的路由变量联系到一起，因为这些变量的取值必修保证每一条链路$(i,j)$上占用的流量小于其容量$c_{ij}$,正是由于存在链路容量约束，每个业务的路由选取才变得不相互独立，但是要利用GPU 的并行特性，需要寻找独立计算的可能性，因此，本文采用拉格朗日松弛方法，把一个路由优化问题分解成一些单个业务的寻路问题，而这些单业务的寻路问题是相互独立的，很适合并行计算。将路由优化问题中的网络容量约束松弛进目标函数得到如下问题：
 \begin{equation}\label{LagProb}
 \begin{split}
 L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_a} w_{ij}x_{ij}^d bw_d+ \\ ~~~~~\sum\limits_{(i,j) \in E_a}\lambda_{ij}(\sum\limits_{d \in D} (x_{ij}^d bw_d-c_{ij})
@@ -274,20 +273,20 @@ subject to:
 \\~~~~~~~~\forall i\in V_a, \forall d\in D
 \end{split}
 \end{equation}
- 拉格朗日子问题的目标函数中的$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$这一项，不随着拉格朗日乘子的变化而变化，本文将其作为常数项而丢掉不讨论，丢掉$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$ 这一项后，拉格朗日子问题的目标函数中只含有代价部分 $w_{ij}+\lambda_{ij}$和$x_{ij}^d$的乘积。注意到，$\sum_{(i,j) \in E_a} (w_{ij}+\lambda_{ij})x_{ij}^d bw_d$表示业务$d$ 的总路由代价，因此，拉格朗日子问题的目标函数是最小化所有业务需求的路径路由代价总和，在这个子问题的约束中，没有一个约束同时包含有两个及以上的业务需求相关的变量，所有这个拉格朗日子问题可以被分解成一系列独立的最短路径问题（每个业务需求对应于一个最短路问题），只是这些最短路问题的链路单位代价发生改变，链路代价变得和拉格朗日乘子 $\mathbf{\lambda}$ 相关，也就是说给定一个拉格朗日乘子$\mathbf{\lambda}$，我们可以通过并行地计算一系列的最短路径问题来解决这个拉格朗日子问题。
+拉格朗日子问题的目标函数中的$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$这一项，不随着拉格朗日乘子的变化而变化，本文将其作为常数项而丢掉不讨论，丢掉$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$ 这一项后，拉格朗日子问题的目标函数中只含有代价部分 $w_{ij}+\lambda_{ij}$和$x_{ij}^d$的乘积。注意到，$\sum_{(i,j) \in E_a} (w_{ij}+\lambda_{ij})x_{ij}^d bw_d$表示业务$d$ 的总路由代价，因此，拉格朗日子问题的目标函数是最小化所有业务需求的路径路由代价总和，在这个子问题的约束中，没有一个约束同时包含有两个及以上的业务需求相关的变量，所有这个拉格朗日子问题可以被分解成一系列独立的最短路径问题（每个业务需求对应于一个最短路问题），只是这些最短路问题的链路单位代价发生改变，链路代价变得和拉格朗日乘子 $\mathbf{\lambda}$ 相关，也就是说给定一个拉格朗日乘子$\mathbf{\lambda}$，我们可以通过并行地计算一系列的最短路径问题来解决这个拉格朗日子问题。
 因为把容量约束松弛进效用函数中后，不会增加目标函数的值， $L(\mathbf{\lambda})$成为原问题最优目标函数值的下界，$z^* \ge L(\mathbf{\lambda})$，为了得到最紧的的下界值，我们要解决以下这个优化问题：
- \begin{equation}\label{dual}
+\begin{equation}\label{dual}
 L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \end{equation}
 ~~~subject to: (\ref{FlowConv2})
- \vskip 0.2cm
+\vskip 0.2cm
 
-以上的这个优化问题也被称为原来路由优化问题的对偶问题((\ref{Obj2}) - (\ref{Capcon})) \cite{NetworkFlow}，其中$\mathbf{\lambda}$ 表示最优拉格朗日乘子，为了得到最优乘子$\mathbf{\lambda^*}$,可以使用次梯度优化算法来解决，次梯度优化计算时，第一次先初始化乘子 $\mathbf{\lambda}^0$, 然后通过以下过程进行迭代求解：
+以上的这个优化问题也被称为原来路由优化问题的对偶问题((\ref{Obj2}) - (\ref{Capcon})) \citing{NetworkFlow}，其中$\mathbf{\lambda}$ 表示最优拉格朗日乘子，为了得到最优乘子$\mathbf{\lambda^*}$,可以使用次梯度优化算法来解决，次梯度优化计算时，第一次先初始化乘子 $\mathbf{\lambda}^0$, 然后通过以下过程进行迭代求解：
 \begin{equation}\label{iter}
-   \mathbf{\lambda}_{ij}^{(k+1)} =\mathbf{\lambda_{ij}}^{(k)}+\theta_{k} g^{(k)}= \mathbf{\lambda_{ij}}^{(k)} + \theta_k[(\sum\limits_{d \in D}x_{ij}^d - c_{ij})]^+
+\mathbf{\lambda}_{ij}^{(k+1)} =\mathbf{\lambda_{ij}}^{(k)}+\theta_{k} g^{(k)}= \mathbf{\lambda_{ij}}^{(k)} + \theta_k[(\sum\limits_{d \in D}x_{ij}^d - c_{ij})]^+
 \end{equation}
 其中， $\mathbf{\lambda}_{ij}^{(k)}$表示第$k$次迭代的对应于边$(i,j)$的拉格朗日乘子， $g^{(k)}$是$L(\mathbf{\lambda})$ 对$\mathbf{\lambda}^{k}$的任意一种次梯度，$\theta_k$ 表示第$k$次的迭代的步长，标记$[\alpha]^+$ 表示$\alpha$中符号为正的部分，也就说$[\alpha]^+=max(\alpha, 0)$，从表达式Eq. (\ref{iter})可以看出来如果链路$(i,j)$ 上的流量总和超过链路$(i,j)$上的容量，链路$(i,j)$ 上的$\lambda_{ij}^k$拉格朗日乘子会增加，也就是表示一些业务流量需要从链路$(i,j)$上移除，另外，为了避免产生负权重的链路代价，当链路容量大于其上的流量时，我们并不去减小此链路$(i,j)$上的$\lambda_{ij}^k$。
- 根据以上讨论，我们给出基于拉格朗日乘子法的并行路由优化算法的框架，如图\ref{lpl}所示，LR-PTEA主要包括以下步骤：
+根据以上讨论，我们给出基于拉格朗日乘子法的并行路由优化算法的框架，如图\ref{lpl}所示，LR-PTEA主要包括以下步骤：
 
 步骤一，为$G_a(V_a, E_a)$ 初始化链路权重。
 
@@ -297,14 +296,14 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 
 步骤四，更新链路权重，更新完毕后，如果停止条件不满足，则回到步骤二，进入下一轮迭代。LR-PTEA 如果在连续$\beta$次成功的迭代后依然不能找到更优的全局解，则停止算法过程。
 \begin{figure}
-  \begin{center}
-    {\includegraphics[width=1\textwidth]{figures/lagrange.pdf}}
-    \end{center}
-  \caption{{\footnotesize{LR-PTEA算法流程图}}}
-  \label{lpl}
+\begin{center}
+{\includegraphics[width=0.8\textwidth]{figures/lagrange.pdf}}
+\end{center}
+\caption{{\footnotesize{LR-PROA算法流程图}}}
+\label{lpl}
 \end{figure}
 \subsection{基于GPU的并行路由计算}
-  在每次迭代中，LR-PROA为每个业务 $d \in D$在图 $G_a(V_a, E_a)$中计算最短路径，显然，丢掉链路容量约束后，不同业务的最短路径计算可以独立在GPU上并行执行，但是，最短路算法的逻辑对于GPU来说太过复杂，GPU最初是被设计来做大规模的数值计算问题，其只实用于逻辑比较简单，但是数值计算量较大的任务，所以在GPU上直接开辟一个线程来计算一个业务的路径，不仅仅在计算上是低效的，而且这样的并行粒度也不能充分利用GPU 的大规模并行能力。为了充分提高最短路径的计算速度，LR-PROA 对最短路径算法进行并行化设计。
+在每次迭代中，LR-PROA为每个业务 $d \in D$在图 $G_a(V_a, E_a)$中计算最短路径，显然，丢掉链路容量约束后，不同业务的最短路径计算可以独立在GPU上并行执行，但是，最短路算法的逻辑对于GPU来说太过复杂，GPU最初是被设计来做大规模的数值计算问题，其只实用于逻辑比较简单，但是数值计算量较大的任务，所以在GPU上直接开辟一个线程来计算一个业务的路径，不仅仅在计算上是低效的，而且这样的并行粒度也不能充分利用GPU 的大规模并行能力。为了充分提高最短路径的计算速度，LR-PROA 对最短路径算法进行并行化设计。
 \begin{algorithm}[htb]
 \begin{algorithmic}[1]
 \Require
@@ -333,15 +332,14 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \caption{{Bellman最短路算法}}
 \label{Bellman}
 \end{algorithm}
-  
-文章 \cite{SSP1}提出一种Dijkstra最短路径算法在GPU上的并行实现，但是从算法结构上分析，Dijkstra最短路径算法并不适应于并行算法的设计，所以Dijkstra最短路径算法在GPU上的实现不能得到很好的加速效果，为了期望得到更好的加速效果，LR-PROA 选择Bellman-Ford \cite{NetworkFlow}最短路算法来进行并行实现，Bellman-Ford最短路算法逐步地减小距离标记 $Dist[v],v\in V$，直达其收敛与真实的最短距离。Bellman-Ford算法过程如上图\ref{Bellman}，其中 $Dist[v]$ 表示距离起点$s$到$v$的最短路径距离,$Pre[v]$ 表示点$s$到点$v$ 的最短路径上$v$ 的前驱节点，在初始化好了所以节点的距离数组和前驱节点数组之后，Bellman-Ford算法最多迭代 $|V|$ 次，每一次迭代算法松弛一次图$G(V, E)$ 中的所有的边（第10-11行）。Bellman-Ford 算法的算法复杂度为$(|V|\cdot |E|)$，他的复杂度高于Dijkstra最短路径算法的复杂度，但是，因为Bellman-Ford算法每次松弛边的操作都是独立无关的，通过为每一条边的松弛操作分配一个独立的线程执行，Bellman-For算法很容易在GPU 上实现并行化。
+文章 \citing{SSP1}提出一种Dijkstra最短路径算法在GPU上的并行实现，但是从算法结构上分析，Dijkstra最短路径算法并不适应于并行算法的设计，所以Dijkstra最短路径算法在GPU上的实现不能得到很好的加速效果，为了期望得到更好的加速效果，LR-PROA 选择Bellman-Ford \citing{NetworkFlow}最短路算法来进行并行实现，Bellman-Ford最短路算法逐步地减小距离标记 $Dist[v],v\in V$，直达其收敛与真实的最短距离。Bellman-Ford算法过程如上图\ref{Bellman}，其中 $Dist[v]$ 表示距离起点$s$到$v$的最短路径距离,$Pre[v]$ 表示点$s$到点$v$ 的最短路径上$v$ 的前驱节点，在初始化好了所以节点的距离数组和前驱节点数组之后，Bellman-Ford算法最多迭代 $|V|$ 次，每一次迭代算法松弛一次图$G(V, E)$ 中的所有的边（第10-11行）。Bellman-Ford 算法的算法复杂度为$(|V|\cdot |E|)$，他的复杂度高于Dijkstra最短路径算法的复杂度，但是，因为Bellman-Ford算法每次松弛边的操作都是独立无关的，通过为每一条边的松弛操作分配一个独立的线程执行，Bellman-For算法很容易在GPU 上实现并行化。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/paframework.pdf}}
-    \end{center}
-  \caption{{\footnotesize{并行业务计算框架}}}
-  \label{ParFramework}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/paframework.pdf}}
+\end{center}
+\caption{{\footnotesize{并行业务计算框架}}}
+\label{ParFramework}
 \end{figure*}
 
 上图 \ref{ParFramework} 中显示了LR-PROA的最短路径计算的并行实现框架。首先，将业务量需求根据业务的源节点将业务分配成不同的组，使得每一组内的业务的源节点相同。我们假设第$i$个组的源节点为$s_i$。 然后，为了高速的计算最短路径，每一组的最短路径计算使用$m$ 个GPU 线程的并行bellman-ford算法进行计算，如上图\ref{ParFramework}所示，线程$T_{i,j}$负责为对应于源点$s$的链路$e_{j}$ 进行松弛操作。因此总的并行执行的线程数是$m \times k$,其中$m$和$k$分别表示链路数目和组的数目。
@@ -349,35 +347,35 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 在CUDA编程模型中,kernel在执行在一系列的block中，一个block中包含一系列并行执行的线程，在本文的最短路算法并行实现中，每个block内部的线程用于松弛同一条链路$(i,j)$ 的不同源节点情况，比如，在图 \ref{GB} 中，集合$\{T_{1j}, T_{2j}, \cdots, T_{ij}, \cdots, T_{kj}\}$都在$block_j$上执行，其中 $T_{ij}$为对应源节点为$s_i$ 的链路$e_i$ 执行松弛操作，其中，我们设链路$e_i$的头节点和尾节点分别为$h_i$ 和$t_i$，可以看到，当这次迭代存在链路更新，那么标记$Mark$会被设置成一，这是为了优化算法的迭代次数，当某次迭代结束$Mark=0$ 则表示这次迭代没有边进行了更新操作，说明Bellman 算法已经提前结束，实验证明这一个优化可以大大地减小Bellman算法的迭代运行次数。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/GPUimpl.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GPU上Bellman算法的实现}}}
-  \label{GB}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/GPUimpl.pdf}}
+\end{center}
+\caption{{\footnotesize{GPU上Bellman算法的实现}}}
+\label{GB}
 \end{figure*}
 
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=0.8 \textwidth]{figures/SynPro.pdf}}
-    \end{center}
-  \caption{{\footnotesize{同步问题的例子}}}
-  \label{SynPro}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/SynPro.pdf}}
+\end{center}
+\caption{{\footnotesize{同步问题的例子}}}
+\label{SynPro}
 \end{figure*}
 最短路径算法CUDA实现算法伪代码如下所示。需要注意的是由于线程在GPU上是独立执行的，在更新节点的距离标记和前驱标记的时候会出现同步问题，假设线程$T_1$为链路$(x,v)$执行松弛操作，而线程$T_2$为链路$(y,v)$ 执行松弛操作，假设两个线程更新点$v$ 的距离标记和更新前驱标记的顺序如 \ref{SynPro} 所示，如果$Dist[y] + w(y, v) < Dist[x] +w(x, v)$,那么$Dist[v]$ 被更新为$Dist[y] + w(y, v)$,但是由于更新的顺序发生交叉,节点$v$的前驱节点被更新成了$x$, 而不是真正正确的前驱节点$y$。为了避免这个同步问题，算法设计中使用两个kernel，一个用来更新距离标号，一个用来更新前驱节点。
 \begin{algorithm}[t]
 \begin{algorithmic}[1]
 \Require
-	 业务需求集合$D$;
-      链路集合$E$;
+业务需求集合$D$;
+链路集合$E$;
 \Ensure {业务需求的最短路径结合$P$}
 \State {将业务的源节点加入到集合$S$中}
 \State {$Mark \leftarrow$ 1}
 \While{$Mark > 0$}
 \State {$Mark \leftarrow$ 0}
- \State {发射 kernel\_distance\_update($S$, $E$, $Dist$)}
+\State {发射 kernel\_distance\_update($S$, $E$, $Dist$)}
 \EndWhile
- \State {发射 kernel\_predecessor\_update($S$, $E$, $Dist$, $Pre$)}
+\State {发射 kernel\_predecessor\_update($S$, $E$, $Dist$, $Pre$)}
 \State {根据前驱数组$Pre$重建业务的最短路径，并把路径加入到集合$P$中}
 \end{algorithmic}
 \caption{{并行最短路计算}}
@@ -420,42 +418,40 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \end{algorithm}
 \subsection{链路权重更新}
 \subsubsection{权重更新步长}
-  
 在LR-PROA算法中，在第$(k+1)$次迭代，链路$(i,j)$的权重被更新为$w_{ij}^{k} + \lambda_{ij}^{k+1}$, 其中$\lambda_{ij}^{k+1}$ 被更新为：
 \begin{equation}\label{Iter}
-  \lambda_{ij}^{k+1} = \lambda_{ij}^k + \theta_k[(\sum\limits_{d \in D}x_{ij}^dbw_d - c_{ij})]^+.
+\lambda_{ij}^{k+1} = \lambda_{ij}^k + \theta_k[(\sum\limits_{d \in D}x_{ij}^dbw_d - c_{ij})]^+.
 \end{equation}
-  
 为了保证收敛性，第$k$次迭代的更新步长($\theta_k$)可以被设置为 $\frac{1}{k}$ \ref{NetworkFlow}。 然而，通过仿真发现，当($\theta_k$) 被设置为 $\frac{1}{k}$时，其收敛缓慢。让我们考虑图 \ref{u1}的例子，其中链路$(i,j)$ 上标记分别表示链路权重和链路上剩余的容量大小。假设现在有两个业务需求（$d_1$ 和$d_2$）其源和目的节点都是$A$ 和$D$，且每一个业务的流量大小都是4个单位。为了展示这个迭代过程，我们把算法前5次的迭代结果表示在表 \ref{Iterprocess1}中，从表中可以看到，业务计算出的最短路径一直在$A-B-D$和$A-C-D$ 之间徘徊。算法必修等到$A-B-D$ 和$A-C-D$ 的两条路的权重相等时才能停止，只有这样这两个业务才可能分离，其中一个选择$A-B-D$，而另一个选择$A-C-D$。 但是，正如表中所示这需要大量的迭代才能达到。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=0.4 \textwidth]{figures/IterNum.pdf}}
-    \end{center}
-  \caption{{\footnotesize{链路更新例子(1)}}}
-  \label{u1}
+\begin{center}
+{\includegraphics[width=0.4 \textwidth]{figures/IterNum.pdf}}
+\end{center}
+\caption{{\footnotesize{链路更新例子(1)}}}
+\label{u1}
 \end{figure}
 \begin{table}[t]
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 \setlength{\abovecaptionskip}{0.2cm}
-  \centering
- \scriptsize{
- \renewcommand{\tabcolsep}{0.09cm}
- \renewcommand{\arraystretch}{1.2}
-  \caption{拉格朗日更新过程（1）}
-    \begin{tabular}{| c | c | c | c|}
-    \hline
-     Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path weights & $\theta_k$
+\centering
+\scriptsize{
+\renewcommand{\tabcolsep}{0.09cm}
+\renewcommand{\arraystretch}{1.2}
+\caption{拉格朗日更新过程（1）}
+\begin{tabular}{| c | c | c | c|}
+\hline
+Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path weights & $\theta_k$
 \\ \hline
- 0 & \tabincell{l}{A-B-D \\ A-B-D} & \tabincell{l}{4(1+1) \\ 4(1+1)} & 1   \\ \hline
-1 & \tabincell{l}{A-C-D \\ A-C-D } & \tabincell{l}{4(2+2) \\ 4(2+2)} & 1   \\ \hline
+0 & \tabincell{l}{A-B-D \\ A-B-D} & \tabincell{l}{4(1+1) \\ 4(1+1)} & 1 \\ \hline
+1 & \tabincell{l}{A-C-D \\ A-C-D } & \tabincell{l}{4(2+2) \\ 4(2+2)} & 1 \\ \hline
 2 & \tabincell{l}{A-B-D \\ A-B-D} & \tabincell{l}{4(1+4+1+4) \\ 4(1+4+1+4)} & 0.5 \\ \hline
 3 & \tabincell{l}{A-C-D\\ A-C-D} & \tabincell{l}{4(2+4+2+4) \\ 4(2+4+2+4)} & 0.33 \\ \hline
 4 & \tabincell{l}{A-B-D \\ A-B-D} & \tabincell{l}{4(1+6+1+6) \\ 4(1+6+1+6)} & 0.25 \\ \hline
 5 & \tabincell{l}{A-C-D \\ A-C-D} & \tabincell{l}{4(2+5.33+2+5.33) \\ 4(2+5.33+2+5.33)} & 0.2 \\ \hline
 \end{tabular}
- \vskip 0.2 cm
-  \label{Iterprocess1}
+\vskip 0.2 cm
+\label{Iterprocess1}
 }
 \end{table}
 另外一种常用的步长选择是：
@@ -473,46 +469,46 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 拉格朗日松弛法将原问题分解成了一个个独立的最短路径问题，这样使得算法可以并行化进行设计，但是由于个个子问题独立分离，使得每个问题再求最短路径时都是贪心的，这样可能会使得大量业务抢占同一批链路，造成拥塞，一旦拥塞，链路的权重增加，又会使得大量的业务放弃这一批链路，去抢占其他链路，而这些链路由于权重过分增加，造成没有业务去选择他们，使得链路利用出现浪费，甚至会造成其他链路发生拥塞，这样出现恶性循环，最终会使得算法提前收敛到局部最优解，另外，由上一节的分析为了最求收敛快速，我们简单地将补偿设置为$\frac{1}{|c_{ij}-\sum\limits_{d \in D} x_{ij}^d bw_d|}$，就是对把每一个超过容量约束的边简单地增加一，这样粗粒度的增加，可能会加重上面讨论的拥塞循环。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=0.4 \textwidth]{figures/random.pdf}}
-    \end{center}
-  \caption{{\footnotesize{链路更新例子(2)}}}
-  \label{u2}
+\begin{center}
+{\includegraphics[width=0.4 \textwidth]{figures/random.pdf}}
+\end{center}
+\caption{{\footnotesize{链路更新例子(2)}}}
+\label{u2}
 \end{figure}
-  如上图\ref{u2}所示，假设有存在两个业务$d_1$和$d_2$,其中$d_1$的源节点为$A$,目的节点为$G$, 其流量大小为$5$;$d_2$ 的源节点为$B$, 目的节点为$G$，其流量大小为$5$，开始时两个都分别贪心计算最短路径，$d_1$ 选择路径$A-C-E-G$，$d_2$选择路径$B-C-E-G$, 这样的话，链路$C-E$和$E-G$出现拥塞，表 \ref{Iterprocess2} 展示了这个迭代过程,图 \ref{u2}中最优的选择是让其中一个业务经过边$C-E-G$进行中继,另一个业务经过边$D-F-G$进行中继。但是的迭代过程始终无法使得两条链路发生分离，图中的链路权重始终无法达到最优条件，这是因为算法的权重迭代增加粒度太大，由于链路$C-E-G$和链路$D-F-G$每次超限都会为路径的总权重增加2个单位，假设每次迭代时链路$C-E-G$和链路$D-F-G$ 每次迭代时一共只贡献1个单位的权重增加，那么算法只需要一次迭代就能达到最优条件，此时链路$C-E-G$由于超限，权重一共增加1个单位，那么路径$A-C-E-G$ 和路径$A-D-F-G$ 权重相等都为4，同样，路径$B-C-E-G$和路径$B-D-F-G$的权重也相等了，这样两个业务才会分离开（比如业务$d_1$选择链路$A-C-E-G$, 业务$d_2$选择链路$B-D-F-G$）。但是在算法设计时，我们难以分辨哪些链路的组合会引起业务出现这种徘徊情况，为了解决链路增加粒度过大的情况，在本设计中我们采用随机选择执行更新的策略，也就是对一条流量超过容量约束的边$(i,j)$，我们以概率$\phi$ 来对他进行权重更新，每条边的权重增加粒度依然为1个单位，假设$\phi=0.5$，这种方法在一定概率上保证图 \ref{u2} 中的例子可以在一次迭代中收敛。实际实验中发现这种更新策略能够保证算法得到较优解的同时，保证收敛速度较快。
+如上图\ref{u2}所示，假设有存在两个业务$d_1$和$d_2$,其中$d_1$的源节点为$A$,目的节点为$G$, 其流量大小为$5$;$d_2$ 的源节点为$B$, 目的节点为$G$，其流量大小为$5$，开始时两个都分别贪心计算最短路径，$d_1$ 选择路径$A-C-E-G$，$d_2$选择路径$B-C-E-G$, 这样的话，链路$C-E$和$E-G$出现拥塞，表 \ref{Iterprocess2} 展示了这个迭代过程,图 \ref{u2}中最优的选择是让其中一个业务经过边$C-E-G$进行中继,另一个业务经过边$D-F-G$进行中继。但是的迭代过程始终无法使得两条链路发生分离，图中的链路权重始终无法达到最优条件，这是因为算法的权重迭代增加粒度太大，由于链路$C-E-G$和链路$D-F-G$每次超限都会为路径的总权重增加2个单位，假设每次迭代时链路$C-E-G$和链路$D-F-G$ 每次迭代时一共只贡献1个单位的权重增加，那么算法只需要一次迭代就能达到最优条件，此时链路$C-E-G$由于超限，权重一共增加1个单位，那么路径$A-C-E-G$ 和路径$A-D-F-G$ 权重相等都为4，同样，路径$B-C-E-G$和路径$B-D-F-G$的权重也相等了，这样两个业务才会分离开（比如业务$d_1$选择链路$A-C-E-G$, 业务$d_2$选择链路$B-D-F-G$）。但是在算法设计时，我们难以分辨哪些链路的组合会引起业务出现这种徘徊情况，为了解决链路增加粒度过大的情况，在本设计中我们采用随机选择执行更新的策略，也就是对一条流量超过容量约束的边$(i,j)$，我们以概率$\phi$ 来对他进行权重更新，每条边的权重增加粒度依然为1个单位，假设$\phi=0.5$，这种方法在一定概率上保证图 \ref{u2} 中的例子可以在一次迭代中收敛。实际实验中发现这种更新策略能够保证算法得到较优解的同时，保证收敛速度较快。
 \begin{table}[t]
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 \setlength{\abovecaptionskip}{0.2cm}
-  \centering
- \scriptsize{
- \renewcommand{\tabcolsep}{0.09cm}
- \renewcommand{\arraystretch}{1.2}
-  \caption{拉格朗日更新过程（2）}
-    \begin{tabular}{| c | c | c |}
-    \hline
-     Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path weights
+\centering
+\scriptsize{
+\renewcommand{\tabcolsep}{0.09cm}
+\renewcommand{\arraystretch}{1.2}
+\caption{拉格朗日更新过程（2）}
+\begin{tabular}{| c | c | c |}
+\hline
+Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path weights
 \\ \hline
-0 & \tabincell{l}{A-C-E-G \\ B-C-E-G} & \tabincell{l}{3(1+1+1) \\ 3(1+1+1)}   \\ \hline
-1 & \tabincell{l}{A-D-F-G \\ B-D-F-G } & \tabincell{l}{3(2+1+1) \\ 3(2+1+1)}   \\ \hline
+0 & \tabincell{l}{A-C-E-G \\ B-C-E-G} & \tabincell{l}{3(1+1+1) \\ 3(1+1+1)} \\ \hline
+1 & \tabincell{l}{A-D-F-G \\ B-D-F-G } & \tabincell{l}{3(2+1+1) \\ 3(2+1+1)} \\ \hline
 2 & \tabincell{l}{A-C-E-G \\ B-C-E-G} & \tabincell{l}{3(1+2+2) \\ 3(1+2+2)} \\ \hline
 3 & \tabincell{l}{A-D-F-G\\ B-D-F-G} & \tabincell{l}{3(2+2+2) \\ 3(2+2+2)} \\ \hline
 4 & \tabincell{l}{A-C-E-G \\ B-C-E-G} & \tabincell{l}{3(1+3+3) \\ 3(1+3+3)} \\ \hline
 5 & \tabincell{l}{A-D-F-G \\ B-D-F-G} & \tabincell{l}{3(2+3+3) \\ 3(2+3+3)}\\ \hline
 6 & \tabincell{l}{ ...\\ ...} & \tabincell{l}{... \\ ...}\\ \hline
 \end{tabular}
- \vskip 0.2 cm
-  \label{Iterprocess2}
+\vskip 0.2 cm
+\label{Iterprocess2}
 }
 \end{table}
 \subsection{路径调整}
-  注意到，在最优的权重代价下（最优拉格朗日乘子），LR-PROA求解到的路径集合解对于拉格朗日对偶问题的优化解,但是他不一定是原来路由优化问题的优化可行解。作为一个例子，考察图 \ref{ppt}中的情况，图中的元组中数字分别表示链路的代价和链路上的剩余容量大小，我们假设有两个业务需求$d_1$和$d_2$,其中两个业务的流量需求都是1个单位，假设在某一个迭代过程中，LR-PROA 为两个业务算出来的链路都是$A-C-E-D$, 这条路径选择是对偶问题的最优解，但是他对于原问题来说是不可行的解，因为链路$(C,E)$ 上承载的链路容量大于了链路$(C,E)$ 上的容量。所以，为了寻找原问题的最优解，LR-PROA会继续迭代，这是由于每个业务在选择路径的时候没有去考虑其他业务所选择的路径，但是我们容易看到这个例子中所有路径权重都一样（都等于3），也就是说，图中存在着大量的等价链路，但是在这个例子中两个业务恰好都选择了冲突的那一条路径$A-C-E-D$，如果业务$d_1$ 的路径被调整到$A-D$,业务$d_2$的链路被调整到$B-F$, 那么，我们可以得到原问题的最优可行解，所以通过这里的启发，我们发现需要设计一种业务路径调整算法来主动避免链路出现冲突，从而减小算法的迭代次数，得到原问题的优化的可行解。
+注意到，在最优的权重代价下（最优拉格朗日乘子），LR-PROA求解到的路径集合解对于拉格朗日对偶问题的优化解,但是他不一定是原来路由优化问题的优化可行解。作为一个例子，考察图 \ref{ppt}中的情况，图中的元组中数字分别表示链路的代价和链路上的剩余容量大小，我们假设有两个业务需求$d_1$和$d_2$,其中两个业务的流量需求都是1个单位，假设在某一个迭代过程中，LR-PROA 为两个业务算出来的链路都是$A-C-E-D$, 这条路径选择是对偶问题的最优解，但是他对于原问题来说是不可行的解，因为链路$(C,E)$ 上承载的链路容量大于了链路$(C,E)$ 上的容量。所以，为了寻找原问题的最优解，LR-PROA会继续迭代，这是由于每个业务在选择路径的时候没有去考虑其他业务所选择的路径，但是我们容易看到这个例子中所有路径权重都一样（都等于3），也就是说，图中存在着大量的等价链路，但是在这个例子中两个业务恰好都选择了冲突的那一条路径$A-C-E-D$，如果业务$d_1$ 的路径被调整到$A-D$,业务$d_2$的链路被调整到$B-F$, 那么，我们可以得到原问题的最优可行解，所以通过这里的启发，我们发现需要设计一种业务路径调整算法来主动避免链路出现冲突，从而减小算法的迭代次数，得到原问题的优化的可行解。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=0.4 \textwidth]{figures/PathAdj.pdf}}
-    \end{center}
-  \caption{{\footnotesize{路径调整例子}}}
-  \label{ppt}
+\begin{center}
+{\includegraphics[width=0.4 \textwidth]{figures/PathAdj.pdf}}
+\end{center}
+\caption{{\footnotesize{路径调整例子}}}
+\label{ppt}
 \end{figure}
 为了说明业务路径调整算法，我们引入一些符号，假设$P$表示步骤2所计算出来的路径集合，其中$p_d\in P$ 表示业务$d$ 的路径, $rp_{d}$ 表示路径$p_d$上的可用带宽，$rp_{d} = min\{r_e | e\in p_d\}$，其中$r_e$ 表示链路$e$上的剩余带宽，$D_l$ 表示剩余业务集合，表示这些业务不能在不违背容量约束的情况下被加入网络中。
 \begin{algorithm}[t]
@@ -525,7 +521,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 调整后的路径集合 $AP$;
 \State {把业务按照值$\frac{bw_d}{\sqrt{|p_d|}}$进行降序排序}
 \For{each traffic demand $d \in D$}
-\If{$rp_{d} \ge  bw_d$ }
+\If{$rp_{d} \ge bw_d$ }
 \State{把路径 $p_d$加入到$AP$中}
 \State{在图G(V,E)中更新路径$p_d$所经过链路的剩余带宽}
 \Else
@@ -542,9 +538,9 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \EndFor
 \State{在图$G^{''}(V^{''},E^{''})$中为业务$d$计算最短路径$p$（链路代价都设为1）}
 \If{$\frac{|p|}{|p_d|}\le \delta$}
-  \State{把路径 $p$ 加入到 $AP$，并把业务从集合$D_l$中移除}
-  \State{在图$G^{'}(V^{'},E^{'})$中更新路径$p$所经过链路的剩余带宽}
-  \State{$G(V, E)=G^{'}(V^{'},E^{'})$}
+\State{把路径 $p$ 加入到 $AP$，并把业务从集合$D_l$中移除}
+\State{在图$G^{'}(V^{'},E^{'})$中更新路径$p$所经过链路的剩余带宽}
+\State{$G(V, E)=G^{'}(V^{'},E^{'})$}
 \EndIf
 \EndFor
 \end{algorithmic}
@@ -556,128 +552,129 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \subsection{仿真实验分析}
 \subsubsection {仿真介绍}
 
-为了证明LR-PROA和GA-PROA的优化效果，我们把两个算法的优化结果和基于备选路径的MILP模型\cite{multi-commodity} 的最优目标值进行比较，其中每个业务的备选路径数量为10条，我们使用CPLEX \cite{CPLEX}来求解MILP模型，由于CPLEX求解MILP需要很大的计算量，对于大规模的网络，我们无法得到MILP的最优值，因此我们设置了10 分钟的求解时间限制，当Cplex求解时间超过10分钟后，我们停止求解过程，记录求得Cplex 求解的最优可行目标函数，以及MILP模型的最优值得下界。
+为了证明LR-PROA和GA-PROA的优化效果，我们把两个算法的优化结果和基于备选路径的MILP模型\citing{multi-commodity} 的最优目标值进行比较，其中每个业务的备选路径数量为10条，我们使用CPLEX \citing{CPLEX}来求解MILP模型，由于CPLEX求解MILP需要很大的计算量，对于大规模的网络，我们无法得到MILP的最优值，因此我们设置了10 分钟的求解时间限制，当Cplex求解时间超过10分钟后，我们停止求解过程，记录求得Cplex 求解的最优可行目标函数，以及MILP模型的最优值得下界。
 为了观察LR-PROA和GA-PROA的加速效果，我们分别设计两个算法串行版本LR-PROA和GA-PROA，并把LR-PROA和GA-PROA 与LR-PROA 和GA-PROA进行比较，其中LR-PROA中的路由算法采用带堆优化的dijkstra 算法，dijkstra算法的复杂度为($|N|\lg |N| +|E|$), 为了体现LR-PROA的加速效果，本文还对串行的dijkstra进行了进一步的优化，讨论如下：假设一批业务$D$ 的源节点相同，这一批业务的目的节点组成集合$D$,那么我们在求解dijkstra 算法时，当最小堆吐出了$D$ 中的所有点之后，我们就提前结束了dijkstra,所以当集合$D$ 比较小时，实际的算法复杂度一般是远远小于($|N|\lg |N| +|E|$) 的。
 
-我们分别采用ERdos-R enyi (ER) \cite{ER}和 Barab asi-Albert (BA) \cite{BA}两种模型来生成实验网络拓扑，实验中的网络拓扑中点的平均度数为6。 我们分别比较算法的目标函数，加速效果和算法的收敛性质，LR-PROA和LR-SROA中的$\delta$和$K$被分别设置为10 和30。GA-PROA与LR-PROA 都是通过CUDA 8.0 进行设计，跑算法的服务器配置有四个Intel Xeon E5-2630 CPU 和一个 NVIDIA Tesla K40M GPU。
- \subsubsection{目标函数比较}
- 图 \ref{OB-TA-200}和图 \ref{OB-TA}分别显示了在点数为200和1000的网络中，目标函数随着业务数量规模变化的折线图，图中的网络链路容量大小为100，业务的流量需求大小为$[1,100]$的均匀随机值。从图中我们可以看到目标函数大致随着业务数量呈现线性增加，这和目标函数的表达式相吻合。从图中可以看到LR-SROA/LR-PORA的算法优化目标明显优于遗传算法LR-PROA/LR-SROA,这是因为：1. 遗传算法提前陷入了局部最优解，导致算法提前结束。2.遗传算法是基于备选路径的，所以其没有LR-SPOA/LR-PROA 那么灵活， LR-SPOA/LR-PROA 会动态的寻找业务的路径，根据网络链路的动态状况重新求解路径，从而充分利用网络链路资源，从而减小目标函数。
+我们分别采用ERdos-R enyi (ER) \citing{ER}和 Barab asi-Albert (BA) \citing{BA}两种模型来生成实验网络拓扑，实验中的网络拓扑中点的平均度数为6。 我们分别比较算法的目标函数，加速效果和算法的收敛性质，LR-PROA和LR-SROA中的$\delta$和$K$被分别设置为10 和30。GA-PROA与LR-PROA 都是通过CUDA 8.0 进行设计，跑算法的服务器配置有四个Intel Xeon E5-2630 CPU 和一个 NVIDIA Tesla K40M GPU。
+\subsubsection{目标函数比较}
+图 \ref{OB-TA-200}和图 \ref{OB-TA}分别显示了在点数为200和1000的网络中，目标函数随着业务数量规模变化的折线图，图中的网络链路容量大小为100，业务的流量需求大小为$[1,100]$的均匀随机值。从图中我们可以看到目标函数大致随着业务数量呈现线性增加，这和目标函数的表达式相吻合。从图中可以看到LR-SROA/LR-PORA的算法优化目标明显优于遗传算法LR-PROA/LR-SROA,这是因为：1. 遗传算法提前陷入了局部最优解，导致算法提前结束。2.遗传算法是基于备选路径的，所以其没有LR-SPOA/LR-PROA 那么灵活， LR-SPOA/LR-PROA 会动态的寻找业务的路径，根据网络链路的动态状况重新求解路径，从而充分利用网络链路资源，从而减小目标函数。
 
 和MILP的Cplex解相比，在小网络（点为200）中，由于Cplex的计算压力不大，其计算出来的解略微优于LR-SPOA/LR-PROA。
- 可以看到图中MILP-bound和LR-SPOA/LR-PROA差距很小，这说明在小网络下，LR-SPOA/LR-PROA 算法求出的解已经很接近MILP 的理论最优解了；在大网络中，由于Cplex的计算压力增大，LR-SPOA/LR-PROA的解已经优于Cplex 的解。比较MILP-bound 我们可以发现LR-SPOA/LR-PROA的解离MILP-bound 有一定差距，这是可能有两个原因：1.Cplex的计算压力大，导致求得的bound可能不够精确。2.LR-SPOA/LR-PROA陷入了局部最优解。
+可以看到图中MILP-bound和LR-SPOA/LR-PROA差距很小，这说明在小网络下，LR-SPOA/LR-PROA 算法求出的解已经很接近MILP 的理论最优解了；在大网络中，由于Cplex的计算压力增大，LR-SPOA/LR-PROA的解已经优于Cplex 的解。比较MILP-bound 我们可以发现LR-SPOA/LR-PROA的解离MILP-bound 有一定差距，这是可能有两个原因：1.Cplex的计算压力大，导致求得的bound可能不够精确。2.LR-SPOA/LR-PROA陷入了局部最优解。
 图 \ref{OB-CA-200}和图 \ref{OB-CA}表示在容量变化下的目标函数值变化，其中业务数量为点数的6倍，网络链路容量从100到250变化。随着容量的增加目标函数大致呈现线性下降，这是因为链路容量增加后，网络资源增大，网络可容纳的业务增加，业务可选择的优化路径增增多，业务的路径代价下降，阻塞的大量减少，所以目标函数呈现大幅下降。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/OB-TA-200.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Object-Task(200)}}}
-  \label{OB-TA-200}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/OB-TA-200.pdf}}
+\end{center}
+\caption{{\footnotesize{Object-Task(200)}}}
+\label{OB-TA-200}
 \end{figure}
- \begin{figure}
+\begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/OB-CA-200.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Object-Capacity(200)}}}
-  \label{OB-CA-200}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/OB-CA-200.pdf}}
+\end{center}
+\caption{{\footnotesize{Object-Capacity(200)}}}
+\label{OB-CA-200}
 \end{figure}
- \begin{figure}
+\begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1  \textwidth]{figures/OB-TA.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Object-Task(1000)}}}
-  \label{OB-TA}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/OB-TA.pdf}}
+\end{center}
+\caption{{\footnotesize{Object-Task(1000)}}}
+\label{OB-TA}
 \end{figure}
-  \begin{figure}
+\begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/OB-CA.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Object-Capacity(1000)}}}
-  \label{OB-CA}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/OB-CA.pdf}}
+\end{center}
+\caption{{\footnotesize{Object-Capacity(1000)}}}
+\label{OB-CA}
 \end{figure}
 \subsubsection{算法时间比较}
-  图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}分别列出了算法在BA和ER拓扑下的计算时间随着业务数量增加的变化情况，图中拓扑节点数量为1000，业务数量从1000 到6000变化，业务流量为1到100的均匀随机值，链路的容量为100。由于各种算法的时间差距过大，我们用三种不同的尺度进行展示。首先，CPlex的时间限制都为10分钟，所以我们不再列出来。
+图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}分别列出了算法在BA和ER拓扑下的计算时间随着业务数量增加的变化情况，图中拓扑节点数量为1000，业务数量从1000 到6000变化，业务流量为1到100的均匀随机值，链路的容量为100。由于各种算法的时间差距过大，我们用三种不同的尺度进行展示。首先，CPlex的时间限制都为10分钟，所以我们不再列出来。
 
-  图中我们可以看到GA-PROA相对于GA-SROA加速很多大约为30倍左右，但是由于遗传算法本身的缺陷，所以GA-PROA的计算时间是很糟糕的，这是因为基于备选路径的遗传算法的初始值染色体较差，所以需要大量的迭代次数才能收敛，而且遗传算法评价步骤的本身的计算量也很大。
+图中我们可以看到GA-PROA相对于GA-SROA加速很多大约为30倍左右，但是由于遗传算法本身的缺陷，所以GA-PROA的计算时间是很糟糕的，这是因为基于备选路径的遗传算法的初始值染色体较差，所以需要大量的迭代次数才能收敛，而且遗传算法评价步骤的本身的计算量也很大。
 
-  观察LR-SPOA和LR-PROA，发现LR-SPOA和LR-PROA的时间曲线会发生大幅度的波动，这是因为，算法的迭代次数变化较大，我们设置算法在30次后未找到更优解之后停止，其实30次设置得偏小，算法有可能会找到更好的解，但是这些解的优化程度很小（通过收敛图 \ref{CO-LR-1000}，可以看到算法在前50次内下降幅度较大，后面的下降幅度很小），所以为了优化整体时间，我们设置迭代次数为较小的30 次，由于30 偏小，所以可能会导致算法的提前结束，从而导致算法的迭代次数变化幅度较大，从而引起整体时间上的幅度变化。
+观察LR-SPOA和LR-PROA，发现LR-SPOA和LR-PROA的时间曲线会发生大幅度的波动，这是因为，算法的迭代次数变化较大，我们设置算法在30次后未找到更优解之后停止，其实30次设置得偏小，算法有可能会找到更好的解，但是这些解的优化程度很小（通过收敛图 \ref{CO-LR-1000}，可以看到算法在前50次内下降幅度较大，后面的下降幅度很小），所以为了优化整体时间，我们设置迭代次数为较小的30 次，由于30 偏小，所以可能会导致算法的提前结束，从而导致算法的迭代次数变化幅度较大，从而引起整体时间上的幅度变化。
 
-  观察图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}，我们发现当业务数量增加到两倍点数以上后，LR-PROA相对于LR-SROA有较大加速，其中拓扑大小为1000 时，LR-PROA 相对与LR-SROA有平均6-7倍的加速。
+观察图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}，我们发现当业务数量增加到两倍点数以上后，LR-PROA相对于LR-SROA有较大加速，其中拓扑大小为1000 时，LR-PROA 相对与LR-SROA有平均6-7倍的加速。
 
-  图 \ref{TI-ER-CA-1000}和图 \ref{TI-BA-CA-1000}表示算法时间随着网络链路容量的变化情况，其中业务数量为6倍网络的点数大小，在拓扑点数为1000的情况下，可以看到LR-PROA相对与LR-SROA有平均6-7倍的加速。
+图 \ref{TI-ER-CA-1000}和图 \ref{TI-BA-CA-1000}表示算法时间随着网络链路容量的变化情况，其中业务数量为6倍网络的点数大小，在拓扑点数为1000的情况下，可以看到LR-PROA相对与LR-SROA有平均6-7倍的加速。
 
-  图 \ref{TI-BA-NO}和图 \ref{TI-ER-NO}表示算法计算时间随着网络拓扑大小的变化情况，其中加入的业务数量为网络拓扑点数目的6倍，可以看到随着网络拓扑变大，计算时间也相应增加，GA-PROA的计算时间不管在在小拓扑还是大拓扑下都远远大于LR-PROA 的计算时间。拓扑较小时LR-PROA相对与LR-SROA的加速很小，当时随着网络的拓扑规模的增加，LR-PROA的计算时间大幅上升，而采用GPU上计算的LR-PROA 上升幅度较小，使得随着在网络拓扑达到一定规模后LR-PROA对LR-SROA有较大的加速优势，加速比随着网络拓扑大小的增大从开始的1倍变化到最后的接近9 倍，这充分体现出了GPU进行大规模计算的优势。
+图 \ref{TI-BA-NO}和图 \ref{TI-ER-NO}表示算法计算时间随着网络拓扑大小的变化情况，其中加入的业务数量为网络拓扑点数目的6倍，可以看到随着网络拓扑变大，计算时间也相应增加，GA-PROA的计算时间不管在在小拓扑还是大拓扑下都远远大于LR-PROA 的计算时间。拓扑较小时LR-PROA相对与LR-SROA的加速很小，当时随着网络的拓扑规模的增加，LR-PROA的计算时间大幅上升，而采用GPU上计算的LR-PROA 上升幅度较小，使得随着在网络拓扑达到一定规模后LR-PROA对LR-SROA有较大的加速优势，加速比随着网络拓扑大小的增大从开始的1倍变化到最后的接近9 倍，这充分体现出了GPU进行大规模计算的优势。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/TI-ER-TA-1000.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Time-Task(ER 1000)}}}
-  \label{TI-ER-TA-1000}
+\begin{center}
+{\includegraphics[width=0.8\textwidth]{figures/TI-ER-TA-1000.pdf}}
+\end{center}
+\caption{{\footnotesize{Time-Task(ER 1000)}}}
+\label{TI-ER-TA-1000}
 \end{figure}
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/TI-BA-TA-1000.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Time-Task(BA 1000)}}}
-  \label{TI-BA-TA-1000}
+\begin{center}
+{\includegraphics[width=0.8\textwidth]{figures/TI-BA-TA-1000.pdf}}
+\end{center}
+\caption{{\footnotesize{Time-Task(BA 1000)}}}
+\label{TI-BA-TA-1000}
 \end{figure}
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/TI-ER-CA-1000.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Time-Capacity(ER 1000)}}}
-  \label{TI-ER-CA-1000}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/TI-ER-CA-1000.pdf}}
+\end{center}
+\caption{{\footnotesize{Time-Capacity(ER 1000)}}}
+\label{TI-ER-CA-1000}
 \end{figure}
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/TI-BA-CA-1000.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Time-Capacity(ER 1000)}}}
-  \label{TI-BA-CA-1000}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/TI-BA-CA-1000.pdf}}
+\end{center}
+\caption{{\footnotesize{Time-Capacity(ER 1000)}}}
+\label{TI-BA-CA-1000}
 \end{figure}
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/TI-BA-NO.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Time-Node(BA)}}}
-  \label{TI-BA-NO}
+\begin{center}
+{\includegraphics[width=0.8\textwidth]{figures/TI-BA-NO.pdf}}
+\end{center}
+\caption{{\footnotesize{Time-Node(BA)}}}
+\label{TI-BA-NO}
 \end{figure}
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/TI-ER-NO.pdf}}
-    \end{center}
-  \caption{{\footnotesize{Time-Node(ER)}}}
-  \label{TI-ER-NO}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/TI-ER-NO.pdf}}
+\end{center}
+\caption{{\footnotesize{Time-Node(ER)}}}
+\label{TI-ER-NO}
 \end{figure}
 \subsubsection{算法收敛性}
 图 \ref{CO-GA-1000} 和图 \ref{CO-LR-1000} 分别是GA-PROA和LR-PROA的收敛过程图。可以看到遗传算法的初始值较差，迭代次数较多，但是最终还是陷入了局部最优解，而LR-PROA的算法第一次的值已经很好，这是因为LR-PROA不是基于备选路径的，他会通过路径调整过程为业务重新寻找路径，从而得到一个较好的初始目标值，LR-PROA算法的目标函数值在很短的迭代次数里快速下降，但是LR-PROA的曲线不够平滑，说明算法的波动很大，收敛终止条件不好控制，这也是 图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}产生波动的原因。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/CO-GA-1000.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GA-PROA 收敛性}}}
-  \label{CO-GA-1000}
+\begin{center}
+{\includegraphics[width=0.8\textwidth]{figures/CO-GA-1000.pdf}}
+\end{center}
+\caption{{\footnotesize{GA-PROA 收敛性}}}
+\label{CO-GA-1000}
 \end{figure}
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/CO-LR-1000.pdf}}
-    \end{center}
-  \caption{{\footnotesize{LR-PROA 收敛性}}}
-  \label{CO-LR-1000}
+\begin{center}
+{\includegraphics[width=0.8 \textwidth]{figures/CO-LR-1000.pdf}}
+\end{center}
+\caption{{\footnotesize{LR-PROA 收敛性}}}
+\label{CO-LR-1000}
 \end{figure}
 \section{本章总结}
 本章研究了SDN网络下的并行业务量工程算法，首先提出了新的路由优化目标函数，建立了路由优化模型，设计了两种基于GPU的并行优化算法方案GA-PROA和LR-PROA，最后，进行实验，发现GA-PROA能够加速10-20倍，LR-PROA能够加速达到6倍，LR-PROA能够在短时间内得到目标函数的优化解。
+
 
 
 

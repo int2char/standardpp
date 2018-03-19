@@ -4,11 +4,11 @@
 \section{CPU与GPU}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/GPU&CPU.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GPU与CPU的区别}}}
-  \label{GCD}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/GPU&CPU.pdf}}
+\end{center}
+\caption{{\footnotesize{GPU与CPU的区别}}}
+\label{GCD}
 \end{figure*}
 \subsection{CPU与GPU区别}
 
@@ -28,34 +28,34 @@ GPU最初被设计来进行图像渲染，图像渲染具有高度的并行性�
 4.GPU上程序执行完毕，将结果写在GPU主存中，这时需要将结果重新拷贝回CPU主机端进行处理。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/yigou.pdf}}
-    \end{center}
-  \caption{{\footnotesize{GPU+CPU异构计算模型}}}
-  \label{GCY}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/yigou.pdf}}
+\end{center}
+\caption{{\footnotesize{GPU+CPU异构计算模型}}}
+\label{GCY}
 \end{figure*}
 \section{GPU硬件架构}
 
-虽然GPU相对于CPU在并行算法方面有很多优势，但是，由于GPU的出现是为了加速图形渲染问题，当想要使用GPU进行图形学之外的通用计算时，我们需要将通用问题转换为图形学问题，并且通过OpenGL或者DirectX等APU来访问GPU，这对普通的开发人员提出了更高的要求，限制了GPU程序的设计自由度，使得GPU通用计算变得困难,2007年6月，NVIDIA推出CUDA （Compute Unified Device Architecture，统一计算设备架构）\cite{CUDA}。CUDA简化了在GPU上的通用计算流程，使用CUDA进行并行算法设计，不需要把问题转化为图形学问题去调用图形学API，同时，CUDA采用类似于C语言的语言结构进行开发，这使得开发人员可以很快地熟悉和使用CUDA进行开发。但是，要设计出快速高效的CUDA程序，开发人员需要掌握GPU架构上的相关知识，利用GPU的特殊架构来优化算法的设计。
+虽然GPU相对于CPU在并行算法方面有很多优势，但是，由于GPU的出现是为了加速图形渲染问题，当想要使用GPU进行图形学之外的通用计算时，我们需要将通用问题转换为图形学问题，并且通过OpenGL或者DirectX等APU来访问GPU，这对普通的开发人员提出了更高的要求，限制了GPU程序的设计自由度，使得GPU通用计算变得困难,2007年6月，NVIDIA推出CUDA （Compute Unified Device Architecture，统一计算设备架构）\citing{CUDA}。CUDA简化了在GPU上的通用计算流程，使用CUDA进行并行算法设计，不需要把问题转化为图形学问题去调用图形学API，同时，CUDA采用类似于C语言的语言结构进行开发，这使得开发人员可以很快地熟悉和使用CUDA进行开发。但是，要设计出快速高效的CUDA程序，开发人员需要掌握GPU架构上的相关知识，利用GPU的特殊架构来优化算法的设计。
 
 我们以NVIDIA Kepler架构为例子来介绍GPU的硬件架构。图 \ref{KPA} 为Kepler的GPU架构模型细节，Kepler架构包含两个部分，流处理器阵列（core 部分）和存储系统（memory）部分，Kepler架构中的GPU上一共包含15个流多处理器（SM），所有流多处理器共享一个L2缓存。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/arc.png}}
-    \end{center}
-  \caption{{\footnotesize{Kepler架构}}}
-  \label{KPA}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/arc.png}}
+\end{center}
+\caption{{\footnotesize{Kepler架构}}}
+\label{KPA}
 \end{figure*}
 \subsection {流处理器}
 我们看到GPU中主要组成部分是SM，一个SM（stream mutiprocessor）中含有大量的sp（stream processor），sp为GPU的计算核心，又称为流处理器，sp 是最基本的处办理单元，指令和任务最终都是sp上处理的，我们可以将在一个SP上执行的流看做一个独立的线程（thread），如果一个GPU中有更多的SM，一个SM中有更多的sp，那么就意味着这个GPU 在相同的时间内可以并行处理更多的任务。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/warpsketch.pdf}}
-    \end{center}
-  \caption{{\footnotesize{warp切换示意图}}}
-  \label{wps}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/warpsketch.pdf}}
+\end{center}
+\caption{{\footnotesize{warp切换示意图}}}
+\label{wps}
 \end{figure*}
 \subsection{线程束(Wrap)}
 warp是SM调度和执行的单位，一个SM中所有线程会被分成一个个warp组，通常一个warp组包含32个线程。同一个warp中的线程始终是同步的，这些线程都执行相同的指令，也就说同一个warp 中的线程必须等待所有线程都执行完了同一个指令后，才会去执行下一个指令，这样的设计虽然节省了硬件的控制单元的复杂程度，但是也限制了GPU 在处理分支时的并行粒度，如果同一个warp 中的线程出现分支，每个线程执行的分支条件不一样，为了保持同步，不进入分支的空闲sp 也必须等待进入分支的线程执行完毕后才能继续执行，这样使得sp 的利用率下降。
@@ -67,27 +67,27 @@ GPU中的每个SM中含有多种存储单元，包括寄存器，共享内存，
 常量内存为只读内存，顾名思义他是用来缓存计算时需要的一些常量而专门设计的，常量内存大小为48KB。 纹理内存也是一种只读缓存，纹理内存是为图形学任务序而设计的，在一些特殊的具有大量空间局部性的内存访问模式中能够提升性能并且减少内存流量。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/smx.png}}
-    \end{center}
-  \caption{{\footnotesize{Kepler架构下的SM细节}}}
-  \label{sm}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/smx.png}}
+\end{center}
+\caption{{\footnotesize{Kepler架构下的SM细节}}}
+\label{sm}
 \end{figure*}
 \subsection{流多处理器细节}
 通过上面对sp，warp和存储器的介绍，我们再介绍下Kepler架构下的SM细节。从图 \ref{sm} 中，可以看到，Kepler架构下的SMX中包含192个单精度的CUDA core，64个双精度的单元（DP unit）和32个SFU(Special Function Unit, 特殊函数单元)，32个存储（load/store）单元，其中SFU用来执行超越函数、插值以及其他特殊运算。Kepler架构下的GPU的每个SM包含了4个warp调度器和8个指令发射器。 Kepler K20X（compute capability 3.5）的每个SM可以同时调度64个warp共计2048个thread，而Kepler架构中一共有15个SM，也就是说，同一时刻最大可以支持30720个线程在GPU上调度执行，所以GPU的并行能力相当强大。
 
 \subsection{执行模型}
-GPU的执行模型被称为SIMT(Single Instruction ,Mutiple Thread)，SIMT是对SIMD的一种改进\cite{CUDAR}。在CPU的SIMD中，向量宽带是受限的，在Intel 的SSE指令集中，假设一条SSE的指令宽带为128bit，那么它一次可以处理4个单精度浮点数，如果要用SSE指令处理一个单精度浮点数组，必须将数组打包成4个一组，然后才能把这些组交给CPU进行计算。但是在CUDA的模型中，我们为相同的指令产生不同的线程，这些线程的数量可以自由设置；在Kepler架构中，同一时刻GPU上可以调度执行30720个线程，这比CPU的SIMD的并行粒度高很多。
+GPU的执行模型被称为SIMT(Single Instruction ,Mutiple Thread)，SIMT是对SIMD的一种改进\citing{CUDAR}。在CPU的SIMD中，向量宽带是受限的，在Intel 的SSE指令集中，假设一条SSE的指令宽带为128bit，那么它一次可以处理4个单精度浮点数，如果要用SSE指令处理一个单精度浮点数组，必须将数组打包成4个一组，然后才能把这些组交给CPU进行计算。但是在CUDA的模型中，我们为相同的指令产生不同的线程，这些线程的数量可以自由设置；在Kepler架构中，同一时刻GPU上可以调度执行30720个线程，这比CPU的SIMD的并行粒度高很多。
 
 \section{CUDA编程模式}
-CUDA是一种异构计算模型，CUDA程序在CPU和GPU上交互执行，CUDA的程序可以分为主机部分和设备部分，设备代码在一个或者多个GPU上执行，主机部分的代码在主机上执行，负载调度GPU上的设备代码执行过程。图 \ref{ktz}  展示了CUDA 异步执行流程，CPU通过调用kernel 函数的方式控制GPU 执行并行程序。
+CUDA是一种异构计算模型，CUDA程序在CPU和GPU上交互执行，CUDA的程序可以分为主机部分和设备部分，设备代码在一个或者多个GPU上执行，主机部分的代码在主机上执行，负载调度GPU上的设备代码执行过程。图 \ref{ktz} 展示了CUDA 异步执行流程，CPU通过调用kernel 函数的方式控制GPU 执行并行程序。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/block.pdf}}
-    \end{center}
-  \caption{{\footnotesize{CUDA异构执行流程和线程组织}}}
-  \label{ktz}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/block.pdf}}
+\end{center}
+\caption{{\footnotesize{CUDA异构执行流程和线程组织}}}
+\label{ktz}
 \end{figure*}
 \subsection{CUD软件线程组织}
 
@@ -105,14 +105,14 @@ __global__ void Kernel(args)
 {
 }
 void main(){
-    //`在GPU端分配数据内存空间`
-    cudaMalloc(&device_data,bytes);
-    //`拷贝输入数据到GPU端`
-    cudaMemcpy(device_data,host_data);
-    //`配置kernel函数，并且发射kernel函数在GPU端执行`
-    Kernel<<<configuration>>>(args);
-    //`拷贝结果到主机`
-    cudaMemCpy(host_data,device_data);
+//`在GPU端分配数据内存空间`
+cudaMalloc(&device_data,bytes);
+//`拷贝输入数据到GPU端`
+cudaMemcpy(device_data,host_data);
+//`配置kernel函数，并且发射kernel函数在GPU端执行`
+Kernel<<<configuration>>>(args);
+//`拷贝结果到主机`
+cudaMemCpy(host_data,device_data);
 }
 \end{lstlisting}
 \subsection {函数和变量修饰符}
@@ -154,15 +154,15 @@ GPU中的同时执行大量线程，如果这些线程都去访问全局内存�
 //内核函数原型声明
 __global__ void Kernel(array)
 {
-    int id=blockIdx.y*blockDim.y*blockDim.x
-    id=id+blockDim.x*threadIdx.y+threadIdx.x；
-    array[id]++;
+int id=blockIdx.y*blockDim.y*blockDim.x
+id=id+blockDim.x*threadIdx.y+threadIdx.x；
+array[id]++;
 }
 void main(){
-    ......
-    dim3 dimBlock(32,32,1);
-    dim3 dimGrid(2,2,1);
-    Kernel<<<dimGrid,dimBlock,0,0>>>(array);
+......
+dim3 dimBlock(32,32,1);
+dim3 dimGrid(2,2,1);
+Kernel<<<dimGrid,dimBlock,0,0>>>(array);
 }
 \end{lstlisting}
 上面的kernel函数功能是对array数组的每一个位置的值加一，我们假设数组的大小为4096，那一共需要4096个线程来进行并行加法，在调用kernel 时，需要设置4个参数，前两个参数都是dim3结构，dim3结构是一个维度结构体，dimGrid表示的是Grid的维度尺寸，dimGrid=(x,y,1) 表示的是grid 每一行有x个block，每一列有y个block，第三维为1，表示第三维度不存在，整个Grid拥有x*y*1个block。dimBlock表示block的维度，例如，dimBlock=(x,y,1)表示一个block每一行有x个thread，每一列有y个thread，第三维为1。我们设置dimGrid=(2,2,1)，dimBlock=(32,32,1),所以总共的线程数目为2*2*32*32=4096个。第三个参数用于设置每个block中能动态分配的shared memory大小上限，单位为byte,不需要动态分配时该值为0 或省略不写,第四个参数是执行kernel 的流编号，流的概率将在后面介绍，默认kernel是在编号为0的流上执行。
@@ -188,8 +188,8 @@ int atomicExch(int *address,int val)&读取address处的值，并将val存储在
 int atomicMin(Max)(int* address, int val)&读取address处的值为old,并且比较old和val，将较小（大）的值存在address，所有操作组成一次原子事务\\ \hline
 int atomicOr(And)(int* address, int val)&读取address处的值为old,计算$val|old$($val \& old$)，将结果写到address，所有操作组成一次原子事务\\ \hline
 \end{tabular}
- \vskip 0.2 cm
-  \label{CY}
+\vskip 0.2 cm
+\label{CY}
 }
 \end{table}
 \subsection{CUDA流并行}
@@ -197,11 +197,11 @@ CUDA程序通过流来管理并发，CUDA流代表一系列的GPU操作组成的
 在图 \ref{flow}(1) 中一个有两个流，两个流的操作相同，假设图中的每一个操作的执行时间相同，那么如果两个流串行执行，则总共需要6个时间单位，但是如果两个流切换操作，当Copy Engine在进行复制操作的同时，stream0的kernelA在Kernel Engine上执行，当stream0 kernelA执行完毕后，stream1的kernelA也已经准备好可以执行了，这样Copy Engine的带宽和GPU的计算带宽都得到充分利用。这样并行切换一个只需要4个时间单位的时间，就可以完成两个流。图 \ref{flow}(2) 中，假设两个流的复制操作比较少，而kernel需要的计算时间较长，这个时候由于两个流的kernel都会很快准备好发射，如果SM资源足够两个kernel将同时在GPU上调度执行，如中的红色部分表示重叠执行的时间，可以看到这种情况下多个流并行可以大大节省运算时间，充分利用SM资源。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
-  \begin{center}
-    {\includegraphics[width=1 \textwidth]{figures/flow.pdf}}
-    \end{center}
-  \caption{{\footnotesize{流并行示意图}}}
-  \label{flow}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/flow.pdf}}
+\end{center}
+\caption{{\footnotesize{流并行示意图}}}
+\label{flow}
 \end{figure*}
 \subsection{本章总结}
 本章简略介绍了GPU的体系架构和CUDA编程框架，说明了GPU的的强大计算能力和一些GPU程序设计上需要注意的问题。关于GPU架构和CUDA编程框架其实还有很多内容没有介绍，本章只介绍了一些本文会涉及到的GPU原理，为后面的3,4章介绍做铺垫。
