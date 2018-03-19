@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  19 MAR 2018 21:53
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  19 MAR 2018 21:57
 entering extended mode
 **./main.tex
 (main.tex
@@ -1907,24 +1907,7 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 Package: xeCJK-listings 2018/02/27 v3.6.1 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count357
 \l__xeCJK_listings_flag_int=\count358
-) (main.aux
-(chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux
-
-LaTeX Warning: Label `KernelBFS' multiply defined.
-
-
-LaTeX Warning: Label `ParaSPC' multiply defined.
-
-
-LaTeX Warning: Label `prof' multiply defined.
-
-
-LaTeX Warning: Label `ParaSPC' multiply defined.
-
-
-LaTeX Warning: Label `ParaSPC' multiply defined.
-
-))
+) (main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -1943,7 +1926,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
 LaTeX Font Info:    ... okay on input line 36.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 36.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 36.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\tipa\t3cmr.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\tipa\t3cmr.fd"
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 36.
@@ -2091,11 +2074,17 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+
+LaTeX Warning: Citation `ParaTE2' on page I undefined on input line 40.
+
+
+LaTeX Warning: Citation `ParaTE2' on page I undefined on input line 40.
+
 LaTeX Font Info:    Font shape `TU/TimesNewRoman(0)/m/sl' in size <12> not avai
 lable
 (Font)              Font shape `TU/TimesNewRoman(0)/m/it' tried instead on inpu
 t line 43.
- [1
+[1
 
 \openout3 = `main.ist'.
 
@@ -2105,7 +2094,14 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 44--45
 [] []
  []
 
-[2] [3
+[2]
+
+LaTeX Warning: Citation `ParaTE2' on page III undefined on input line 50.
+
+
+LaTeX Warning: Citation `ParaTE2' on page III undefined on input line 50.
+
+[3
 
 ]
 Overfull \hbox (2.0pt too wide) in paragraph at lines 55--56
@@ -2132,33 +2128,203 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 55--56
 
 ] [12]
 Chapter 第一章.
+
+LaTeX Warning: Citation `OpenFlow' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `SDN' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `SDN2' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `SDN3' on page 1 undefined on input line 62.
+
+
+LaTeX Warning: Citation `Microsoft' on page 1 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Google' on page 1 undefined on input line 64.
+
+
+LaTeX Warning: Citation `application' on page 1 undefined on input line 66.
+
+
+LaTeX Warning: Citation `5G' on page 1 undefined on input line 66.
+
+
+LaTeX Warning: Citation `DCN' on page 1 undefined on input line 66.
+
+
+LaTeX Warning: Citation `Secondrouting' on page 1 undefined on input line 66.
+
 [1
 
-] [2] [3]
+]
+
+LaTeX Warning: Citation `CUDA' on page 2 undefined on input line 70.
+
+
+LaTeX Warning: Citation `CUDAR' on page 2 undefined on input line 70.
+
+
+LaTeX Warning: Citation `TESurvey' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `TEDef' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `TESurvey1' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `NP' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `multi-commodity' on page 2 undefined on input line 73.
+
+
+
+LaTeX Warning: Citation `TESurvey' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `TEDef' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `TESurvey1' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `SDNTE' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `ParaTE1' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `multi-commodity' on page 2 undefined on input line 73.
+
+
+
+LaTeX Warning: Citation `Time' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `mate' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `DATE' on page 2 undefined on input line 73.
+
+
+LaTeX Warning: Citation `GPUdeve' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `CUDA' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `GPUdeve' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `TSP' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `VRP' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `SSP1' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `SSP2' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `MST' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `TSP' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `VRP' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `SSP1' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `SSP2' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `MST' on page 2 undefined on input line 75.
+
+
+LaTeX Warning: Citation `ParaTE1' on page 2 undefined on input line 77.
+
+
+LaTeX Warning: Citation `ParaTE2' on page 2 undefined on input line 77.
+
+
+LaTeX Warning: Citation `ParaTE1' on page 2 undefined on input line 77.
+
+
+LaTeX Warning: Citation `ParaTE1' on page 2 undefined on input line 77.
+
+
+LaTeX Warning: Citation `ParaTE2' on page 2 undefined on input line 77.
+
+[2] [3]
 \openout2 = `chapters/c1.aux'.
 
  (chapters/c1.tex
 Chapter 第二章.
 File: figures/GPU&CPU.pdf Graphic file (type pdf)
 <use figures/GPU&CPU.pdf>
+
+LaTeX Warning: Reference `GCD' on page 4 undefined on input line 15.
+
+
+LaTeX Warning: Reference `GCY' on page 4 undefined on input line 20.
+
 [4
 
 
 ]
 File: figures/yigou.pdf Graphic file (type pdf)
 <use figures/yigou.pdf>
- [5]
+
+
+LaTeX Warning: Citation `CUDA' on page 5 undefined on input line 39.
+
+[5]
+
+LaTeX Warning: Reference `KPA' on page 6 undefined on input line 41.
+
 File: figures/arc.png Graphic file (type bmp)
 <figures/arc.png>
 File: figures/warpsketch.pdf Graphic file (type pdf)
 <use figures/warpsketch.pdf>
- [6]
+[6]
+
+LaTeX Warning: Reference `wps' on page 7 undefined on input line 63.
+
 File: figures/smx.png Graphic file (type bmp)
 <figures/smx.png>
- [7]
+[7]
+
+LaTeX Warning: Reference `sm' on page 8 undefined on input line 77.
+
+
+LaTeX Warning: Citation `CUDAR' on page 8 undefined on input line 80.
+
+
+LaTeX Warning: Reference `ktz' on page 8 undefined on input line 83.
+
 File: figures/block.pdf Graphic file (type pdf)
 <use figures/block.pdf>
- [8] [9] [10]
+[8] [9]
+
+LaTeX Warning: Reference `ktz' on page 10 undefined on input line 94.
+
+
+LaTeX Warning: Reference `ktz' on page 10 undefined on input line 94.
+
+[10]
+
+LaTeX Warning: Reference `CJ' on page 11 undefined on input line 98.
+
 *************************************************
 * xeCJK warning: "CJKfamily-Unknown"
 * 
@@ -2182,10 +2348,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--117
 
  []
 
-[11]
+
 Overfull \hbox (39.16338pt too wide) in alignment at lines 138--148
 [] [] [] [] [] [][][][]
  []
+
+[11]
+
+LaTeX Warning: Reference `KD' on page 12 undefined on input line 152.
 
 [12]
 Overfull \hbox (3.0pt too wide) in paragraph at lines 167--167
@@ -2197,7 +2367,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 167--167
 
  []
 
-[13]
 LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 183.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.5> on input line 183.
@@ -2205,31 +2374,80 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7.34996> on input line 183.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5.25> on input line 183.
+[13]
+
+LaTeX Warning: Reference `flow' on page 14 undefined on input line 197.
+
+
+LaTeX Warning: Reference `flow' on page 14 undefined on input line 197.
+
 File: figures/flow.pdf Graphic file (type pdf)
 <use figures/flow.pdf>
- [14]) [15] [16]
+[14]) [15]
 \openout2 = `chapters/c2.aux'.
 
  (chapters/c2.tex
 Chapter 第三章.
-[17
+
+LaTeX Warning: Citation `MLU1' on page 16 undefined on input line 4.
+
+
+LaTeX Warning: Citation `MLU2' on page 16 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Convex1' on page 16 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Convex2' on page 16 undefined on input line 4.
+
+
+LaTeX Warning: Citation `BeyondMLU' on page 16 undefined on input line 4.
+
+
+LaTeX Warning: Citation `NetworkFlow' on page 16 undefined on input line 4.
+
+[16
 
 
 
-] [18]
+]
+
+LaTeX Warning: Reference `Obj1' on page 17 undefined on input line 12.
+
+
+LaTeX Warning: Reference `Obj1' on page 17 undefined on input line 19.
+
+[17]
+
+LaTeX Warning: Reference `IterNum' on page 18 undefined on input line 42.
+
 File: figures/GAprocess.pdf Graphic file (type pdf)
 <use figures/GAprocess.pdf>
+
+LaTeX Warning: Citation `ParaTE2' on page 18 undefined on input line 54.
+
+
+LaTeX Warning: Reference `alg:Framwork' on page 18 undefined on input line 56.
+
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 80.
- [19] [20]
+[18] [19]
 
 LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
 (Font)              using `TU/SimHei(0)/m/n' instead on input line 86.
 
-[21] [22]
+[20]
+
+LaTeX Warning: Reference `fitness' on page 21 undefined on input line 95.
+
+[21]
 File: figures/GPUfitness.pdf Graphic file (type pdf)
 <use figures/GPUfitness.pdf>
- [23] [24]
+
+
+LaTeX Warning: Reference `fitness' on page 22 undefined on input line 117.
+
+[22] [23]
 Overfull \hbox (3.0pt too wide) in paragraph at lines 155--155
 [] []
  []
@@ -2239,10 +2457,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--155
 
  []
 
-[25]
+
+LaTeX Warning: Reference `GAF' on page 24 undefined on input line 156.
+
+[24]
+
+LaTeX Warning: Reference `oddeven' on page 25 undefined on input line 165.
+
 File: figures/odd-even.pdf Graphic file (type pdf)
 <use figures/odd-even.pdf>
- [26]
+
+LaTeX Warning: Reference `GAS' on page 25 undefined on input line 175.
+
+[25]
 Overfull \hbox (3.0pt too wide) in paragraph at lines 204--204
 [] []
  []
@@ -2252,14 +2479,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 204--204
 
  []
 
-[27]
+
+LaTeX Warning: Reference `GAS' on page 26 undefined on input line 206.
+
+[26]
+
+LaTeX Warning: Reference `pp' on page 27 undefined on input line 208.
+
 File: figures/GPUchoose.pdf Graphic file (type pdf)
 <use figures/GPUchoose.pdf>
+
+LaTeX Warning: Reference `cross' on page 27 undefined on input line 218.
+
 File: figures/GPUcross.pdf Graphic file (type pdf)
 <use figures/GPUcross.pdf>
 Missing character: There is no （ in font rm-lmr12!
 Missing character: There is no ） in font rm-lmr12!
- [28]
+[27]
 Overfull \hbox (3.0pt too wide) in paragraph at lines 244--244
 [] []
  []
@@ -2269,26 +2505,115 @@ Underfull \hbox (badness 10000) in paragraph at lines 244--244
 
  []
 
-[29] [30] [31]
+
+LaTeX Warning: Reference `GAC' on page 28 undefined on input line 246.
+
+[28]
+
+LaTeX Warning: Reference `Capcon' on page 29 undefined on input line 253.
+
+
+LaTeX Warning: Reference `LagProb' on page 29 undefined on input line 260.
+
+[29]
+
+LaTeX Warning: Reference `FlowConv2' on page 30 undefined on input line 281.
+
+
+LaTeX Warning: Reference `Obj2' on page 30 undefined on input line 284.
+
+
+LaTeX Warning: Reference `Capcon' on page 30 undefined on input line 284.
+
+
+LaTeX Warning: Citation `NetworkFlow' on page 30 undefined on input line 284.
+
+
+LaTeX Warning: Reference `iter' on page 30 undefined on input line 288.
+
+
+LaTeX Warning: Reference `lpl' on page 30 undefined on input line 289.
+
+[30]
 File: figures/lagrange.pdf Graphic file (type pdf)
 <use figures/lagrange.pdf>
+
+
+LaTeX Warning: Citation `SSP1' on page 31 undefined on input line 335.
+
+
+LaTeX Warning: Citation `NetworkFlow' on page 31 undefined on input line 335.
+
+
+LaTeX Warning: Reference `Bellman' on page 31 undefined on input line 335.
+
 File: figures/paframework.pdf Graphic file (type pdf)
 <use figures/paframework.pdf>
- [32] [33]
+[31] [32]
+
+LaTeX Warning: Reference `ParFramework' on page 33 undefined on input line 345.
+
+
+
+LaTeX Warning: Reference `ParFramework' on page 33 undefined on input line 345.
+
+
+
+LaTeX Warning: Reference `GB' on page 33 undefined on input line 347.
+
 File: figures/GPUimpl.pdf Graphic file (type pdf)
 <use figures/GPUimpl.pdf>
 File: figures/SynPro.pdf Graphic file (type pdf)
 <use figures/SynPro.pdf>
- [34] [35]
 
-LaTeX Warning: Reference `NetworkFlow' on page 36 undefined on input line 425.
+LaTeX Warning: Reference `SynPro' on page 33 undefined on input line 365.
+
+[33] [34]
+
+LaTeX Warning: Reference `NetworkFlow' on page 35 undefined on input line 425.
+
+
+LaTeX Warning: Reference `u1' on page 35 undefined on input line 425.
+
+
+LaTeX Warning: Reference `Iterprocess1' on page 35 undefined on input line 425.
+
 
 File: figures/IterNum.pdf Graphic file (type pdf)
 <use figures/IterNum.pdf>
-[36] [37]
+[35]
+
+LaTeX Warning: Reference `StepSizeUsed' on page 36 undefined on input line 466.
+
+
+
+LaTeX Warning: Reference `StepSizeUsed' on page 36 undefined on input line 466.
+
+
+
+LaTeX Warning: Reference `u1' on page 36 undefined on input line 466.
+
+[36]
 File: figures/random.pdf Graphic file (type pdf)
 <use figures/random.pdf>
- [38]
+
+
+LaTeX Warning: Reference `u2' on page 37 undefined on input line 478.
+
+
+LaTeX Warning: Reference `Iterprocess2' on page 37 undefined on input line 478.
+
+
+
+LaTeX Warning: Reference `u2' on page 37 undefined on input line 478.
+
+
+LaTeX Warning: Reference `u2' on page 37 undefined on input line 478.
+
+[37]
+
+LaTeX Warning: Reference `ppt' on page 38 undefined on input line 504.
+
 File: figures/PathAdj.pdf Graphic file (type pdf)
 <use figures/PathAdj.pdf>
 Missing character: There is no 的 in font rm-lmr12!
@@ -2296,7 +2621,33 @@ Missing character: There is no 剩 in font rm-lmr12!
 Missing character: There is no 余 in font rm-lmr12!
 Missing character: There is no 容 in font rm-lmr12!
 Missing character: There is no 量 in font rm-lmr12!
- [39] [40] [41] [42]
+[38] [39] [40]
+
+LaTeX Warning: Citation `multi-commodity' on page 41 undefined on input line 55
+5.
+
+
+LaTeX Warning: Citation `CPLEX' on page 41 undefined on input line 555.
+
+[41]
+
+LaTeX Warning: Citation `ER' on page 42 undefined on input line 558.
+
+
+LaTeX Warning: Citation `BA' on page 42 undefined on input line 558.
+
+
+LaTeX Warning: Reference `OB-TA-200' on page 42 undefined on input line 560.
+
+
+LaTeX Warning: Reference `OB-TA' on page 42 undefined on input line 560.
+
+
+LaTeX Warning: Reference `OB-CA-200' on page 42 undefined on input line 564.
+
+
+LaTeX Warning: Reference `OB-CA' on page 42 undefined on input line 564.
+
 File: figures/OB-TA-200.pdf Graphic file (type pdf)
 <use figures/OB-TA-200.pdf>
 File: figures/OB-CA-200.pdf Graphic file (type pdf)
@@ -2305,7 +2656,41 @@ File: figures/OB-TA.pdf Graphic file (type pdf)
 <use figures/OB-TA.pdf>
 File: figures/OB-CA.pdf Graphic file (type pdf)
 <use figures/OB-CA.pdf>
- [43] [44] [45]
+[42]
+
+LaTeX Warning: Reference `TI-ER-TA-1000' on page 43 undefined on input line 598
+.
+
+
+LaTeX Warning: Reference `TI-BA-TA-1000' on page 43 undefined on input line 598
+.
+
+[43] [44]
+
+LaTeX Warning: Reference `CO-LR-1000' on page 45 undefined on input line 602.
+
+
+LaTeX Warning: Reference `TI-ER-TA-1000' on page 45 undefined on input line 604
+.
+
+
+LaTeX Warning: Reference `TI-BA-TA-1000' on page 45 undefined on input line 604
+.
+
+
+LaTeX Warning: Reference `TI-ER-CA-1000' on page 45 undefined on input line 606
+.
+
+
+LaTeX Warning: Reference `TI-BA-CA-1000' on page 45 undefined on input line 606
+.
+
+
+LaTeX Warning: Reference `TI-BA-NO' on page 45 undefined on input line 608.
+
+
+LaTeX Warning: Reference `TI-ER-NO' on page 45 undefined on input line 608.
+
 File: figures/TI-ER-TA-1000.pdf Graphic file (type pdf)
 <use figures/TI-ER-TA-1000.pdf>
 File: figures/TI-BA-TA-1000.pdf Graphic file (type pdf)
@@ -2318,21 +2703,56 @@ File: figures/TI-BA-NO.pdf Graphic file (type pdf)
 <use figures/TI-BA-NO.pdf>
 File: figures/TI-ER-NO.pdf Graphic file (type pdf)
 <use figures/TI-ER-NO.pdf>
+
+LaTeX Warning: Reference `CO-GA-1000' on page 45 undefined on input line 658.
+
+
+LaTeX Warning: Reference `CO-LR-1000' on page 45 undefined on input line 658.
+
+
+LaTeX Warning: Reference `TI-ER-TA-1000' on page 45 undefined on input line 658
+.
+
+
+LaTeX Warning: Reference `TI-BA-TA-1000' on page 45 undefined on input line 658
+.
+
 File: figures/CO-GA-1000.pdf Graphic file (type pdf)
 <use figures/CO-GA-1000.pdf>
 File: figures/CO-LR-1000.pdf Graphic file (type pdf)
 <use figures/CO-LR-1000.pdf>
- [46] [47] [48] [49]) [50]
-[51]
+[45] [46] [47] [48] [49]) [50]
 \openout2 = `chapters/c3.aux'.
 
  (chapters/c3.tex
 Chapter 第四章.
-[52
+
+LaTeX Warning: Citation `EINC' on page 51 undefined on input line 5.
+
+
+LaTeX Warning: Citation `ELAB' on page 51 undefined on input line 5.
+
+
+LaTeX Warning: Citation `EDF' on page 51 undefined on input line 5.
+
+
+LaTeX Warning: Citation `ETR' on page 51 undefined on input line 6.
+
+
+LaTeX Warning: Citation `ETRP1' on page 51 undefined on input line 10.
+
+
+LaTeX Warning: Citation `ETRP2' on page 51 undefined on input line 10.
+
+[51
 
 
 
-] [53]
+]
+
+LaTeX Warning: Citation `ELAYER' on page 52 undefined on input line 28.
+
+[52]
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
@@ -2369,6 +2789,10 @@ Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr12!
+
+
+LaTeX Warning: Reference `layer' on page 53 undefined on input line 33.
+
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
@@ -2377,34 +2801,72 @@ Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
+
+LaTeX Warning: Reference `layer' on page 53 undefined on input line 33.
+
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 File: figures/LAYER.pdf Graphic file (type pdf)
 <use figures/LAYER.pdf>
- [54]
+[53]
+
+LaTeX Warning: Reference `bblayer' on page 54 undefined on input line 45.
+
 File: figures/bbprocess.pdf Graphic file (type pdf)
 <use figures/bbprocess.pdf>
- [55] [56]
+[54]
+
+LaTeX Warning: Reference `arrange' on page 55 undefined on input line 56.
+
+[55]
+
+LaTeX Warning: Reference `bfs' on page 56 undefined on input line 87.
+
 File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
+
+LaTeX Warning: Reference `bfssteam' on page 56 undefined on input line 97.
+
 File: figures/hbfs.pdf Graphic file (type pdf)
 <use figures/hbfs.pdf>
- [57]
+[56]
 
 LaTeX Warning: Command \l invalid in math mode on input line 151.
 
 Missing character: There is no ł in font lmmi12!
-[58] [59]
+
+LaTeX Warning: Reference `ParaSPC' on page 57 undefined on input line 152.
+
+
+LaTeX Warning: Reference `ParaSPC' on page 57 undefined on input line 190.
+
+[57] [58]
 Missing character: There is no ） in font rm-lmr12!
- [60] [61]
+ [59] [60]
+
+LaTeX Warning: Reference `prof' on page 61 undefined on input line 221.
+
 File: figures/circle.pdf Graphic file (type pdf)
 <use figures/circle.pdf>
- [62] [63]
+[61] [62]
+
+LaTeX Warning: Reference `DRK' on page 63 undefined on input line 254.
+
 File: figures/DRK.pdf Graphic file (type pdf)
 <use figures/DRK.pdf>
 File: figures/BBK.pdf Graphic file (type pdf)
 <use figures/BBK.pdf>
- [64] [65] [66]
+[63] [64]
+
+LaTeX Warning: Reference `ParaSPC' on page 65 undefined on input line 339.
+
+[65]
+
+LaTeX Warning: Reference `B5H' on page 66 undefined on input line 374.
+
+
+LaTeX Warning: Reference `B40H' on page 66 undefined on input line 374.
+
 File: figures/B5H.pdf Graphic file (type pdf)
 <use figures/B5H.pdf>
 File: figures/B10H.pdf Graphic file (type pdf)
@@ -2415,7 +2877,13 @@ File: figures/B30H.pdf Graphic file (type pdf)
 <use figures/B30H.pdf>
 File: figures/B40H.pdf Graphic file (type pdf)
 <use figures/B40H.pdf>
- [67]
+[66]
+
+LaTeX Warning: Reference `B5T' on page 67 undefined on input line 417.
+
+
+LaTeX Warning: Reference `B40T' on page 67 undefined on input line 417.
+
 File: figures/B5T.pdf Graphic file (type pdf)
 <use figures/B5T.pdf>
 File: figures/B10T.pdf Graphic file (type pdf)
@@ -2426,7 +2894,13 @@ File: figures/B30T.pdf Graphic file (type pdf)
 <use figures/B30T.pdf>
 File: figures/B40T.pdf Graphic file (type pdf)
 <use figures/B40T.pdf>
- [68] [69] [70]
+[67] [68] [69]
+
+LaTeX Warning: Reference `B10Z' on page 70 undefined on input line 461.
+
+
+LaTeX Warning: Reference `B40Z' on page 70 undefined on input line 461.
+
 File: figures/B10Z.pdf Graphic file (type pdf)
 <use figures/B10Z.pdf>
 File: figures/B20Z.pdf Graphic file (type pdf)
@@ -2435,7 +2909,7 @@ File: figures/B30Z.pdf Graphic file (type pdf)
 <use figures/B30Z.pdf>
 File: figures/B40Z.pdf Graphic file (type pdf)
 <use figures/B40Z.pdf>
- [71] [72]
+[70] [71]
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
 File: figures/H10C.pdf Graphic file (type pdf)
@@ -2446,14 +2920,32 @@ File: figures/H30C.pdf Graphic file (type pdf)
 <use figures/H30C.pdf>
 File: figures/H40C.pdf Graphic file (type pdf)
 <use figures/H40C.pdf>
+
+
+LaTeX Warning: Reference `H5C' on page 72 undefined on input line 537.
+
+
+LaTeX Warning: Reference `H40C' on page 72 undefined on input line 537.
+
 File: figures/H10H.pdf Graphic file (type pdf)
 <use figures/H10H.pdf>
 File: figures/H20H.pdf Graphic file (type pdf)
 <use figures/H20H.pdf>
 File: figures/H40H.pdf Graphic file (type pdf)
 <use figures/H40H.pdf>
+[72] [73] [74]
 
-[73] [74] [75]
+LaTeX Warning: Reference `H10H' on page 75 undefined on input line 563.
+
+
+LaTeX Warning: Reference `H40H' on page 75 undefined on input line 563.
+
+
+LaTeX Warning: Reference `H5T' on page 75 undefined on input line 566.
+
+
+LaTeX Warning: Reference `H40T' on page 75 undefined on input line 566.
+
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H10T.pdf Graphic file (type pdf)
@@ -2464,7 +2956,13 @@ File: figures/H30T.pdf Graphic file (type pdf)
 <use figures/H30T.pdf>
 File: figures/H40T.pdf Graphic file (type pdf)
 <use figures/H40T.pdf>
- [76] [77]
+[75] [76]
+
+LaTeX Warning: Reference `H10Z' on page 77 undefined on input line 610.
+
+
+LaTeX Warning: Reference `H40Z' on page 77 undefined on input line 610.
+
 File: figures/H10Z.pdf Graphic file (type pdf)
 <use figures/H10Z.pdf>
 File: figures/H20Z.pdf Graphic file (type pdf)
@@ -2473,12 +2971,12 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [78] [79]) [80] [81]
+[77] [78]) [79] [80]
 Chapter 第五章.
-[82
+[81
 
 
-] [83] [84
+] [82] [83
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 114--115
@@ -2492,12 +2990,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--119
 imesNewRoman(0)/m/it/12 INFOCOM keynote
  []
 
-Missing character: There is no � in font Times New Roman/OT:script=latn;languag
-e=DFLT;mapping=tex-text;!
 
-Underfull \hbox (badness 5022) in paragraph at lines 133--134
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 []\TU/TimesNewRoman(0)/m/n/12 Cisco Visual Networking Index: Forecast and Metho
-dology, 2016�C2021,
+dology, 2016C2021,
  []
 
 
@@ -2506,7 +3002,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--134
 ervice-provider/visual-
  []
 
-[85
+[84
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 141--142
@@ -2519,7 +3015,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--142
 ing-
  []
 
-[86] [87]
+[85] [86]
 Underfull \hbox (badness 1102) in paragraph at lines 199--200
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
@@ -2531,14 +3027,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--210
 bm.com/bs-
  []
 
-[88]
+[87]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
-[89]
+[88]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 226.
@@ -2551,16 +3047,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 38165 strings out of 427836
- 684163 string characters out of 3152479
+ 38135 strings out of 427836
+ 683738 string characters out of 3152479
  886957 words of memory out of 3000000
- 41509 multiletter control sequences out of 15000+200000
+ 41485 multiletter control sequences out of 15000+200000
  585221 words of font info for 136 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,82p,10492b,1114s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (101 pages).
+Output written on main.pdf (100 pages).

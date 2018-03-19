@@ -35,141 +35,140 @@
  \cftsetpnumwidth {\widthof {15}-1pt} 
 \contentsline {figure}{\numberline {2-7}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {流并行示意图}}\relax }}{15}{figure.caption.15}
  \cftsetpnumwidth {\widthof {16}-1pt} 
- \cftsetpnumwidth {\widthof {17}-1pt} 
 \addvspace {10\p@ }
+ \cftsetpnumwidth {\widthof {17}-1pt} 
  \cftsetpnumwidth {\widthof {18}-1pt} 
  \cftsetpnumwidth {\widthof {19}-1pt} 
+\contentsline {figure}{\numberline {3-1}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GA算法流程图}}\relax }}{19}{figure.caption.16}
  \cftsetpnumwidth {\widthof {20}-1pt} 
-\contentsline {figure}{\numberline {3-1}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GA算法流程图}}\relax }}{20}{figure.caption.16}
  \cftsetpnumwidth {\widthof {21}-1pt} 
  \cftsetpnumwidth {\widthof {22}-1pt} 
+\contentsline {figure}{\numberline {3-2}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU上遗传算法评价函数计算过程图}}\relax }}{22}{figure.caption.18}
  \cftsetpnumwidth {\widthof {23}-1pt} 
-\contentsline {figure}{\numberline {3-2}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU上遗传算法评价函数计算过程图}}\relax }}{23}{figure.caption.18}
  \cftsetpnumwidth {\widthof {24}-1pt} 
  \cftsetpnumwidth {\widthof {25}-1pt} 
+\contentsline {figure}{\numberline {3-3}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {并行奇偶排序例子}}\relax }}{25}{figure.caption.19}
  \cftsetpnumwidth {\widthof {26}-1pt} 
-\contentsline {figure}{\numberline {3-3}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {并行奇偶排序例子}}\relax }}{26}{figure.caption.19}
  \cftsetpnumwidth {\widthof {27}-1pt} 
+\contentsline {figure}{\numberline {3-4}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行父母选取过程}}\relax }}{27}{figure.caption.20}
  \cftsetpnumwidth {\widthof {28}-1pt} 
-\contentsline {figure}{\numberline {3-4}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行父母选取过程}}\relax }}{28}{figure.caption.20}
+\contentsline {figure}{\numberline {3-5}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行均匀交叉过程}}\relax }}{28}{figure.caption.21}
  \cftsetpnumwidth {\widthof {29}-1pt} 
-\contentsline {figure}{\numberline {3-5}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU并行均匀交叉过程}}\relax }}{29}{figure.caption.21}
  \cftsetpnumwidth {\widthof {30}-1pt} 
  \cftsetpnumwidth {\widthof {31}-1pt} 
+\contentsline {figure}{\numberline {3-6}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {LR-PROA算法流程图}}\relax }}{31}{figure.caption.22}
  \cftsetpnumwidth {\widthof {32}-1pt} 
-\contentsline {figure}{\numberline {3-6}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {LR-PROA算法流程图}}\relax }}{32}{figure.caption.22}
  \cftsetpnumwidth {\widthof {33}-1pt} 
+\contentsline {figure}{\numberline {3-7}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {并行业务计算框架}}\relax }}{33}{figure.caption.24}
  \cftsetpnumwidth {\widthof {34}-1pt} 
-\contentsline {figure}{\numberline {3-7}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {并行业务计算框架}}\relax }}{34}{figure.caption.24}
+\contentsline {figure}{\numberline {3-8}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU上Bellman算法的实现}}\relax }}{34}{figure.caption.25}
+\contentsline {figure}{\numberline {3-9}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {同步问题的例子}}\relax }}{34}{figure.caption.26}
  \cftsetpnumwidth {\widthof {35}-1pt} 
-\contentsline {figure}{\numberline {3-8}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GPU上Bellman算法的实现}}\relax }}{35}{figure.caption.25}
-\contentsline {figure}{\numberline {3-9}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {同步问题的例子}}\relax }}{35}{figure.caption.26}
  \cftsetpnumwidth {\widthof {36}-1pt} 
+\contentsline {figure}{\numberline {3-10}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {链路更新例子(1)}}\relax }}{36}{figure.caption.30}
  \cftsetpnumwidth {\widthof {37}-1pt} 
-\contentsline {figure}{\numberline {3-10}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {链路更新例子(1)}}\relax }}{37}{figure.caption.30}
  \cftsetpnumwidth {\widthof {38}-1pt} 
+\contentsline {figure}{\numberline {3-11}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {链路更新例子(2)}}\relax }}{38}{figure.caption.32}
  \cftsetpnumwidth {\widthof {39}-1pt} 
-\contentsline {figure}{\numberline {3-11}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {链路更新例子(2)}}\relax }}{39}{figure.caption.32}
  \cftsetpnumwidth {\widthof {40}-1pt} 
+\contentsline {figure}{\numberline {3-12}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {路径调整例子}}\relax }}{40}{figure.caption.34}
  \cftsetpnumwidth {\widthof {41}-1pt} 
-\contentsline {figure}{\numberline {3-12}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {路径调整例子}}\relax }}{41}{figure.caption.34}
  \cftsetpnumwidth {\widthof {42}-1pt} 
  \cftsetpnumwidth {\widthof {43}-1pt} 
+\contentsline {figure}{\numberline {3-13}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Task(200)}}\relax }}{43}{figure.caption.36}
+\contentsline {figure}{\numberline {3-14}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Capacity(200)}}\relax }}{43}{figure.caption.37}
  \cftsetpnumwidth {\widthof {44}-1pt} 
-\contentsline {figure}{\numberline {3-13}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Task(200)}}\relax }}{44}{figure.caption.36}
-\contentsline {figure}{\numberline {3-14}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Capacity(200)}}\relax }}{44}{figure.caption.37}
+\contentsline {figure}{\numberline {3-15}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Task(1000)}}\relax }}{44}{figure.caption.38}
+\contentsline {figure}{\numberline {3-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Capacity(1000)}}\relax }}{44}{figure.caption.39}
  \cftsetpnumwidth {\widthof {45}-1pt} 
-\contentsline {figure}{\numberline {3-15}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Task(1000)}}\relax }}{45}{figure.caption.38}
-\contentsline {figure}{\numberline {3-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Object-Capacity(1000)}}\relax }}{45}{figure.caption.39}
  \cftsetpnumwidth {\widthof {46}-1pt} 
+\contentsline {figure}{\numberline {3-17}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Task(ER 1000)}}\relax }}{46}{figure.caption.40}
+\contentsline {figure}{\numberline {3-18}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Task(BA 1000)}}\relax }}{46}{figure.caption.41}
  \cftsetpnumwidth {\widthof {47}-1pt} 
-\contentsline {figure}{\numberline {3-17}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Task(ER 1000)}}\relax }}{47}{figure.caption.40}
-\contentsline {figure}{\numberline {3-18}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Task(BA 1000)}}\relax }}{47}{figure.caption.41}
+\contentsline {figure}{\numberline {3-19}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Capacity(ER 1000)}}\relax }}{47}{figure.caption.42}
+\contentsline {figure}{\numberline {3-20}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Capacity(ER 1000)}}\relax }}{47}{figure.caption.43}
  \cftsetpnumwidth {\widthof {48}-1pt} 
-\contentsline {figure}{\numberline {3-19}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Capacity(ER 1000)}}\relax }}{48}{figure.caption.42}
-\contentsline {figure}{\numberline {3-20}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Capacity(ER 1000)}}\relax }}{48}{figure.caption.43}
+\contentsline {figure}{\numberline {3-21}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Node(BA)}}\relax }}{48}{figure.caption.44}
+\contentsline {figure}{\numberline {3-22}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Node(ER)}}\relax }}{48}{figure.caption.45}
  \cftsetpnumwidth {\widthof {49}-1pt} 
-\contentsline {figure}{\numberline {3-21}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Node(BA)}}\relax }}{49}{figure.caption.44}
-\contentsline {figure}{\numberline {3-22}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {Time-Node(ER)}}\relax }}{49}{figure.caption.45}
+\contentsline {figure}{\numberline {3-23}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GA-PROA 收敛性}}\relax }}{49}{figure.caption.46}
+\contentsline {figure}{\numberline {3-24}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {LR-PROA 收敛性}}\relax }}{49}{figure.caption.47}
  \cftsetpnumwidth {\widthof {50}-1pt} 
-\contentsline {figure}{\numberline {3-23}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {GA-PROA 收敛性}}\relax }}{50}{figure.caption.46}
-\contentsline {figure}{\numberline {3-24}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {LR-PROA 收敛性}}\relax }}{50}{figure.caption.47}
  \cftsetpnumwidth {\widthof {51}-1pt} 
- \cftsetpnumwidth {\widthof {52}-1pt} 
 \addvspace {10\p@ }
+ \cftsetpnumwidth {\widthof {52}-1pt} 
  \cftsetpnumwidth {\widthof {53}-1pt} 
  \cftsetpnumwidth {\widthof {54}-1pt} 
+\contentsline {figure}{\numberline {4-1}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {分层图示意}}\relax }}{54}{figure.caption.48}
  \cftsetpnumwidth {\widthof {55}-1pt} 
-\contentsline {figure}{\numberline {4-1}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {分层图示意}}\relax }}{55}{figure.caption.48}
+\contentsline {figure}{\numberline {4-2}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {算法优化流程}}\relax }}{55}{figure.caption.49}
  \cftsetpnumwidth {\widthof {56}-1pt} 
-\contentsline {figure}{\numberline {4-2}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {算法优化流程}}\relax }}{56}{figure.caption.49}
  \cftsetpnumwidth {\widthof {57}-1pt} 
+\contentsline {figure}{\numberline {4-3}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {bfs并行示意图}}\relax }}{57}{figure.caption.51}
  \cftsetpnumwidth {\widthof {58}-1pt} 
-\contentsline {figure}{\numberline {4-3}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {bfs并行示意图}}\relax }}{58}{figure.caption.51}
+\contentsline {figure}{\numberline {4-4}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {bfs流并行示意图}}\relax }}{58}{figure.caption.52}
  \cftsetpnumwidth {\widthof {59}-1pt} 
-\contentsline {figure}{\numberline {4-4}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {bfs流并行示意图}}\relax }}{59}{figure.caption.52}
  \cftsetpnumwidth {\widthof {60}-1pt} 
  \cftsetpnumwidth {\widthof {61}-1pt} 
  \cftsetpnumwidth {\widthof {62}-1pt} 
+\contentsline {figure}{\numberline {4-5}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无环证明}}\relax }}{62}{figure.caption.56}
  \cftsetpnumwidth {\widthof {63}-1pt} 
-\contentsline {figure}{\numberline {4-5}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无环证明}}\relax }}{63}{figure.caption.56}
+\contentsline {figure}{\numberline {4-6}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {DRK}}\relax }}{63}{figure.caption.58}
  \cftsetpnumwidth {\widthof {64}-1pt} 
-\contentsline {figure}{\numberline {4-6}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {DRK}}\relax }}{64}{figure.caption.58}
+\contentsline {figure}{\numberline {4-7}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {BBK}}\relax }}{64}{figure.caption.59}
  \cftsetpnumwidth {\widthof {65}-1pt} 
-\contentsline {figure}{\numberline {4-7}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {BBK}}\relax }}{65}{figure.caption.59}
  \cftsetpnumwidth {\widthof {66}-1pt} 
  \cftsetpnumwidth {\widthof {67}-1pt} 
  \cftsetpnumwidth {\widthof {68}-1pt} 
+\contentsline {figure}{\numberline {4-8}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=5）}}\relax }}{68}{figure.caption.63}
+\contentsline {figure}{\numberline {4-9}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=10）}}\relax }}{68}{figure.caption.64}
+\contentsline {figure}{\numberline {4-10}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=20）}}\relax }}{68}{figure.caption.65}
  \cftsetpnumwidth {\widthof {69}-1pt} 
-\contentsline {figure}{\numberline {4-8}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=5）}}\relax }}{69}{figure.caption.63}
-\contentsline {figure}{\numberline {4-9}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=10）}}\relax }}{69}{figure.caption.64}
-\contentsline {figure}{\numberline {4-10}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=20）}}\relax }}{69}{figure.caption.65}
+\contentsline {figure}{\numberline {4-11}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=30）}}\relax }}{69}{figure.caption.66}
+\contentsline {figure}{\numberline {4-12}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=40）}}\relax }}{69}{figure.caption.67}
  \cftsetpnumwidth {\widthof {70}-1pt} 
-\contentsline {figure}{\numberline {4-11}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=30）}}\relax }}{70}{figure.caption.66}
-\contentsline {figure}{\numberline {4-12}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=40）}}\relax }}{70}{figure.caption.67}
+\contentsline {figure}{\numberline {4-13}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=5）}}\relax }}{70}{figure.caption.68}
+\contentsline {figure}{\numberline {4-14}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=10）}}\relax }}{70}{figure.caption.69}
  \cftsetpnumwidth {\widthof {71}-1pt} 
-\contentsline {figure}{\numberline {4-13}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=5）}}\relax }}{71}{figure.caption.68}
-\contentsline {figure}{\numberline {4-14}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=10）}}\relax }}{71}{figure.caption.69}
+\contentsline {figure}{\numberline {4-15}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=20）}}\relax }}{71}{figure.caption.70}
+\contentsline {figure}{\numberline {4-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=30）}}\relax }}{71}{figure.caption.71}
+\contentsline {figure}{\numberline {4-17}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=40）}}\relax }}{71}{figure.caption.72}
  \cftsetpnumwidth {\widthof {72}-1pt} 
-\contentsline {figure}{\numberline {4-15}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=20）}}\relax }}{72}{figure.caption.70}
-\contentsline {figure}{\numberline {4-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=30）}}\relax }}{72}{figure.caption.71}
-\contentsline {figure}{\numberline {4-17}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=40）}}\relax }}{72}{figure.caption.72}
+\contentsline {figure}{\numberline {4-18}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=10）}}\relax }}{72}{figure.caption.73}
+\contentsline {figure}{\numberline {4-19}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=20）}}\relax }}{72}{figure.caption.74}
  \cftsetpnumwidth {\widthof {73}-1pt} 
-\contentsline {figure}{\numberline {4-18}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=10）}}\relax }}{73}{figure.caption.73}
-\contentsline {figure}{\numberline {4-19}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=20）}}\relax }}{73}{figure.caption.74}
+\contentsline {figure}{\numberline {4-20}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=30）}}\relax }}{73}{figure.caption.75}
+\contentsline {figure}{\numberline {4-21}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=40）}}\relax }}{73}{figure.caption.76}
+\contentsline {figure}{\numberline {4-22}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=5）}}\relax }}{73}{figure.caption.77}
  \cftsetpnumwidth {\widthof {74}-1pt} 
-\contentsline {figure}{\numberline {4-20}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=30）}}\relax }}{74}{figure.caption.75}
-\contentsline {figure}{\numberline {4-21}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=40）}}\relax }}{74}{figure.caption.76}
-\contentsline {figure}{\numberline {4-22}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=5）}}\relax }}{74}{figure.caption.77}
+\contentsline {figure}{\numberline {4-23}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=10）}}\relax }}{74}{figure.caption.78}
+\contentsline {figure}{\numberline {4-24}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=20）}}\relax }}{74}{figure.caption.79}
+\contentsline {figure}{\numberline {4-25}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=30）}}\relax }}{74}{figure.caption.80}
  \cftsetpnumwidth {\widthof {75}-1pt} 
-\contentsline {figure}{\numberline {4-23}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=10）}}\relax }}{75}{figure.caption.78}
-\contentsline {figure}{\numberline {4-24}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=20）}}\relax }}{75}{figure.caption.79}
-\contentsline {figure}{\numberline {4-25}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=30）}}\relax }}{75}{figure.caption.80}
+\contentsline {figure}{\numberline {4-26}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=40）}}\relax }}{75}{figure.caption.81}
+\contentsline {figure}{\numberline {4-27}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径跳数对比（ST=10）}}\relax }}{75}{figure.caption.82}
  \cftsetpnumwidth {\widthof {76}-1pt} 
-\contentsline {figure}{\numberline {4-26}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=40）}}\relax }}{76}{figure.caption.81}
-\contentsline {figure}{\numberline {4-27}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径跳数对比（ST=10）}}\relax }}{76}{figure.caption.82}
+\contentsline {figure}{\numberline {4-28}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径跳数对比（ST=20）}}\relax }}{76}{figure.caption.83}
+\contentsline {figure}{\numberline {4-29}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径跳数对比（ST=40）}}\relax }}{76}{figure.caption.84}
  \cftsetpnumwidth {\widthof {77}-1pt} 
-\contentsline {figure}{\numberline {4-28}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径跳数对比（ST=20）}}\relax }}{77}{figure.caption.83}
-\contentsline {figure}{\numberline {4-29}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径跳数对比（ST=40）}}\relax }}{77}{figure.caption.84}
+\contentsline {figure}{\numberline {4-30}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=5）}}\relax }}{77}{figure.caption.85}
  \cftsetpnumwidth {\widthof {78}-1pt} 
-\contentsline {figure}{\numberline {4-30}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=5）}}\relax }}{78}{figure.caption.85}
+\contentsline {figure}{\numberline {4-31}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=10）}}\relax }}{78}{figure.caption.86}
+\contentsline {figure}{\numberline {4-32}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=20）}}\relax }}{78}{figure.caption.87}
+\contentsline {figure}{\numberline {4-33}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=30）}}\relax }}{78}{figure.caption.88}
  \cftsetpnumwidth {\widthof {79}-1pt} 
-\contentsline {figure}{\numberline {4-31}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=10）}}\relax }}{79}{figure.caption.86}
-\contentsline {figure}{\numberline {4-32}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=20）}}\relax }}{79}{figure.caption.87}
-\contentsline {figure}{\numberline {4-33}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=30）}}\relax }}{79}{figure.caption.88}
+\contentsline {figure}{\numberline {4-34}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=40）}}\relax }}{79}{figure.caption.89}
+\contentsline {figure}{\numberline {4-35}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=10）}}\relax }}{79}{figure.caption.90}
  \cftsetpnumwidth {\widthof {80}-1pt} 
-\contentsline {figure}{\numberline {4-34}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图时间对比（ST=40）}}\relax }}{80}{figure.caption.89}
-\contentsline {figure}{\numberline {4-35}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=10）}}\relax }}{80}{figure.caption.90}
+\contentsline {figure}{\numberline {4-36}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=20）}}\relax }}{80}{figure.caption.91}
+\contentsline {figure}{\numberline {4-37}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=30）}}\relax }}{80}{figure.caption.92}
+\contentsline {figure}{\numberline {4-38}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=40）}}\relax }}{80}{figure.caption.93}
  \cftsetpnumwidth {\widthof {81}-1pt} 
-\contentsline {figure}{\numberline {4-36}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=20）}}\relax }}{81}{figure.caption.91}
-\contentsline {figure}{\numberline {4-37}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=30）}}\relax }}{81}{figure.caption.92}
-\contentsline {figure}{\numberline {4-38}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=40）}}\relax }}{81}{figure.caption.93}
- \cftsetpnumwidth {\widthof {82}-1pt} 
 \addvspace {10\p@ }
+ \cftsetpnumwidth {\widthof {82}-1pt} 
  \cftsetpnumwidth {\widthof {83}-1pt} 
  \cftsetpnumwidth {\widthof {84}-1pt} 
  \cftsetpnumwidth {\widthof {85}-1pt} 
  \cftsetpnumwidth {\widthof {86}-1pt} 
  \cftsetpnumwidth {\widthof {87}-1pt} 
  \cftsetpnumwidth {\widthof {88}-1pt} 
- \cftsetpnumwidth {\widthof {89}-1pt} 
