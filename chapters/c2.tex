@@ -443,6 +443,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
  \scriptsize{
  \renewcommand{\tabcolsep}{0.09cm}
  \renewcommand{\arraystretch}{1.2}
+  \caption{拉格朗日更新过程（1）}
     \begin{tabular}{| c | c | c | c|}
     \hline
      Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path weights & $\theta_k$
@@ -455,7 +456,6 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 5 & \tabincell{l}{A-C-D \\ A-C-D} & \tabincell{l}{4(2+5.33+2+5.33) \\ 4(2+5.33+2+5.33)} & 0.2 \\ \hline
 \end{tabular}
  \vskip 0.2 cm
-  \caption{拉格朗日更新过程（1）}
   \label{Iterprocess1}
 }
 \end{table}
@@ -488,6 +488,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
  \scriptsize{
  \renewcommand{\tabcolsep}{0.09cm}
  \renewcommand{\arraystretch}{1.2}
+  \caption{拉格朗日更新过程（2）}
     \begin{tabular}{| c | c | c |}
     \hline
      Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path weights
@@ -501,7 +502,6 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 6 & \tabincell{l}{ ...\\ ...} & \tabincell{l}{... \\ ...}\\ \hline
 \end{tabular}
  \vskip 0.2 cm
-  \caption{拉格朗日更新过程（2）}
   \label{Iterprocess2}
 }
 \end{table}
@@ -572,7 +572,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/OB-TA-200.pdf}}
     \end{center}
-  \caption{{\footnotesize{OB-TA-200}}}
+  \caption{{\footnotesize{Object-Task(200)}}}
   \label{OB-TA-200}
 \end{figure}
  \begin{figure}
@@ -580,7 +580,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/OB-CA-200.pdf}}
     \end{center}
-  \caption{{\footnotesize{OB-CA-200}}}
+  \caption{{\footnotesize{Object-Capacity(200)}}}
   \label{OB-CA-200}
 \end{figure}
  \begin{figure}
@@ -588,7 +588,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1  \textwidth]{figures/OB-TA.pdf}}
     \end{center}
-  \caption{{\footnotesize{OB-TA}}}
+  \caption{{\footnotesize{Object-Task(1000)}}}
   \label{OB-TA}
 \end{figure}
   \begin{figure}
@@ -596,7 +596,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/OB-CA.pdf}}
     \end{center}
-  \caption{{\footnotesize{OB-CA}}}
+  \caption{{\footnotesize{Object-Capacity(1000)}}}
   \label{OB-CA}
 \end{figure}
 \subsubsection{算法时间比较}
@@ -616,7 +616,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/TI-ER-TA-1000.pdf}}
     \end{center}
-  \caption{{\footnotesize{TI-ER-TA-1000}}}
+  \caption{{\footnotesize{Time-Task(ER 1000)}}}
   \label{TI-ER-TA-1000}
 \end{figure}
 \begin{figure}
@@ -624,7 +624,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/TI-BA-TA-1000.pdf}}
     \end{center}
-  \caption{{\footnotesize{TI-BA-TA-1000}}}
+  \caption{{\footnotesize{Time-Task(BA 1000)}}}
   \label{TI-BA-TA-1000}
 \end{figure}
 \begin{figure}
@@ -632,7 +632,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/TI-ER-CA-1000.pdf}}
     \end{center}
-  \caption{{\footnotesize{TI-ER-CA-1000}}}
+  \caption{{\footnotesize{Time-Capacity(ER 1000)}}}
   \label{TI-ER-CA-1000}
 \end{figure}
 \begin{figure}
@@ -640,7 +640,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/TI-BA-CA-1000.pdf}}
     \end{center}
-  \caption{{\footnotesize{TI-BA-CA-1000}}}
+  \caption{{\footnotesize{Time-Capacity(ER 1000)}}}
   \label{TI-BA-CA-1000}
 \end{figure}
 \begin{figure}
@@ -648,7 +648,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/TI-BA-NO.pdf}}
     \end{center}
-  \caption{{\footnotesize{TI-BA-NO}}}
+  \caption{{\footnotesize{Time-Node(BA)}}}
   \label{TI-BA-NO}
 \end{figure}
 \begin{figure}
@@ -656,7 +656,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/TI-ER-NO.pdf}}
     \end{center}
-  \caption{{\footnotesize{TI-ER-NO}}}
+  \caption{{\footnotesize{Time-Node(ER)}}}
   \label{TI-ER-NO}
 \end{figure}
 \subsubsection{算法收敛性}
@@ -666,7 +666,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/CO-GA-1000.pdf}}
     \end{center}
-  \caption{{\footnotesize{CO-GA-1000}}}
+  \caption{{\footnotesize{GA-PROA 收敛性}}}
   \label{CO-GA-1000}
 \end{figure}
 \begin{figure}
@@ -674,9 +674,11 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
   \begin{center}
     {\includegraphics[width=1 \textwidth]{figures/CO-LR-1000.pdf}}
     \end{center}
-  \caption{{\footnotesize{CO-LR-1000}}}
+  \caption{{\footnotesize{LR-PROA 收敛性}}}
   \label{CO-LR-1000}
 \end{figure}
+\section{本章总结}
+本章研究了SDN网络下的并行业务量工程算法，首先提出了新的路由优化目标函数，建立了路由优化模型，设计了两种基于GPU的并行优化算法方案GA-PROA和LR-PROA，最后，进行实验，发现GA-PROA能够加速10-20倍，LR-PROA能够加速达到6倍，LR-PROA能够在短时间内得到目标函数的优化解。
 
 
 

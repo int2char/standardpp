@@ -73,8 +73,8 @@
  \cftsetpnumwidth {\widthof {53}-1pt} 
  \cftsetpnumwidth {\widthof {54}-1pt} 
  \cftsetpnumwidth {\widthof {55}-1pt} 
-\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {56}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {57}-1pt} 
  \cftsetpnumwidth {\widthof {58}-1pt} 
  \cftsetpnumwidth {\widthof {59}-1pt} 
@@ -106,6 +106,11 @@
  \cftsetpnumwidth {\widthof {85}-1pt} 
  \cftsetpnumwidth {\widthof {86}-1pt} 
  \cftsetpnumwidth {\widthof {87}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {88}-1pt} 
  \cftsetpnumwidth {\widthof {89}-1pt} 
  \cftsetpnumwidth {\widthof {90}-1pt} 
+ \cftsetpnumwidth {\widthof {91}-1pt} 
+ \cftsetpnumwidth {\widthof {92}-1pt} 
+ \cftsetpnumwidth {\widthof {93}-1pt} 
+ \cftsetpnumwidth {\widthof {94}-1pt} 

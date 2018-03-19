@@ -6,14 +6,14 @@
  \cftsetpnumwidth {\widthof {VI}-1pt} 
  \cftsetpnumwidth {\widthof {VII}-1pt} 
  \cftsetpnumwidth {\widthof {VIII}-1pt} 
- \cftsetpnumwidth {\widthof {IX}-1pt} 
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{图目录}{IX}{chapter*.4}
+\contentsline {chapter}{图目录}{VIII}{chapter*.4}
+ \cftsetpnumwidth {\widthof {IX}-1pt} 
  \cftsetpnumwidth {\widthof {X}-1pt} 
  \cftsetpnumwidth {\widthof {XI}-1pt} 
- \cftsetpnumwidth {\widthof {XII}-1pt} 
 \setcounter {tocdepth}{-1}
-\contentsline {chapter}{表目录}{XII}{chapter*.5}
+\contentsline {chapter}{表目录}{XI}{chapter*.5}
+ \cftsetpnumwidth {\widthof {XII}-1pt} 
  \cftsetpnumwidth {\widthof {1}-1pt} 
 \setcounter {tocdepth}{4}
 \contentsline {chapter}{\numberline {第一章}绪\hspace {6pt}论}{1}{chapter.1}
@@ -118,64 +118,75 @@
  \cftsetpnumwidth {\widthof {54}-1pt} 
 \contentsline {subsubsection}{\numberline {3.4.5.4}算法收敛性}{54}{subsubsection.3.4.5.4}
  \cftsetpnumwidth {\widthof {55}-1pt} 
-\contentsline {chapter}{\numberline {第四章}分层光网络下的并行路由优化算法研究}{55}{chapter.4}
-\contentsline {section}{\numberline {4.1}引言}{55}{section.4.1}
+\contentsline {section}{\numberline {3.5}本章总结}{55}{section.3.5}
  \cftsetpnumwidth {\widthof {56}-1pt} 
-\contentsline {section}{\numberline {4.2}问题描述}{56}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}EONs中动态RSA问题}{56}{subsection.4.2.1}
+\contentsline {chapter}{\numberline {第四章}分层光网络下的并行路由优化算法研究}{56}{chapter.4}
+\contentsline {section}{\numberline {4.1}引言}{56}{section.4.1}
  \cftsetpnumwidth {\widthof {57}-1pt} 
-\contentsline {subsection}{\numberline {4.2.2}分层网络模型}{57}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.2}问题描述}{57}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}EONs中动态RSA问题}{57}{subsection.4.2.1}
  \cftsetpnumwidth {\widthof {58}-1pt} 
-\contentsline {section}{\numberline {4.3}主要优化流程}{58}{section.4.3}
+\contentsline {subsection}{\numberline {4.2.2}分层网络模型}{58}{subsection.4.2.2}
  \cftsetpnumwidth {\widthof {59}-1pt} 
+\contentsline {section}{\numberline {4.3}主要优化流程}{59}{section.4.3}
  \cftsetpnumwidth {\widthof {60}-1pt} 
-\contentsline {section}{\numberline {4.4}无权图情况下的GPU算法设计}{60}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}相同速率业务的并行}{60}{subsection.4.4.1}
  \cftsetpnumwidth {\widthof {61}-1pt} 
-\contentsline {subsection}{\numberline {4.4.2}不同速率间业务的并行}{61}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}GPU上kernel设计}{61}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.4}无权图情况下的GPU算法设计}{61}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}相同速率业务的并行}{61}{subsection.4.4.1}
  \cftsetpnumwidth {\widthof {62}-1pt} 
+\contentsline {subsection}{\numberline {4.4.2}不同速率间业务的并行}{62}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}GPU上kernel设计}{62}{subsection.4.4.3}
  \cftsetpnumwidth {\widthof {63}-1pt} 
-\contentsline {section}{\numberline {4.5}带权图情况下的GPU算法设计}{63}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}带跳数限制的最短路算法}{63}{subsection.4.5.1}
  \cftsetpnumwidth {\widthof {64}-1pt} 
+\contentsline {section}{\numberline {4.5}带权图情况下的GPU算法设计}{64}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}带跳数限制的最短路算法}{64}{subsection.4.5.1}
  \cftsetpnumwidth {\widthof {65}-1pt} 
  \cftsetpnumwidth {\widthof {66}-1pt} 
-\contentsline {subsection}{\numberline {4.5.2}并行层次}{66}{subsection.4.5.2}
-\contentsline {subsection}{\numberline {4.5.3}并行动态规划算法}{66}{subsection.4.5.3}
  \cftsetpnumwidth {\widthof {67}-1pt} 
-\contentsline {subsection}{\numberline {4.5.4}GPU上kernel设计}{67}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.2}并行层次}{67}{subsection.4.5.2}
+\contentsline {subsection}{\numberline {4.5.3}并行动态规划算法}{67}{subsection.4.5.3}
  \cftsetpnumwidth {\widthof {68}-1pt} 
+\contentsline {subsection}{\numberline {4.5.4}GPU上kernel设计}{68}{subsection.4.5.4}
  \cftsetpnumwidth {\widthof {69}-1pt} 
-\contentsline {section}{\numberline {4.6}实验仿真分析}{69}{section.4.6}
  \cftsetpnumwidth {\widthof {70}-1pt} 
-\contentsline {subsection}{\numberline {4.6.1}对比算法}{70}{subsection.4.6.1}
+\contentsline {section}{\numberline {4.6}实验仿真分析}{70}{section.4.6}
  \cftsetpnumwidth {\widthof {71}-1pt} 
-\contentsline {subsection}{\numberline {4.6.2}无权图下的仿真结果}{71}{subsection.4.6.2}
-\contentsline {subsubsection}{\numberline {4.6.2.1}路径优化分析}{71}{subsubsection.4.6.2.1}
+\contentsline {subsection}{\numberline {4.6.1}对比算法}{71}{subsection.4.6.1}
  \cftsetpnumwidth {\widthof {72}-1pt} 
+\contentsline {subsection}{\numberline {4.6.2}无权图下的仿真结果}{72}{subsection.4.6.2}
+\contentsline {subsubsection}{\numberline {4.6.2.1}路径优化分析}{72}{subsubsection.4.6.2.1}
  \cftsetpnumwidth {\widthof {73}-1pt} 
  \cftsetpnumwidth {\widthof {74}-1pt} 
-\contentsline {subsubsection}{\numberline {4.6.2.2}时间分析}{74}{subsubsection.4.6.2.2}
-\contentsline {subsubsection}{\numberline {4.6.2.3}阻塞率分析}{74}{subsubsection.4.6.2.3}
  \cftsetpnumwidth {\widthof {75}-1pt} 
+\contentsline {subsubsection}{\numberline {4.6.2.2}时间分析}{75}{subsubsection.4.6.2.2}
+\contentsline {subsubsection}{\numberline {4.6.2.3}阻塞率分析}{75}{subsubsection.4.6.2.3}
  \cftsetpnumwidth {\widthof {76}-1pt} 
-\contentsline {subsection}{\numberline {4.6.3}带权图下的仿真结果}{76}{subsection.4.6.3}
-\contentsline {subsubsection}{\numberline {4.6.3.1}路径优化分析}{76}{subsubsection.4.6.3.1}
  \cftsetpnumwidth {\widthof {77}-1pt} 
+\contentsline {subsection}{\numberline {4.6.3}带权图下的仿真结果}{77}{subsection.4.6.3}
+\contentsline {subsubsection}{\numberline {4.6.3.1}路径优化分析}{77}{subsubsection.4.6.3.1}
  \cftsetpnumwidth {\widthof {78}-1pt} 
  \cftsetpnumwidth {\widthof {79}-1pt} 
  \cftsetpnumwidth {\widthof {80}-1pt} 
  \cftsetpnumwidth {\widthof {81}-1pt} 
-\contentsline {subsubsection}{\numberline {4.6.3.2}时间分析}{81}{subsubsection.4.6.3.2}
-\contentsline {subsubsection}{\numberline {4.6.3.3}阻塞率分析}{81}{subsubsection.4.6.3.3}
  \cftsetpnumwidth {\widthof {82}-1pt} 
+\contentsline {subsubsection}{\numberline {4.6.3.2}时间分析}{82}{subsubsection.4.6.3.2}
+\contentsline {subsubsection}{\numberline {4.6.3.3}阻塞率分析}{82}{subsubsection.4.6.3.3}
  \cftsetpnumwidth {\widthof {83}-1pt} 
  \cftsetpnumwidth {\widthof {84}-1pt} 
  \cftsetpnumwidth {\widthof {85}-1pt} 
+\contentsline {section}{\numberline {4.7}本章总结}{85}{section.4.7}
  \cftsetpnumwidth {\widthof {86}-1pt} 
-\contentsline {chapter}{参考文献}{86}{chapter*.94}
  \cftsetpnumwidth {\widthof {87}-1pt} 
+\contentsline {chapter}{\numberline {第五章}全文总结与展望}{87}{chapter.5}
+\contentsline {section}{\numberline {5.1}全文总结}{87}{section.5.1}
+\contentsline {section}{\numberline {5.2}后续工作展望}{87}{section.5.2}
  \cftsetpnumwidth {\widthof {88}-1pt} 
+\setcounter {tocdepth}{0}
  \cftsetpnumwidth {\widthof {89}-1pt} 
+\contentsline {chapter}{致\hspace {12pt}谢}{89}{chapter*.94}
  \cftsetpnumwidth {\widthof {90}-1pt} 
+\contentsline {chapter}{参考文献}{90}{chapter*.95}
+ \cftsetpnumwidth {\widthof {91}-1pt} 
+ \cftsetpnumwidth {\widthof {92}-1pt} 
+ \cftsetpnumwidth {\widthof {93}-1pt} 
+ \cftsetpnumwidth {\widthof {94}-1pt} 

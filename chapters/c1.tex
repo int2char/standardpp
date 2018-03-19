@@ -119,6 +119,7 @@ void main(){
 CUDA对c扩展了三种函数声明修饰符：\_\_global\_\_,\_\_device\_\_和\_\_host\_\_,下表对这三种函数函数修饰符进行了介绍，\_\_host\_\_ 修饰的函数和一般的c语言函数一样，只在主机端调用和执行，\_\_global\_\_修饰的是kernel函数，kernel函数在设备端调用，但是在GPU上执行。\_\_device\_\_函数在GPU端由kernel函数或者其他\_\_device\_\_函数调用并且在GPU上执行。\newline
 \begin{table}[h]
 \centering
+\caption{CUDA特殊函数符号表}
 \begin{tabular*}{14cm}{@{\extracolsep{\fill}}ccccccccc}
 \hline
 函数名称& 执行位置& 调用位置\\
@@ -128,12 +129,12 @@ CUDA对c扩展了三种函数声明修饰符：\_\_global\_\_,\_\_device\_\_和\
 \_\_host\_\_ float HostFunc()& 主机& 主机\\
 \hline
 \end{tabular*}
-\caption{CUDA特殊函数符号表}
 \label{CF}
 \end{table}
 GPU中的同时执行大量线程，如果这些线程都去访问全局内存，会使得全局访存带宽拥堵，增大延迟，所以GPU中有多种的独特的内存结构，来优化访存模式，设计CUDA程序时需要把程序的内存访问特点和GPU内存架构特点相结合，这样才能设计出高效的GPU代码，为了支持对这些内存结构的操作，CUDA 对c 扩展了一些变量声明修饰符来对应不同的内存空间，这些变量修饰符对应的存储器和作用域和生命周期如下表所示：
 \begin{table}[h]
 \centering
+\caption{CUDA特殊变量符号表}
 \begin{tabular*}{14cm}{@{\extracolsep{\fill}}ccccccccc}
 \hline
 变量名称& 对应存储器& 作用域 &生命周期\\
@@ -145,7 +146,6 @@ GPU中的同时执行大量线程，如果这些线程都去访问全局内存�
 \_\_device\_\_ intCVar& 常量内存& Grid & CUDA程序\\
 \hline
 \end{tabular*}
-\caption{CUDA特殊变量符号表}
 \label{CB}
 \end{table}
 \subsection{kernel函数}
@@ -176,6 +176,7 @@ void main(){
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 \setlength{\abovecaptionskip}{0.2cm}
 \scriptsize{
+\caption{CUDA 原子操作}
 \renewcommand{\tabcolsep}{0.09cm}
 \renewcommand{\arraystretch}{0.8}
 \centering
@@ -188,7 +189,7 @@ int atomicMin(Max)(int* address, int val)&读取address处的值为old,并且比
 int atomicOr(And)(int* address, int val)&读取address处的值为old,计算$val|old$($val \& old$)，将结果写到address，所有操作组成一次原子事务\\ \hline
 \end{tabular}
  \vskip 0.2 cm
-  \caption{CUDA 原子操作}
+
   \label{CY}
 }
 \end{table}
