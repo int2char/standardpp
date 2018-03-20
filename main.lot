@@ -31,8 +31,8 @@
 \contentsline {table}{\numberline {2-3}{\ignorespaces CUDA 原子操作\relax }}{14}{table.caption.14}
  \cftsetpnumwidth {\widthof {15}-1pt} 
  \cftsetpnumwidth {\widthof {16}-1pt} 
-\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {17}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {18}-1pt} 
  \cftsetpnumwidth {\widthof {19}-1pt} 
  \cftsetpnumwidth {\widthof {20}-1pt} 
@@ -53,11 +53,11 @@
  \cftsetpnumwidth {\widthof {35}-1pt} 
  \cftsetpnumwidth {\widthof {36}-1pt} 
  \cftsetpnumwidth {\widthof {37}-1pt} 
-\contentsline {table}{\numberline {3-1}{\ignorespaces 拉格朗日更新过程（1）\relax }}{37}{table.caption.31}
  \cftsetpnumwidth {\widthof {38}-1pt} 
+\contentsline {table}{\numberline {3-1}{\ignorespaces 拉格朗日更新过程（1）\relax }}{38}{table.caption.31}
  \cftsetpnumwidth {\widthof {39}-1pt} 
-\contentsline {table}{\numberline {3-2}{\ignorespaces 拉格朗日更新过程（2）\relax }}{39}{table.caption.33}
  \cftsetpnumwidth {\widthof {40}-1pt} 
+\contentsline {table}{\numberline {3-2}{\ignorespaces 拉格朗日更新过程（2）\relax }}{40}{table.caption.33}
  \cftsetpnumwidth {\widthof {41}-1pt} 
  \cftsetpnumwidth {\widthof {42}-1pt} 
  \cftsetpnumwidth {\widthof {43}-1pt} 
@@ -69,8 +69,8 @@
  \cftsetpnumwidth {\widthof {49}-1pt} 
  \cftsetpnumwidth {\widthof {50}-1pt} 
  \cftsetpnumwidth {\widthof {51}-1pt} 
-\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {52}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {53}-1pt} 
  \cftsetpnumwidth {\widthof {54}-1pt} 
  \cftsetpnumwidth {\widthof {55}-1pt} 
@@ -100,11 +100,12 @@
  \cftsetpnumwidth {\widthof {79}-1pt} 
  \cftsetpnumwidth {\widthof {80}-1pt} 
  \cftsetpnumwidth {\widthof {81}-1pt} 
-\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {82}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {83}-1pt} 
  \cftsetpnumwidth {\widthof {84}-1pt} 
  \cftsetpnumwidth {\widthof {85}-1pt} 
  \cftsetpnumwidth {\widthof {86}-1pt} 
  \cftsetpnumwidth {\widthof {87}-1pt} 
  \cftsetpnumwidth {\widthof {88}-1pt} 
+ \cftsetpnumwidth {\widthof {89}-1pt} 
