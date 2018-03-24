@@ -9,7 +9,7 @@
 
 本文将SDN网络建模成有向图 $G(V, E)$，$V$表示所有的点集合，$E$是所有边的集合， $n = |V|$ 和 $m = |E|$ 分别表示点数和边数。对每一条边$(i,j)\in E$， $w_{ij}$ 表示此边 $(i,j)$上的权重（传输一单位的流量需要的代价），不失一般性，我们假设每条链路上的$w_{ij}$是整数，对每一条边 $(i,j)$， $c_{ij}$表示此边上的容量，假设$D$表示需要被路由的业务需求集合，业务$d \in D$ 是一个元组 $(s_d, t_d, bw_d)$，其中， $s_d$表示业务的源节点，$t_d$表示业务的目的节点，$bw_d$表示业务d需要的流量带宽。业务量工程问题将网络业务需求和网络拓扑作为输入，计算出每条业务的路由路径以使得效用函数代价最小化，在SDN网络中，业务的路径在中心控制器上计算出来。
 \subsection{问题建模}
-本小节，我们把路由优化问题建模成一个混合整数规划模型（MILP），本文采用新的效用函数，如下 \ref{Obj1}：
+本小节，我们把业务量工程问题建模成一个混合整数规划模型（MILP），本文采用新的效用函数，如下 \ref{Obj1}：
 \begin{equation}\label{Obj1}
 \sum\limits_{d \in D} f(\mathbf{d})
 \end{equation}
@@ -28,7 +28,7 @@ z^* = minimize~f(\mathbf{d})=
 在本文的业务量工程问题中，每个业务只能够路由到一条路径上，如第二章中讨论的那样，这更符合于SDN网络的实际情况，以下整数约束能够保证每个业务只走一条路径
 \begin{equation}\label{FlowConv}
 \begin{split}
-\sum\limits_{(i,j) \in E_a} x_{ij}^d - \sum\limits_{(j,i) \in E_a} x_{ji}^d
+\sum\limits_{(i,j) \in E_b} x_{ij}^d - \sum\limits_{(j,i) \in E_b} x_{ji}^d
 =\begin{cases}
 1 & \text{if $i = s_d$}\\
 -1 & \text{if $i = t_d$} \\
@@ -210,34 +210,35 @@ z^* = minimize~f(\mathbf{d})=
 GA-PTEA算法虽然简单，但是其具有以下缺点：第一，需要事先计算大量备选路径，不能很好地适应网络的动态变化，一旦网络链路发生变化，又要重新计算备选路径。第二，遗传算法从开始到收敛需要大量的迭代次数，虽然经过GPU加速，但是由于收敛缓慢，仍然需要大量的计算时间。第三，遗传算法容易陷入局部最优解。
 
 本节采用基于拉格朗日松弛的模型来解决业务量工程问题，并根据这个模型设计出并行算法LR-PTEA(Lagrange relaxing based parallel traffic engineering algorithm)，LR-PTEA相对与GA-PTEA有以下优点：第一，LR-PTEA能够快速收敛。第二，LR-PTEA求得的解大大优于GA-PTEA。第三，LR-PTEA不需要事先产生备选路径，业务路由是实时计算出来的。
-\subsection{问题建模}
-在模型(\ref{Obj2},\ref{FlowConv},\ref{Capcon})中，网络容量约束(式子 \ref{Capcon})，把所有的路由变量联系到一起，因为这些变量的取值必修保证每一条链路上占用的流量小于其容量大小，正是由于存在链路容量约束，每个业务的路由选取才变得不相互独立，但是要利用GPU 的并行特性，需要寻找独立计算的可能性，因此，本文采用拉格朗日松弛方法，把一个业务量工程问题分解成一批业务的路由计算问题，而这些业务的路由计算问题是相互独立的，很适合并行计算。
+\subsection{基于拉格朗日松弛的模型}
+在模型(\ref{Obj2},\ref{FlowConv},\ref{Capcon})中，网络容量约束(式子 \ref{Capcon})，把所有的路由变量联系到一起，因为这些变量的取值必修保证每一条链路上占用的流量小于链路的容量大小，正是由于存在链路容量约束，每个业务的路由选取才变得不相互独立，但是要利用GPU 的并行特性，需要寻找独立计算的可能性，因此，本文采用拉格朗日松弛方法，把一个业务量工程问题分解成一批业务的路由计算问题，而这些业务的路由计算问题是相互独立的，很适合并行计算。
 
 将模型(\ref{Obj2},\ref{FlowConv},\ref{Capcon})中的网络容量约束松弛进目标函数得到如下问题：
 \begin{equation}\label{LagProb}
 \begin{split}
-L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_a} w_{ij}x_{ij}^d bw_d+ \\ ~~~~~\sum\limits_{(i,j) \in E_a}\lambda_{ij}(\sum\limits_{d \in D} x_{ij}^d bw_d-c_{ij})
+L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_b} w_{ij}x_{ij}^d bw_d+ \\ ~~~~~\sum\limits_{(i,j) \in E_b}\lambda_{ij}(\sum\limits_{d \in D} x_{ij}^d bw_d-c_{ij})
 \end{split}
 \end{equation}
 其中 $\lambda_{ij}$ 表示链路 $(i,j)$的拉格朗日乘子。
 
 表达式(\ref{LagProb})还可以表示为：
 \begin{equation}\label{Lagprob1}
-L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_a} (w_{ij}+\lambda_{ij})x_{ij}^dbw_d -\sum\limits_{(i,j) \in E_a}\lambda_{ij}c_{ij}
+L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_b} (w_{ij}+\lambda_{ij})x_{ij}^dbw_d -\sum\limits_{(i,j) \in E_b}\lambda_{ij}c_{ij}
 \end{equation}
 受限于：
 \begin{equation}\label{FlowConv2}
 \begin{split}
-\sum\limits_{(i,j) \in E_a} x_{ij}^d - \sum\limits_{(j,i) \in E_a} x_{ji}^d
+\sum\limits_{(i,j) \in E_b} x_{ij}^d - \sum\limits_{(j,i) \in E_b} x_{ji}^d
 =\begin{cases}
 1 & \text{if $i = s_d$}\\
 -1 & \text{if $i = t_d$} \\
 0 &{otherwise}
 \end{cases}
-\\~~~~~~~~\forall i\in V_a, \forall d\in D
+\\~~~~~~~~\forall i\in V_b, \forall d\in D
 \end{split}
 \end{equation}
-拉格朗日子问题的目标函数中的$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$这一项，不随着拉格朗日乘子的变化而变化，本文将其作为常数项而丢掉不讨论，丢掉$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$ 这一项后，拉格朗日子问题的目标函数中只含有代价部分 $w_{ij}+\lambda_{ij}$和$x_{ij}^d$的乘积。注意到，$\sum_{(i,j) \in E_a} (w_{ij}+\lambda_{ij})x_{ij}^d bw_d$表示业务$d$ 的总路由代价，因此，拉格朗日子问题的目标函数是最小化所有业务需求的路径路由代价总和，在这个子问题的约束中，没有一个约束同时包含有两个及以上的业务需求相关的变量，所有这个拉格朗日子问题可以被分解成一系列独立的最短路径问题（每个业务需求对应于一个最短路问题），只是这些最短路问题的链路单位代价发生改变，链路代价变得和拉格朗日乘子 $\mathbf{\lambda}$ 相关，也就是说给定一个拉格朗日乘子$\mathbf{\lambda}$，我们可以通过并行地计算一系列的最短路径问题来解决这个拉格朗日子问题。
+拉格朗日子问题的目标函数中的$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$这一项，不随着拉格朗日乘子的变化而变化，本文将其作为常数项而丢掉不讨论，丢掉$\sum_{(i,j) \in E_a}\lambda_{ij}c_{ij}$ 这一项后，拉格朗日子问题的目标函数中只含有代价部分 $w_{ij}+\lambda_{ij}$和$x_{ij}^d bw_d$的乘积。注意到，$\sum_{(i,j) \in E_a} (w_{ij}+\lambda_{ij})x_{ij}^d bw_d$表示业务$d$的路由代价，因此，拉格朗日子问题的目标函数是最小化所有业务的路由代价总和，观察这个子问题的约束，我们发现，每一个约束都只含有一个和业务需求相关的变量，所以，这个拉格朗日子问题可以被分解成一系列独立的最短路径问题（每个业务需求对应于一个最短路问题），只是这些最短路径问题的链路代价发生了改变，链路代价变得和拉格朗日乘子 $\mathbf{\lambda}$ 相关，也就是说给定一个拉格朗日乘子$\mathbf{\lambda}$，我们可以将拉格朗日子问题看成一批单业务的最短路径问题，我们可以通过并行地计算一系列的最短路径来解决这个拉格朗日子问题。
+
 因为把容量约束松弛进效用函数中后，不会增加目标函数的值， $L(\mathbf{\lambda})$成为原问题最优目标函数值的下界，$z^* \ge L(\mathbf{\lambda})$，为了得到最紧的的下界值，我们要解决以下这个优化问题：
 \begin{equation}\label{dual}
 L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
@@ -245,7 +246,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 ~~~subject to: (\ref{FlowConv2})
 \vskip 0.2cm
 
-以上的这个优化问题也被称为原来路由优化问题的对偶问题(式子（\ref{Obj2}) - (\ref{Capcon})) \citing{NetworkFlow}，其中$\mathbf{\lambda^*}$ 表示最优拉格朗日乘子，为了得到最优乘子$\mathbf{\lambda^*}$,可以使用次梯度优化算法来解决，次梯度优化计算时，第一次先初始化乘子 $\mathbf{\lambda}^0$, 然后通过以下过程进行迭代求解：
+以上的这个优化问题也被称为原来业务量工程问题(式子\ref{Obj2},\ref{FlowConv},\ref{Capcon})的对偶问题 \citing{NetworkFlow}，其中$\mathbf{\lambda^*}$ 表示最优拉格朗日乘子，为了得到最优乘子$\mathbf{\lambda^*}$，可以使用次梯度优化算法来解决，次梯度优化计算时，第一次先初始化乘子 $\mathbf{\lambda}^0$, 然后通过以下过程进行迭代求解：
 \begin{equation}\label{iter}
 \mathbf{\lambda}_{ij}^{(k+1)} =\mathbf{\lambda_{ij}}^{(k)}+\theta_{k} g^{(k)}= \mathbf{\lambda_{ij}}^{(k)} + \theta_k[(\sum\limits_{d \in D}x_{ij}^d - c_{ij})]^+
 \end{equation}

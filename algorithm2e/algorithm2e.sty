@@ -1,0 +1,103 @@
+%%
+%% This is file `algorithm.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% algorithms.dtx (with options: `algorithm')
+%% This is a generated file.
+%% 
+%% Copyright (C) 1994-2004 Peter Williams <pwil3058@bigpond.net.au>
+%% Copyright (C) 2005-2009 Rog�rio Brito <rbrito@ime.usp.br>
+%% 
+%% This document file is free software; you can redistribute it and/or
+%% modify it under the terms of the GNU Lesser General Public License as
+%% published by the Free Software Foundation; either version 2 of the
+%% License, or (at your option) any later version.
+%% 
+%% This document file is distributed in the hope that it will be useful, but
+%% WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+%% General Public License for more details.
+%% 
+%% You should have received a copy of the GNU Lesser General Public License
+%% along with this document file; if not, write to the Free Software
+%% Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+%% USA.
+%% 
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{algorithm2e}
+[2009/08/24 v0.1 Document Style `algorithm' - floating environment]
+\RequirePackage{float}
+\RequirePackage{ifthen}
+%\newcommand{\ALG@withinn}{nothing}
+\newboolean{ALG@withinn}
+\setboolean{ALG@withinn}{false}
+\newcommand{\ALG@floatstylen}{ruled}
+\newcommand{\ALG@namen}{算法}
+\newcommand{\listalgorithmname}{List of \ALG@namen s}
+% Declare Options:
+% * first: appearance
+\DeclareOption{plain}{
+\renewcommand{\ALG@floatstylen}{plain}
+}
+\DeclareOption{ruled}{
+\renewcommand{\ALG@floatstylen}{ruled}
+}
+\DeclareOption{boxed}{
+\renewcommand{\ALG@floatstylen}{boxed}
+}
+% * then: numbering convention
+\DeclareOption{part}{
+\renewcommand{\ALG@withinn}{part}
+\setboolean{ALG@withinn}{true}
+}
+\DeclareOption{chapter}{
+\renewcommand{\ALG@withinn}{chapter}
+\setboolean{ALG@withinn}{true}
+}
+\DeclareOption{section}{
+\renewcommand{\ALG@withinn}{section}
+\setboolean{ALG@withinn}{true}
+}
+\DeclareOption{subsection}{
+\renewcommand{\ALG@withinn}{subsection}
+\setboolean{ALG@withinn}{true}
+}
+\DeclareOption{subsubsection}{
+\renewcommand{\ALG@withinn}{subsubsection}
+\setboolean{ALG@withinn}{true}
+}
+\DeclareOption{nothing}{
+\renewcommand{\ALG@withinn}{nothing}
+\setboolean{ALG@withinn}{true}
+}
+\DeclareOption*{\edef\ALG@namen{\CurrentOption}}
+% ALGORITHM
+%
+\ProcessOptions
+\floatstyle{\ALG@floatstylen}
+\ifthenelse{\boolean{ALG@withinn}}{
+\ifthenelse{\equal{\ALG@withinn}{part}}
+{\newfloat{algorithm}{htbp}{loa}[part]}{}
+\ifthenelse{\equal{\ALG@withinn}{chapter}}
+{\newfloat{algorithm}{htbp}{loa}[chapter]}{}
+\ifthenelse{\equal{\ALG@withinn}{section}}
+{\newfloat{algorithm}{htbp}{loa}[section]}{}
+\ifthenelse{\equal{\ALG@withinn}{subsection}}
+{\newfloat{algorithm}{htbp}{loa}[subsection]}{}
+\ifthenelse{\equal{\ALG@withinn}{subsubsection}}
+{\newfloat{algorithm}{htbp}{loa}[subsubsection]}{}
+\ifthenelse{\equal{\ALG@withinn}{nothing}}
+{\newfloat{algorithm}{htbp}{loa}}{}
+}{
+\newfloat{algorithm}{htbp}{loa}
+}
+\floatname{algorithm}{\ALG@namen}
+\newcommand{\listofalgorithms}{\listof{algorithm}{\listalgorithmname}}
+\endinput
+%%
+%% End of file `algorithm.sty'.
+
+
+
