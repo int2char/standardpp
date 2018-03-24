@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  23 MAR 2018 22:21
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  24 MAR 2018 18:53
 entering extended mode
 **./main.tex
 (main.tex
@@ -1908,17 +1908,7 @@ Package: xeCJK-listings 2018/02/27 v3.6.1 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count357
 \l__xeCJK_listings_flag_int=\count358
 ) (main.aux
-(chapters/c1.aux) (chapters/c2.aux
-
-LaTeX Warning: Label `Obj2' multiply defined.
-
-
-LaTeX Warning: Label `Obj2' multiply defined.
-
-
-LaTeX Warning: Label `Obj2' multiply defined.
-
-) (chapters/c3.aux
+(chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux
 
 LaTeX Warning: Label `KernelBFS' multiply defined.
 
@@ -2192,67 +2182,46 @@ File: figures/GAprocess.pdf Graphic file (type pdf)
 <use figures/GAprocess.pdf>
  [15]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 99.
+put line 94.
  [16] [17]
 
 LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
-(Font)              using `TU/SimHei(0)/m/n' instead on input line 105.
+(Font)              using `TU/SimHei(0)/m/n' instead on input line 103.
 
-[18]
+[18] [19]
 File: figures/GPUfitness.pdf Graphic file (type pdf)
 <use figures/GPUfitness.pdf>
-
-*************************************************
-* xeCJK warning: "CJKfamily-Unknown"
-* 
-* Unknown CJK family `\CJKttdefault' is being ignored.
-* 
-* Try to use `\setCJKmonofont[...]{...}' to define it.
-*************************************************
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 141.
-[19] [20]
-Overfull \hbox (3.0pt too wide) in paragraph at lines 176--176
-[] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 176--176
-
- []
-
-[21] [22]
+ [20] [21]
 File: figures/GPUchoose.pdf Graphic file (type pdf)
 <use figures/GPUchoose.pdf>
 File: figures/GPUcross.pdf Graphic file (type pdf)
 <use figures/GPUcross.pdf>
 Missing character: There is no （ in font rm-lmr12!
 Missing character: There is no ） in font rm-lmr12!
- [23] [24] [25]
+ [22] [23] [24]
 File: figures/lagrange.pdf Graphic file (type pdf)
 <use figures/lagrange.pdf>
 File: figures/paframework.pdf Graphic file (type pdf)
 <use figures/paframework.pdf>
- [26]
+ [25] [26]
 File: figures/GPUimpl.pdf Graphic file (type pdf)
 <use figures/GPUimpl.pdf>
- [27]
 File: figures/SynPro.pdf Graphic file (type pdf)
 <use figures/SynPro.pdf>
- [28] [29]
+ [27] [28]
 File: figures/IterNum.pdf Graphic file (type pdf)
 <use figures/IterNum.pdf>
-LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 402.
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 401.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.5> on input line 402.
+(Font)              <10.5> on input line 401.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.34996> on input line 402.
+(Font)              <7.34996> on input line 401.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.25> on input line 402.
- [30]
+(Font)              <5.25> on input line 401.
+ [29] [30]
 File: figures/random.pdf Graphic file (type pdf)
 <use figures/random.pdf>
- [31] [32]
+ [31]
 File: figures/PathAdj.pdf Graphic file (type pdf)
 <use figures/PathAdj.pdf>
 Missing character: There is no 的 in font rm-lmr12!
@@ -2260,8 +2229,8 @@ Missing character: There is no 剩 in font rm-lmr12!
 Missing character: There is no 余 in font rm-lmr12!
 Missing character: There is no 容 in font rm-lmr12!
 Missing character: There is no 量 in font rm-lmr12!
- [33] [34] [35]
-[36]
+ [32]
+[33] [34] [35]
 File: figures/OB-TA-200.pdf Graphic file (type pdf)
 <use figures/OB-TA-200.pdf>
 File: figures/OB-CA-200.pdf Graphic file (type pdf)
@@ -2270,7 +2239,7 @@ File: figures/OB-TA.pdf Graphic file (type pdf)
 <use figures/OB-TA.pdf>
 File: figures/OB-CA.pdf Graphic file (type pdf)
 <use figures/OB-CA.pdf>
- [37] [38]
+ [36] [37] [38]
 File: figures/TI-ER-TA-1000.pdf Graphic file (type pdf)
 <use figures/TI-ER-TA-1000.pdf>
 File: figures/TI-BA-TA-1000.pdf Graphic file (type pdf)
@@ -2283,12 +2252,11 @@ File: figures/TI-BA-NO.pdf Graphic file (type pdf)
 <use figures/TI-BA-NO.pdf>
 File: figures/TI-ER-NO.pdf Graphic file (type pdf)
 <use figures/TI-ER-NO.pdf>
- [39]
 File: figures/CO-GA-1000.pdf Graphic file (type pdf)
 <use figures/CO-GA-1000.pdf>
 File: figures/CO-LR-1000.pdf Graphic file (type pdf)
 <use figures/CO-LR-1000.pdf>
- [40] [41] [42] [43]) [44]
+ [39] [40] [41] [42]) [43] [44]
 \openout2 = `chapters/c3.aux'.
 
  (chapters/c3.tex
@@ -2526,12 +2494,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 38049 strings out of 427836
- 681510 string characters out of 3152479
- 886957 words of memory out of 3000000
- 41396 multiletter control sequences out of 15000+200000
- 585213 words of font info for 135 fonts, out of 3000000 for 9000
+ 37921 strings out of 427836
+ 680121 string characters out of 3152479
+ 887957 words of memory out of 3000000
+ 41272 multiletter control sequences out of 15000+200000
+ 585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 58i,27n,82p,10492b,1180s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 58i,27n,81p,10492b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on main.pdf (95 pages).
