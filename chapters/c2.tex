@@ -25,7 +25,7 @@ W \cdot bw_{d}& \text{如果业务被阻塞}
 z^* = minimize~f(\mathbf{d})=
 \sum\limits_{d \in D} c(p_d)\cdot bw_d= \sum\limits_{d \in D}\sum\limits_{e \in p_d} w_e \cdot bw_d
 \end{equation}
-在本文的路由优化问题中，每个业务只能够路由到一条路径上，如第二章中讨论的那样，这更符合于SDN网络的实际情况，以下整数约束能够保证每个业务只走一条路径
+在本文的业务量工程问题中，每个业务只能够路由到一条路径上，如第二章中讨论的那样，这更符合于SDN网络的实际情况，以下整数约束能够保证每个业务只走一条路径
 \begin{equation}\label{FlowConv}
 \begin{split}
 \sum\limits_{(i,j) \in E_a} x_{ij}^d - \sum\limits_{(j,i) \in E_a} x_{ji}^d
@@ -39,7 +39,7 @@ z^* = minimize~f(\mathbf{d})=
 \end{equation}
 其中 $x_{ij}^d$是一个0，1整数变量， $x_{ij}^d=1$表示业务$d$路由经过链路$(i,j)$，为了避免链路拥塞，路由路径需要满足以下的链路容量约束:
 \begin{equation}\label{Capcon}
-\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_a} x_{ij}^d \cdot bw_d \le c_{ij} ~~\forall (i,j)\in E_b
+\sum\limits_{d \in D}x_{ij}^d \cdot bw_d \le c_{ij} ~~\forall (i,j)\in E_b
 \end{equation}
 在这个模型中，变量的数量随着业务量大小和网络规模大小呈倍数增长，所以这个MILP模型在大规模情况下很难求解。
 \section{基于遗传算法的路由优化算法}
@@ -56,7 +56,7 @@ z^* = minimize~f(\mathbf{d})=
 \begin{equation}\label{Cons2}
 \sum\limits_{k \in [0,K]}\sum\limits_{d \in D} y_{ijk}^d\cdot x_k^d\cdot bw_d\le c_{ij} ~~\forall (i,j)\in E_b
 \end{equation}
-其中，$x_k^d$为一个0,1变量，当$x_k^d=1$时表示业务d选择其备选路径中的第k条路径，$y_{ijk}^d$是一个0,1变量，$y_{ijk}^d=1$表示业务$d$的第$k$条路径经过了链路$(i,j)$，约束\ref{Cons1}表示每个业务只能选择一条路径，约束\ref{Cons2}表示经过链路上的总流量大小不能超过链路上的容量大小。在这个模型中，由于我们把业务的路径限制在其备选路径集合中，所以他的变量个数比模型(\ref{Obj2},\ref{FlowConv},\ref{Capcon})要少很多，本节将通过遗传算法来求解这个简化的模型。
+其中，$x_k^d$为一个0,1变量，当$x_k^d=1$时表示业务d选择其备选路径中的第k条路径，$y_{ijk}^d$是一个0,1变量，$y_{ijk}^d=1$表示业务$d$的第$k$条路径经过了链路$(i,j)$，约束\ref{Cons1}表示每个业务只能选择一条路径，约束\ref{Cons2}表示经过链路上的总流量大小不能超过链路上的容量大小。在这个模型中，由于我们把业务的路径限制在其备选路径集合中，所以他的变量个数比模型(\ref{Obj2},\ref{FlowConv},\ref{Capcon})要少很多，本节将通过遗传算法来求解这个简化的模型，设计出基于遗传算法的并行业务量工程算法GA-PTEA(Genetic algorithm based parallel traffic engineering algorithm)。
 
 \subsection{遗传算法设计}
 遗传算法是一种模拟自然进化过程搜索问题最优解的启发式算法，遗传算法模仿达尔文进化论和自然选择过程来评价挑选最优解集合，从而找寻较优化的解，遗传算法从一个代表问题的可行解的种群出发，一个种群中不同个体代表了不同的解，每个个体实际上是一个染色体，染色体携带表达当前解的信息编码，初代种群产生后，对每个染色体个体进行评价，按照适者生存，优胜劣汰的原则，使得较优的个体更有可能把自己的遗传信息传递给下一代，从而得到更优化的后代，算法过程中，对一部分基因进行变异，好的变异能够提高解的质量，增加算法的搜索空间，避免算法收敛于局部最优解。遗传算法的步骤流程图如下 \ref{IterNum} 所示：
@@ -184,7 +184,7 @@ z^* = minimize~f(\mathbf{d})=
 \subsubsection{并行排序，变异与交叉}
 由于遗传算法中最消耗时间的部分是评价部分，本设计中对其他部分的并行步骤采用较简单的算法。在评价部分结束后，需要对所有的染色体按照效用函数的大小降序排序，本设计采用CUDA提供的Thrust\citing{Thrust}中提供的排序函数对GPU上的染色体进行排序，Thrust是基于标准模板库（STL）的CUDA C++模板库，Thrust为程序员提供常见的CUDA算法库，能够减少程序员工作量并且提高应用程序效率，Thrust库中的排序函数已经针对GPU架构做了很好得优化，所以本文不在对排序部分进行优化，排序函数细节可参考NVDIA官方文档\citing{Thrust}。
 
-交叉过程分为父母选取和交叉计算两个kernel，父母选取过程随机并行地选取$\beta$对父母，每个线程负责选取一对父母，并且将选取的父母下标记录到$father$和$mother$数组中,父母选取GPU计算示意图如下图\ref{pp}所示：
+交叉过程分为父母选取和交叉计算两个kernel，父母选取过程并行地选取$\beta$对父母，每个线程负责选取一对父母，并且将选取的父母下标记录到$father$和$mother$数组中,父母选取GPU计算示意图如下图\ref{pp}所示：
 \begin{figure}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/GPUchoose.pdf}}
@@ -202,25 +202,30 @@ z^* = minimize~f(\mathbf{d})=
 \caption{{\footnotesize{GPU并行均匀交叉过程}}}
 \label{cross}
 \end{figure}
-每个block负责一个新染色体的生成，通过之前的分析，一共需要生产$\beta$个新的染色体，所以GPU 端一共需要分配$\beta$ 个block，其中每一个block中有|D|个线程来同时负责随机从$mother$和$father$ 的相应点位选择一个来作为新染色体相应点位的值，如前所说采用均匀交叉策略，选择父亲母亲遗传基因的概率都是50\%,这样，这样block 内部的并行度达到$|D|$,总的并行粒度达到$|D| \times（\beta）$。
+每个block负责一个新染色体的生成，通过之前的分析，一共需要生产$\beta$个新的染色体，所以GPU端一共需要分配$\beta$ 个block，其中每一个block中有|D|个线程来同时负责随机从$mother$和$father$的相应点位选择一个来作为新染色体相应点位的值，如前所说采用均匀交叉策略，选择父亲母亲遗传基因的概率都是50\%，这样block内部的并行度达到$|D|$，总的并行粒度达到$\beta \cdot |D|$。
 
-最后，对于变异部分，和交叉部分的并行算法类似，不再赘述。
+最后，对于变异部分，我们一共开辟$\gamma$个线程，每个线程随机在$A\cup B$集合中选取一个染色体，并随机选取$m$个点位进行变异，并行粒度为$\gamma$。
 \section{基于拉格朗日的优化算法设计}
 
-基于遗传算法的路由优化算法，虽然过程简单，但是其具有以下缺点,第一，需要事先计算大量备选路径，不能很好地适应网络的动态变化，一旦网络链路发生变化，又要重新计算备选路径。第二，遗传算法从开始到收敛需要大量的迭代次数，虽然经过GPU加速计算，但是由于收敛缓慢，任然需要大量的计算时间，迭代次数，很大程度上是决定于初始染色体集合的好坏，而随机选择路径的方式很难得到好的初始集合。第三，遗传算法容易陷入局部最优解，交叉范围小，和变异范围小都会使得算法提前陷入局部最优解，而如果交叉范围太大，变异范围太大，又会使得算法收敛缓慢，而且路由优化问题中每一个业务都有大量备选路径，问题的解空间很大，即使增大搜索范围也很难找到更优化的解。于是本节通过分析采用基于拉格朗日乘子法的GPU并行方法来求解路由优化问题。
+GA-PTEA算法虽然简单，但是其具有以下缺点：第一，需要事先计算大量备选路径，不能很好地适应网络的动态变化，一旦网络链路发生变化，又要重新计算备选路径。第二，遗传算法从开始到收敛需要大量的迭代次数，虽然经过GPU加速，但是由于收敛缓慢，仍然需要大量的计算时间。第三，遗传算法容易陷入局部最优解。
+
+本节采用基于拉格朗日松弛的模型来解决业务量工程问题，并根据这个模型设计出并行算法LR-PTEA(Lagrange relaxing based parallel traffic engineering algorithm)，LR-PTEA相对与GA-PTEA有以下优点：第一，LR-PTEA能够快速收敛。第二，LR-PTEA求得的解大大优于GA-PTEA。第三，LR-PTEA不需要事先产生备选路径，业务路由是实时计算出来的。
 \subsection{问题建模}
-路由优化问题就是为每一个业务选取一条路径，以使得效用函数最小化。然而在MILP模型中，网络容量约束(式子 \ref{Capcon})，把所有的路由变量联系到一起，因为这些变量的取值必修保证每一条链路$(i,j)$上占用的流量小于其容量$c_{ij}$,正是由于存在链路容量约束，每个业务的路由选取才变得不相互独立，但是要利用GPU 的并行特性，需要寻找独立计算的可能性，因此，本文采用拉格朗日松弛方法，把一个路由优化问题分解成一些单个业务的寻路问题，而这些单业务的寻路问题是相互独立的，很适合并行计算。将路由优化问题中的网络容量约束松弛进目标函数得到如下问题：
+在模型(\ref{Obj2},\ref{FlowConv},\ref{Capcon})中，网络容量约束(式子 \ref{Capcon})，把所有的路由变量联系到一起，因为这些变量的取值必修保证每一条链路上占用的流量小于其容量大小，正是由于存在链路容量约束，每个业务的路由选取才变得不相互独立，但是要利用GPU 的并行特性，需要寻找独立计算的可能性，因此，本文采用拉格朗日松弛方法，把一个业务量工程问题分解成一批业务的路由计算问题，而这些业务的路由计算问题是相互独立的，很适合并行计算。
+
+将模型(\ref{Obj2},\ref{FlowConv},\ref{Capcon})中的网络容量约束松弛进目标函数得到如下问题：
 \begin{equation}\label{LagProb}
 \begin{split}
-L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_a} w_{ij}x_{ij}^d bw_d+ \\ ~~~~~\sum\limits_{(i,j) \in E_a}\lambda_{ij}(\sum\limits_{d \in D} (x_{ij}^d bw_d-c_{ij})
+L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_a} w_{ij}x_{ij}^d bw_d+ \\ ~~~~~\sum\limits_{(i,j) \in E_a}\lambda_{ij}(\sum\limits_{d \in D} x_{ij}^d bw_d-c_{ij})
 \end{split}
 \end{equation}
 其中 $\lambda_{ij}$ 表示链路 $(i,j)$的拉格朗日乘子。
-这个表达式(\ref{LagProb})还可以表示为:
+
+表达式(\ref{LagProb})还可以表示为：
 \begin{equation}\label{Lagprob1}
 L(\mathbf{\lambda})= min\sum\limits_{d \in D}\sum\limits_{(i,j) \in E_a} (w_{ij}+\lambda_{ij})x_{ij}^dbw_d -\sum\limits_{(i,j) \in E_a}\lambda_{ij}c_{ij}
 \end{equation}
-subject to:
+受限于：
 \begin{equation}\label{FlowConv2}
 \begin{split}
 \sum\limits_{(i,j) \in E_a} x_{ij}^d - \sum\limits_{(j,i) \in E_a} x_{ji}^d
