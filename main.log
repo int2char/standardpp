@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  25 MAR 2018 15:33
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  25 MAR 2018 17:13
 entering extended mode
 **./main.tex
 (main.tex
@@ -2158,14 +2158,7 @@ File: figures/smx.png Graphic file (type bmp)
  [8]
 File: figures/block.pdf Graphic file (type pdf)
 <use figures/block.pdf>
- [9] [10] [11]
-Overfull \hbox (57.05826pt too wide) in paragraph at lines 96--97
-\TU/TimesNewRoman(0)/m/n/12 Dim.x,blockDim.y,blockDim.z \TU/SimSun(0)/m/n/12 分 
-别 表 示 \TU/TimesNewRoman(0)/m/n/12 block \TU/SimSun(0)/m/n/12 的 三 个 维 度 的 宽 度，| 
-\TU/TimesNewRoman(0)/m/n/12 gridDim.x,gridDim.y,gridDim.z
- []
-
-[12]
+ [9] [10] [11] [12]
 File: figures/flow.pdf Graphic file (type pdf)
 <use figures/flow.pdf>
 ) [13]
@@ -2300,19 +2293,16 @@ Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr12!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no ） in font rm-lmr8!
-Missing character: There is no （ in font rm-lmr8!
+ [47]
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
+Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 File: figures/LAYER.pdf Graphic file (type pdf)
 <use figures/LAYER.pdf>
- [47] [48]
+ [48]
 File: figures/bbprocess.pdf Graphic file (type pdf)
 <use figures/bbprocess.pdf>
  [49] [50]
@@ -2320,12 +2310,12 @@ File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
 File: figures/hbfs.pdf Graphic file (type pdf)
 <use figures/hbfs.pdf>
- [51]
 
-LaTeX Warning: Command \l invalid in math mode on input line 147.
+
+LaTeX Warning: Command \l invalid in math mode on input line 148.
 
 Missing character: There is no ł in font lmmi12!
-[52] [53]
+[51] [52] [53]
 Missing character: There is no ） in font rm-lmr12!
  [54] [55]
 File: figures/circle.pdf Graphic file (type pdf)
@@ -2368,8 +2358,6 @@ File: figures/B40Z.pdf Graphic file (type pdf)
  [64] [65]
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
- [66]
-[67]
 File: figures/H10C.pdf Graphic file (type pdf)
 <use figures/H10C.pdf>
 File: figures/H20C.pdf Graphic file (type pdf)
@@ -2384,7 +2372,8 @@ File: figures/H20H.pdf Graphic file (type pdf)
 <use figures/H20H.pdf>
 File: figures/H40H.pdf Graphic file (type pdf)
 <use figures/H40H.pdf>
- [68] [69]
+
+[66] [67] [68] [69]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H10T.pdf Graphic file (type pdf)
@@ -2404,12 +2393,12 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [71] [72]) [73] [74]
+ [71] [72] [73]) [74] [75]
 Chapter 第五章.
-[75
+[76
 
 
-] [76] [77
+] [77] [78
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 122--123
@@ -2435,7 +2424,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 141--142
 ervice-provider/visual-
  []
 
-[78
+[79
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 149--150
@@ -2459,7 +2448,7 @@ ion,
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
 (Font)              using `TU/SimSun(0)/m/n' instead on input line 153.
 
-[79] [80]
+[80] [81]
 Underfull \hbox (badness 1102) in paragraph at lines 208--209
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
@@ -2471,14 +2460,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 218--219
 bm.com/bs-
  []
 
-[81]
+[82]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 235.
-[82]
+[83]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 235.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 235.
@@ -2492,12 +2481,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 37921 strings out of 427836
- 680121 string characters out of 3152479
- 884957 words of memory out of 3000000
- 41272 multiletter control sequences out of 15000+200000
+ 37901 strings out of 427836
+ 678913 string characters out of 3152479
+ 891957 words of memory out of 3000000
+ 41252 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (94 pages).
+Output written on main.pdf (95 pages).

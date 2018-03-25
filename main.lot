@@ -91,11 +91,12 @@
  \cftsetpnumwidth {\widthof {73}-1pt} 
  \cftsetpnumwidth {\widthof {74}-1pt} 
  \cftsetpnumwidth {\widthof {75}-1pt} 
-\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {76}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {77}-1pt} 
  \cftsetpnumwidth {\widthof {78}-1pt} 
  \cftsetpnumwidth {\widthof {79}-1pt} 
  \cftsetpnumwidth {\widthof {80}-1pt} 
  \cftsetpnumwidth {\widthof {81}-1pt} 
  \cftsetpnumwidth {\widthof {82}-1pt} 
+ \cftsetpnumwidth {\widthof {83}-1pt} 

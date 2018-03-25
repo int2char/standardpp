@@ -93,10 +93,9 @@ CUDA是一种异构计算模型，CUDA程序在CPU和GPU上交互执行，CUDA�
 一个CUDA程序包含大量并行执行的线程，在软件层面上，我将多个线程组成一个block，同一个block中的线程又被分成不同的warp组，一个block中的线程只能在同一个SM中执行，同一个block中的线程可以通过调用同步函数(\_\_syncthreads())进行同步，同一个blcok中的线程可以共同访存shared\_memory，通过shared\_memory实习通信。一个kernel函数可以在软件层面上产生大量的线程，这些线程被组织成一个一个的block，如果SM足够，这些block中的线程将被加载到SM 上调度执行，如果SM不足，block需要排队等待其他block完成执行。多个block组成一个Grid，block的维度可以是1-3维，图 \ref{ktz}展示了一个二维的block组织，每个block有自己的二维标号，同样每个block内部的线程也可以被组织成1-3维，图 \ref{ktz}展示了一个block内部的thread二维标号。
 
 \subsection{kernel函数}
-kernel函数是GPU上每个线程执行的函数，kernel函数在主机端调用，在GPU端执行，在调用kernel函数时需要为kernel函数设置一些参数，包括Grid维度大小和block维度大小。在kernel函数中使用blockIDx.x,blockIDx.y,blockID.z三个标号来访问当前block在Grid中的三维坐标，使用threadIDx.x,threadIDx.y,threadIDx.z三个标号来访问当前线程在block中的三维坐标的。在Kenerl函数中blockDim.x,blockDim.y,blockDim.z 分别表示block的三个维度的宽度，gridDim.x,gridDim.y,gridDim.z分别表示Grid的三个维度的宽度。
+kernel函数是GPU上每个线程执行的函数，kernel函数在主机端调用，在GPU端执行，在调用kernel函数时需要为kernel函数设置一些参数，包括Grid维度大小和block维度大小。在kernel函数中使用blockIDx.x,blockIDx.y,blockIDx.z三个标号来访问当前block在Grid中的三维坐标，使用threadIDx.x,threadIDx.y,threadIDx.z三个标号来访问当前线程在block中的三维坐标的。kernel函数中使用blockDim.x,blockDim.y,blockDim.z分别表示block的三个维度的宽度。
 
 \subsection{CUDA线程同步}
-
 2.2.2介绍过同一个warp中的32个线程的执行是天然同步的，但是如果程序中存在更多的线程需求的话，我们就不能仅仅依赖于warp的性质进行同步，CUDA支持同一个block中的所有线程进行同步，通过调用同步函数\_\_syncthread(), 一个block 中的线程可以实现同步，它表示block中所有的thread都要同步到这个点（\_\_syncthread()执行处）才能继续执行，这种同步操作相当与CPU上多线程的barrier(屏障)操作。GPU上的线程同步的另一个问题是线程的写操作的同步问题，多个线程同时写相同地址的数据不是线程安全的。CUDA提供了一系列的原子操作来对多个线程间的共享数据的读写进行互斥保护，比如atomicAdd函数，他对目标地址的值进行原子加法操作，保证每次只有一个线程对数据进行加法操作。
 
 \subsection{CUDA流并行}
