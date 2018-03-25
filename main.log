@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  25 MAR 2018 17:46
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  25 MAR 2018 20:31
 entering extended mode
 **./main.tex
 (main.tex
@@ -2310,19 +2310,7 @@ File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
 File: figures/hbfs.pdf Graphic file (type pdf)
 <use figures/hbfs.pdf>
- [51] [52]
-
-LaTeX Warning: Command \l invalid in math mode on input line 151.
-
-Missing character: There is no ł in font lmmi12!
-
-Overfull \hbox (76.37076pt too wide) in paragraph at lines 151--191
-\TU/SimSun(0)/m/n/12 的 时 候，|  判 断 当 前 边 的 头 节 点 是 否 是 尾 节 点 的 上 一 层  |（\TU/Time
-sNewRoman(0)/m/n/12 Dist[lid][sid][e.head]==Dist[lid][sid][e.tail]+1\TU/SimSun(
-0)/m/n/12 ）|
- []
-
-[53]
+ [51] [52] [53]
 Missing character: There is no ） in font rm-lmr12!
  [54] [55]
 File: figures/circle.pdf Graphic file (type pdf)
@@ -2330,9 +2318,20 @@ File: figures/circle.pdf Graphic file (type pdf)
  [56]
 File: figures/DRK.pdf Graphic file (type pdf)
 <use figures/DRK.pdf>
+
+
+LaTeX Warning: Reference `BBK' on page 57 undefined on input line 264.
+
 File: figures/BBK.pdf Graphic file (type pdf)
 <use figures/BBK.pdf>
- [57] [58] [59] [60] [61]
+
+Overfull \hbox (27.16959pt too wide) in paragraph at lines 274--332
+[]\TU/SimSun(0)/m/n/12 动 态 规 划 的 并 行 算 法 中 我 们 只 需 要 一 个 \TU/TimesNewRoman(0)/m
+/n/12 kernel\TU/SimSun(0)/m/n/12 ，|  如[][]\TU/TimesNewRoman(0)/m/n/12 4-6[][]\T
+U/SimSun(0)/m/n/12 所 示。|  在 $[][][][][][][][][][][][][][][][][][][][][]$
+ []
+
+[57] [58] [59] [60] [61]
 File: figures/B5H.pdf Graphic file (type pdf)
 <use figures/B5H.pdf>
 File: figures/B10H.pdf Graphic file (type pdf)
@@ -2365,7 +2364,6 @@ File: figures/B40Z.pdf Graphic file (type pdf)
  [64] [65]
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
- [66] [67]
 File: figures/H10C.pdf Graphic file (type pdf)
 <use figures/H10C.pdf>
 File: figures/H20C.pdf Graphic file (type pdf)
@@ -2380,8 +2378,7 @@ File: figures/H20H.pdf Graphic file (type pdf)
 <use figures/H20H.pdf>
 File: figures/H40H.pdf Graphic file (type pdf)
 <use figures/H40H.pdf>
-
-[68] [69]
+ [66] [67] [68] [69]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H10T.pdf Graphic file (type pdf)
@@ -2401,100 +2398,104 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [71] [72]) [73] [74]
+ [71]
+[72]) [73] [74] [75]
 Chapter 第五章.
-[75
+[76
 
 
-] [76] [77
+] [77] [78
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 122--123
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 \TU/TimesNewRoman(0)/m/n/12 /stories/downloads/sdn-resources/onf-specifications
 /openflow/openflow-switch-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 []\TU/TimesNewRoman(0)/m/n/12 N. McKeown. Software-defined networking[J]. \TU/T
 imesNewRoman(0)/m/it/12 INFOCOM keynote
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 []\TU/TimesNewRoman(0)/m/n/12 Cisco Visual Networking Index: Forecast and Metho
 dology, 2016C2021,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 \TU/TimesNewRoman(0)/m/n/12 http://www.cisco.com/c/en/us/solutions/collateral/s
 ervice-provider/visual-
  []
 
-[78
+[79
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia. Programming guide: CUDA toolkit documenta
 tion,
  []
 
 
-Overfull \hbox (16.11295pt too wide) in paragraph at lines 149--150
+Overfull \hbox (16.11295pt too wide) in paragraph at lines 147--148
 \TU/TimesNewRoman(0)/m/n/12 http://docs.nvidia.com/cuda/cuda_c_programming_guid
 e/index.html#axzz4mVqP2TEC 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia.Programming guide: CUDA toolkit documentat
 ion,
  []
 
 
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
-(Font)              using `TU/SimSun(0)/m/n' instead on input line 153.
+(Font)              using `TU/SimSun(0)/m/n' instead on input line 151.
 
-[79] [80]
-Underfull \hbox (badness 1102) in paragraph at lines 208--209
+[80] [81]
+Underfull \hbox (badness 1102) in paragraph at lines 206--207
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
 []\TU/TimesNewRoman(0)/m/n/12 IBM ILOG CPLEX Optimization Studio, https://www.i
 bm.com/bs-
  []
 
-[81]
+[82]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 235.
-[82]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 235.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 233.
+[83]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 235.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 235.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 233.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 233.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 37901 strings out of 427836
- 678913 string characters out of 3152479
- 878957 words of memory out of 3000000
- 41252 multiletter control sequences out of 15000+200000
+ 37902 strings out of 427836
+ 678918 string characters out of 3152479
+ 877957 words of memory out of 3000000
+ 41253 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (94 pages).
+Output written on main.pdf (95 pages).

@@ -77,12 +77,12 @@ z^* = minimize~f(\mathbf{d})=
 \begin{algorithmic}[1]
 \Require{$G(v,E)$:网络拓扑;$P$:备选路径集合;$C$:未初始化的染色体集合;}
 \Ensure{$C$:可行染色体集合；}
-\For{each $c_j \in C$}
-\For{each $c^d_j \in c_j$ }
+\For{$c_j \in C$}
+\For{$c^d_j \in c_j$ }
 \State {$c^d_j\leftarrow k^d_j$，其中$k^d_j$为1到K之间的随机值，随机选择一条备选路}
 \EndFor
 \State {对染色体中的的每个业务需求按照值$\frac{bw_d}{\sqrt{|p^{k^d_j}_d|}}$}进行降序排序。
-\For{each $c^d_j \in c_j$ }
+\For{$c^d_j \in c_j$ }
 \If{$rp^{k^d_j}_d>=bw_d$}
 \State 加入路径$p^{k^d_j}_d$到网络，更新网络链路容量。
 \Else
@@ -486,7 +486,7 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 \Ensure
 调整后的路径集合 $AP$;
 \State {把业务按照值$\frac{bw_d}{\sqrt{|p_d|}}$进行降序排序}
-\For{each traffic demand $d \in D$}
+\For{ $d \in D$}
 \If{$rp_{d} \ge bw_d$ }
 \State{把路径 $p_d$加入到$AP$中}
 \State{在图G(V,E)中更新路径$p_d$所经过链路的剩余带宽}
@@ -495,9 +495,9 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 \EndIf
 \EndFor
 \State{$G^{'}(V^{'},E^{'})=G(V,E)$}
-\For{each traffic demand $d \in D_l$}
+\For{ $d \in D_l$}
 \State{$G^{''}(V^{''},E^{''})=G^{'}(V^{'},E^{'}$}
-\For{each link $e \in E^{'}$}
+\For{ $e \in E^{'}$}
 \If{链路$e的剩余容量< bw_d$}
 \State{把链路 $e$ 从图$G^{''}(V^{''},E^{''})$中移除}
 \EndIf

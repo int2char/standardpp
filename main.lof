@@ -107,7 +107,7 @@
  \cftsetpnumwidth {\widthof {57}-1pt} 
 \contentsline {figure}{\numberline {4-5}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无环证明}}\relax }}{57}{figure.caption.53}
  \cftsetpnumwidth {\widthof {58}-1pt} 
-\contentsline {figure}{\numberline {4-6}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {动态规划并行示意图}}\relax }}{58}{figure.caption.55}
+\contentsline {figure}{\numberline {4-6}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {同速率业务的BFS并行示意图}}\relax }}{58}{figure.caption.55}
 \contentsline {figure}{\numberline {4-7}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {动态规划流并行示意图}}\relax }}{58}{figure.caption.56}
  \cftsetpnumwidth {\widthof {59}-1pt} 
  \cftsetpnumwidth {\widthof {60}-1pt} 
@@ -120,19 +120,19 @@
 \contentsline {figure}{\numberline {4-11}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=30）}}\relax }}{63}{figure.caption.63}
  \cftsetpnumwidth {\widthof {64}-1pt} 
 \contentsline {figure}{\numberline {4-12}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图路径跳数对比（ST=40）}}\relax }}{64}{figure.caption.64}
-\contentsline {figure}{\numberline {4-13}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=5）}}\relax }}{64}{figure.caption.65}
  \cftsetpnumwidth {\widthof {65}-1pt} 
+\contentsline {figure}{\numberline {4-13}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=5）}}\relax }}{65}{figure.caption.65}
 \contentsline {figure}{\numberline {4-14}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=10）}}\relax }}{65}{figure.caption.66}
 \contentsline {figure}{\numberline {4-15}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=20）}}\relax }}{65}{figure.caption.67}
-\contentsline {figure}{\numberline {4-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=30）}}\relax }}{65}{figure.caption.68}
  \cftsetpnumwidth {\widthof {66}-1pt} 
+\contentsline {figure}{\numberline {4-16}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=30）}}\relax }}{66}{figure.caption.68}
 \contentsline {figure}{\numberline {4-17}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图时间对比（ST=40）}}\relax }}{66}{figure.caption.69}
-\contentsline {figure}{\numberline {4-18}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=10）}}\relax }}{66}{figure.caption.70}
  \cftsetpnumwidth {\widthof {67}-1pt} 
+\contentsline {figure}{\numberline {4-18}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=10）}}\relax }}{67}{figure.caption.70}
 \contentsline {figure}{\numberline {4-19}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=20）}}\relax }}{67}{figure.caption.71}
 \contentsline {figure}{\numberline {4-20}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=30）}}\relax }}{67}{figure.caption.72}
-\contentsline {figure}{\numberline {4-21}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=40）}}\relax }}{67}{figure.caption.73}
  \cftsetpnumwidth {\widthof {68}-1pt} 
+\contentsline {figure}{\numberline {4-21}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {无权图阻塞率对比（ST=40）}}\relax }}{68}{figure.caption.73}
 \contentsline {figure}{\numberline {4-22}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=5）}}\relax }}{68}{figure.caption.74}
 \contentsline {figure}{\numberline {4-23}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图路径权值对比（ST=10）}}\relax }}{68}{figure.caption.75}
  \cftsetpnumwidth {\widthof {69}-1pt} 
@@ -157,11 +157,12 @@
 \contentsline {figure}{\numberline {4-37}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=30）}}\relax }}{74}{figure.caption.89}
 \contentsline {figure}{\numberline {4-38}{\ignorespaces {\fontsize {9pt}{10.8pt}\selectfont {带权图阻塞率对比（ST=40）}}\relax }}{74}{figure.caption.90}
  \cftsetpnumwidth {\widthof {75}-1pt} 
-\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {76}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {77}-1pt} 
  \cftsetpnumwidth {\widthof {78}-1pt} 
  \cftsetpnumwidth {\widthof {79}-1pt} 
  \cftsetpnumwidth {\widthof {80}-1pt} 
  \cftsetpnumwidth {\widthof {81}-1pt} 
  \cftsetpnumwidth {\widthof {82}-1pt} 
+ \cftsetpnumwidth {\widthof {83}-1pt} 
