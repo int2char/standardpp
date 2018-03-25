@@ -1,0 +1,13 @@
+run info for GA serial:node:50edge280task:200capacity100
+run info for GA serial:node:100edge566task:400capacity100
+run info for GA serial:node:100edge580task:400capacity100
+run info for GA serial:node:200edge1150task:800capacity100
+run info for GA serial:node:200edge1180task:800capacity100
+run info for GA serial:node:300edge1816task:1200capacity100
+run info for GA serial:node:300edge1780task:1200capacity100
+run info for GA serial:node:500edge2942task:2000capacity100
+run info for GA serial:node:500edge2980task:2000capacity100
+run info for GA serial:node:800edge4832task:3200capacity100
+run info for GA serial:node:800edge4780task:3200capacity100
+run info for GA serial:node:1000edge6032task:4000capacity100
+run info for GA serial:node:1000edge5980task:4000capacity100

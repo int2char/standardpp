@@ -1,0 +1,502 @@
+../result/1000/0/
+ssadsa../result/1000/0/service.txttotal demand:306188
+service size6000
+graph size:6032
+node:1000
+task:6000
+edge:6032
+type:ER
+GRPHTYPE:1
+capacity:100
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.00 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 1 rows and 0 columns.
+MIP Presolve modified 17840 coefficients.
+Reduced MIP has 12009 rows, 180000 columns, and 1209489 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 1.70 sec. (1101.57 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 12009 rows, 180000 columns, and 1209489 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.79 sec. (452.45 ticks)
+Probing time = 0.40 sec. (50.10 ticks)
+Clique table members: 36325.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 83.35 sec. (49134.41 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.06669e+08              --- 
+*     0+    0                     -4090173.0000  -4.06669e+08              --- 
+*     0+    0                     -4419639.0000  -4.06669e+08              --- 
+      0     0 -6889070.3078  6490 -4419639.0000 -6889070.3078       36   55.87%
+
+GUB cover cuts applied:  1530
+Clique cuts applied:  122
+Cover cuts applied:  108
+Flow cuts applied:  315
+Mixed integer rounding cuts applied:  755
+Zero-half cuts applied:  272
+
+Root node processing (before b&c):
+  Real time             =  600.03 sec. (527216.85 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.03 sec. (527216.85 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-4.41964e+06
+object is: 10889761
+bound is: 8420330
+what happened
+here../result/1000/0/
+ssadsa../result/1000/0/service.txttotal demand:306188
+service size6000
+graph size:6032
+node:1000
+task:6000
+edge:6032
+type:ER
+GRPHTYPE:1
+capacity:150
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.00 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 4 rows and 0 columns.
+MIP Presolve modified 99 coefficients.
+Reduced MIP has 12028 rows, 180000 columns, and 1209958 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.88 sec. (552.89 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 12028 rows, 180000 columns, and 1209958 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.72 sec. (413.81 ticks)
+Probing time = 0.42 sec. (45.70 ticks)
+Clique table members: 59758.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 96.49 sec. (62431.48 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.06669e+08              --- 
+*     0+    0                     -6615173.0000  -4.06669e+08              --- 
+      0     0 -9863386.8482  6968 -6615173.0000 -9863386.8482       33   49.10%
+
+GUB cover cuts applied:  1433
+Clique cuts applied:  366
+Cover cuts applied:  317
+Flow cuts applied:  488
+Mixed integer rounding cuts applied:  433
+Zero-half cuts applied:  70
+
+Root node processing (before b&c):
+  Real time             =  600.38 sec. (595948.02 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.38 sec. (595948.02 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-6.61517e+06
+object is: 8694227
+bound is: 5446013
+what happened
+here../result/1000/0/
+ssadsa../result/1000/0/service.txttotal demand:306188
+service size6000
+graph size:6032
+node:1000
+task:6000
+edge:6032
+type:ER
+GRPHTYPE:1
+capacity:200
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.00 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 6 rows and 0 columns.
+MIP Presolve modified 15 coefficients.
+Reduced MIP has 12026 rows, 180000 columns, and 1209658 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.80 sec. (499.74 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 12026 rows, 180000 columns, and 1209658 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.68 sec. (394.43 ticks)
+Probing time = 0.35 sec. (37.35 ticks)
+Clique table members: 6000.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 101.27 sec. (71310.83 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.06669e+08              --- 
+*     0+    0                     -9389078.0000  -4.06669e+08              --- 
+      0     0  -1.24672e+07  7318 -9389078.0000  -1.24672e+07       34   32.78%
+
+GUB cover cuts applied:  1446
+Cover cuts applied:  259
+Flow cuts applied:  399
+Mixed integer rounding cuts applied:  825
+Zero-half cuts applied:  177
+
+Root node processing (before b&c):
+  Real time             =  600.58 sec. (589796.19 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.58 sec. (589796.19 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-9.38908e+06
+object is: 5920322
+bound is: 2842238
+what happened
+here../result/1000/0/
+ssadsa../result/1000/0/service.txttotal demand:306188
+service size6000
+graph size:6032
+node:1000
+task:6000
+edge:6032
+type:ER
+GRPHTYPE:1
+capacity:250
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.00 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 8 rows and 0 columns.
+MIP Presolve modified 20 coefficients.
+Reduced MIP has 12024 rows, 180000 columns, and 1209358 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.97 sec. (507.61 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 12024 rows, 180000 columns, and 1209358 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.85 sec. (394.34 ticks)
+Probing time = 0.40 sec. (37.34 ticks)
+Clique table members: 6000.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 57.31 sec. (33370.45 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.06669e+08              --- 
+*     0+    0                      -1.18442e+07  -4.06669e+08              --- 
+      0     0  -1.38066e+07  4992  -1.18442e+07  -1.38066e+07       37   16.57%
+
+GUB cover cuts applied:  1365
+Cover cuts applied:  283
+Flow cuts applied:  496
+Mixed integer rounding cuts applied:  676
+Zero-half cuts applied:  286
+
+Root node processing (before b&c):
+  Real time             =  600.14 sec. (504874.59 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.14 sec. (504874.59 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-1.18442e+07
+object is: 3465164
+bound is: 1502823
+what happened
+here../result/1000/2/
+ssadsa../result/1000/2/service.txttotal demand:306188
+service size6000
+graph size:5980
+node:1000
+task:6000
+edge:5980
+type:BA
+GRPHTYPE:1
+capacity:100
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.01 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 12 rows and 0 columns.
+MIP Presolve modified 33368 coefficients.
+Reduced MIP has 11961 rows, 180000 columns, and 1005823 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 1.47 sec. (1103.11 ticks)
+Tried aggregator 1 time.
+MIP Presolve modified 1 coefficients.
+Reduced MIP has 11961 rows, 180000 columns, and 1005823 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.60 sec. (403.97 ticks)
+Probing time = 0.34 sec. (71.73 ticks)
+Clique table members: 8906.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 76.10 sec. (44702.17 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.17164e+08              --- 
+*     0+    0                     -4826152.0000  -4.17164e+08              --- 
+*     0+    0                     -4843292.0000  -4.17164e+08              --- 
+*     0+    0                     -4846345.0000  -4.17164e+08              --- 
+*     0+    0                     -5114127.0000  -4.17164e+08              --- 
+*     0+    0                     -5115242.0000  -4.17164e+08              --- 
+*     0+    0                     -5129814.0000  -4.17164e+08              --- 
+*     0+    0                     -5133276.0000  -4.17164e+08              --- 
+      0     0 -7408170.6217  6016 -5133276.0000 -7408170.6217       42   44.32%
+
+GUB cover cuts applied:  1713
+Clique cuts applied:  4
+Cover cuts applied:  201
+Flow cuts applied:  412
+Mixed integer rounding cuts applied:  574
+Zero-half cuts applied:  186
+
+Root node processing (before b&c):
+  Real time             =  600.18 sec. (542758.15 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.18 sec. (542758.15 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-5.13328e+06
+object is: 10176124
+bound is: 7901428
+what happened
+here../result/1000/2/
+ssadsa../result/1000/2/service.txttotal demand:306188
+service size6000
+graph size:5980
+node:1000
+task:6000
+edge:5980
+type:BA
+GRPHTYPE:1
+capacity:150
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.01 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 18 rows and 0 columns.
+MIP Presolve modified 739 coefficients.
+Reduced MIP has 11962 rows, 180000 columns, and 1005855 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.99 sec. (684.22 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 11962 rows, 180000 columns, and 1005855 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.57 sec. (366.50 ticks)
+Probing time = 0.36 sec. (70.11 ticks)
+Clique table members: 9348.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 57.66 sec. (35155.98 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.17164e+08              --- 
+*     0+    0                     -7013223.0000  -4.17164e+08              --- 
+*     0+    0                     -7013403.0000  -4.17164e+08              --- 
+*     0+    0                     -7014001.0000  -4.17164e+08              --- 
+*     0+    0                     -7465338.0000  -4.17164e+08              --- 
+*     0+    0                     -7471390.0000  -4.17164e+08              --- 
+*     0+    0                     -7494697.0000  -4.17164e+08              --- 
+*     0+    0                     -7502172.0000  -4.17164e+08              --- 
+      0     0  -1.05396e+07  6469 -7502172.0000  -1.05396e+07       42   40.49%
+
+GUB cover cuts applied:  1644
+Clique cuts applied:  1
+Cover cuts applied:  313
+Flow cuts applied:  577
+Mixed integer rounding cuts applied:  439
+Zero-half cuts applied:  116
+
+Root node processing (before b&c):
+  Real time             =  600.13 sec. (565900.59 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.13 sec. (565900.59 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-7.50217e+06
+object is: 7807228
+bound is: 4769834
+what happened
+here../result/1000/2/
+ssadsa../result/1000/2/service.txttotal demand:306188
+service size6000
+graph size:5980
+node:1000
+task:6000
+edge:5980
+type:BA
+GRPHTYPE:1
+capacity:200
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.01 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 32 rows and 0 columns.
+MIP Presolve modified 422 coefficients.
+Reduced MIP has 11948 rows, 180000 columns, and 1005390 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.90 sec. (576.09 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 11948 rows, 180000 columns, and 1005390 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.56 sec. (350.93 ticks)
+Probing time = 0.28 sec. (31.17 ticks)
+Clique table members: 6000.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 135.34 sec. (61153.28 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.17164e+08              --- 
+*     0+    0                     -9372688.0000  -4.17164e+08              --- 
+*     0+    0                     -9818176.0000  -4.17164e+08              --- 
+*     0+    0                     -9825058.0000  -4.17164e+08              --- 
+*     0+    0                      -1.02807e+07  -4.17164e+08              --- 
+*     0+    0                      -1.03043e+07  -4.17164e+08              --- 
+*     0+    0                      -1.03055e+07  -4.17164e+08              --- 
+      0     0  -1.31359e+07  6698  -1.03055e+07  -1.31359e+07       37   27.47%
+
+GUB cover cuts applied:  1620
+Cover cuts applied:  333
+Flow cuts applied:  450
+Mixed integer rounding cuts applied:  500
+Zero-half cuts applied:  184
+
+Root node processing (before b&c):
+  Real time             =  600.22 sec. (524326.45 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.22 sec. (524326.45 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-1.03055e+07
+object is: 5003945
+bound is: 2173502
+what happened
+here../result/1000/2/
+ssadsa../result/1000/2/service.txttotal demand:306188
+service size6000
+graph size:5980
+node:1000
+task:6000
+edge:5980
+type:BA
+GRPHTYPE:1
+capacity:250
+LOW Bound is1.53094e+07
+here 1
+here now
+Found incumbent of value 0.000000 after 0.01 sec. (4.23 ticks)
+Tried aggregator 1 time.
+MIP Presolve eliminated 48 rows and 0 columns.
+MIP Presolve modified 734 coefficients.
+Reduced MIP has 11932 rows, 180000 columns, and 1005001 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.90 sec. (642.59 ticks)
+Tried aggregator 1 time.
+Reduced MIP has 11932 rows, 180000 columns, and 1005001 nonzeros.
+Reduced MIP has 180000 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.54 sec. (350.82 ticks)
+Probing time = 0.26 sec. (31.16 ticks)
+Clique table members: 6000.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: deterministic, using up to 32 threads.
+Root relaxation solution time = 54.18 sec. (30566.51 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                            0.0000  -4.17164e+08              --- 
+*     0+    0                      -1.13919e+07  -4.17164e+08              --- 
+*     0+    0                      -1.14218e+07  -4.17164e+08              --- 
+*     0+    0                      -1.19280e+07  -4.17164e+08              --- 
+*     0+    0                      -1.19660e+07  -4.17164e+08              --- 
+*     0+    0                      -1.23809e+07  -4.17164e+08              --- 
+*     0+    0                      -1.23968e+07  -4.17164e+08              --- 
+      0     0  -1.42060e+07  4350  -1.23968e+07  -1.42060e+07       41   14.59%
+      0     0  -1.41951e+07  6076  -1.23968e+07    Cuts: 3083    71131   14.51%
+
+GUB cover cuts applied:  2118
+Cover cuts applied:  572
+Flow cuts applied:  686
+Mixed integer rounding cuts applied:  919
+Zero-half cuts applied:  394
+
+Root node processing (before b&c):
+  Real time             =  600.09 sec. (554255.15 ticks)
+Parallel b&c, 32 threads:
+  Real time             =    0.00 sec. (0.00 ticks)
+  Sync time (average)   =    0.00 sec.
+  Wait time (average)   =    0.00 sec.
+                          ------------
+Total (root+branch&cut) =  600.09 sec. (554255.15 ticks)
+in check
+check corrected!!!
+lowbound is:1.53094e+07
+addinpart is:-1.23968e+07
+object is: 2912596
+bound is: 1114349
+what happened
+here
