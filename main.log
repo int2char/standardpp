@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  26 MAR 2018 20:54
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  26 MAR 2018 22:12
 entering extended mode
 **./main.tex
 (main.tex
@@ -2346,6 +2346,7 @@ File: figures/B20T.pdf Graphic file (type pdf)
 <use figures/B20T.pdf>
 File: figures/B40T.pdf Graphic file (type pdf)
 <use figures/B40T.pdf>
+ [61] [62]
 File: figures/B10Z.pdf Graphic file (type pdf)
 <use figures/B10Z.pdf>
 File: figures/B20Z.pdf Graphic file (type pdf)
@@ -2354,26 +2355,25 @@ File: figures/B30Z.pdf Graphic file (type pdf)
 <use figures/B30Z.pdf>
 File: figures/B40Z.pdf Graphic file (type pdf)
 <use figures/B40Z.pdf>
- [61] [62] [63] [64]
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
- [65] [66]
+ [63] [64] [65]
 File: figures/H20C.pdf Graphic file (type pdf)
 <use figures/H20C.pdf>
 File: figures/H40C.pdf Graphic file (type pdf)
 <use figures/H40C.pdf>
- [67]
+ [66] [67]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H20T.pdf Graphic file (type pdf)
 <use figures/H20T.pdf>
 File: figures/H40T.pdf Graphic file (type pdf)
 <use figures/H40T.pdf>
-File: figures/H20Z.pdf Graphic file (type pdf)
-<use figures/H20Z.pdf>
+File: figures/H30Z.pdf Graphic file (type pdf)
+<use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
-) [68] [69] [70]
+ [68]) [69] [70]
 Chapter 第五章.
 [71
 
