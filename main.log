@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  25 MAR 2018 14:45
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  26 MAR 2018 20:54
 entering extended mode
 **./main.tex
 (main.tex
@@ -1916,13 +1916,13 @@ LaTeX Warning: Label `KernelBFS' multiply defined.
 LaTeX Warning: Label `ParaSPC' multiply defined.
 
 
-LaTeX Warning: Label `prof' multiply defined.
-
-
 LaTeX Warning: Label `ParaSPC' multiply defined.
 
 
 LaTeX Warning: Label `ParaSPC' multiply defined.
+
+
+LaTeX Warning: Label `B40Z' multiply defined.
 
 ))
 \openout1 = `main.aux'.
@@ -2120,17 +2120,17 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 55--56
 
  [7] (main.lof [8
 
-] [9])
+])
 \tf@lof=\write9
 \openout9 = `main.lof'.
 
- [10] (main.lot)
+ [9] (main.lot)
 \tf@lot=\write10
 \openout10 = `main.lot'.
 
- [11
+ [10
 
-] [12]
+]
 Chapter 第一章.
 [1
 
@@ -2313,46 +2313,39 @@ File: figures/hbfs.pdf Graphic file (type pdf)
  [51] [52] [53]
 Missing character: There is no ） in font rm-lmr12!
  [54] [55]
-File: figures/circle.pdf Graphic file (type pdf)
-<use figures/circle.pdf>
- [56]
 File: figures/DRK.pdf Graphic file (type pdf)
 <use figures/DRK.pdf>
+ [56]
 
-
-LaTeX Warning: Reference `BBK' on page 57 undefined on input line 264.
+LaTeX Warning: Reference `BBK' on page 57 undefined on input line 255.
 
 File: figures/BBK.pdf Graphic file (type pdf)
 <use figures/BBK.pdf>
 
-Overfull \hbox (27.16959pt too wide) in paragraph at lines 274--332
+Overfull \hbox (27.16959pt too wide) in paragraph at lines 265--323
 []\TU/SimSun(0)/m/n/12 动 态 规 划 的 并 行 算 法 中 我 们 只 需 要 一 个 \TU/TimesNewRoman(0)/m
 /n/12 kernel\TU/SimSun(0)/m/n/12 ，|  如[][]\TU/TimesNewRoman(0)/m/n/12 4-6[][]\T
 U/SimSun(0)/m/n/12 所 示。|  在 $[][][][][][][][][][][][][][][][][][][][][]$
  []
 
-[57] [58] [59] [60] [61]
+[57] [58] [59]
 File: figures/B5H.pdf Graphic file (type pdf)
 <use figures/B5H.pdf>
 File: figures/B10H.pdf Graphic file (type pdf)
 <use figures/B10H.pdf>
 File: figures/B20H.pdf Graphic file (type pdf)
 <use figures/B20H.pdf>
-File: figures/B30H.pdf Graphic file (type pdf)
-<use figures/B30H.pdf>
 File: figures/B40H.pdf Graphic file (type pdf)
 <use figures/B40H.pdf>
+ [60]
 File: figures/B5T.pdf Graphic file (type pdf)
 <use figures/B5T.pdf>
 File: figures/B10T.pdf Graphic file (type pdf)
 <use figures/B10T.pdf>
 File: figures/B20T.pdf Graphic file (type pdf)
 <use figures/B20T.pdf>
-File: figures/B30T.pdf Graphic file (type pdf)
-<use figures/B30T.pdf>
 File: figures/B40T.pdf Graphic file (type pdf)
 <use figures/B40T.pdf>
- [62] [63]
 File: figures/B10Z.pdf Graphic file (type pdf)
 <use figures/B10Z.pdf>
 File: figures/B20Z.pdf Graphic file (type pdf)
@@ -2361,50 +2354,31 @@ File: figures/B30Z.pdf Graphic file (type pdf)
 <use figures/B30Z.pdf>
 File: figures/B40Z.pdf Graphic file (type pdf)
 <use figures/B40Z.pdf>
- [64] [65]
+ [61] [62] [63] [64]
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
-File: figures/H10C.pdf Graphic file (type pdf)
-<use figures/H10C.pdf>
+ [65] [66]
 File: figures/H20C.pdf Graphic file (type pdf)
 <use figures/H20C.pdf>
-File: figures/H30C.pdf Graphic file (type pdf)
-<use figures/H30C.pdf>
 File: figures/H40C.pdf Graphic file (type pdf)
 <use figures/H40C.pdf>
-File: figures/H10H.pdf Graphic file (type pdf)
-<use figures/H10H.pdf>
-File: figures/H20H.pdf Graphic file (type pdf)
-<use figures/H20H.pdf>
-File: figures/H40H.pdf Graphic file (type pdf)
-<use figures/H40H.pdf>
- [66] [67] [68] [69]
+ [67]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
-File: figures/H10T.pdf Graphic file (type pdf)
-<use figures/H10T.pdf>
 File: figures/H20T.pdf Graphic file (type pdf)
 <use figures/H20T.pdf>
-File: figures/H30T.pdf Graphic file (type pdf)
-<use figures/H30T.pdf>
 File: figures/H40T.pdf Graphic file (type pdf)
 <use figures/H40T.pdf>
- [70]
-File: figures/H10Z.pdf Graphic file (type pdf)
-<use figures/H10Z.pdf>
 File: figures/H20Z.pdf Graphic file (type pdf)
 <use figures/H20Z.pdf>
-File: figures/H30Z.pdf Graphic file (type pdf)
-<use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [71]
-[72]) [73] [74] [75]
+) [68] [69] [70]
 Chapter 第五章.
-[76
+[71
 
 
-] [77] [78
+] [72] [73
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 120--121
@@ -2430,7 +2404,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 139--140
 ervice-provider/visual-
  []
 
-[79
+[74
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 147--148
@@ -2454,7 +2428,7 @@ ion,
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
 (Font)              using `TU/SimSun(0)/m/n' instead on input line 151.
 
-[80] [81]
+[75] [76]
 Underfull \hbox (badness 1102) in paragraph at lines 206--207
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
@@ -2466,14 +2440,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 216--217
 bm.com/bs-
  []
 
-[82]
+[77]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 233.
-[83]
+[78]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 233.
@@ -2490,12 +2464,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 37902 strings out of 427836
- 678918 string characters out of 3152479
- 877957 words of memory out of 3000000
- 41253 multiletter control sequences out of 15000+200000
+ 37843 strings out of 427836
+ 677824 string characters out of 3152479
+ 878957 words of memory out of 3000000
+ 41205 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (95 pages).
+Output written on main.pdf (88 pages).

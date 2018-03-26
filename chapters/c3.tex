@@ -6,12 +6,12 @@
 
 为了在EON网络中加入业务，控制平面必须在网络中找到一条路径，同时，还需要在此路径上的链路上分配足够的频谱带宽，来创建一个合适的端到端光路连接，这被称为路由和频谱分配（RSA）问题，RSA问题可以进一步分为静态RSA问题和动态RSA问题。静态的RSA问题出现在网络规划阶段，其中流量需求是已知的，这样可以离线计算出最优或者接近最优的RSA解，动态RSA问题是指在实时业务情况下光通路的路由选择和波长分配的优化问题，在动态RSA问题中，业务随机的到达和离开光网络，而且当业务到达网络时，控制平面需要在短时间内找到RSA解来安排业务。动态RSA问题比静态RSA问题更具有挑战性，因为业务需求随机到达和离开，网络状况随时发生变化，而且要求控制平面反应实时。
 
-本章考虑在EON中解决动态场景下的业务量工程问题，我们采用分层图模型将频谱分配问题简化为路由选择问题，设计出基于分层图模型的频谱分配与业务量工程算法（TESAA，traffic engineering and sptrum allocate algrithm），在进行频谱分配的同时优化路由代价。我们针对算法TESAA进行并行加速设计，在带权图和无权图两种情况下对TESAA进行GPU并行加速，实验发现，基于GPU的并行的PTESAA（parallel TESAA）算法对串行算法STESAA(serial TESAA)的加速比可达到5倍。我们将PTESAA与基于分层图模型的贪心算法比较，发现PTEAA在短时间内能够大大地优化路由代价，并且由于路由代价减小，占用网络资源较少，最终使得网络阻塞率降低。
+本章考虑在EON中解决动态场景下的业务量工程问题，我们采用分层图模型将频谱分配问题简化为路由选择问题，设计出基于分层图模型的频谱分配与业务量工程算法（TESAA，traffic engineering and sptrum allocate algrithm），在进行频谱分配的同时优化路由代价。我们针对算法TESAA进行并行加速设计，在无权图和带权图两种情况下对TESAA进行GPU并行加速，实验发现，基于GPU的并行的PTESAA（parallel TESAA）算法对串行算法STESAA(serial TESAA)的加速比可达到5倍。我们将PTESAA和基于分层图模型的贪心算法比较，发现PTEAA在短时间内能够大大地优化路由代价，并且由于路由代价减小，占用网络资源较少，最终使得网络阻塞率降低。
 \section{问题描述}
 \subsection{EON中动态RSA问题}
 当业务到达网络时，SDN控制层需要找到可行的路径，并且为路径分配合适的频谱资源。由于EON的物理限制，业务路由需要满足以下限制：
 
-第一，传输距离限制：光信号的传输质量会随着传输距离的增加而下降，为了在目的点顺利恢复光信号，光链路的传输距离需要小于一个阈值$W_{max}$， 为了简化设计，本文假设每一条链路的长度相同，都是一个单位，那么传输路径的跳数需要小于阈值$D_{max}$。
+第一，传输跳数限制：光信号的传输质量会随着传输跳数的增加而下降，为了在目的点顺利恢复光信号，光链路的传输跳数需要小于一个阈值$D_{max}$。
 
 第二，频谱连续性限制：每条光连接的频谱从它的源节点到它的目的节点 ，在所经过的链路上保持不变。
 
@@ -191,7 +191,7 @@ $AP$:加入业务的路径集合;
 算法 \ref{ParaSPC}开始时先将业务按照速率的不同进行划分，再将业务按照源节点的不同划分成不同的业务组集合，比如，$D_r \in D$表示速率为$r$的业务组集合，$d_{rs} \in D_r$ 表示速率为$r$的源节点标号为$s$的业务组。划分好业务组之后，就开始初始化距离数组，将速率对应的所有分层图上的源节点距离初始化为0，这是一个三层的for 循环，第一层遍历速率标号，第二层遍历源节点标号，第三层遍历速率所对应的分层图标号。初始化$Dist$数组后，在发射kernel之前需要先新建$|R|$个GPU流，不同的流将对不同速率的业务进行计算。$round$ 为扩展的层数标记，开始时$round$初始化为1。while 循环中进行扩展操作，其中$W_{max}$为跳数限制，最大跳数不能超过$W_{max}$，一次扩展操作会使得路径长度增加一跳，所以最多只能循环$W_{max}$次。while循环中for循环用来发射不同的流，因为发射不同流的kernel是异步操作，for循环不会去等待上一个kernel结束了才去执行下一个kernel，所以可以认为所有kernel都是同时间发射的。while循环结束后，算法发射$kernel\_BFS\_update$进行前驱节点记录操作，最后根据这些前驱信息，算法重新恢复出路径，组成路径集合$P$，算法结束。
 \section{带权图情况下的GPU算法设计}
 
-在实际应用场景中，我们常常需要将不同的链路设置为不同的代价，因为链路的延迟，租用费用可能不同，所以有必要考虑链路带权情况下的优化设计，算法优化的目标是使得业务的路由代价最小化，在实际应用中很少出现链路代价为负值的情况，所以本节加速链路代价均为正值。本节将逐步分析和设计适用于带权图的分层网络GPU并行算法。
+在实际应用场景中，我们可能需要将不同的链路设置为不同的代价，所以有必要考虑链路带权情况下的优化设计，算法优化的目标是使得业务的路由代价最小化，在实际应用中很少出现链路代价小于等于零的情况，所以本节加速链路代价均为正值。本节将逐步分析和设计适用于带权图的分层网络GPU并行算法。
 \subsection{带跳数限制的最短路算法}
 带跳数约束的BFS路由，由于没有考虑链路的权重差异，把所有链路的权重看作一样，所以BFS路由的优化目标就是跳数，BFS就是寻找跳数最短的路径，跳数约束只是使得BFS算法提前结束。但是在带权的链路情况下，路由的优化目标是最小化链路代价和，也就是寻找一条代价最小的满足跳数约束的路径，跳数越短并不意味则代价越小，代价越小也不意味着跳数越小，这使得带权情况下比无权情况更加复杂。
 
@@ -220,15 +220,6 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 假设满足跳限约束的最优代价路径为$p_{ij}^*$，假设路径$p_{ij}^*$的跳数为$h$，$h \in [1,W_{max}]$，显然$p_{ij}^*=p_{ijh}$，但是实际上我们并不知道$h$ 的值，所以我们从$[1,W_{max}]$ 对$h$进行遍历，那么$p_{ij}^*$肯定是其中代价最小的一条，所以$p_{ij}^*=\min\limits_{k \in W_{max}}{Price_Of(p_{ijk}^*)}$，同样，$OPCost[i][j]=\min\limits_{k \in W_{max}}{Price[i][j][k]}$。
 
-观察动态规划递推式，可以看到，在递推过程不会去记录路径，这样求得路径可能会经过重复的点，但是，最优路径$p_{ij}^*$ 中是不可能经过重复节点的，下面本文进行证明。首先，路径跳数$h<4$ 的路径是不可能经过重复的节点，我们讨论$h>=4$时的情况，如果路径重复经过了一个点，那么路径中一定存在一个环，如下图 \ref{prof}，这个存在环的路径为$L_1-L_2-L_3-L_2-L_4$，假设链路$L_2$ 的跳数为$h_2$，代价为$C_2$，由于链路的代价都是正数，所以$C_2>0$，那么存在一条跳数为$t=h-h_2$ 的，代价为$OPCost[i][j]-C_2$ 的由$i$ 到$j$ 的路径$L_1-L_2-L_4$，而这条路径的代价肯定小于等于$Price\_Of(p_{ijt})$，即$OPCost[i][j]-C_2<=Price\_Of(p_{ijt})<=OPCost[i][j]$，进一步得到$OPCost[i][j]-C_2<=OPCost[i][j]$，这与$C_2>0$矛盾，所以最优路径不可能经过重复的节点。
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/circle.pdf}}
-\end{center}
-\caption{{\footnotesize{无环证明}}}
-\label{prof}
-\end{figure*}
 \subsection{相同速率业务的动态规划算法并行}
 上一节提出了动态规划模型，证明了算法的正确性，本节我们讨论这个动态规划算法在GPU上的并行算法，单个图上的动态规划的串行算法如\ref{pda}所示：
 \begin{algorithm}[t]
@@ -364,14 +355,16 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \label{ParaSPC}
 \end{algorithm}
 
-当业务到达时，GRSA先在第一层对所有业务求最短路径，得到一个路径跳数值，按照这个跳数值对业务进行排序，这是为了优先加入较短的业务。然后逐层去寻找是否能够把业务加入到网络中，如果能加入到当前层中，那么就更新当前层上的相应链路的占用情况，反之，就在下一层进行搜寻。如果所有层都无法加入这个业务，那么业务就被阻塞，加入到阻塞集合。
+当业务到达时，GRSA先在第一层对所有业务求最短路径，为每个业务估计一个路径跳数值，按照这个跳数值对业务进行排序，这是为了优先加入较短的业务。然后，算法逐层去寻找是否能够把业务加入到网络中，如果能加入到当前层中，那么就更新当前层上的相应链路的占用情况，反之，就在下一层进行搜寻。如果所有层都无法加入这个业务，那么业务就被阻塞，业务被加入到阻塞集合。
 \subsection{实验设置}
-实验仿真中，本文假设存在两种速率的业务，并且已知两种速率的业务的大致比例为1:3。我们初始时为速率1的业务分配20层的频谱连续分层网络，为速率2的业务分配60层的频谱连续的分层网络。我们假设业务的到达服从泊松过程，一共产生了1000个到达事件，每两个连续的到达事件之间的时间间隔服从均值为4的负指数分布，当到达事件发生时，实验产生速率1的业务为$d_1$ 个，产生速率为2的业务$d_2$ 个，其中$d1$ 为$2 \cdot |N|$到$4 \cdot|N|$中的随机值，$d_2$为$6 \cdot |N|$到$12 \cdot |N|$之间的随机值。初始时网络的节点为$N$，平均度数为$4$。 每个业务的服务时间满足均值为$ST$的负指数分布。我们在不同$ST$下进行仿真，观察各种算法在不同服务压力下的优化情况。
+在本文的实验仿真中，假设存在两种速率的业务，并且已知两种速率的业务的大致比例为1:3。我们初始时为速率1的业务分配20层的频谱连续分层网络，为速率2的业务分配60层的频谱连续的分层网络。我们假设业务的到达服从泊松过程，一共产生了1000个到达事件，每两个连续的到达事件之间的时间间隔服从均值为4的负指数分布，当到达事件发生时，实验产生速率1的业务为$d_1$ 个，产生速率为2的业务$d_2$ 个，其中$d1$ 为$2 \cdot |N|$到$4 \cdot|N|$中的随机值，$d_2$为$6 \cdot |N|$到$12 \cdot |N|$之间的随机值。初始时网络的节点为$N$，平均度数为$4$。 每个业务的服务时间满足均值为$ST$的负指数分布。我们在不同$ST$下进行仿真，观察各种算法在不同服务压力下的优化情况。
 
 \subsection{无权图下的仿真结果}
-\subsubsection{路径优化分析}
+\subsubsection{路由跳数优化结果分析}
 
-在无权图下，优化目标是最小化路径的跳数，图\ref{B5H}到图\ref{B40H}表示了无权图下的跳数优化结果，我们把PRORSA和SRORSA的优化结果与贪心算法GRSA 的算法权值优化结果进行比较，图中的横坐标表示业务到达的次数，我们一共产生了1000个加入事件。当网络状况较好的时候，比如，平均服务时间为$ST=5$时，PRORSA/SRORSA的平均跳数为2.73，而GRSA的平均跳数为3.73，平均跳数要少一跳左右，这样PRORSA/SRORSA可以大大的减小对网络资源的占用。随着平均服务时间$ST$的增加，PRORSA/SRORSA和GRORSA的平均跳数都有所增加，但是PRORSA/SRORSA 的增幅较小，从$ST=5$ 时的平均跳数为2.73增加到$ST=40$时的平均跳数为2.82，也就是说不管在网络空闲还是繁忙的情况下，PRORSA/SRORSA都能够很好得优化跳数。而GRSA的跳数随着$ST$的增加而大幅增加从$ST=5$ 时的平均3.75增加到$ST=40$时的平均4.2。
+在无权图中，TESAA的优化目标是最小化路由的跳数，图\ref{B5H}到图\ref{B40H}表示了无权图下跳数的优化结果，我们把PTESAA和STESAA与贪心算法GRSA进行比较。图中的横坐标表示业务到达的次数，图中的纵坐标表示业务的平均路由跳数。
+
+当网络状况较好的时候，比如，平均服务时间为$ST=5$时，PTESAA/STESAA计算得到的路由平均跳数为2.73，而GRSA计算得到的路由平均跳数为3.73，PTESAA/STESAA得到的路由平均跳数要比GRSA得到的路由平均跳数少一跳左右。随着平均服务时间$ST$的增加，PTESAA/STESAA和GRSA所计算出的路由平均跳数都有所增加，但是PTESAA/STESAA的增幅较小，从$ST=5$时的平均2.73增加到$ST=40$时的平均2.82，而GRSA的平均路由跳数随着$ST$的增加而大幅增加，从$ST=5$ 时的平均3.75增加到$ST=40$时的平均4.2，可见不管在网络空闲还是网络繁忙的情况下PTESAA都能很好地优化业务路由的跳数，减小对网络资源的占用。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
@@ -399,14 +392,6 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=1 \textwidth]{figures/B30H.pdf}}
-\end{center}
-\caption{{\footnotesize{无权图路径跳数对比（ST=30）}}}
-\label{B30H}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B40H.pdf}}
 \end{center}
 \caption{{\footnotesize{无权图路径跳数对比（ST=40）}}}
@@ -414,8 +399,11 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \end{figure*}
 \subsubsection{时间分析}
 
-图 \ref{B5T}到图 \ref{B40T}展示了在不同平均服务时间$ST$下的各种算法的计算时间，当$ST=5$时，我们可以看到通过GPU加速的PRORSA的计算时间是SPROA 的计算时间的1/4，而实际上备选路径部分的GPU加速达到了7-8 倍，但是由于步骤二的快速路径选择过程也需要消耗一部分时间，这部分时间不能进行GPU加速，实际上PRORSA的大部分算法时间花在了步骤二的路径选择上，所以使得总体的加速比下降为4倍左右。我们发现由于PRORSA的波动幅度比SRORSA的波动幅度小很多，这是因为SRORSA的大部分时间花在计算备选路上,备选路径的计算量随着业务数量和网络链路的占用情况变化较大，而PRORSA的计算量花在步骤二上，计算量变化较小。GRSA的计算时间略高于PRORSA的计算时间，而且GRSA的波动幅度很大，不够平稳，这是因为GRSA贪心策略占用链路资源过多，容易造成分层图链路的碎片化，使得计算量变化较大。
-观察到随着$ST$的变化PRORSA的对SRORSA的加速比逐渐下降，这是因为随着网络压力的增加，可用链路变少，使得SRORSA的备选路径计算复杂度下降，PRORSA加速优势变小。另外，随着$ST$的增加，PRORSA 和SRORSA的时间波动幅度增加，这是因为由于链路繁忙，使得大量业务不能一次性加入，步骤二到步骤一之间的循环次数增加，使得某些业务到达点的业务需要多次的循环，计算时间变长，从而拉大了时间变化幅度。
+图 \ref{B5T}到图 \ref{B40T}展示了各个算法在不同平均服务时间$ST$下的计算时间，当$ST=5$时，我们可以看到通过GPU加速的PTESAA的计算时间是STESAA计算时间的1/4，而实际上，步骤一的GPU加速比可达7-8倍，但是由于步骤二的快速路由选择算法所占用的时间也不可忽略，而我们没有对这部分算法进行GPU加速，这使得总体的加速比下降为4-5倍。
+
+图\ref{B5T}到图\ref{B40T}显示GRSA的计算时间略高于PTESAA的计算时间，可见PTESAA不仅可以优化路由跳数，而且在时间上也比GRSA更有优势。
+
+观察图\ref{B5T}到图\ref{B40T}，我们发现随着$ST$的变化，PTESAA对STEAA的加速比略有下降，这是因为随着网络压力的增加，可用链路变少，使得STESAA中步骤一的计算量下降，PTESAA的加速优势变小。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
@@ -443,14 +431,6 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=1 \textwidth]{figures/B30T.pdf}}
-\end{center}
-\caption{{\footnotesize{无权图时间对比（ST=30）}}}
-\label{B30T}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B40T.pdf}}
 \end{center}
 \caption{{\footnotesize{无权图时间对比（ST=40）}}}
@@ -458,7 +438,7 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \end{figure*}
 \subsubsection{阻塞率分析}
 
-图 \ref{B10Z}到图 \ref{B40Z}展示了随着$ST$的变化，PRORSA，SRORSA和GRSA的阻塞率变化情况，其中PRORSA，SRORSA由于是同一种算法，所以其阻塞率几乎一样。当$ST=10$时,我们发现PRORSA/SRORSA的阻塞次数明显小于GRSA。 当$ST=20$时，PRORSA/SRORSA的阻塞次数和阻塞幅度均小于GRSA，在GRSA中出现了一次相对较大的阻塞，但是PRORSA/SRORSA 中没有出现这种不平稳的阻塞率突变。当$ST=30$时，我们发现PRORSA/SRORSA的阻塞次数和阻塞幅度比GRSA小很多，GRSA的平均阻塞率是PRORSA/SRORSA的6倍左右。当$ST=40$时，PRORSA，SRORSA和GRSA的阻塞率都增加很多，但是PRORSA/SRORSA的阻塞情况还是大大优于GRSA，可见在大服务压力的网络中，PRORSA/SRORSA依然能够有效的减小阻塞率。
+图 \ref{B10Z}到图 \ref{B40Z}展示了随着$ST$的增加，PTESAA/STESAA和GRSA算法的阻塞率变化情况。其中PTESAA，STESAA由于是同一种算法，所以其阻塞率几乎一样。当$ST=10$时，我们发现PTESAA/STESAA的阻塞次数明显小于GRSA。 当$ST=20$时，PTESAA/STESAA的阻塞次数和阻塞幅度均小于GRSA，在GRSA中出现了一次相对较大的阻塞，但是PTESAA/STESAA中没有出现这种不平稳的阻塞率突变。当$ST=30$时，我们发现PRORSA/SRORSA的阻塞次数和阻塞幅度比GRSA小很多，GRSA的平均阻塞率是PRORSA/SRORSA的6倍左右。当$ST=40$时，PTESAA，STESAA和GRSA的阻塞率都增加很多，但是PTESAA/STESAA的阻塞情况还是大大优于GRSA，可见在网络拥塞的情况下，PTESAA/STESAA依然能够有效的减小阻塞率。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
@@ -481,7 +461,7 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 {\includegraphics[width=1 \textwidth]{figures/B30Z.pdf}}
 \end{center}
 \caption{{\footnotesize{无权图阻塞率对比（ST=30）}}}
-\label{B30Z}
+\label{B40Z}
 \end{figure*}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
@@ -491,8 +471,9 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \caption{{\footnotesize{无权图阻塞率对比（ST=40）}}}
 \label{B40Z}
 \end{figure*}
+
 \subsection{带权图下的仿真结果}
-\subsubsection{路径优化分析}
+\subsubsection{路由代价优化结果分析}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
@@ -500,14 +481,6 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \end{center}
 \caption{{\footnotesize{带权图路径权值对比（ST=5）}}}
 \label{H5C}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H10C.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图路径权值对比（ST=10）}}}
-\label{H10C}
 \end{figure*}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
@@ -520,51 +493,21 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H30C.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图路径权值对比（ST=30）}}}
-\label{H30C}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H40C.pdf}}
 \end{center}
 \caption{{\footnotesize{带权图路径权值对比（ST=40）}}}
 \label{H40C}
 \end{figure*}
+带权图情况下我们把网络中每条链路的权值设置为1到10之间的随机整数值。图 \ref{H5C}和图 \ref{H40C}表示了路由代价的优化结果，我们把PTESAA和STESAA的优化结果与贪心算法GRSA的结果进行比较，图中的横坐标表示业务到达的次数，纵坐标表示业务路由的平均代价。
 
-图 \ref{H5C}到图 \ref{H40C}表示了权值的优化结果，我们把PRORSA和SRORSA的优化结果与贪心算法GRSA的算法权值优化结果进行比较，图中的横坐标表示业务到达的次数，一共产生1051个加入事件，网络链路的权值设置为1到10之间的整数值，当网络状况较好的时候，比如,平均服务时间为$ST=5$ 时，路径权值达到了平均3.5倍的优化，PRORSA和SRORSA 的权值在3-10 之间波动，把业务的路径权值控制在很小的范围，路径优化得非常的理想。另外，随着平均服务时间$ST$ 的增加，贪心算法GRSA的路径平均权值轻微增加，由平均20增加到平均25，这是因为GRSA 是贪心的利用分层图，对链路的权值大小没有限制，不管在拥塞和不拥塞的网络条件下都会产生大量高权值的路径。观察PRORSA 和SRORSA 路径权值随着$ST$ 的变化发现，PRORSA 和SRORSA 的链路权值随着$ST$的增加而不断上涨，从最初的均值为7 到最后($ST=40$) 时的均值为15，这是因为当网络压力较大时，网络中的可用链路会出现匮乏，每个分层图上的路径权值都会很大，使得优化选择的空间变小。
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H10H.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图路径跳数对比（ST=10）}}}
-\label{H10H}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H20H.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图路径跳数对比（ST=20）}}}
-\label{H20H}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H40H.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图路径跳数对比（ST=40）}}}
-\label{H40H}
-\end{figure*}
+当网络状况较好的时候，比如，平均服务时间为$ST=5$时，如图\ref{H5C}所示，算法PTESAA/STESAA得到的平均路由代价大约为GRSA得到的平均路由代价3到4分之一，路由代价得到很大优化。
 
-图 \ref{H10H}到 \ref{H40H}显示了带权情况下的路径跳数情况，可以看到当权值优化时，业务的跳数也得到了很大的优化，这是因为权值小的路径常常路跳径较短，而且GRSA是会贪心的在一个分层图上加入业务，导致分层图变得碎片化，容易求得跳数较大的路径，所以即使在带权图的优化中，跳数也会减小很大。
+当网络较拥塞时，比如，平均服务时间为$ST=40$时，如图\ref{H40C}所示，由于网络中的可用链路变少，业务的路径选择空间变小，使得业务可能会选择代价较大的路径进行路由，所以PTESAA/STESAA算法得到的平均路由代价变大，但是PTESAA/STESAA的平均路由代价依然比GRSA的平均路由代价小很多。
+
 \subsubsection{时间分析}
+图 \ref{H5T}到图 \ref{H40T}展示了带权图中各个算法在不同平均服务时间$ST$下的计算时间，当$ST=5$时，我们可以看到PTESAA的计算时间是STESAA的计算时间的1/4，和无权图下PTESAA算法的计算一样，带权图下的PTESAA计算中步骤一的GPU加速比也可达到7-8倍，但是由于步骤二的时间占用，使得总体加速比降为4-5倍。
 
-图 \ref{H5T}到图 \ref{H40T}展示了在不同平均服务时间$ST$下的各种算法的计算时间，当$ST=5$时，我们可以看到通过GPU加速的PRORSA的计算时间是SPROA 的计算时间的1/4，而实际上备选路径部分的GPU加速达到了7-8 倍，但是由于步骤二的快速路径选择过程也需要消耗一部分时间，这部分时间不能进行GPU加速，实际上PRORSA的大部分算法时间花在了步骤二的路径选择上，所以使得总体的加速比下降为4 倍左右。我们发现由于PRORSA的波动幅度比SRORSA的波动幅度小很多，这是因为SRORSA的大部分时间花在计算备选路上,备选路径的计算量随着业务数量和网络链路的占用情况变化较大，而PRORSA的计算量花在步骤二上，计算量变化较小。GRSA的计算时间略高于PRORSA的计算时间，而且GRSA的波动幅度很大，不够平稳，这是因为GRSA贪心策略占用链路资源过多，容易造成分层图链路的碎片化，使得计算量变化较大。
-观察到随着$ST$的变化PRORSA的对SRORSA的加速比逐渐下降，这是因为随着网络压力的增加，可用链路变少，使得SRORSA的备选路径计算复杂度下降，PRORSA加速优势变小。另外，随着$ST$的增加，PRORSA 和SRORSA的波动幅度增加，这是因为由于链路繁忙，使得大量业务不能一次性加入，步骤二到步骤一之间的循环次数增加，使得某些业务到达点的业务需要多次的循环，计算时间变长。
+观察图\ref{B5T}到图\ref{B40T}，我们发现带权图下的PTESAA/STESAA的计算时间依然优于GRSA的计算时间。另外，随着网络拥塞程度的增加，可用链路变少，PTESAA对STESAA的加速比略有下降。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
@@ -572,14 +515,6 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \end{center}
 \caption{{\footnotesize{带权图时间对比（ST=5）}}}
 \label{H5T}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H10T.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图时间对比（ST=10）}}}
-\label{H10T}
 \end{figure*}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
@@ -592,53 +527,29 @@ $Pre$数组是前驱数组用以记录前驱信息来恢复路径，$Pre$数组�
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H30T.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图时间对比（ST=30）}}}
-\label{H30T}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H40T.pdf}}
 \end{center}
 \caption{{\footnotesize{带权图时间对比（ST=40）}}}
 \label{H40T}
 \end{figure*}
-\subsubsection{阻塞率分析}
 
-图 \ref{H10Z}到图 \ref{H40Z}展示了带权情况下随着$ST$的变化，PRORSA，SRORSA和GRSA的阻塞率变化情况，由于带权情况下的跳数也优化得很理想，所以其占用的链路资源也较少，阻塞情况得到改善。当$ST=10$时,我们发现PRORSA/SRORSA 的阻塞次数明显小于GRSA。 当$ST=20$ 时，PRORSA/SRORSA 的阻塞次数和阻塞幅度均小于GRSA，在GRSA中出现了一次相对较大的阻塞，但是PRORSA/SRORSA 中没有出现这种不平稳的阻塞率突变。当$ST=30$ 时，我们发现PRORSA/SRORSA的阻塞次数和阻塞幅度比GRSA小很多，GRSA的平均阻塞率是PRORSA/SRORSA的6倍左右。当$ST=40$时，PRORSA，SRORSA和GRSA 的阻塞率都增加很多，但是PRORSA/SRORSA的阻塞情况还是大大优于GRSA。
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H10Z.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图阻塞率对比（ST=10）}}}
-\label{H10Z}
-\end{figure*}
+\subsection{阻塞率分析}
+虽然在带权图中，TESAA目标是去优化路由代价，而并不是去优化路由跳数，但是路由代价较小也在一定程度上意味着路由的跳数较小。所以在带权图中，PTESAA/STESAA求得的路径跳数也比较小，使用的链路资源较少，从而也能优化阻塞率。如图\ref{H20Z}和图\ref{H40Z}所示，带权图下的PTESAA/STESAA算法的阻塞率依然比GRSA的阻塞率小很多。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H20Z.pdf}}
 \end{center}
-\caption{{\footnotesize{带权图阻塞率对比（ST=20）}}}
+\caption{{\footnotesize{带权图时间对比（ST=20）}}}
 \label{H20Z}
-\end{figure*}
-\begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H30Z.pdf}}
-\end{center}
-\caption{{\footnotesize{带权图阻塞率对比（ST=30）}}}
-\label{H30Z}
 \end{figure*}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H40Z.pdf}}
 \end{center}
-\caption{{\footnotesize{带权图阻塞率对比（ST=40）}}}
+\caption{{\footnotesize{带权图时间对比（ST=40）}}}
 \label{H40Z}
 \end{figure*}
 \section{本章总结}
-本章首先讨论了EON中的RSA问题，介绍了分层图模型，针对分层图模型设计了RORSA的算法框架，对框架中路由计算部分进行了并行设计，分别在无权图和带权图两种情况下设计了基于GPU的并行算法，实验发现RORSA能够大大优化路径跳数，路径代价和阻塞率，同时，并行算法PRORSA能加速达到5被以上。
+本章首先讨论了EON中的RSA问题，介绍了分层图模型，针对分层图模型设计了TESAA算法框架，对框架中路由计算部分进行了并行设计，分别在无权图和带权图两种情况下设计了基于GPU的并行算法，实验发现TESAA能够优化路径跳数，路径代价和阻塞率，同时，并行算法PTESAA对串行算法STESAA的加速比能达到5倍。

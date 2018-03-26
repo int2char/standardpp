@@ -8,8 +8,6 @@
  \cftsetpnumwidth {\widthof {VIII}-1pt} 
  \cftsetpnumwidth {\widthof {IX}-1pt} 
  \cftsetpnumwidth {\widthof {X}-1pt} 
- \cftsetpnumwidth {\widthof {XI}-1pt} 
- \cftsetpnumwidth {\widthof {XII}-1pt} 
  \cftsetpnumwidth {\widthof {1}-1pt} 
 \addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {2}-1pt} 
@@ -87,16 +85,11 @@
  \cftsetpnumwidth {\widthof {69}-1pt} 
  \cftsetpnumwidth {\widthof {70}-1pt} 
  \cftsetpnumwidth {\widthof {71}-1pt} 
+\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {72}-1pt} 
  \cftsetpnumwidth {\widthof {73}-1pt} 
  \cftsetpnumwidth {\widthof {74}-1pt} 
  \cftsetpnumwidth {\widthof {75}-1pt} 
  \cftsetpnumwidth {\widthof {76}-1pt} 
-\addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {77}-1pt} 
  \cftsetpnumwidth {\widthof {78}-1pt} 
- \cftsetpnumwidth {\widthof {79}-1pt} 
- \cftsetpnumwidth {\widthof {80}-1pt} 
- \cftsetpnumwidth {\widthof {81}-1pt} 
- \cftsetpnumwidth {\widthof {82}-1pt} 
- \cftsetpnumwidth {\widthof {83}-1pt} 
