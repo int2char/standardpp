@@ -88,7 +88,7 @@ CUDA是一种异构计算模型，CUDA程序在CPU和GPU上交互执行，CUDA�
 \caption{{\footnotesize{CUDA异构执行流程和线程组织}}}
 \label{ktz}
 \end{figure*}
-\subsection{CUD软件线程组织}
+\subsection{CUDA软件线程组织}
 
 一个CUDA程序包含大量并行执行的线程，在软件层面上，我将多个线程组成一个block，同一个block中的线程又被分成不同的warp组，一个block中的线程只能在同一个SM中执行，同一个block中的线程可以通过调用同步函数(\_\_syncthreads())进行同步，同一个blcok中的线程可以共同访存shared\_memory，通过shared\_memory实习通信。一个kernel函数可以在软件层面上产生大量的线程，这些线程被组织成一个一个的block，如果SM足够，这些block中的线程将被加载到SM 上调度执行，如果SM不足，block需要排队等待其他block完成执行。多个block组成一个Grid，block的维度可以是1-3维，图 \ref{ktz}展示了一个二维的block组织，每个block有自己的二维标号，同样每个block内部的线程也可以被组织成1-3维，图 \ref{ktz}展示了一个block内部的thread二维标号。
 
