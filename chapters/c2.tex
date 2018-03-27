@@ -514,20 +514,47 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 \label{PathAdj}
 \end{algorithm}
 
-路径调整算法的主要思想是通过调整一小部分业务的路径来得到原问题的优化可行解，算法首先对业务进行排序，这里采用3.3.1.2类似的思想对业务进行排序，一方面，要使得目标函数变小，那些流量需求较大的业务应该优先被加入到网络中，但是如果大流量的业务的路由代价很大，经过了一条很长的路径，就会大量的浪费网络中的链路容量资源，所以算法过程对当前解中的业务和其路径按照$\frac{bw_d}{\sqrt{|p_d|}}$的值进行排序，其中${bw_d}$代表业务$d$所需要的流量大小，$|p_d|$代表业务$d$的路径$p_d$的代价大小，这样按照顺序试图将业务加入到网络中，如果$rp_d>=bw_d$，表示业务可以被加入到网络中，那么加入此业务并且更新网络链路的剩余容量值，反之，如果$rp_d<bw_d$，则表示业务选择的路径上的链路容量不足以承载此业务，那么将业务加入剩余集合$D_l$ 中，循环结束后，得到一个剩余网络。根据前面的讨论，在剩余网络中可能存在一些等价路径，剩余链路中依然有很多可用资源，所以算法重新在剩余网络中为剩余业务计算路径，算法依次遍历集合$D_l$，看能否在剩余网络中为业务寻找一条路径，首先剔除那些链路剩余容量小于业务流量$bw_d$ 的链路，这样保证求出来的路径肯定是满足容量约束的，由于剩余链路是残余网络，所以可能会求出跳数很长的路径，如果跳数太长了，会占用太多的资源，不能达到优化的目的，所以我们对跳数进行约束，如果$|p|/|p_d|<\delta$，则将业务加入到网络中，并更新网络链路容量，否则不加人业务到网络中。虽然这个过程是串行的，但是这个过程是很快速的，这主要有以下原因：第一，由于剩余网络中的链路容量普遍较小，能参与计算的链路很少，对一个剩余业务$d$，在计算路径之前，算法会剔除那些剩余容量小于$bw_d$的链路，所以实际上参与计算的网络拓扑很小。第二，剩余业务量集合$D_l$本身较小，算法越往后面加入业务，可用链路会越来越小，网络会进一步变小。通过这个路径调整算法，可以得到原问题的一个优化可行解，这个解作为当前迭代产生的最优解，和全局最优解进行比较，如果这个解优于全局最优解则更新全局最优解。
-\subsection{仿真实验分析}
-\subsubsection {仿真介绍}
+路径调整算法的主要思想是通过调整一小部分业务的路径来得到原问题的优化可行解，算法首先对业务进行排序，这里采用3.3.1.2类似的思想对业务进行排序，一方面，要使得目标函数变小，那些流量需求较大的业务应该优先被加入到网络中，但是如果大流量的业务的路由代价很大，经过了一条很长的路径，就会大量的浪费网络中的链路容量资源，所以算法过程对当前解中的业务和其路径按照$\frac{bw_d}{\sqrt{|p_d|}}$的值进行排序，其中${bw_d}$代表业务$d$所需要的流量大小，$|p_d|$代表业务$d$的路径$p_d$的代价大小，这样按照顺序试图将业务加入到网络中，如果$rp_d>=bw_d$，表示业务可以被加入到网络中，那么加入此业务并且更新网络链路的剩余容量值，反之，如果$rp_d<bw_d$，则表示业务选择的路径上的链路容量不足以承载此业务，那么将业务加入剩余集合$D_l$ 中，循环结束后，得到一个剩余网络。根据前面的讨论，在剩余网络中可能存在一些等价路径，剩余链路中依然有很多可用资源，所以算法重新在剩余网络中为剩余业务计算路径，算法依次遍历集合$D_l$，看能否在剩余网络中为业务寻找一条路径，首先剔除那些链路剩余容量小于业务流量$bw_d$ 的链路，这样保证求出来的路径肯定是满足容量约束的，由于剩余链路是残余网络，所以可能会求出跳数很长的路径，如果跳数太长了，会占用太多的资源，不能达到优化的目的，所以我们对跳数进行约束，如果$|p|/|p_d|<\delta$，则将业务加入到网络中，并更新网络链路容量，否则不加人业务到网络中。虽然这个过程是串行的，但是这个过程是很快速的，这主要有以下原因：第一，由于剩余网络中的链路容量普遍较小，能参与计算的链路很少，对一个剩余业务$d$，在计算路径之前，算法会剔除那些剩余容量小于$bw_d$的链路，所以实际上参与计算的网络拓扑很小。第二，剩余业务量集合$D_l$本身较小，算法越往后面加入业务，可用链路会越来越小，网络会进一步变小。通过这个路径调整算法，可以得到原问题的一个优化可行解。
+\subsection{终止条件}
+LR-TEA的终止条件和GA-TE的终止条件一样，假设前$k$次迭代找到的最优解为$B^*$，第k+1次迭代找到最优解为$b_{k+1}^*$，如果$b_{k+1}^*<B^*$，那么就更新$B^*=b_{k+1}^*$，如果连续迭代$L$次，$B^*$都不被更新，则判定算法收敛，算法停止。
+\section{仿真实验分析}
 
-为了证明LR-PROA和GA-PROA的优化效果，我们把两个算法的优化结果和基于备选路径的MILP模型\citing{multi-commodity}的最优目标值进行比较，其中每个业务的备选路径数量为30条，我们使用CPLEX \citing{CPLEX}来求解MILP模型，由于CPLEX求解MILP需要很大的计算量，对于大规模的网络，我们无法得到MILP的最优值，因此我们设置了10分钟的求解时间限制，当Cplex求解时间超过10分钟后，我们停止求解过程，记录求得Cplex 求解的最优可行目标函数，以及MILP模型的最优值得下界。
-为了观察LR-PROA和GA-PROA的加速效果，我们分别设计两个算法串行版本LR-PROA和GA-PROA，并把LR-PROA和GA-PROA 与LR-PROA 和GA-PROA进行比较，其中LR-PROA中的路由算法采用带堆优化的dijkstra 算法，dijkstra算法的复杂度为($|N|\lg |N| +|E|$), 为了体现LR-PROA的加速效果，本文还对串行的dijkstra进行了进一步的优化，讨论如下：假设一批业务$D$ 的源节点相同，这一批业务的目的节点组成集合$D$,那么我们在求解dijkstra 算法时，当最小堆吐出了$D$ 中的所有点之后，我们就提前结束了dijkstra,所以当集合$D$ 比较小时，实际的算法复杂度一般是小于($|N|\lg |N| +|E|$) 的。
+\subsection {仿真介绍}
 
-我们分别采用ERdos-Renyi (ER) \citing{ER}和 Barab asi-Albert (BA) \citing{BA}两种模型来生成实验网络拓扑，实验中的网络拓扑中点的平均度数为6。 我们分别比较算法的目标函数，加速效果和算法的收敛性质，LR-PROA和LR-SROA中的$\delta$和$K$被分别设置为10 和30。GA-PROA与LR-PROA 都是通过CUDA 8.0 进行设计，跑算法的服务器配置有四个Intel Xeon E5-2630 CPU 和一个 NVIDIA Tesla K40M GPU。
+为了证明LR-PTEA和GA-PTEA的优化效果，我们把两个算法的优化结果和基于备选路径的MILP模型\citing{multi-commodity}的最优目标值进行比较，其中每个业务的备选路径数量$K=30$条，我们使用CPLEX \citing{CPLEX}来求解MILP模型，由于CPLEX求解MILP需要很大的计算量，对于大规模的网络，我们无法得到MILP的最优值，因此我们设置了10分钟的求解时间限制，当Cplex求解时间超过10分钟后，我们停止求解过程，记录Cplex求得的最优可行解和Cplex估计出来的最优下界。
+
+为了观察LR-PTEA和GA-PTEA的加速效果，我们分别设计了两种算法的串行版本LR-PTEA和GA-PTEA，并把LR-PTEA和GA-PTEA 与LR-PTEA 和GA-PTEA进行比较，其中LR-PTEA中的路由算法采用带堆优化的dijkstra算法。
+
+我们分别采用ERdos-Renyi (ER) \citing{ER}和 Barab asi-Albert (BA) \citing{BA}两种模型来生成实验网络拓扑，实验中的网络拓扑中点的平均度数为6，网络中的链路代价都是被设置为1。实验中我们随机产生一定数量的业务到达网络，每个业务的的流量大小被设置为1到100之间的随机值。
+
+本文分别比较了各个算法的目标函数，加速效果和算法的收敛性质。GA-PROA和LR-PROA中的并行算法都是使用CUDA 8.0 进行实现的，跑算法的服务器配置有四个Intel Xeon E5-2630 CPU 和一个 NVIDIA Tesla K40M GPU。
+
+实验中的所涉及到详细参数设置如表\ref{}所示：
+
+\begin{table}[t]
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\setlength{\abovecaptionskip}{0.2cm}
+\centering
+\scriptsize{
+\renewcommand{\tabcolsep}{0.09cm}
+\renewcommand{\arraystretch}{1.2}
+\caption{实验参数设置表}
+\begin{tabular}{| p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} |}
+\hline
+W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
+50&2&0.15&5000&500&2000&2500&1&30&30\\ \hline
+\end{tabular}
+\vskip 0.2 cm
+\label{Iterprocess2}
+}
+\end{table}
+
 \subsubsection{目标函数比较}
-图 \ref{OB-TA-200}和图 \ref{OB-TA}分别显示了在点数为200和1000的网络中，目标函数随着业务数量规模变化的折线图，图中的网络链路容量大小为100，业务的流量需求大小为$[1,100]$的均匀随机值。从图中我们可以看到目标函数大致随着业务数量呈现线性增加，这和目标函数的表达式相吻合。从图中可以看到LR-SROA/LR-PORA的算法优化目标明显优于遗传算法LR-PROA/LR-SROA,这是因为：1. 遗传算法提前陷入了局部最优解，导致算法提前结束。2.遗传算法是基于备选路径的，所以其没有LR-SPOA/LR-PROA 那么灵活， LR-SPOA/LR-PROA 会动态的寻找业务的路径，根据网络链路的动态状况重新求解路径，从而充分利用网络链路资源，从而减小目标函数。
+图 \ref{OB-TA}显示了在点数为1000的网络中，目标函数随着业务数量规模变化的折线图，图中的网络链路容量大小为100。从图中我们可以看到目标函数大致随着业务数量呈现线性增加，这和目标函数的表达式相吻合。从图中可以看到LR-STEA/LR-PTEA的算法优化目标明显优于遗传算法GA-STEA/GA-PTEA，这是因为 遗传算法提前陷入了局部最优解，导致算法提前结束。
 
-和MILP的Cplex解相比，在小网络（点为200）中，由于Cplex的计算压力不大，其计算出来的解略微优于LR-SPOA/LR-PROA。
-可以看到图中MILP-bound和LR-SPOA/LR-PROA差距很小，这说明在小网络下，LR-SPOA/LR-PROA 算法求出的解已经很接近MILP 的理论最优解了；在大网络中，由于Cplex的计算压力增大，LR-SPOA/LR-PROA的解已经优于Cplex 的解。比较MILP-bound 我们可以发现LR-SPOA/LR-PROA的解离MILP-bound 有一定差距，这是可能有两个原因：1.Cplex的计算压力大，导致求得的bound可能不够精确。2.LR-SPOA/LR-PROA陷入了局部最优解。
-图 \ref{OB-CA-200}和图 \ref{OB-CA}表示在容量变化下的目标函数值变化，其中业务数量为点数的6倍，网络链路容量从100到250变化。随着容量的增加目标函数大致呈现线性下降，这是因为链路容量增加后，网络资源增大，网络可容纳的业务增加，业务可选择的优化路径增增多，业务的路径代价下降，阻塞的大量减少，所以目标函数呈现大幅下降。
+和备选路径模型的Cplex解相比，LR-SPOA/LR-PROA的解明显优于Cplex的解。随着业务数量的增加，LR-SPOA/LR-PROA解和Cplex解得距离逐渐拉开，这是因为Cplex的计算压力随着业务规模的增加而增大，使得Cplex不能在有限时间内找到更好的解。
+
+图\ref{OB-CA}表示的是在容量变化下的目标函数值变化，其中业务数量6000，网络链路容量从100到250变化。我们看到，随着容量的增加目标函数大致呈现线性下降。当链路容量等于250时，LR-PTEA/LR-STEA已经很接近MILP 的下界了，这说明LR-PTEA/LR-STEA在网络资源较多时，也能很好得优化路由代价。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
@@ -545,17 +572,15 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 \label{OB-CA}
 \end{figure}
 \subsubsection{算法时间比较}
-图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}分别列出了算法在BA和ER拓扑下的计算时间随着业务数量增加的变化情况，图中拓扑节点数量为1000，业务数量从1000 到6000变化，业务流量为1到100的均匀随机值，链路的容量为100。由于各种算法的时间差距过大，我们用三种不同的尺度进行展示。首先，CPlex的时间限制都为10分钟，所以我们不再列出来。
+图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}分别列出了各个算法在BA和ER拓扑下的计算时间随着业务数量增加的变化情况，图中拓扑节点数量为1000，业务数量从1000 到6000变化，链路的容量为100。由于各种算法的时间差距过大，我们用三种不同的尺度进行展示。首先，CPlex的时间限制都为10分钟，所以我们不再列出来。
 
-图中我们可以看到GA-PROA相对于GA-SROA加速很多大约为30倍左右，但是由于遗传算法本身的缺陷，所以GA-PROA的计算时间是很糟糕的，这是因为基于备选路径的遗传算法的初始值染色体较差，所以需要大量的迭代次数才能收敛，而且遗传算法评价步骤的本身的计算量也很大。
+图中我们可以看到GA-PTEA相对于GA-STEA加速可达到20倍以上，但是由于遗传算法收敛较慢，所以GA-PTEA的计算时间是很糟糕的。
 
-观察LR-SPOA和LR-PROA，发现LR-SPOA和LR-PROA的时间曲线会发生大幅度的波动，这是因为，算法的迭代次数变化较大，我们设置算法在30次后未找到更优解之后停止，其实30次设置得偏小，算法有可能会找到更好的解，但是这些解的优化程度很小（通过收敛图 \ref{CO-LR-1000}，可以看到算法在前50次内下降幅度较大，后面的下降幅度很小），所以为了优化整体时间，我们设置迭代次数为较小的30 次，由于30 偏小，所以可能会导致算法的提前结束，从而导致算法的迭代次数变化幅度较大，从而引起整体时间上的幅度变化。
+观察图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}，发现LR-STEA和LR-PTEA的时间曲线会发生大幅度的波动，这是因为算法的迭代次数变化较大。根据3.4.5的讨论，在连续$L$次没有寻找到更优解后，LR-PTEA/LR-STEA就会停止，我们把$L$设置为30，其实$L$设置得偏小了，算法有可能会找到更好的解，但是这些解的下降程度很小（通过收敛图 \ref{CO-LR-1000}，可以看到算法在前30次内下降幅度较大，后面的下降幅度很小），所以为了优化整体时间，我们设置迭代次数为较小的30次，这样可能会使得算法提前结束，从而导致算法的迭代次数变化幅度较大。
 
-观察图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}，我们发现当业务数量增加到两倍点数以上后，LR-PROA相对于LR-SROA有较大加速，其中拓扑大小为1000 时，LR-PROA 相对与LR-SROA有平均6-7倍的加速。
+观察图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}，我们发现随着业务数量的增加，LR-PROA的加速优势变大。总体来看，LR-PROA相对与LR-SROA有平均5-6倍的加速。
 
-图 \ref{TI-ER-CA-1000}和图 \ref{TI-BA-CA-1000}表示算法时间随着网络链路容量的变化情况，其中业务数量为6倍网络的点数大小，在拓扑点数为1000的情况下，可以看到LR-PROA相对与LR-SROA有平均6-7倍的加速。
-
-图 \ref{TI-BA-NO}和图 \ref{TI-ER-NO}表示算法计算时间随着网络拓扑大小的变化情况，其中加入的业务数量为网络拓扑点数目的6倍，可以看到随着网络拓扑变大，计算时间也相应增加，GA-PROA的计算时间不管在在小拓扑还是大拓扑下都远远大于LR-PROA 的计算时间。拓扑较小时LR-PROA相对与LR-SROA的加速很小，当时随着网络的拓扑规模的增加，LR-PROA的计算时间大幅上升，而采用GPU上计算的LR-PROA 上升幅度较小，使得随着在网络拓扑达到一定规模后LR-PROA对LR-SROA有较大的加速优势，加速比随着网络拓扑大小的增大从开始的1倍变化到最后的接近9 倍，这充分体现出了GPU进行大规模计算的优势。
+图 \ref{TI-BA-NO}和图 \ref{TI-ER-NO}表示算法计算时间随着网络拓扑大小的变化情况，其中到达网络的业务数量为网络拓扑点数目的4倍，可以看到随着网络拓扑变大，计算时间也相应增加，GA-PTEA的计算时间不管在在小拓扑还是大拓扑下都远远大于LR-PTEA 的计算时间。拓扑较小时LR-PTEA相对与LR-STEA的加速很小，但随着网络拓扑规模的增加，LR-STEA的计算时间大幅上升，而采用GPU加速计算的LR-PTEA上升幅度较小，网络拓扑达到一定规模后LR-PTEA对LR-STEA有较大的加速优势。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
@@ -575,22 +600,6 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
-{\includegraphics[width=0.8 \textwidth]{figures/TI-ER-CA-1000.pdf}}
-\end{center}
-\caption{{\footnotesize{Time-Capacity(ER 1000)}}}
-\label{TI-ER-CA-1000}
-\end{figure}
-\begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
-\begin{center}
-{\includegraphics[width=0.8 \textwidth]{figures/TI-BA-CA-1000.pdf}}
-\end{center}
-\caption{{\footnotesize{Time-Capacity(ER 1000)}}}
-\label{TI-BA-CA-1000}
-\end{figure}
-\begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
-\begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/TI-BA-NO.pdf}}
 \end{center}
 \caption{{\footnotesize{Time-Node(BA)}}}
@@ -605,22 +614,22 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 \label{TI-ER-NO}
 \end{figure}
 \subsubsection{算法收敛性}
-图 \ref{CO-GA-1000} 和图 \ref{CO-LR-1000} 分别是GA-PROA和LR-PROA的收敛过程图。可以看到遗传算法的初始值较差，迭代次数较多，但是最终还是陷入了局部最优解，而LR-PROA的算法第一次的值已经很好，这是因为LR-PROA不是基于备选路径的，他会通过路径调整过程为业务重新寻找路径，从而得到一个较好的初始目标值，LR-PROA算法的目标函数值在很短的迭代次数里快速下降，但是LR-PROA的曲线不够平滑，说明算法的波动很大，收敛终止条件不好控制，这也是 图 \ref{TI-ER-TA-1000}和图 \ref{TI-BA-TA-1000}产生波动的原因。
+图 \ref{GA-CO} 和图 \ref{LR-CO}分别是GA-PTEA和LR-PTEA的收敛过程图。可以看到遗传算法的初始值较差，迭代次数较多，而且最终陷入到了局部最优解，而LR-PTEA的算法第一次的解已经很好，这是因为LR-PTEA不是基于备选路径的，他会通过路径调整策略为业务重新寻找路径，从而得到一个较好的初始目标值，LR-PROA的目标函数值在很短的迭代次数里快速下降，但是LR-PROA的曲线不够平滑，说明算法的波动较大，收敛终止条件不好控制，这也是图 \ref{TI-ER-TA-1000}和图\ref{TI-BA-TA-1000}产生波动的原因。
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
-{\includegraphics[width=0.8\textwidth]{figures/CO-GA-1000.pdf}}
+{\includegraphics[width=0.8\textwidth]{figures/GA-CO.pdf}}
 \end{center}
 \caption{{\footnotesize{GA-PROA 收敛性}}}
-\label{CO-GA-1000}
+\label{GA-CO}
 \end{figure}
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
-{\includegraphics[width=0.8 \textwidth]{figures/CO-LR-1000.pdf}}
+{\includegraphics[width=0.8 \textwidth]{figures/LR-CO.pdf}}
 \end{center}
 \caption{{\footnotesize{LR-PROA 收敛性}}}
-\label{CO-LR-1000}
+\label{LR-CO}
 \end{figure}
 \section{本章总结}
 本章研究了SDN网络下的并行业务量工程算法，首先提出了新的路由优化目标函数，建立了路由优化模型，设计了两种基于GPU的并行优化算法方案GA-PROA和LR-PROA，最后，进行实验，发现GA-PROA能够加速10-20倍，LR-PROA能够加速达到6倍，LR-PROA能够在短时间内得到目标函数的优化解。
