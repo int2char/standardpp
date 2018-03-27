@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  27 MAR 2018 18:35
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  27 MAR 2018 20:16
 entering extended mode
 **./main.tex
 (main.tex
@@ -2136,81 +2136,74 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 55--56
 
 ]
 Chapter 第一章.
-
-LaTeX Warning: Reference `shen' on page 1 undefined on input line 64.
-
 [1
 
-] [2]
-
-LaTeX Warning: Reference `5' on page 3 undefined on input line 85.
-
-[3] [4]
+] [2] [3] [4] [5]
 \openout2 = `chapters/c1.aux'.
 
  (chapters/c1.tex
 Chapter 第二章.
 File: figures/GPU&CPU.pdf Graphic file (type pdf)
 <use figures/GPU&CPU.pdf>
-[5
+[6
 
 
 ]
 File: figures/yigou.pdf Graphic file (type pdf)
 <use figures/yigou.pdf>
- [6]
+ [7]
 File: figures/arc.png Graphic file (type bmp)
 <figures/arc.png>
 File: figures/warpsketch.pdf Graphic file (type pdf)
 <use figures/warpsketch.pdf>
- [7]
+ [8]
 File: figures/smx.png Graphic file (type bmp)
 <figures/smx.png>
- [8]
+ [9]
 File: figures/block.pdf Graphic file (type pdf)
 <use figures/block.pdf>
- [9] [10] [11] [12]
+ [10] [11] [12] [13]
 File: figures/flow.pdf Graphic file (type pdf)
 <use figures/flow.pdf>
-) [13]
+) [14]
 \openout2 = `chapters/c2.aux'.
 
  (chapters/c2.tex
 Chapter 第三章.
-[14
+[15
 
 
 
-] [15]
+] [16]
 File: figures/GAprocess.pdf Graphic file (type pdf)
 <use figures/GAprocess.pdf>
- [16]
+ [17]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 94.
- [17] [18]
+ [18] [19]
 
 LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
 (Font)              using `TU/SimHei(0)/m/n' instead on input line 103.
 
-[19] [20]
+[20] [21]
 File: figures/GPUfitness.pdf Graphic file (type pdf)
 <use figures/GPUfitness.pdf>
- [21] [22]
+ [22] [23]
 File: figures/GPUchoose.pdf Graphic file (type pdf)
 <use figures/GPUchoose.pdf>
 File: figures/GPUcross.pdf Graphic file (type pdf)
 <use figures/GPUcross.pdf>
- [23] [24] [25]
+ [24] [25] [26]
 File: figures/lagrange.pdf Graphic file (type pdf)
 <use figures/lagrange.pdf>
 File: figures/paframework.pdf Graphic file (type pdf)
 <use figures/paframework.pdf>
- [26] [27]
+ [27] [28]
 File: figures/GPUimpl.pdf Graphic file (type pdf)
 <use figures/GPUimpl.pdf>
 File: figures/SynPro.pdf Graphic file (type pdf)
 <use figures/SynPro.pdf>
- [28] [29] [30]
+ [29] [30] [31]
 File: figures/IterNum.pdf Graphic file (type pdf)
 <use figures/IterNum.pdf>
 LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 407.
@@ -2220,10 +2213,10 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7.34996> on input line 407.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5.25> on input line 407.
- [31]
+ [32]
 File: figures/random.pdf Graphic file (type pdf)
 <use figures/random.pdf>
- [32] [33]
+ [33] [34]
 File: figures/PathAdj.pdf Graphic file (type pdf)
 <use figures/PathAdj.pdf>
 Missing character: There is no 的 in font rm-lmr12!
@@ -2232,18 +2225,18 @@ Missing character: There is no 余 in font rm-lmr12!
 Missing character: There is no 容 in font rm-lmr12!
 Missing character: There is no 量 in font rm-lmr12!
 
-[34] [35] [36]
+[35] [36] [37]
 
-LaTeX Warning: Reference `' on page 37 undefined on input line 532.
+LaTeX Warning: Reference `' on page 38 undefined on input line 532.
 
-[37]
+[38]
 File: figures/OB-TA.pdf Graphic file (type pdf)
 <use figures/OB-TA.pdf>
 File: figures/OB-CA.pdf Graphic file (type pdf)
 <use figures/OB-CA.pdf>
- [38]
+ [39]
 
-LaTeX Warning: Reference `CO-LR-1000' on page 39 undefined on input line 579.
+LaTeX Warning: Reference `CO-LR-1000' on page 40 undefined on input line 579.
 
 File: figures/TI-ER-TA-1000.pdf Graphic file (type pdf)
 <use figures/TI-ER-TA-1000.pdf>
@@ -2257,12 +2250,12 @@ File: figures/GA-CO.pdf Graphic file (type pdf)
 <use figures/GA-CO.pdf>
 File: figures/LR-CO.pdf Graphic file (type pdf)
 <use figures/LR-CO.pdf>
-[39] [40] [41] [42]) [43]
+[40] [41] [42] [43]) [44]
 \openout2 = `chapters/c3.aux'.
 
  (chapters/c3.tex
 Chapter 第四章.
-[44
+[45
 
 
 
@@ -2303,7 +2296,7 @@ Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr12!
- [45]
+ [46]
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
@@ -2312,23 +2305,23 @@ Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 File: figures/LAYER.pdf Graphic file (type pdf)
 <use figures/LAYER.pdf>
- [46]
+ [47]
 File: figures/bbprocess.pdf Graphic file (type pdf)
 <use figures/bbprocess.pdf>
- [47]
+ [48]
 File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
- [48]
+ [49]
 File: figures/hbfs.pdf Graphic file (type pdf)
 <use figures/hbfs.pdf>
- [49] [50] [51]
+ [50] [51] [52]
 Missing character: There is no ） in font rm-lmr12!
- [52] [53]
+ [53] [54]
 File: figures/DRK.pdf Graphic file (type pdf)
 <use figures/DRK.pdf>
- [54]
+ [55]
 
-LaTeX Warning: Reference `BBK' on page 55 undefined on input line 254.
+LaTeX Warning: Reference `BBK' on page 56 undefined on input line 254.
 
 File: figures/BBK.pdf Graphic file (type pdf)
 <use figures/BBK.pdf>
@@ -2339,7 +2332,7 @@ Overfull \hbox (27.16959pt too wide) in paragraph at lines 264--322
 U/SimSun(0)/m/n/12 所 示。|  在 $[][][][][][][][][][][][][][][][][][][][][]$
  []
 
-[55] [56] [57]
+[56] [57] [58]
 File: figures/B5H.pdf Graphic file (type pdf)
 <use figures/B5H.pdf>
 File: figures/B10H.pdf Graphic file (type pdf)
@@ -2348,7 +2341,7 @@ File: figures/B20H.pdf Graphic file (type pdf)
 <use figures/B20H.pdf>
 File: figures/B40H.pdf Graphic file (type pdf)
 <use figures/B40H.pdf>
- [58]
+ [59]
 File: figures/B5T.pdf Graphic file (type pdf)
 <use figures/B5T.pdf>
 File: figures/B10T.pdf Graphic file (type pdf)
@@ -2357,7 +2350,7 @@ File: figures/B20T.pdf Graphic file (type pdf)
 <use figures/B20T.pdf>
 File: figures/B40T.pdf Graphic file (type pdf)
 <use figures/B40T.pdf>
- [59] [60]
+ [60] [61]
 File: figures/B10Z.pdf Graphic file (type pdf)
 <use figures/B10Z.pdf>
 File: figures/B20Z.pdf Graphic file (type pdf)
@@ -2368,12 +2361,12 @@ File: figures/B40Z.pdf Graphic file (type pdf)
 <use figures/B40Z.pdf>
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
- [61] [62] [63]
+ [62] [63] [64]
 File: figures/H20C.pdf Graphic file (type pdf)
 <use figures/H20C.pdf>
 File: figures/H40C.pdf Graphic file (type pdf)
 <use figures/H40C.pdf>
- [64] [65]
+ [65] [66]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H20T.pdf Graphic file (type pdf)
@@ -2384,85 +2377,85 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [66]) [67] [68]
+ [67]) [68] [69]
 Chapter 第五章.
-[69
+[70
 
 
-] [70] [71
+] [71] [72
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 \TU/TimesNewRoman(0)/m/n/12 /stories/downloads/sdn-resources/onf-specifications
 /openflow/openflow-switch-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 []\TU/TimesNewRoman(0)/m/n/12 N. McKeown. Software-defined networking[J]. \TU/T
 imesNewRoman(0)/m/it/12 INFOCOM keynote
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 []\TU/TimesNewRoman(0)/m/n/12 Cisco Visual Networking Index: Forecast and Metho
 dology, 2016C2021,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 \TU/TimesNewRoman(0)/m/n/12 http://www.cisco.com/c/en/us/solutions/collateral/s
 ervice-provider/visual-
  []
 
-[72
+[73
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia. Programming guide: CUDA toolkit documenta
 tion,
  []
 
 
-Overfull \hbox (16.11295pt too wide) in paragraph at lines 148--149
+Overfull \hbox (16.11295pt too wide) in paragraph at lines 152--153
 \TU/TimesNewRoman(0)/m/n/12 http://docs.nvidia.com/cuda/cuda_c_programming_guid
 e/index.html#axzz4mVqP2TEC 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia.Programming guide: CUDA toolkit documentat
 ion,
  []
 
 
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
-(Font)              using `TU/SimSun(0)/m/n' instead on input line 152.
+(Font)              using `TU/SimSun(0)/m/n' instead on input line 156.
 
-[73] [74]
-Underfull \hbox (badness 1102) in paragraph at lines 207--208
+[74] [75]
+Underfull \hbox (badness 1102) in paragraph at lines 211--212
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 []\TU/TimesNewRoman(0)/m/n/12 IBM ILOG CPLEX Optimization Studio, https://www.i
 bm.com/bs-
  []
 
-[75]
+[76]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 237.
-[76]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 237.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+[77]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 237.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 237.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 248.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2475,12 +2468,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 37839 strings out of 427836
- 677913 string characters out of 3152479
+ 37831 strings out of 427836
+ 677319 string characters out of 3152479
  877957 words of memory out of 3000000
- 41205 multiletter control sequences out of 15000+200000
+ 41197 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (86 pages).
+Output written on main.pdf (87 pages).

@@ -61,7 +61,7 @@ For SDN elastic optical network, this paper uses layered graph model to optimize
 \section{研究背景与意义}
 软件定义网络(Software Defined Network，SDN)将网络的控制平面和数据平面分离开来，以集中的控制器视角为网络用户提供各种应用服务 \citing{OpenFlow} \citing{SDN}。SDN网络中的控制器负责对网络的控制和调度，同时控制器通过向上提供编程接口，使得网络控制规则可以根据不同的需求进行设计，使得网络的控制设计更加灵活，网络管理人员可以更方便的更新各种网络应用和服务，而无需关心底层的数据平面管理。在SDN底层数据平面中，各种网络设备被抽象简化，到达网络设备的数据流通过匹配控制器下发在设备中的流表规则来进行快速转发，和传统网络相比，SDN架构大大简化了网络设备的复杂功能，减小了网络成本。SDN架构中的控制器可以集中控制网络，控制器可以获得全网络的拓扑信息，同时，控制器能够通过下发流表规则来对网络流进行细粒度的调度，所以在SDN架构下可以很容易地实现基于全局网络的负载均衡，路由优化，Qos等功能。
 
-业务量工程（Traffic Engineering，TE，又被称为路由优化 routing optimization ，RO）是指通过为业务选择合理的网络路由来达到充分利用网络资源，最小化网络代价，提高网络性能，满足Qos需求等目标的优化过程。有几种技术可以在网络中实施业务量工程\ref{shen}，比如根据流量模式进行链路权重调整来实施业务量工程，在IP网络中通过MPLS来实现业务量工程，以及使用SDN控制器等集中式控制器来实现业务量工程。其中，SDN网络控制器能够获取全网的拓扑信息，并且可以对网络流实施细粒度的控制，微软 \citing{Microsoft}和谷歌 \citing{Google}的实验结果证明，在SDN网络结构的数据中心网络中，业务量工程能够在网络吞吐量和链路利用率上达到接近最优化性能的表现。
+业务量工程（Traffic Engineering，TE，又被称为路由优化 routing optimization ，RO）是指通过为业务选择合理的网络路由来达到充分利用网络资源，最小化网络代价，提高网络性能，满足Qos需求等目标的优化过程。有几种技术可以在网络中实施业务量工程\citing{shen}，比如根据流量模式进行链路权重调整来实施业务量工程，在IP网络中通过MPLS来实现业务量工程，以及使用SDN控制器等集中式控制器来实现业务量工程。其中，SDN网络控制器能够获取全网的拓扑信息，并且可以对网络流实施细粒度的控制，微软 \citing{Microsoft}和谷歌 \citing{Google}的实验结果证明，在SDN网络结构的数据中心网络中，业务量工程能够在网络吞吐量和链路利用率上达到接近最优化性能的表现。
 
 但是另一方面，SDN网络下的业务量工程为SDN控制器带来了较大的计算压力。这是因为，第一，随着网络应用的快速增加，在SDN网络中短时间内可能会有大量业务到达控制器 \citing{application}，所以控制平面必须短时间内为大量业务计算路由。第二，为了适应大量业务的加入，网络规模也快速增大\citing{5G} \citing{DCN}。第三，SDN技术使网络能够几乎满负荷运行\citing{Secondrouting}，这意味着一旦网络流量发生重大变化或者网络链路出现故障，SDN控制器需要在短时间内重新计算出路由。因此，在大网络下对大量业务进行快速和高效的业务量工程成为了一个重要却困难的问题。
 
@@ -82,9 +82,13 @@ GPGPU(general purpose programming on GPU)是指利用GPU进行通用计算（而
 \subsection{SDN 弹性光网络下业务量工程算法的研究现状}
 随着视频流、云计算服务和移动应用的普及，互联网的流量不断增加 \citing{EINC}，业务量的持续增长给互联网的传输带来了巨大的挑战，为了满足日益增长的容量要求，波分复用（WDM）系统已部署在骨干网络，其每个通道带宽高达40 GB/s或100 Gb/s。然而，传统的WDM光网络严格遵循ITU-T的固定均匀间距（通常为50GHz或100千兆赫) \citing{ETR}，这样会导致低效的频谱利用率，比如，一个较大的波长可能会被分配给一个低速率的业务，即使这个业务根本就不能占满整个波长。很明显，传统WDM 光网络的不灵活和粗粒度的带宽控制会导致显著的频谱浪费，限制了提高其网络容量的潜力。
 
-为了应对WDM网络的低敏捷性和频谱浪费问题，近年来，弹性光网络(EON)的架构被提出\ref{5}，在EON架构中，存在细粒度的带宽间隙（比如，12.5GHZ），他比WDM 网络所遵循的ITU标准的50GHZ或者100GHZ 的带宽粒度要小很多，而且，这些带宽间隙可以根据需要被组合在一起以提供更宽的通道，以灵活地适应各种速率的业务，提高频谱利用率。为了在EON网络中加入业务，控制平面必须在网络中找到一条路径，同时，还需要在此路径上的链路上分配足够的频谱带宽，来创建一个合适的端到端光路连接，这被称为路由和频谱分配（RSA，routing and sptrum allocation）问题。
+为了应对WDM网络的低敏捷性和频谱浪费问题，近年来，弹性光网络(EON)的架构被提出\citing{555}，在EON架构中，存在细粒度的带宽间隙（比如，12.5GHZ），他比WDM 网络所遵循的ITU标准的50GHZ或者100GHZ 的带宽粒度要小很多，而且，这些带宽间隙可以根据需要被组合在一起以提供更宽的通道，以灵活地适应各种速率的业务，提高频谱利用率。为了在EON网络中加入业务，控制平面必须在网络中找到一条路径，同时，还需要在此路径上的链路上分配足够的频谱带宽，来创建一个合适的端到端光路连接，这被称为路由和频谱分配（RSA，routing and sptrum allocation）问题。
 
-弹性光网络下的业务量工程问题需要考虑频谱分配问题，论文 \citing{ELAYER}中提出一种分层图模型来解决WDM网络中的路由和波长分配问题，这种分层图模型也可以很容易地推广到EON网络中，这种分层图模型将频谱分配问题转化为路由选择问题，使得频谱分配和业务量工程问题统一起来。但是分层图模型会引入大量的辅助网络拓扑，我们需要在不同的拓扑上计算路由，这使得业务量工程的计算量大大增加。不过，幸运的是，这些辅助网络拓扑之间的路由计算是相互独立的，这为设计并行的路由计算算法提供了可能性。
+RSA问题可以进一步分为静态RSA问题和动态RSA问题。静态的RSA问题出现在网络规划阶段，其中流量需求是已知的，这样可以离线计算出最优解。动态RSA问题是指在实时业务情况下光通路的路由选择和波长分配的优化问题，在动态RSA问题中，业务随机的到达和离开光网络，而且当业务到达网络时，控制平面需要在短时间内找到RSA解来安排业务。
+
+论文\citing{9,10,21}对动态RSA问题进行了研究，在文献\citing{9,10}中，作者提出两种基于K最短路径的动态RSA算法，算法为每个业务求得前K条最短路径，并检查这些路径上的频谱资源是否足够，选择一条频谱足够的路径作为业务的路由。但是由于K最短路径是预先计算出来的，所以算法在网络状态动态变化的情况下表现很差。文献\citing{21}提出了两种动态RSA算法分别被称为MSP(Modified Shortest Path)和SPV（Spectrum Constraint Path Search），MSP是基于dijkstra算法的，他在dijkstra最短路算法的计算过程中加入了对链路频谱的检查，从而得到满足频谱约束的路径，但是MSP算法的优化结果很糟糕。SPV算法则可以为业务寻找到满足频谱约束的最短路径，但是SPV算法的计算复杂度又太大。
+
+弹性光网络下的业务量工程等价于解决大量业务的RSA问题，也就是说弹性光网络下的业务量工程不仅要优化业务的路由代价还要把业务安排到满足频谱约束的路径上，这使得弹性光网络下的业务量工程更加复杂。论文\citing{ELAYER}中提出一种分层图模型来解决WDM网络中的路由和波长分配问题，这种分层图模型也可以很容易地推广到EON网络中，这种分层图模型将频谱分配问题转化为路由选择问题，使得频谱分配和业务量工程问题统一起来。但是分层图模型会引入大量的辅助网络拓扑，我们需要在不同的拓扑上计算路由，这使得业务量工程的计算量大大增加。不过，幸运的是，这些辅助网络拓扑之间的路由计算是相互独立的，这为设计并行的路由计算算法提供了可能性。
 
 \section{论文内容及结构安排}
 本文各个章节的内容如下：
@@ -231,8 +235,15 @@ R. Ramaswami and K. N. Sivarajan,Routing and wavelength assignment in all-optica
 \bibitem{ELAYER}
 敖发良 ,胡汉武,全光网静态路由选择和波长分配的分层图算法.\emph{光通信研究},vol.3,2003.
 \bibitem{shen}
-D. Awduche et. al, “Overview and Principles of Internet Traffic Engineering. \emph{IETF, RFC 3272}, 313-324, 2003.
-
+D. Awduche et. al,Overview and Principles of Internet Traffic Engineering. \emph{IETF, RFC 3272}, 313-324, 2003.
+\bibitem{555}
+M. Jinno, H. Takara, B. Kozicki, Y. Tsukishima, Y. Sone,and S. Matsuoka, Spectrum efficient and scalable elastic optical path network: architecture, benefits, and enabling technologies, \emph{IEEE Communication Magazine}, 2009,47(11),66-73.
+\bibitem{9}
+A.Pages,J.Perello,and S. Spadaro,Lightpath fragmentation for efficient spectrum utilization in dynamic elastic optical networks,\emph{International Conference on Optical Networking Design and Modeling},Colchester,UK, 2012.
+\bibitem{10}
+Y. Zhao, J. Zhang, X. Shu, J. Wang, and W. Gu, Routing and spectrum assignment in OFDM-based bandwidth variable optical networks, \emph{Opto-Electronics and Communications Conference}, 2011 ,543-544.
+\bibitem{21}
+H. Ding, M. Zhang, J. Xie, Y. Wang, F. Ye, L. Zhang, and X. Chen, Dynamic routing and frequency slot allocation in elastic optical Path network using adaptive modulations with consideration of both spectrum availability and distance, \emph{Asia Communications and Photonics Conference and Exhibition}, 2011.
 \end{thebibliography}
 \end{document}
 
