@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  27 MAR 2018 21:31
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  28 MAR 2018 11:52
 entering extended mode
 **./main.tex
 (main.tex
@@ -2072,57 +2072,58 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 44--45
 [] []
  []
 
-[2]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 50.
+[2] [3
+
+]
+Overfull \hbox (2.0pt too wide) in paragraph at lines 57--58
+[] []
+ []
+
+[4] (main.toc
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 17.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 50.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 17.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 50.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 17.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 50.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 17.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 50.
+(Font)              <12> on input line 17.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 50.
+(Font)              <8> on input line 17.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 50.
-LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+(Font)              <6> on input line 17.
+LaTeX Font Info:    Try loading font information for U+msa on input line 17.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+LaTeX Font Info:    Try loading font information for U+msb on input line 17.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3
-
-]
-Overfull \hbox (2.0pt too wide) in paragraph at lines 55--56
-[] []
- []
-
-[4] (main.toc [5
+) [5
 
 ] [6])
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
- [7] (main.lof [8
+ [7]
+(main.lof [8
 
 ])
 \tf@lof=\write9
@@ -2156,10 +2157,9 @@ File: figures/arc.png Graphic file (type bmp)
 <figures/arc.png>
 File: figures/warpsketch.pdf Graphic file (type pdf)
 <use figures/warpsketch.pdf>
- [8]
+ [8] [9]
 File: figures/smx.png Graphic file (type bmp)
 <figures/smx.png>
- [9]
 File: figures/block.pdf Graphic file (type pdf)
 <use figures/block.pdf>
  [10] [11] [12] [13]
@@ -2178,9 +2178,11 @@ Chapter 第三章.
 File: figures/GAprocess.pdf Graphic file (type pdf)
 <use figures/GAprocess.pdf>
  [17]
+Missing character: There is no ， in font rm-lmr12!
+ [18]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 94.
- [18] [19]
+ [19]
 
 LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
 (Font)              using `TU/SimHei(0)/m/n' instead on input line 103.
@@ -2385,25 +2387,25 @@ Chapter 第五章.
 ] [71] [72
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
 \TU/TimesNewRoman(0)/m/n/12 /stories/downloads/sdn-resources/onf-specifications
 /openflow/openflow-switch-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
 []\TU/TimesNewRoman(0)/m/n/12 N. McKeown. Software-defined networking[J]. \TU/T
 imesNewRoman(0)/m/it/12 INFOCOM keynote
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 []\TU/TimesNewRoman(0)/m/n/12 Cisco Visual Networking Index: Forecast and Metho
 dology, 2016C2021,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 \TU/TimesNewRoman(0)/m/n/12 http://www.cisco.com/c/en/us/solutions/collateral/s
 ervice-provider/visual-
  []
@@ -2411,35 +2413,35 @@ ervice-provider/visual-
 [73
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia. Programming guide: CUDA toolkit documenta
 tion,
  []
 
 
-Overfull \hbox (16.11295pt too wide) in paragraph at lines 152--153
+Overfull \hbox (16.11295pt too wide) in paragraph at lines 155--156
 \TU/TimesNewRoman(0)/m/n/12 http://docs.nvidia.com/cuda/cuda_c_programming_guid
 e/index.html#axzz4mVqP2TEC 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--155
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia.Programming guide: CUDA toolkit documentat
 ion,
  []
 
 
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
-(Font)              using `TU/SimSun(0)/m/n' instead on input line 156.
+(Font)              using `TU/SimSun(0)/m/n' instead on input line 159.
 
 [74] [75]
-Underfull \hbox (badness 1102) in paragraph at lines 211--212
+Underfull \hbox (badness 1102) in paragraph at lines 214--215
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
 []\TU/TimesNewRoman(0)/m/n/12 IBM ILOG CPLEX Optimization Studio, https://www.i
 bm.com/bs-
  []
@@ -2450,12 +2452,12 @@ Package glossaries Warning: No \printglossary or \printglossaries found.
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
 [77]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 248.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 248.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 247.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 247.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2468,10 +2470,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 37831 strings out of 427836
- 677319 string characters out of 3152479
- 877957 words of memory out of 3000000
- 41197 multiletter control sequences out of 15000+200000
+ 37829 strings out of 427836
+ 677313 string characters out of 3152479
+ 878957 words of memory out of 3000000
+ 41195 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,552s stack positions out of 5000i,500n,10000p,200000b,50000s

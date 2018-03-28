@@ -39,9 +39,9 @@
 \contentsline {subsection}{\numberline {2.2.3}存储结构}{10}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}流多处理器细节}{10}{subsection.2.2.4}
 \contentsline {subsection}{\numberline {2.2.5}执行模型}{10}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}CUDA编程模式}{10}{section.2.3}
  \cftsetpnumwidth {\widthof {11}-1pt} 
  \cftsetpnumwidth {\widthof {12}-1pt} 
+\contentsline {section}{\numberline {2.3}CUDA编程模式}{12}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}CUDA软件线程组织}{12}{subsection.2.3.1}
  \cftsetpnumwidth {\widthof {13}-1pt} 
 \contentsline {subsection}{\numberline {2.3.2}kernel函数}{13}{subsection.2.3.2}
