@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  28 MAR 2018 14:28
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  29 MAR 2018 11:49
 entering extended mode
 **./main.tex
 (main.tex
@@ -2071,7 +2071,7 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 44--45
 [2] [3
 
 ]
-Overfull \hbox (2.0pt too wide) in paragraph at lines 57--58
+Overfull \hbox (2.0pt too wide) in paragraph at lines 58--59
 [] []
  []
 
@@ -2219,6 +2219,7 @@ File: figures/random.pdf Graphic file (type pdf)
  [33] [34]
 File: figures/PathAdj.pdf Graphic file (type pdf)
 <use figures/PathAdj.pdf>
+Missing character: There is no ） in font rm-lmr12!
 Missing character: There is no 的 in font rm-lmr12!
 Missing character: There is no 剩 in font rm-lmr12!
 Missing character: There is no 余 in font rm-lmr12!
@@ -2318,13 +2319,6 @@ LaTeX Warning: Reference `BBK' on page 55 undefined on input line 254.
 
 File: figures/BBK.pdf Graphic file (type pdf)
 <use figures/BBK.pdf>
-
-Overfull \hbox (27.16959pt too wide) in paragraph at lines 264--322
-[]\TU/SimSun(0)/m/n/12 动 态 规 划 的 并 行 算 法 中 我 们 只 需 要 一 个 \TU/TimesNewRoman(0)/m
-/n/12 kernel\TU/SimSun(0)/m/n/12 ，|  如[][]\TU/TimesNewRoman(0)/m/n/12 4-6[][]\T
-U/SimSun(0)/m/n/12 所 示。|  在 $[][][][][][][][][][][][][][][][][][][][][]$
- []
-
 [55] [56] [57]
 File: figures/B5H.pdf Graphic file (type pdf)
 <use figures/B5H.pdf>
@@ -2370,7 +2364,7 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [66]) [67] [68]
+ [66] [67]) [68]
 Chapter 第五章.
 [69
 
@@ -2378,25 +2372,25 @@ Chapter 第五章.
 ] [70] [71
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 \TU/TimesNewRoman(0)/m/n/12 /stories/downloads/sdn-resources/onf-specifications
 /openflow/openflow-switch-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 []\TU/TimesNewRoman(0)/m/n/12 N. McKeown. Software-defined networking[J]. \TU/T
 imesNewRoman(0)/m/it/12 INFOCOM keynote
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--148
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
 []\TU/TimesNewRoman(0)/m/n/12 Cisco Visual Networking Index: Forecast and Metho
 dology, 2016C2021,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--148
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
 \TU/TimesNewRoman(0)/m/n/12 http://www.cisco.com/c/en/us/solutions/collateral/s
 ervice-provider/visual-
  []
@@ -2404,35 +2398,35 @@ ervice-provider/visual-
 [72
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia. Programming guide: CUDA toolkit documenta
 tion,
  []
 
 
-Overfull \hbox (16.11295pt too wide) in paragraph at lines 155--156
+Overfull \hbox (16.11295pt too wide) in paragraph at lines 156--157
 \TU/TimesNewRoman(0)/m/n/12 http://docs.nvidia.com/cuda/cuda_c_programming_guid
 e/index.html#axzz4mVqP2TEC 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 []\TU/TimesNewRoman(0)/m/n/12 Nvidia.Programming guide: CUDA toolkit documentat
 ion,
  []
 
 
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
-(Font)              using `TU/SimSun(0)/m/n' instead on input line 159.
+(Font)              using `TU/SimSun(0)/m/n' instead on input line 160.
 
 [73] [74]
-Underfull \hbox (badness 1102) in paragraph at lines 214--215
+Underfull \hbox (badness 1102) in paragraph at lines 215--216
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
 []\TU/TimesNewRoman(0)/m/n/12 IBM ILOG CPLEX Optimization Studio, https://www.i
 bm.com/bs-
  []
@@ -2443,12 +2437,12 @@ Package glossaries Warning: No \printglossary or \printglossaries found.
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 247.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
 [76]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 247.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 247.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 247.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 248.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
