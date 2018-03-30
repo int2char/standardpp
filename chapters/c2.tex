@@ -589,7 +589,7 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \caption{{\footnotesize{Time-Task(ER 1000)}}}
 \label{TI-ER-TA-1000}
 \end{figure}
-\begin{figure}
+\begin{figure} 
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/TI-BA-TA-1000.pdf}}
@@ -598,6 +598,7 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \label{TI-BA-TA-1000}
 \end{figure}
 \begin{figure}
+\vspace{-2.5cm} 
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/TI-BA-NO.pdf}}
@@ -606,16 +607,16 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \label{TI-BA-NO}
 \end{figure}
 \begin{figure}
+\vspace{-0.2cm} 
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
-{\includegraphics[width=0.8 \textwidth]{figures/TI-ER-NO.pdf}}
+{\includegraphics[width=0.8\textwidth]{figures/TI-ER-NO.pdf}}
 \end{center}
 \caption{{\footnotesize{Time-Node(ER)}}}
 \label{TI-ER-NO}
 \end{figure}
-\subsubsection{算法收敛性}
-图 \ref{GA-CO} 和图 \ref{LR-CO}分别是GA-PTEA和LR-PTEA的收敛过程图。可以看到遗传算法的初始值较差，迭代次数较多，而且最终陷入到了局部最优解，而LR-PTEA的算法第一次的解已经很好，这是因为LR-PTEA不是基于备选路径的，他会通过路径调整策略为业务重新寻找路径，从而得到一个较好的初始目标值，LR-PROA的目标函数值在很短的迭代次数里快速下降，但是LR-PROA的曲线不够平滑，说明算法的波动较大，收敛终止条件不好控制，这也是图 \ref{TI-ER-TA-1000}和图\ref{TI-BA-TA-1000}产生波动的原因。
 \begin{figure}
+\vspace{-0.2cm} 
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/GA-CO.pdf}}
@@ -626,11 +627,14 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \begin{figure}
 \setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
-{\includegraphics[width=0.8 \textwidth]{figures/LR-CO.pdf}}
+{\includegraphics[width=0.8\textwidth]{figures/LR-CO.pdf}}
 \end{center}
 \caption{{\footnotesize{LR-PROA 收敛性}}}
 \label{LR-CO}
 \end{figure}
+\subsubsection{算法收敛性}
+图 \ref{GA-CO} 和图 \ref{LR-CO}分别是GA-PTEA和LR-PTEA的收敛过程图。可以看到遗传算法的初始值较差，迭代次数较多，而且最终陷入到了局部最优解，而LR-PTEA的算法第一次的解已经很好，这是因为LR-PTEA不是基于备选路径的，他会通过路径调整策略为业务重新寻找路径，从而得到一个较好的初始目标值，LR-PROA的目标函数值在很短的迭代次数里快速下降，但是LR-PROA的曲线不够平滑，说明算法的波动较大，收敛终止条件不好控制，这也是图 \ref{TI-ER-TA-1000}和图\ref{TI-BA-TA-1000}产生波动的原因。
+
 \section{本章总结}
 本章研究了SDN网络下的并行业务量工程算法，首先提出了新的业务量工程效用函数，建立了业务量工程模型，设计了两种基于GPU的并行优化算法方案GA-PTEA和LR-PTEA，发现GA-PTEA的加速比可达20倍，LR-PTEA的加速比能达到6倍，LR-PTEA能够在短时间内得到目标函数的优化解。
 

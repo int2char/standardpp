@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  30 MAR 2018 12:37
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  30 MAR 2018 17:14
 entering extended mode
 **./main.tex
 (main.tex
@@ -2152,15 +2152,16 @@ File: figures/arc.png Graphic file (type bmp)
 <figures/arc.png>
 File: figures/warpsketch.pdf Graphic file (type pdf)
 <use figures/warpsketch.pdf>
- [8] [9]
+ [8]
 File: figures/smx.png Graphic file (type bmp)
 <figures/smx.png>
+ [9]
 File: figures/block.pdf Graphic file (type pdf)
 <use figures/block.pdf>
- [10] [11] [12] [13]
+ [10] [11]
 File: figures/flow.pdf Graphic file (type pdf)
 <use figures/flow.pdf>
-) [14]
+ [12] [13]) [14]
 \openout2 = `chapters/c2.aux'.
 
  (chapters/c2.tex
@@ -2243,7 +2244,7 @@ File: figures/GA-CO.pdf Graphic file (type pdf)
 <use figures/GA-CO.pdf>
 File: figures/LR-CO.pdf Graphic file (type pdf)
 <use figures/LR-CO.pdf>
- [40] [41]) [42] [43]
+ [40] [41] [42]) [43]
 \openout2 = `chapters/c3.aux'.
 
  (chapters/c3.tex
@@ -2327,7 +2328,7 @@ File: figures/B20H.pdf Graphic file (type pdf)
 <use figures/B20H.pdf>
 File: figures/B40H.pdf Graphic file (type pdf)
 <use figures/B40H.pdf>
- [58]
+ [58] [59] [60]
 File: figures/B5T.pdf Graphic file (type pdf)
 <use figures/B5T.pdf>
 File: figures/B10T.pdf Graphic file (type pdf)
@@ -2336,7 +2337,6 @@ File: figures/B20T.pdf Graphic file (type pdf)
 <use figures/B20T.pdf>
 File: figures/B40T.pdf Graphic file (type pdf)
 <use figures/B40T.pdf>
- [59] [60]
 File: figures/B10Z.pdf Graphic file (type pdf)
 <use figures/B10Z.pdf>
 File: figures/B20Z.pdf Graphic file (type pdf)
@@ -2345,14 +2345,13 @@ File: figures/B30Z.pdf Graphic file (type pdf)
 <use figures/B30Z.pdf>
 File: figures/B40Z.pdf Graphic file (type pdf)
 <use figures/B40Z.pdf>
+ [61]
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
- [61] [62] [63]
 File: figures/H20C.pdf Graphic file (type pdf)
 <use figures/H20C.pdf>
 File: figures/H40C.pdf Graphic file (type pdf)
 <use figures/H40C.pdf>
- [64] [65]
 File: figures/H5T.pdf Graphic file (type pdf)
 <use figures/H5T.pdf>
 File: figures/H20T.pdf Graphic file (type pdf)
@@ -2363,15 +2362,15 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [66] [67]) [68]
+ [62] [63] [64] [65] [66]) [67]
 Chapter 第五章.
 
-LaTeX Warning: Reference `SSP' on page 69 undefined on input line 119.
+LaTeX Warning: Reference `SSP' on page 68 undefined on input line 119.
 
-[69
+[68
 
 
-] [70] [71
+] [69] [70
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 134--135
@@ -2397,7 +2396,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 153--154
 ervice-provider/visual-
  []
 
-[72
+[71
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 161--162
@@ -2421,7 +2420,7 @@ ion,
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
 (Font)              using `TU/SimSun(0)/m/n' instead on input line 165.
 
-[73] [74]
+[72] [73]
 Underfull \hbox (badness 1102) in paragraph at lines 220--221
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
@@ -2433,18 +2432,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 230--231
 bm.com/bs-
  []
 
-[75]
+[74] [75]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 253.
-[76]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 253.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 261.
+[76
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 261.
  (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 253.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 253.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 261.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 261.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -2457,10 +2458,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 37839 strings out of 427836
- 677921 string characters out of 3152479
+ 37845 strings out of 427836
+ 677939 string characters out of 3152479
  873957 words of memory out of 3000000
- 41205 multiletter control sequences out of 15000+200000
+ 41211 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,552s stack positions out of 5000i,500n,10000p,200000b,50000s

@@ -83,8 +83,8 @@
  \cftsetpnumwidth {\widthof {66}-1pt} 
  \cftsetpnumwidth {\widthof {67}-1pt} 
  \cftsetpnumwidth {\widthof {68}-1pt} 
- \cftsetpnumwidth {\widthof {69}-1pt} 
 \addvspace {10\p@ }
+ \cftsetpnumwidth {\widthof {69}-1pt} 
  \cftsetpnumwidth {\widthof {70}-1pt} 
  \cftsetpnumwidth {\widthof {71}-1pt} 
  \cftsetpnumwidth {\widthof {72}-1pt} 

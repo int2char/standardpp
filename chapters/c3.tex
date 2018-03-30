@@ -365,7 +365,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 当网络状况较好的时候，比如，平均服务时间为$ST=5$时，PTESAA/STESAA计算得到的路由平均跳数为2.73，而GRSAA计算得到的路由平均跳数为3.73，PTESAA/STESAA得到的路由平均跳数要比GRSA得到的路由平均跳数少一跳左右。随着平均服务时间$ST$的增加，PTESAA/STESAA和GRSAA所计算出的路由平均跳数都有所增加，但是PTESAA/STESAA的增幅较小，从$ST=5$时的平均2.73增加到$ST=40$时的平均2.82，而GRSA的平均路由跳数随着$ST$的增加而大幅增加，从$ST=5$ 时的平均3.75增加到$ST=40$时的平均4.2，可见不管在网络空闲还是网络繁忙的情况下PTESAA都能很好地优化业务路由的跳数，减小对网络资源的占用。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B5H.pdf}}
 \end{center}
@@ -373,7 +373,8 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B5H}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-1cm}
+\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B10H.pdf}}
 \end{center}
@@ -381,7 +382,8 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B10H}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-2cm}
+\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B20H.pdf}}
 \end{center}
@@ -389,7 +391,8 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B20H}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-2cm}
+\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B40H.pdf}}
 \end{center}
@@ -404,7 +407,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 观察图\ref{B5T}到图\ref{B40T}，我们发现随着$ST$的变化，PTESAA对STEAA的加速比略有下降，这是因为随着网络压力的增加，可用链路变少，使得STESAA中步骤一的计算量下降，PTESAA的加速优势变小。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B5T.pdf}}
 \end{center}
@@ -420,10 +423,12 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B10T}
 \end{figure*}
 \begin{figure*}
+\vspace{-0.2cm}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B20T.pdf}}
 \end{center}
+%\vspace{-0.8cm}
 \caption{{\footnotesize{无权图时间对比（ST=20）}}}
 \label{B20T}
 \end{figure*}
@@ -470,7 +475,6 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \caption{{\footnotesize{无权图阻塞率对比（ST=40）}}}
 \label{B40Z}
 \end{figure*}
-
 \subsection{带权图下的仿真结果}
 \subsubsection{路由代价优化结果分析}
 \begin{figure*}
@@ -497,16 +501,6 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \caption{{\footnotesize{带权图路径权值对比（ST=40）}}}
 \label{H40C}
 \end{figure*}
-带权图情况下我们把网络中每条链路的权值设置为1到10之间的随机整数值。图 \ref{H5C}和图 \ref{H40C}表示了路由代价的优化结果，我们把PTESAA和STESAA的优化结果与贪心算法GRSAA的结果进行比较，图中的横坐标表示业务到达的次数，纵坐标表示业务路由的平均代价。
-
-当网络状况较好的时候，比如，平均服务时间为$ST=5$时，如图\ref{H5C}所示，算法PTESAA/STESAA得到的平均路由代价大约为GRSAA得到的平均路由代价的3到4分之一，路由代价得到很大优化。
-
-当网络较拥塞时，比如，平均服务时间为$ST=40$时，如图\ref{H40C}所示，由于网络中的可用链路变少，业务的路径选择空间变小，使得业务可能会选择代价较大的路径进行路由，所以PTESAA/STESAA算法得到的平均路由代价变大，但是PTESAA/STESAA的平均路由代价依然比GRSAA的平均路由代价小很多。
-
-\subsubsection{时间分析}
-图 \ref{H5T}到图 \ref{H40T}展示了带权图中各个算法在不同平均服务时间$ST$下的计算时间，当$ST=5$时，我们可以看到PTESAA的计算时间是STESAA的计算时间的1/4，和无权图下PTESAA算法的计算一样，带权图下的PTESAA计算中步骤一的GPU加速比也可达到7-8倍，但是由于步骤二的计算时间不可忽略，使得总体加速比降为4-5倍。
-
-观察图\ref{B5T}到图\ref{B40T}，我们发现带权图下的PTESAA/STESAA的计算时间依然优于GRSAA的计算时间。另外，随着网络拥塞程度的增加，可用链路变少，PTESAA对STESAA的加速比略有下降。
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
@@ -526,27 +520,40 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
+\vspace{-0.5cm}
 {\includegraphics[width=1 \textwidth]{figures/H40T.pdf}}
 \end{center}
 \caption{{\footnotesize{带权图时间对比（ST=40）}}}
 \label{H40T}
 \end{figure*}
 \begin{figure*}
+\vspace{-0.7cm}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H30Z.pdf}}
+{\includegraphics[width=0.8 \textwidth]{figures/H30Z.pdf}}
 \end{center}
-\caption{{\footnotesize{带权图时间对比（ST=30）}}}
+\caption{{\footnotesize{带权图阻塞率对比（ST=30）}}}
 \label{H30Z}
 \end{figure*}
 \begin{figure*}
 \setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=1 \textwidth]{figures/H40Z.pdf}}
+{\includegraphics[width=0.8 \textwidth]{figures/H40Z.pdf}}
 \end{center}
-\caption{{\footnotesize{带权图时间对比（ST=40）}}}
+\caption{{\footnotesize{带权图阻塞率对比（ST=40）}}}
 \label{H40Z}
 \end{figure*}
+带权图情况下我们把网络中每条链路的权值设置为1到10之间的随机整数值。图 \ref{H5C}和图 \ref{H40C}表示了路由代价的优化结果，我们把PTESAA和STESAA的优化结果与贪心算法GRSAA的结果进行比较，图中的横坐标表示业务到达的次数，纵坐标表示业务路由的平均代价。
+
+当网络状况较好的时候，比如，平均服务时间为$ST=5$时，如图\ref{H5C}所示，算法PTESAA/STESAA得到的平均路由代价大约为GRSAA得到的平均路由代价的3到4分之一，路由代价得到很大优化。
+
+当网络较拥塞时，比如，平均服务时间为$ST=40$时，如图\ref{H40C}所示，由于网络中的可用链路变少，业务的路径选择空间变小，使得业务可能会选择代价较大的路径进行路由，所以PTESAA/STESAA算法得到的平均路由代价变大，但是PTESAA/STESAA的平均路由代价依然比GRSAA的平均路由代价小很多。
+
+\subsubsection{时间分析}
+图 \ref{H5T}到图 \ref{H40T}展示了带权图中各个算法在不同平均服务时间$ST$下的计算时间，当$ST=5$时，我们可以看到PTESAA的计算时间是STESAA的计算时间的1/4，和无权图下PTESAA算法的计算一样，带权图下的PTESAA计算中步骤一的GPU加速比也可达到7-8倍，但是由于步骤二的计算时间不可忽略，使得总体加速比降为4-5倍。
+
+观察图\ref{B5T}到图\ref{B40T}，我们发现带权图下的PTESAA/STESAA的计算时间依然优于GRSAA的计算时间。另外，随着网络拥塞程度的增加，可用链路变少，PTESAA对STESAA的加速比略有下降。
+
 \subsubsection{阻塞率分析}
 虽然在带权图中，TESAA目标是去优化路由代价，而并不是去优化路由跳数，但是路由代价较小也在一定程度上意味着路由的跳数较小。所以在带权图中，PTESAA/STESAA求得的路径跳数也比较小，使用的链路资源较少，从而也能优化阻塞率。如图\ref{H30Z}和图\ref{H40Z}所示，带权图下的PTESAA/STESAA算法的阻塞率依然比GRSA的阻塞率小很多。
 
