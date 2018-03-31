@@ -3,7 +3,7 @@
 %%they are a single section
 \section{CPU与GPU}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/GPU&CPU.pdf}}
 \end{center}
@@ -27,7 +27,7 @@ GPU最初被设计来进行图像渲染，图像渲染具有高度的并行性�
 
 4.GPU上程序执行完毕，将结果写在GPU主存中，这时需要将结果重新拷贝回CPU主机端进行处理。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/yigou.pdf}}
 \end{center}
@@ -40,7 +40,7 @@ GPU最初被设计来进行图像渲染，图像渲染具有高度的并行性�
 
 我们以NVIDIA Kepler架构为例子来介绍GPU的硬件架构。图 \ref{KPA} 为Kepler的GPU架构模型细节，Kepler架构包含两个部分，流处理器阵列（core 部分）和存储系统（memory）部分，Kepler架构中的GPU上一共包含15个流多处理器（SM），所有流多处理器共享一个L2缓存。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/arc.png}}
 \end{center}
@@ -50,7 +50,7 @@ GPU最初被设计来进行图像渲染，图像渲染具有高度的并行性�
 \subsection {流处理器}
 我们看到GPU中主要组成部分是SM，一个SM（stream mutiprocessor）中含有大量的sp（stream processor），sp为GPU的计算核心，又称为流处理器，sp 是最基本的处理单元，指令和任务最终都是sp上处理的，我们可以将在一个sp上执行的流看做一个独立的线程（thread），如果一个GPU中有更多的SM，一个SM中有更多的sp，那么就意味着这个GPU 在相同的时间内可以并行处理更多的任务。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/warpsketch.pdf}}
 \end{center}
@@ -65,7 +65,7 @@ warp是SM上调度和执行的单位，一个SM中的所有线程会被分成一
 \subsection{存储结构}
 GPU中的每个SM中含有多种存储单元，包括寄存器，共享内存，常量内存，纹理内存。寄存器用来存储程序执行中的临时变量，同一个SM中的线程都能够访问共享内存，共享内存的访存速度大大高于主存的访存速度，所以在设计GPU并行代码时，我们常常先把频繁访问的数据提取到共享内存中，以减小延迟。另外，将中间结果存储在共享内存中，以减小对主存的访问，但是共享内存的大小是有限的，在Kepler架构中共享内存的大小为64KB。常量内存为只读内存，顾名思义他是用来缓存计算时需要的一些常量而专门设计的，常量内存大小为48KB。 纹理内存也是一种只读缓存，纹理内存是为图形学任务而设计的，在一些特殊的具有大量空间局部性的内存访问模式中能够提升性能并且减少内存流量。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/smx.png}}
 \end{center}
@@ -75,7 +75,7 @@ GPU中的每个SM中含有多种存储单元，包括寄存器，共享内存，
 \subsection{流多处理器细节}
 通过上面对sp，warp和存储器的介绍，我们再介绍下Kepler架构下的SM细节。从图 \ref{sm} 中，可以看到，Kepler架构下的SMX中包含192个单精度的CUDA core，64个双精度的单元（DP unit）和32个SFU(Special Function Unit, 特殊函数单元)，32个存储(load/store)单元，其中SFU用来执行超越函数、插值以及其他特殊运算。Kepler架构下的GPU的每个SM包含了4个warp调度器和8个指令发射器。 Kepler架构下的每个SM可以同时调度64个warp共计2048个thread，而Kepler架构中一共有15个SM，也就是说，同一时刻最大可以支持30720个线程在GPU上调度执行，所以GPU的并行能力相当强大。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.7 \textwidth]{figures/block.pdf}}
 \end{center}
@@ -98,7 +98,7 @@ kernel函数是GPU上每个线程执行的函数，kernel函数在主机端调�
 \subsection{CUDA线程同步}
 2.2.2介绍过同一个warp中的32个线程的执行是天然同步的，但是如果程序中存在更多的线程需求的话，我们就不能仅仅依赖于warp的性质进行同步，CUDA支持对同一个block中的所有线程进行同步，通过调用同步函数(\_\_syncthread())，一个block 中的线程可以实现同步，它表示block中所有的thread都要同步到这个点（\_\_syncthread()执行处）才能继续执行，这种同步操作相当与CPU上多线程的barrier(屏障)操作。GPU上的线程同步的另一个问题是线程的写操作的同步问题，多个线程同时写相同地址的数据不是线程安全的。CUDA提供了一系列的原子操作来对多个线程间的共享数据的读写进行互斥保护，比如atomicAdd函数，他对目标地址的值进行原子加法操作，保证每次只有一个线程能对数据进行加法操作。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/flow.pdf}}
 \end{center}

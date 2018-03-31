@@ -17,6 +17,8 @@
 % 
 
 
+
+
 \ProvidesClass{thesis-uestc}
 
 \LoadClass[12pt, openany, twoside]{book}
@@ -35,7 +37,7 @@
 \RequirePackage{mathspec}
 \RequirePackage{fontspec}
 \RequirePackage{bm}
-\RequirePackage{listings}
+%\RequirePackage{listings}
 \RequirePackage{xeCJK}
 \RequirePackage{ifplatform}
 
@@ -235,7 +237,10 @@
 \renewcommand{\listfigurename}{图目录}
 \renewcommand{\listtablename}{表目录}
 
+
+
 \pretocmd{\listoffigures}{
+\renewcommand{\cftbeforechapskip}{0em}
     \newpage
   \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 图目录}

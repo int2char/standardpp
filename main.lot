@@ -8,6 +8,8 @@
  \cftsetpnumwidth {\widthof {VIII}-1pt} 
  \cftsetpnumwidth {\widthof {IX}-1pt} 
  \cftsetpnumwidth {\widthof {X}-1pt} 
+ \cftsetpnumwidth {\widthof {XI}-1pt} 
+ \cftsetpnumwidth {\widthof {XII}-1pt} 
  \cftsetpnumwidth {\widthof {1}-1pt} 
 \addvspace {10\p@ }
  \cftsetpnumwidth {\widthof {2}-1pt} 

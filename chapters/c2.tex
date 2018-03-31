@@ -61,7 +61,7 @@ z^* = minimize~f(\mathbf{d})=
 \subsection{遗传算法设计}
 遗传算法是一种模拟自然进化过程搜索问题最优解的启发式算法，遗传算法模仿达尔文进化论和自然选择过程来评价挑选最优解集合，从而找寻较优化的解，遗传算法从一个代表问题的可行解的种群出发，一个种群中不同个体代表了不同的解，每个个体实际上是一个染色体，染色体携带表达当前解的信息编码，初代种群产生后，对每个染色体个体进行评价，按照适者生存，优胜劣汰的原则，使得较优的个体更有可能把自己的遗传信息传递给下一代，从而得到更优化的后代。在遗传算法的迭代过程中，一部分基因会发生变异，好的变异能够提高解的质量，增加算法的搜索空间，避免算法收敛于局部最优解。遗传算法的算法流程图如图\ref{IterNum} 所示，遗传算法先从初始种群开始，循环的地进行交叉，变异，评价选优这三种操作，最终得到一个最优秀的个体作为问题的优化解。
 \begin{figure}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/GAprocess.pdf}}
 \end{center}
@@ -173,6 +173,7 @@ z^* = minimize~f(\mathbf{d})=
 
 第二，效用函数计算部分：效用函数为每条链路的路由代价之和，算法需要先计算每一条链路上的代价值，我们在共享内存中开辟数组$sh$来对每一条边的代价进行统计，每一个线程负责对一条链路的路由代价进行计算。比如，线程$e$负责第$e$条边的代价计算，线程$e$首先判断链路的流量是否溢出（$ca_e<f_e$），如果溢出则说明此染色体表示的解不可行，设置$sh_e$为$\infty$，这使得这个染色体在排序时会被归类到劣等集合，从而在下一次迭代之前被剔除掉。反之，如果$f_e \le ca_e$，则说明链路容量足够，链路的代价为$f_e \cdot w_e$，设置$sh_e$为$f_e \cdot w_e$。和$f$数组的统计一样，当线程统计完成$sh_e$之后，也需要进行同步操作，等待其他线程完成统计。$sh_e$数组计算完成之后，还需要把$sh_e$中的值进行加和才能得到效用函数的值，为了充分利用GPU多线程，算法最后进行并行规约操作（20-26行）进行求和，for循环中每次将后一半的$sh$数组加到前一半，规约过程中必修进行同步（syncthreads()），以保证加法过程计算完整，最终求和值规约到$sh_0$，将$sh_0$中的值写入到$ob$数组中。
 \begin{figure}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/GPUfitness.pdf}}
 \end{center}
@@ -186,6 +187,7 @@ z^* = minimize~f(\mathbf{d})=
 
 交叉过程分为父母选取和交叉计算两个kernel，父母选取过程并行地选取$\beta$对父母，每个线程负责选取一对父母，并且将选取的父母下标记录到$father$和$mother$数组中,父母选取GPU计算示意图如下图\ref{pp}所示：
 \begin{figure}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/GPUchoose.pdf}}
 \end{center}
@@ -196,6 +198,7 @@ z^* = minimize~f(\mathbf{d})=
 
 父母选取过程结束后，在GPU端记录了所选取的$mother$和$father$数组，$mother$和$father$数组将用于交叉部分的计算，交叉部分的并行粒度更高，其中每个基因点的计算都是并行执行的，如下图 \ref{cross} 所示：
 \begin{figure}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/GPUcross.pdf}}
 \end{center}
@@ -261,10 +264,12 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 
 步骤四，更新链路权重，更新完毕后，如果停止条件不满足，则回到步骤二，进入下一轮迭代。
 \begin{figure}
+\vspace{-1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=0.8\textwidth]{figures/lagrange.pdf}}
+{\includegraphics[width=1\textwidth]{figures/lagrange.pdf}}
 \end{center}
-\caption{{\footnotesize{LR-PROA算法流程图}}}
+\caption{{\footnotesize{LR-PTEA算法流程图}}}
 \label{lpl}
 \end{figure}
 \subsection{基于GPU的并行路由计算}
@@ -299,7 +304,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \end{algorithm}
 文章 \citing{SSP1}提出一种Dijkstra最短路径算法在GPU上的并行实现，但是从算法结构上分析，Dijkstra最短路径算法并不适应于并行算法的设计，所以Dijkstra最短路径算法在GPU上的实现不能得到很好的加速效果，为了期望得到更好的加速效果，LR-PTEA选择Bellman-Ford \citing{NetworkFlow}最短路算法来进行并行实现。Bellman-Ford最短路算法逐步地减小距离标记 $Dist[v]（v\in V）$，直到其收敛到真实的最短距离。串行的Bellman-Ford算法流程如\ref{Bellman}所示，其中 $Dist[v]$ 表示距离起点$s$到$v$的最短路径距离，$Pre[v]$ 表示点$s$到点$v$ 的最短路径上$v$ 的前驱节点，在初始化好了所有节点的距离数组和前驱节点数组之后，Bellman-Ford算法最多迭代 $|V|$ 次。每一次迭代，算法都会松弛图$G(V, E)$中的所有的边（第10-11行）。Bellman-Ford 算法的算法复杂度为$(|V|\cdot |E|)$，他的复杂度一般是高于Dijkstra最短路径算法的复杂度，但是，因为Bellman-Ford算法每次松弛边的操作都是独立无关的，Bellman-For算法很容易在GPU上实现并行化。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/paframework.pdf}}
 \end{center}
@@ -311,7 +316,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 
 在本文的最短路算法的并行实现中，每个block内部的线程都松弛同一条链路，比如，在图 \ref{GB} 中，集合$\{T_{1j}, T_{2j}, \cdots, T_{ij}, \cdots, T_{kj}\}$都在$block_j$上执行，其中 $T_{ij}$为对应源节点为$s_i$ 的链路$e_i$执行松弛操作，其中，我们设链路$e_i$的头节点和尾节点分别为$h_i$ 和$t_i$，可以看到，当这次迭代存在链路更新，那么标记$Mark$会被设置成1，这是为了优化算法的迭代次数，当某次迭代结束$Mark=0$ 则表示这次迭代没有边进行了更新操作，说明Bellman 算法已经提前结束，实验证明这一个优化可以大大地减小Bellman算法的迭代运行次数。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/GPUimpl.pdf}}
 \end{center}
@@ -320,7 +325,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \end{figure*}
 
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/SynPro.pdf}}
 \end{center}
@@ -389,7 +394,7 @@ L^*(\mathbf{\lambda^*}) = maximize_{\mathbf{\lambda}}L(\mathbf{\lambda})
 \end{equation}
 为了保证收敛性，第$k$次迭代的更新步长($\theta_k$)可以被设置为 $\frac{1}{k}$ \citing{NetworkFlow}。 然而，通过仿真发现，当$\theta_k$被设置为 $\frac{1}{k}$时，其收敛缓慢。让我们考虑图 \ref{u1}的例子，其中链路$(i,j)$ 上的标记分别表示链路权重和链路上剩余的容量大小。假设现在有两个业务需求$d_1$ 和$d_2$，他们的源都是$A$，目的节点都是$D$，且每一个业务的流量大小都是4个单位。为了展示这个迭代过程，我们把算法前5次的迭代结果表示在表 \ref{Iterprocess1}中，从表中可以看到，业务计算出的最短路径一直在$A-B-D$和$A-C-D$ 之间徘徊。算法必修等到$A-B-D$ 和$A-C-D$ 的两条路的权重相等时才能停止，只有这样这两个业务才可能分离，其中一个选择$A-B-D$，而另一个选择$A-C-D$。 但是，正如表中所示这需要大量的迭代才能达到。
 \begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.4 \textwidth]{figures/IterNum.pdf}}
 \end{center}
@@ -434,7 +439,7 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 
 拉格朗日松弛法将原问题分解成了一个个独立的最短路径问题，这样使得算法可以并行化进行设计，但是由于每个子问题独立分离，使得每个问题在求最短路径时都是贪心的，这样可能会使得大量业务抢占同一批链路，造成拥塞，一旦拥塞，链路的权重就会增加，又会使得大量的业务集体放弃这一批链路，去抢占其他链路，使得其他链路也发生拥塞，形成一种恶性循环，最终会使得算法提前收敛到局部最优解。另外，为了最求快速收敛，我们简单地将步长设置为$\frac{1}{|c_{ij}-\sum\limits_{d \in D} x_{ij}^d bw_d|}$，就是对把每一个超过容量约束的边简单地增加一，这样粗粒度的增加，可能会加重上面讨论的拥塞循环。
 \begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.4 \textwidth]{figures/random.pdf}}
 \end{center}
@@ -445,7 +450,6 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 如图\ref{u2}所示，假设有存在两个业务$d_1$和$d_2$，其中$d_1$的源节点为$A$，目的节点为$G$，其流量大小为$5$，$d_2$ 的源节点为$B$，目的节点为$G$，其流量大小也为$5$，开始时两个都分别贪心地计算最短路径，$d_1$选择路径$A-C-E-G$，$d_2$选择路径$B-C-E-G$, 这样的话，链路$C-E$和$E-G$出现拥塞，表 \ref{Iterprocess2} 展示了这个迭代过程，图 \ref{u2}中最优的选择是让其中一个业务经过边$C-E-G$进行中继，另一个业务经过边$D-F-G$进行中继。但是的迭代过程始终无法使得两条链路发生分离，图中的链路权重始终无法达到最优条件，这是因为链路$C-E-G$和链路$D-F-G$每次超限都会为路径的总权重增加2个单位，这个算法的权重增加粒度太大，假设每次迭代时链路$C-E-G$总共只增加一个单位，那么算法只需要一次迭代就能达到最优条件，此时链路$C-E-G$由于超限，权重一共增加1个单位，那么路径$A-C-E-G$ 和路径$A-D-F-G$ 权重相等都为4，同样，路径$B-C-E-G$和路径$B-D-F-G$的权重也相等了，这样两个业务才会分离开（比如业务$d_1$选择链路$A-C-E-G$，业务$d_2$选择链路$B-D-F-G$）。但是在算法设计时，我们难以分辨哪些链路的组合会引起业务出现这种徘徊情况，为了解决链路增加粒度过大的情况，在本设计中我们采用随机更新的策略，也就是对一条流量超过容量约束的边$(i,j)$，我们以概率$\phi$ 来对他进行权重更新，每条边的权重增加粒度依然为1个单位，假设$\phi=0.5$，这种方法在一定概率上保证图 \ref{u2} 中的例子可以在一次迭代中收敛。我们的实验发现这种更新策略能够在保证算法收敛速度的同时，得到求解到更加优化的解。
 \begin{table}[t]
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
-\setlength{\abovecaptionskip}{0.2cm}
 \centering
 \scriptsize{
 \renewcommand{\tabcolsep}{0.09cm}
@@ -469,7 +473,7 @@ Iteration number & \tabincell{l}{Calculated paths for \\the two demands} & Path 
 \subsection{路径调整}
 注意到，在最优的权重代价（最优拉格朗日乘子）下，LR-PTEA求解到的路径集合解是拉格朗日对偶问题的优化解，但是它不一定是原来业务量工程问题的可行解。作为一个例子，考察图 \ref{ppt}中的情况，图中的元组中数字分别表示链路的代价和链路上的剩余容量大小，我们假设有两个业务需求$d_1$和$d_2$,其中两个业务的流量需求都是1个单位，假设在某一个迭代过程中，LR-PROA为两个业务算出来的链路都是$A-C-E-D$, 这种路径选择是对偶问题的最优解，但是他不是原问题的可行解，因为链路$(C,E)$ 上承载的链路容量大于了链路$(C,E)$ 上的容量。这是由于每个业务在选择路径的时候没有去考虑其他业务所选择的路径，但是我们容易看到这个例子中所有路径权重都一样（都等于3），也就是说，图中存在着大量的等价链路，但是在这个例子中两个业务恰好都选择了冲突的那一条路径$A-C-E-D$，如果业务$d_1$的路径被调整到$A-D$，业务$d_2$的链路被调整到$B-F$，那么，我们可以得到原问题的最优可行解，所以通过这里的启发，我们发现需要设计一种业务路径调整算法来主动避免链路出现冲突，来得到原问题的优化的可行解。
 \begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.4 \textwidth]{figures/PathAdj.pdf}}
 \end{center}
@@ -533,7 +537,7 @@ LR-TEA的终止条件和GA-TE的终止条件一样，假设前$k$次迭代找到
 
 \begin{table}[t]
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
-\setlength{\abovecaptionskip}{0.2cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \centering
 \scriptsize{
 \renewcommand{\tabcolsep}{0.09cm}
@@ -556,7 +560,7 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 
 图\ref{OB-CA}表示的是在容量变化下的目标函数值的变化，其中业务数量为6000，网络链路容量从100到250变化。我们看到，随着容量的增加目标函数大致呈现线性下降。当链路容量等于250时，LR-PTEA/LR-STEA已经很接近MILP 的下界了，这说明LR-PTEA/LR-STEA在网络资源较多时，也能很好得优化路由代价。
 \begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/OB-TA.pdf}}
 \end{center}
@@ -568,7 +572,7 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/OB-CA.pdf}}
 \end{center}
-\caption{{\footnotesize{Object-Capacity(1000)}}}
+\caption{{\footnotesize{Object-Capacity}}}
 \label{OB-CA}
 \end{figure}
 \subsubsection{算法时间比较}
@@ -582,24 +586,24 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 
 图 \ref{TI-BA-NO}和图 \ref{TI-ER-NO}表示算法计算时间随着网络拓扑大小的变化情况，其中到达网络的业务数量为网络拓扑点数目的4倍，可以看到随着网络拓扑变大，计算时间也相应增加，GA-PTEA的计算时间不管在小拓扑还是大拓扑下都远远大于LR-PTEA 的计算时间。拓扑较小时LR-PTEA相对与LR-STEA的加速很小，但随着网络拓扑规模的增加，LR-STEA的计算时间大幅上升，而采用GPU加速计算的LR-PTEA上升幅度较小，网络拓扑达到一定规模后LR-PTEA对LR-STEA有较大的加速优势。
 \begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/TI-ER-TA-1000.pdf}}
 \end{center}
-\caption{{\footnotesize{Time-Task(ER 1000)}}}
+\caption{{\footnotesize{Time-Task(ER)}}}
 \label{TI-ER-TA-1000}
 \end{figure}
 \begin{figure} 
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/TI-BA-TA-1000.pdf}}
 \end{center}
-\caption{{\footnotesize{Time-Task(BA 1000)}}}
+\caption{{\footnotesize{Time-Task(BA)}}}
 \label{TI-BA-TA-1000}
 \end{figure}
 \begin{figure}
-\vspace{-2.5cm} 
-\setlength{\belowcaptionskip}{-0.1cm}
+\vspace{-5cm} 
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/TI-BA-NO.pdf}}
 \end{center}
@@ -608,7 +612,7 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \end{figure}
 \begin{figure}
 \vspace{-0.2cm} 
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/TI-ER-NO.pdf}}
 \end{center}
@@ -617,7 +621,7 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \end{figure}
 \begin{figure}
 \vspace{-0.2cm} 
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/GA-CO.pdf}}
 \end{center}
@@ -625,7 +629,7 @@ W&$\delta$&$\phi$&POP&$\alpha$&$\beta$&$\gamma$&m&K&L\\ \hline
 \label{GA-CO}
 \end{figure}
 \begin{figure}
-\setlength{\belowcaptionskip}{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8\textwidth]{figures/LR-CO.pdf}}
 \end{center}

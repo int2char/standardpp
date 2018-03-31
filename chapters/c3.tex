@@ -26,7 +26,7 @@
 
 图 \ref{layer}展示了分层图的组织结构，原图被切割成一个分层图集合$L$，$L_i \in L$表示速率$i$的分层图集合。速率$r$一共有$|L_r|$个分层图，速率$r$的第$l$个分层图占用频谱$(fs_{（ (r,l) ）},fe_{（ (r,l) ）})$。图 \ref{layer}中，点$v_i^{（ (r,l) ）}$表示速率$r$的第$l$层图上的第$i$号点。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/LAYER.pdf}}
 \end{center}
@@ -38,9 +38,11 @@
 
 根据以上讨论，本节提出一个基于分层图模型的频谱分配与业务量工程算法（TESAA，traffic engineering and sptrum allocate algrithm），算法在进行频谱分配的同时对业务的路由代价进行优化，算法流程如下图 \ref{bblayer}所示：
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
-{\includegraphics[width=1 \textwidth]{figures/bbprocess.pdf}}
+{\includegraphics[width=1\textwidth]{figures/bbprocess.pdf}}
 \end{center}
 \caption{{\footnotesize{算法优化流程}}}
 \label{bblayer}
@@ -82,7 +84,8 @@ $AP$:加入业务的路径集合;
 
 如图\ref{bfs}所示，对速率都为$r$的一批业务，算法并行地在每个分层图上进行路由计算，在各个分层图上，具有相同源节点的业务组成业务组，因为他们的路径可以一起计算。对每一个业务组，在GPU 上开辟$|E|$个线程对每一条边进行扩展操作，那么整个过程的的并行粒度为$|L_r|\times|D_r|\times|E|$，其中$|D_r|$为速率为$r$的业务组数量。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/bfs.pdf}}
 \end{center}
@@ -92,7 +95,7 @@ $AP$:加入业务的路径集合;
 \subsection{不同速率间业务的并行}
 由于动态业务情况下每次到达网络的不同数率的业务数量是变化的，不同速率之间业务的并行不容易直接实现在一个kernel中进行，我们可以把不同速率的业务路由计算抽象成不同的任务，所以本文采用GPU提供的流并行进行并行设计。如图 \ref{bfssteam}所示：
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/hbfs.pdf}}
 \end{center}
@@ -243,17 +246,19 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 相同速率业务间的动态规划并行层次如图\ref{dbs}所示，对速率都为$r$的一批业务，算法并行地在每个分层图上进行路由计算，在各个分层图上，由于源节点相同的业务可以放在一起计算，我们先把业务按照源节点的不同分为一个个的业务组，为每一个业务组开辟|N|个线程进行$Price$数组的更新操作，这样总的并行粒度可达到$|N|\times|D|\times|L_r|$。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/DRK.pdf}}
 \end{center}
-\caption{{\footnotesize{同速率业务的BFS并行示意图}}}
+\caption{{\footnotesize{同速率业务的动态规划并行示意图}}}
 \label{dbs}
 \end{figure*}
 \subsection{不同速率间业务的并行}
 和BFS一样，对不同速率的业务，本文依然采用不同的流进行并行，其并行过程如图\ref{BBK}所示：
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/BBK.pdf}}
 \end{center}
@@ -312,7 +317,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \For{r in R}
 \State {在流$S_r$上发射 kernel\_dynamic\_update($PE$,$rid$,$k$)}
 \EndFor
-\State{k=k+1}
+\State{$k=k+1$}
 \EndWhile
 \State {根据前驱数组$Pre$重建路径，然后把路径加入到集合$P$}
 \end{algorithmic}
@@ -356,7 +361,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 当业务到达时，GRSAA先在第一层对所有业务求最短路径，为每个业务估计一个路径跳数值，按照这个跳数值对业务进行排序，这是为了优先加入较短的业务。然后，算法逐层去寻找是否能够把业务加入到网络中，如果能加入到当前层中，那么就更新当前层上的相应链路的占用情况，反之，就在下一层进行搜寻。如果所有层都无法加入这个业务，那么业务就被阻塞，业务被加入到阻塞集合。
 \subsection{实验设置}
-在本文的实验仿真中，假设存在两种速率的业务，并且已知两种速率的业务的大致比例为1:3。我们初始时为速率1的业务分配20层的频谱连续分层网络，为速率2的业务分配60层的频谱连续的分层网络。我们假设业务的到达服从泊松过程，一共产生了1000个到达事件，每两个连续的到达事件之间的时间间隔服从均值为4的负指数分布，当到达事件发生时，实验产生速率1的业务为$d_1$ 个，产生速率为2的业务$d_2$ 个，其中$d1$ 为$2 \cdot |N|$到$4 \cdot|N|$中的随机值，$d_2$为$6 \cdot |N|$到$12 \cdot |N|$之间的随机值。初始时网络的节点为$N$，平均度数为$4$。 每个业务的服务时间满足均值为$ST$的负指数分布。我们在不同$ST$下进行仿真，观察各种算法在不同服务压力下的优化情况。
+在本文的实验仿真中，网络的节点为数$N=100$，平均度数为$4$，业务的路径限制$W_{max}=8$。我们假设只存在两种速率的业务，并且已知两种速率的业务的大致比例为1:3。我们初始时为速率1的业务分配20层的频谱连续分层网络，为速率2的业务分配60层的频谱连续的分层网络。我们假设业务的到达服从泊松过程，一共产生了1000个到达事件，每两个连续的到达事件之间的时间间隔服从均值为4的负指数分布，当到达事件发生时，实验产生速率1的业务为$d_1$ 个，产生速率为2的业务$d_2$ 个，其中$d1$ 为$2 \cdot |N|$到$4 \cdot|N|$中的随机值，$d_2$为$6 \cdot |N|$到$12 \cdot |N|$之间的随机值。假设每个业务的服务时间满足均值为$ST$的负指数分布，我们观察各种算法在不同平均服务时间$ST$下的优化情况。
 
 \subsection{无权图下的仿真结果}
 \subsubsection{路由跳数优化结果分析}
@@ -365,7 +370,8 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 当网络状况较好的时候，比如，平均服务时间为$ST=5$时，PTESAA/STESAA计算得到的路由平均跳数为2.73，而GRSAA计算得到的路由平均跳数为3.73，PTESAA/STESAA得到的路由平均跳数要比GRSA得到的路由平均跳数少一跳左右。随着平均服务时间$ST$的增加，PTESAA/STESAA和GRSAA所计算出的路由平均跳数都有所增加，但是PTESAA/STESAA的增幅较小，从$ST=5$时的平均2.73增加到$ST=40$时的平均2.82，而GRSA的平均路由跳数随着$ST$的增加而大幅增加，从$ST=5$ 时的平均3.75增加到$ST=40$时的平均4.2，可见不管在网络空闲还是网络繁忙的情况下PTESAA都能很好地优化业务路由的跳数，减小对网络资源的占用。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B5H.pdf}}
 \end{center}
@@ -373,8 +379,9 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B5H}
 \end{figure*}
 \begin{figure*}
-\vspace{-1cm}
-\setlength{\belowcaptionskip}{-1cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B10H.pdf}}
 \end{center}
@@ -382,8 +389,9 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B10H}
 \end{figure*}
 \begin{figure*}
-\vspace{-2cm}
-\setlength{\belowcaptionskip}{-1cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B20H.pdf}}
 \end{center}
@@ -391,8 +399,19 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B20H}
 \end{figure*}
 \begin{figure*}
-\vspace{-2cm}
-\setlength{\belowcaptionskip}{-1cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-1cm}
+\begin{center}
+{\includegraphics[width=1 \textwidth]{figures/B30H.pdf}}
+\end{center}
+\caption{{\footnotesize{无权图路径跳数对比（ST=30）}}}
+\label{B20H}
+\end{figure*}
+\begin{figure*}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B40H.pdf}}
 \end{center}
@@ -407,7 +426,9 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 观察图\ref{B5T}到图\ref{B40T}，我们发现随着$ST$的变化，PTESAA对STEAA的加速比略有下降，这是因为随着网络压力的增加，可用链路变少，使得STESAA中步骤一的计算量下降，PTESAA的加速优势变小。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.1cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-0.1cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B5T.pdf}}
 \end{center}
@@ -415,7 +436,9 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B5T}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+%\setlength{\belowcaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B10T.pdf}}
 \end{center}
@@ -423,17 +446,17 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B10T}
 \end{figure*}
 \begin{figure*}
-\vspace{-0.2cm}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B20T.pdf}}
 \end{center}
-%\vspace{-0.8cm}
 \caption{{\footnotesize{无权图时间对比（ST=20）}}}
 \label{B20T}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B40T.pdf}}
 \end{center}
@@ -444,7 +467,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 
 图 \ref{B10Z}到图 \ref{B40Z}展示了随着$ST$的增加，PTESAA/STESAA和GRSA算法的阻塞率变化情况。其中PTESAA，STESAA由于是同一种算法，所以其阻塞率几乎一样。当$ST=10$时，我们发现PTESAA/STESAA的阻塞次数明显小于GRSAA。 当$ST=20$时，PTESAA/STESAA的阻塞次数和阻塞幅度均小于GRSAA，在GRSAA中出现了一次相对较大的阻塞，但是PTESAA/STESAA中没有出现这种不平稳的阻塞率突变。当$ST=30$时，我们发现PTESAA/STESAA的阻塞次数和阻塞幅度比GRSAA小很多，GRSAA的平均阻塞率是PTESAA/STESAA的6倍左右。当$ST=40$时，PTESAA，STESAA和GRSA的阻塞率都增加很多，但是PTESAA/STESAA的阻塞情况还是大大优于GRSA，可见在网络拥塞的情况下，PTESAA/STESAA依然能够有效的减小阻塞率。
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B10Z.pdf}}
 \end{center}
@@ -452,7 +475,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B10Z}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B20Z.pdf}}
 \end{center}
@@ -460,7 +483,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B20Z}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B30Z.pdf}}
 \end{center}
@@ -468,7 +491,7 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{B40Z}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/B40Z.pdf}}
 \end{center}
@@ -478,31 +501,35 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \subsection{带权图下的仿真结果}
 \subsubsection{路由代价优化结果分析}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H5C.pdf}}
 \end{center}
-\caption{{\footnotesize{带权图路径权值对比（ST=5）}}}
+\caption{{\footnotesize{带权图路由代价对比（ST=5）}}}
 \label{H5C}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H20C.pdf}}
 \end{center}
-\caption{{\footnotesize{带权图路径权值对比（ST=20）}}}
+\caption{{\footnotesize{带权图路由代价对比（ST=20）}}}
 \label{H20C}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H40C.pdf}}
 \end{center}
-\caption{{\footnotesize{带权图路径权值对比（ST=40）}}}
+\caption{{\footnotesize{带权图路由代价对比（ST=40）}}}
 \label{H40C}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H5T.pdf}}
 \end{center}
@@ -510,7 +537,8 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{H5T}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=1 \textwidth]{figures/H20T.pdf}}
 \end{center}
@@ -518,17 +546,18 @@ OPCost[i][j]=\min\limits_{k \in [1,W_{max}]}{Price[i][j][k]}
 \label{H20T}
 \end{figure*}
 \begin{figure*}
-\setlength{\belowcaptionskip}{-0.5cm}
-\begin{center}
 \vspace{-0.5cm}
+\setlength{\abovecaptionskip}{-0.5cm}
+\begin{center}
+\vspace{-0.1cm}
 {\includegraphics[width=1 \textwidth]{figures/H40T.pdf}}
 \end{center}
 \caption{{\footnotesize{带权图时间对比（ST=40）}}}
 \label{H40T}
 \end{figure*}
 \begin{figure*}
-\vspace{-0.7cm}
-\setlength{\belowcaptionskip}{-0.5cm}
+\vspace{-0.1cm}
+\setlength{\abovecaptionskip}{-0.5cm}
 \begin{center}
 {\includegraphics[width=0.8 \textwidth]{figures/H30Z.pdf}}
 \end{center}
