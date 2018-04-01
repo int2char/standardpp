@@ -17,8 +17,7 @@
   globally-deployed software defined wan[J]. Computer Communication Review,
   2013, 43(4):3-14.
 \bibitem{application} Cisco Visual Networking Index: Forecast and Methodology,
-  2016C2021,
-  http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.html
+  2016C2021,http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.html
 \bibitem{5G} S. S. Soliman and B. Song.Soliman S S, Song B. Fifth generation
   (5G)cellular and the network for tomorrow: cognitive and cooperative approach
   for energy savings[J]. Journal of Network \& Computer Applications, 2016, 85.
@@ -91,16 +90,16 @@
   architecture, benefits, and enabling technologies[J]. IEEE Communications
   Magazine, 2009, 47(11):66-73.
 \bibitem{wan} X. Wan, L. Wang, N. Hua, H. Zhang, and X. Zheng.Dynamic routing
-  and spectrum assignment in flexible optical path networks[C]// Optical Fiber
+  and spectrum assignment in flexible optical path networks[C].Optical Fiber
   Communication Conference and Exposition. IEEE, 2011:1-3.
 \bibitem{ELAYER} 敖发良
-  ,胡汉武.全光网静态路由选择和波长分配的分层图算法.光通信研究,2003,3
+  ,胡汉武.全光网静态路由选择和波长分配的分层图算法[J].光通信研究,2003,3
 \bibitem{MLU1} S. Kandula, D. Katabi, B. Davie, and A. Charny. Kandula S,
   Katabi D, Davie B, et al. Walking the tightrope:responsive yet stable traffic
   engineering[C].Conference on Applications. ACM, 2005:253-264.
 \bibitem{MLU2} H. Wang, H. Xie, and L. Qiu. COPE: traffic engineering in
-  dynamic networks[C]// Conference on Applications, Technologies,
-  Architectures, and Protocols for Computer Communications. ACM, 2006:99-110.
+  dynamic networks[C].Conference on Applications, Technologies, Architectures,
+  and Protocols for Computer Communications. ACM, 2006:99-110.
 \bibitem{Convex1} B. Fortz and M. Thorup. Internet traffic engineering by
   optimizing OSPF weights[C].INFOCOM 2000. Nineteenth Joint Conference of the
   IEEE Computer and Communications Societies. Proceedings. IEEE. IEEE,
@@ -134,7 +133,7 @@
   optical networks[C].Optical Fiber Communication Conference and Exposition and
   the National Fiber Optic Engineers Conference. IEEE, 2013:1-3.
 \bibitem{EDF} T. Wuth, M. W. Chbat, and V. F.kamalov.Multi-rate (100G/40G/10G)
-  Transport Over Deployed Optical Networks[C]// Optical Fiber
+  Transport Over Deployed Optical Networks[C] Optical Fiber
   communication/National Fiber Optic Engineers Conference, 2008. OFC/NFOEC
   2008. Conference on. IEEE, 2008:1-9.
 \bibitem{ETRP1} H. Zang, J. P. Jue, B. Mukherjee.A Review of Routing and

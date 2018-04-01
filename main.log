@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  1 APR 2018 22:59
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  1 APR 2018 23:15
 entering extended mode
 **./main.tex
 (main.tex
@@ -2322,43 +2322,43 @@ Underfull \hbox (badness 1540) in paragraph at lines 12--15
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--22
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 []\TU/TimesNewRoman(0)/m/n/10.5 Cisco Visual Networking Index: Forecast and Met
-hodology, 2016C2021,
+hodology,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--22
-\TU/TimesNewRoman(0)/m/n/10.5 http://www.cisco.com/c/en/us/solutions/collateral
-/service-provider/visual-networking-index-
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
+\TU/TimesNewRoman(0)/m/n/10.5 2016C2021,http://www.cisco.com/c/en/us/solutions/
+collateral/service-provider/visual-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--33
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
 []\TU/TimesNewRoman(0)/m/n/10.5 Nvidia. Programming guide: CUDA toolkit documen
 tation,
  []
 
 
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
-(Font)              using `TU/SimSun(0)/m/n' instead on input line 34.
+(Font)              using `TU/SimSun(0)/m/n' instead on input line 33.
 
 [70
 
 ] [71]
-Underfull \hbox (badness 2142) in paragraph at lines 108--111
+Underfull \hbox (badness 2142) in paragraph at lines 107--110
 \TU/TimesNewRoman(0)/m/n/10.5 Achieve Optimal Traffic Engineering[J]. IEEE/ACM 
 Transactions on Networking, 2011,
  []
 
 [72]
-Underfull \hbox (badness 10000) in paragraph at lines 111--113
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
 []\TU/TimesNewRoman(0)/m/n/10.5 Nvidia.Programming guide: CUDA toolkit document
 ation,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--124
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
 []\TU/TimesNewRoman(0)/m/n/10.5 N. McKeown.Software-defined networking[J].SIGCO
 MM Computer Communicaiton
  []
