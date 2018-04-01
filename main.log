@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  1 APR 2018 15:15
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  1 APR 2018 18:04
 entering extended mode
 **./main.tex
 (main.tex
@@ -1874,12 +1874,6 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (main.aux (chapters/c1.aux) (chapters/c2.aux) (chapters/c3.aux
 
-LaTeX Warning: Label `KernelBFS' multiply defined.
-
-
-LaTeX Warning: Label `ParaSPC' multiply defined.
-
-
 LaTeX Warning: Label `B20H' multiply defined.
 
 
@@ -2081,7 +2075,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Chapter 第一章.
 [1
 
-] [2] [3] [4] [5]
+]
+
+LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
+(Font)              using `TU/SimHei(0)/m/n' instead on input line 57.
+
+[2] [3] [4] [5]
 \openout2 = `chapters/c1.aux'.
 
  (chapters/c1.tex
@@ -2123,12 +2122,7 @@ File: figures/GAprocess.pdf Graphic file (type pdf)
  [17] [18]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 94.
- [19]
-
-LaTeX Font Warning: Font shape `TU/SimHei(0)/m/it' undefined
-(Font)              using `TU/SimHei(0)/m/n' instead on input line 103.
-
-[20] [21]
+ [19] [20] [21]
 File: figures/GPUfitness.pdf Graphic file (type pdf)
 <use figures/GPUfitness.pdf>
  [22] [23]
@@ -2147,7 +2141,8 @@ File: figures/GPUimpl.pdf Graphic file (type pdf)
 <use figures/GPUimpl.pdf>
 File: figures/SynPro.pdf Graphic file (type pdf)
 <use figures/SynPro.pdf>
- [29] [30]
+ [29]
+[30]
 File: figures/IterNum.pdf Graphic file (type pdf)
 <use figures/IterNum.pdf>
 LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 414.
@@ -2170,8 +2165,7 @@ Missing character: There is no 剩 in font rm-lmr12!
 Missing character: There is no 余 in font rm-lmr12!
 Missing character: There is no 容 in font rm-lmr12!
 Missing character: There is no 量 in font rm-lmr12!
-
-[35] [36] [37]
+ [35] [36] [37]
 File: figures/OB-TA.pdf Graphic file (type pdf)
 <use figures/OB-TA.pdf>
 File: figures/OB-CA.pdf Graphic file (type pdf)
@@ -2192,7 +2186,8 @@ File: figures/LR-CO.pdf Graphic file (type pdf)
  [39]) [40] [41] [42]
 \openout2 = `chapters/c3.aux'.
 
- (chapters/c3.tex
+
+(chapters/c3.tex
 Chapter 第四章.
 [43
 
@@ -2244,9 +2239,10 @@ Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 File: figures/LAYER.pdf Graphic file (type pdf)
 <use figures/LAYER.pdf>
+ [45]
 File: figures/bbprocess.pdf Graphic file (type pdf)
 <use figures/bbprocess.pdf>
- [45] [46] [47]
+ [46] [47]
 File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
 File: figures/hbfs.pdf Graphic file (type pdf)
@@ -2403,10 +2399,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 36599 strings out of 427836
- 659093 string characters out of 3152479
- 841218 words of memory out of 3000000
- 39990 multiletter control sequences out of 15000+200000
+ 36588 strings out of 427836
+ 658287 string characters out of 3152479
+ 842345 words of memory out of 3000000
+ 39979 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
