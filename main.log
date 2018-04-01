@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  31 MAR 2018 15:16
+This is XeTeX, Version 3.14159265-2.6-0.99999 (MiKTeX 2.9.6630 64-bit) (preloaded format=xelatex 2018.3.16)  1 APR 2018 15:15
 entering extended mode
 **./main.tex
 (main.tex
@@ -1880,12 +1880,6 @@ LaTeX Warning: Label `KernelBFS' multiply defined.
 LaTeX Warning: Label `ParaSPC' multiply defined.
 
 
-LaTeX Warning: Label `ParaSPC' multiply defined.
-
-
-LaTeX Warning: Label `ParaSPC' multiply defined.
-
-
 LaTeX Warning: Label `B20H' multiply defined.
 
 
@@ -2039,7 +2033,7 @@ Overfull \hbox (2.0pt too wide) in paragraph at lines 31--32
 [] []
  []
 
-[4] [5] (main.toc
+[4] (main.toc
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 11.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2076,14 +2070,14 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 11.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [6
+) [5
 
-] [7])
+] [6])
 \tf@toc=\write8
 \openout8 = `main.toc'.
 
- [8]
-[9]
+ [7]
+[8]
 Chapter 第一章.
 [1
 
@@ -2126,9 +2120,7 @@ Chapter 第三章.
 ] [16]
 File: figures/GAprocess.pdf Graphic file (type pdf)
 <use figures/GAprocess.pdf>
- [17]
-Missing character: There is no ， in font rm-lmr12!
- [18]
+ [17] [18]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 94.
  [19]
@@ -2147,31 +2139,31 @@ File: figures/GPUcross.pdf Graphic file (type pdf)
  [24] [25] [26]
 File: figures/lagrange.pdf Graphic file (type pdf)
 <use figures/lagrange.pdf>
-Missing character: There is no （ in font rm-lmr12!
-Missing character: There is no ） in font rm-lmr12!
+ [27]
 File: figures/paframework.pdf Graphic file (type pdf)
 <use figures/paframework.pdf>
- [27] [28]
+ [28]
 File: figures/GPUimpl.pdf Graphic file (type pdf)
 <use figures/GPUimpl.pdf>
 File: figures/SynPro.pdf Graphic file (type pdf)
 <use figures/SynPro.pdf>
- [29] [30] [31]
+ [29] [30]
 File: figures/IterNum.pdf Graphic file (type pdf)
 <use figures/IterNum.pdf>
-LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 412.
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 414.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.5> on input line 412.
+(Font)              <10.5> on input line 414.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.34996> on input line 412.
+(Font)              <7.34996> on input line 414.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.25> on input line 412.
- [32]
+(Font)              <5.25> on input line 414.
+ [31] [32]
 File: figures/random.pdf Graphic file (type pdf)
 <use figures/random.pdf>
- [33] [34]
+ [33]
 File: figures/PathAdj.pdf Graphic file (type pdf)
 <use figures/PathAdj.pdf>
+ [34]
 Missing character: There is no ） in font rm-lmr12!
 Missing character: There is no 的 in font rm-lmr12!
 Missing character: There is no 剩 in font rm-lmr12!
@@ -2179,12 +2171,12 @@ Missing character: There is no 余 in font rm-lmr12!
 Missing character: There is no 容 in font rm-lmr12!
 Missing character: There is no 量 in font rm-lmr12!
 
-[35] [36] [37] [38]
+[35] [36] [37]
 File: figures/OB-TA.pdf Graphic file (type pdf)
 <use figures/OB-TA.pdf>
 File: figures/OB-CA.pdf Graphic file (type pdf)
 <use figures/OB-CA.pdf>
- [39]
+ [38]
 File: figures/TI-ER-TA-1000.pdf Graphic file (type pdf)
 <use figures/TI-ER-TA-1000.pdf>
 File: figures/TI-BA-TA-1000.pdf Graphic file (type pdf)
@@ -2197,12 +2189,12 @@ File: figures/GA-CO.pdf Graphic file (type pdf)
 <use figures/GA-CO.pdf>
 File: figures/LR-CO.pdf Graphic file (type pdf)
 <use figures/LR-CO.pdf>
- [40] [41] [42]) [43]
+ [39]) [40] [41] [42]
 \openout2 = `chapters/c3.aux'.
 
  (chapters/c3.tex
 Chapter 第四章.
-[44
+[43
 
 
 
@@ -2243,7 +2235,7 @@ Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr12!
- [45]
+ [44]
 Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 Missing character: There is no （ in font rm-lmr8!
@@ -2252,26 +2244,22 @@ Missing character: There is no （ in font rm-lmr8!
 Missing character: There is no ） in font rm-lmr8!
 File: figures/LAYER.pdf Graphic file (type pdf)
 <use figures/LAYER.pdf>
- [46]
 File: figures/bbprocess.pdf Graphic file (type pdf)
 <use figures/bbprocess.pdf>
- [47] [48]
+ [45] [46] [47]
 File: figures/bfs.pdf Graphic file (type pdf)
 <use figures/bfs.pdf>
 File: figures/hbfs.pdf Graphic file (type pdf)
 <use figures/hbfs.pdf>
- [49] [50] [51]
+ [48] [49] [50]
 Missing character: There is no ） in font rm-lmr12!
- [52] [53] [54]
+ [51] [52]
 File: figures/DRK.pdf Graphic file (type pdf)
 <use figures/DRK.pdf>
-
-
-LaTeX Warning: Reference `BBK' on page 55 undefined on input line 258.
-
+ [53]
 File: figures/BBK.pdf Graphic file (type pdf)
 <use figures/BBK.pdf>
-[55] [56] [57]
+ [54] [55] [56]
 File: figures/B5H.pdf Graphic file (type pdf)
 <use figures/B5H.pdf>
 File: figures/B10H.pdf Graphic file (type pdf)
@@ -2282,7 +2270,7 @@ File: figures/B30H.pdf Graphic file (type pdf)
 <use figures/B30H.pdf>
 File: figures/B40H.pdf Graphic file (type pdf)
 <use figures/B40H.pdf>
- [58] [59] [60]
+ [57]
 File: figures/B5T.pdf Graphic file (type pdf)
 <use figures/B5T.pdf>
 File: figures/B10T.pdf Graphic file (type pdf)
@@ -2291,6 +2279,8 @@ File: figures/B20T.pdf Graphic file (type pdf)
 <use figures/B20T.pdf>
 File: figures/B40T.pdf Graphic file (type pdf)
 <use figures/B40T.pdf>
+
+[58] [59]
 File: figures/B10Z.pdf Graphic file (type pdf)
 <use figures/B10Z.pdf>
 File: figures/B20Z.pdf Graphic file (type pdf)
@@ -2299,10 +2289,10 @@ File: figures/B30Z.pdf Graphic file (type pdf)
 <use figures/B30Z.pdf>
 File: figures/B40Z.pdf Graphic file (type pdf)
 <use figures/B40Z.pdf>
- [61]
+ [60]
 File: figures/H5C.pdf Graphic file (type pdf)
 <use figures/H5C.pdf>
- [62] [63]
+ [61] [62]
 File: figures/H20C.pdf Graphic file (type pdf)
 <use figures/H20C.pdf>
 File: figures/H40C.pdf Graphic file (type pdf)
@@ -2317,15 +2307,15 @@ File: figures/H30Z.pdf Graphic file (type pdf)
 <use figures/H30Z.pdf>
 File: figures/H40Z.pdf Graphic file (type pdf)
 <use figures/H40Z.pdf>
- [64] [65]) [66] [67]
+ [63] [64]) [65] [66]
 Chapter 第五章.
 
-LaTeX Warning: Reference `SSP' on page 68 undefined on input line 92.
+LaTeX Warning: Reference `SSP' on page 67 undefined on input line 92.
 
-[68
+[67
 
 
-] [69] [70
+] [68] [69
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 107--108
@@ -2351,7 +2341,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--127
 ervice-provider/visual-
  []
 
-[71
+[70
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 134--135
@@ -2375,7 +2365,7 @@ ion,
 LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
 (Font)              using `TU/SimSun(0)/m/n' instead on input line 138.
 
-[72] [73]
+[71] [72]
 Underfull \hbox (badness 1102) in paragraph at lines 193--194
 []\TU/TimesNewRoman(0)/m/n/12 A. Sharma, A. Mishra, V. Kumar, and A. Venkataram
 ani. Beyond MLU: an
@@ -2387,14 +2377,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--204
 bm.com/bs-
  []
 
-[74] [75]
+[73] [74]
 
 Package glossaries Warning: No \printglossary or \printglossaries found. 
 (Remove \makeglossaries if you don't want any glossaries.) 
 This document will not have a glossary.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 234.
-[76
+[75
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
@@ -2413,12 +2403,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 36598 strings out of 427836
- 659088 string characters out of 3152479
- 837104 words of memory out of 3000000
- 39989 multiletter control sequences out of 15000+200000
+ 36599 strings out of 427836
+ 659093 string characters out of 3152479
+ 841218 words of memory out of 3000000
+ 39990 multiletter control sequences out of 15000+200000
  585197 words of font info for 133 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  58i,27n,81p,10492b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on main.pdf (85 pages).
+Output written on main.pdf (83 pages).
