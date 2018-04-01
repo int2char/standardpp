@@ -87,142 +87,24 @@ RSA问题可以进一步分为静态RSA问题和动态RSA问题。静态的RSA�
 
 本文首先简要介绍了GPU的并行优化原理，主要包括GPU与CPU的区别，GPU的架构特点和CUDA编程模式。
 
-第三章在SDN IP网络中，本文将业务量工程问题建模成一个带链路容量约束的以路由代价为目标的MILP模型，为了解决这个MILP模型，本文提出了GA-PTEA和LR-PTEA两种基于GPU的并行算法，并对两种算法的GPU并行设计细节进行了讨论。并行算法GA-PTEA的加速比虽然可以达到20倍以上，但是由于遗传算法收敛缓慢的原因，其时间表现并不理想，另外由于遗传算法容易陷入局部最优解所以GA-PTEA求得的解比较差，但是本文中提出的带资源约束的并行遗传算法设计方法也可以应用到其他带资源约束情况下的优化问题中。LR-PTEA能够在短时间内得到业务量工程模型的优化解，说明拉格朗日松弛方法更加适合解决这种资源分配问题，本文设计的对拉格朗日子问题的并行求解方法，可以被应用到其他的以路由代价为目标的优化问题中，如果将优化问题的约束松弛进目标函数后，原优化问题可以被分解为独立的最短路径问题，我们就可以使用本文类似的并行算法来加速这些子问题的求解，这种以路由代价为目标的带约束优化问题，在实际中很常见。
+第三章在SDN IP网络中，本文将业务量工程问题建模成一个带链路容量约束的以路由代价为目标的MILP模型，为了解决这个MILP模型，本文提出了GA-PTEA和LR-PTEA两种基于GPU的并行算法，并对两种算法的GPU并行设计细节进行了讨论。并行算法GA-PTEA的加速比虽然可以达到20倍以上，但是由于遗传算法收敛缓慢的原因，其时间表现并不理想，另外由于遗传算法容易陷入局部最优解，所以GA-PTEA求得的解比较差，但是本文中提出的带资源约束的并行遗传算法设计方法也可以应用到其他带资源约束情况下的优化问题中。LR-PTEA能够在短时间内得到业务量工程模型的优化解，说明拉格朗日松弛方法更加适合解决这种资源分配问题，本文设计的对拉格朗日子问题的并行求解方法，可以被应用到其他的以路由代价为目标的优化问题中，如果将优化问题的约束松弛进目标函数后，原优化问题可以被分解为独立的最短路径问题，我们就可以使用本文类似的并行算法来加速这些子问题的求解，这种以路由代价为目标的带资源约束的优化问题，在实际中很常见。
 
-第四章针对SDN弹性光网络，本文采用分层图模型将频谱分配问题转化为路由选择问题，并且利用分层图之间的独立特性来设计并行的业务量工程算法PTESAA，利用GPU强大的并行计算能力，PTESAA在不同的分层图上搜索路径，在短时间内为业务的路由选择提供了更大的空间，从而优化了业务的路由代价，节省了网络资源的使用，降低阻塞率。第四章提出的并行BFS算法的并行粒度为$|E|$大大高于文献\ref{SSP}中提出的BFS算法的并行粒度(为$|N|$)，能够获得更高的加速比。第四章提出的动态规划算法可以在多项式时间复杂度（$W_{max}\times|E|$）内解决带跳数约束的最短路径问题，能应用到更多的场景当中。
+第四章针对SDN弹性光网络，本文采用分层图模型将频谱分配问题转化为路由选择问题，并且利用分层图之间的独立特性来设计并行的业务量工程算法PTESAA，利用GPU强大的并行计算能力，PTESAA在不同的分层图上搜索路径，在短时间内为业务的路由选择提供了更大的空间，从而优化了业务的路由代价，节省了网络资源的使用，降低阻塞率。第四章提出的并行BFS算法的并行粒度为$|E|$大大高于文献\citing{SSP1}中提出的BFS算法的并行粒度(为$|N|$)，能够获得更高的加速比。第四章提出的动态规划算法可以在多项式时间复杂度（$W_{max}\times|E|$）内解决带跳数约束的最短路径问题，能应用到更多的场景当中。
 
 \section{后续工作展望}
-GPU并不擅长分支较多的计算，GPU更加适合逻辑简单但计算量很大的任务加速，而路由算法中计算操作并不多，而大部分是逻辑计算，这也是为什么本文中的路由算法只能获得小于10倍加速的原因，而且本文中的算法只能在业务数量达到一定规模的情况下才能达到加速效果，本文只利用了GPU的并行处理能力，而没有充分利用GPU的大规模浮点计算能力，这也是GPU应用在路由算法上的限制，所以在今后的工作中可以挖掘更多的计算密集型的任务进行GPU加速。
+GPU并不擅长分支较多的计算，GPU更加适合加速逻辑简单但计算量很大的任务，而路由算法中计算操作并不多，大部分是逻辑计算，这也是为什么本文中的路由算法只能获得小于10倍加速的原因，而且本文中的算法只能在业务数量达到一定规模的情况下才能达到加速效果。本文只利用了GPU的并行处理能力，而没有充分利用GPU的大规模浮点计算能力，这也是GPU应用在路由算法上的限制，所以在今后的工作中可以挖掘更多的计算密集型的任务进行GPU加速。
 
 在研究本次毕业设计的过程中，本人除了设计GA-PTEA，LR-PTEA和TESAA算法之外，还针对弹性光网络分层图上的网络流问题进行了基于GPU的并行化研究，本人对预流推进算法进行了并行化的设计并在其中加入跳限约束。但是由于算法逻辑复杂，加速效果并不好，只能在一些特殊情况，比如流很多的情况下才有一定的加速比，所以这部分工作并没有被写进本次设计，后续我将会继续改进这个预流推进算法，希望可以得到好的加速效果。
 \thesisacknowledgement
-首先我要感谢我的导师王雄老师，感谢他给我的一切。早在论文开题前，王老师就为我确定好了研究方向，使得我不再迷惘彷徨，在毕业设计的研究当中，我常常会因为自己的粗心大意和不严谨的做法导致错误而陷入困难当中，而王老师总是能够耐心的对我进行指导和鼓舞，使我重新找到自信去克服困难，而在论文的写作当中，王老师细致入微地分析我的论文，给我提出了宝贵的修改意见。王老师不仅仅是我科研上的导师，还是我精神上的导师，每每想起和王老师一起探讨算法时的场景，我就非常激动，是王老师让我感受到了算法的无穷魅力，让我找到了我人生想要追寻的方向！在生命的旅程中，能够遇到王老师是我一生的幸运，受用不尽，铭记在心。
+首先我要感谢我的导师王雄老师，感谢他给我的一切。早在论文开题前，王老师就为我确定好了研究方向，使得我不再迷茫，在毕业设计的研究当中，我常常会因为自己的粗心大意和不严谨的做法导致错误而陷入困难当中，而王老师总是能够耐心的对我进行指导和鼓舞，使我重新找到自信去克服困难，而在论文的写作当中，王老师细致入微地分析我的论文，给我提出了宝贵的修改意见。王老师不仅仅是我科研上的导师，还是我精神上的导师，每每想起和王老师一起探讨算法时的场景，我就非常激动，是王老师让我感受到了算法的无穷魅力，让我找到了我人生想要追寻的方向！在生命的旅程中，能够遇到王老师是我一生的幸运，受用不尽，铭记在心。
 
 其次，我要感谢我的父母，每当我遇到困难的时候，我的父母都能给我精神上的鼓舞，让我感受到家的温暖，正是因为有家的坚强后盾，我才能更加坚强的去追寻梦想。
 
 我还要感谢我的同窗好友，感谢潘神在科研上和生活上对我的帮助，感谢兴爷的饭菜，感谢伟神的carry。我还要感谢实习时的同事，感谢万鹏飞博士对我在计算机视觉算法上的指导，感谢博哥对我在日常工作上的指导，感谢华哥对我在CUDA编程上的指导。
 
-\begin{thebibliography}{1}
-\bibitem{OpenFlow}
-OpenFlow Switch Specification, https://www.opennetworking.org/images\newline/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.0.noipr.pdf
-\bibitem{SDN}
-N. McKeown, T. Anderson, H. Balakrishnan, G. Parulkar, L. Peterson, J. Rexford, S. Shenker, and J. Turner. Openflow: enabling innovation in campus networks. \emph{SIGCOMM Computer Communicaiton Review},2008,38(2),69-74.
-\bibitem{SDN2}
-N. McKeown. Software-defined networking[J]. \emph{INFOCOM keynote talk},2009,17(2),30-32.
-\bibitem{SDN3}
-Kim H,Feamster N. Improving network management with software defined networking. \emph{IEEE Communications Magazine},2013,51(2),114-119.
-\bibitem{SDNSurvey1}
-B. A. Nunes, M. Mendonca, X. Nguyen, K. Obraczka, and T. Turletti, A survey of software-defined networking :past, present, and future of programming networks, \emph{IEEE Communications Surveys \& Tutorials},2014,16(3),1617-1634.
-\bibitem{SDNSurvey2}
-R. Masoudi and A. Ghaffari, Software defined networks: a survey, Journal of Network and Computer Applications,2016,67,1-25.
+\thesisloadbibliography[nocite]{reference}
 
 
-\bibitem{Microsoft}
-C.-Y. Hong, S. Kandula, R. Mahajan, M. Zhang, V. Gill, M. Nanduri, and R. Wattenhofer. Achieving high utilization with software-driven wan, \emph{in Proceedings of the ACM SIGCOMM},2013,15-26.
-\bibitem{Google}
-S. Jain, A. Kumar, S. Mandal, J. Ong, L. Poutievski, A. Singh, S. Venkata, J. Wanderer, J. Zhou, and M. Zhu et al. B4: Experience with a globally-deployed software defined wan, \emph{in Proceedings of the ACM SIGCOMM},2013,3-14.
-
-\bibitem{application}
-Cisco Visual Networking Index: Forecast and Methodology, 2016C2021, http://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.html
-\bibitem{5G}
-S. S. Soliman and B. Song, Fifth generation (5G) cellular and the network for tomorrow, Journal of Network and Computer Applications,2017,85,84-93.
-\bibitem{DCN}
-C. Guo, L. Yuan, D. Xiang, et al. Pingmesh: a large-scale system for data center network latency measurement and analysis, \emph{ACM SIGCOMM}, 2015.
-\bibitem{Secondrouting}
-S. Gay, R. Hartert, and S. Vissicchio. Expect the unexpected:sub-second optimization ofr segment routing, \emph{IEEE INFOCOM}, 2017.
-\bibitem{CUDA}
-Nvidia. Programming guide: CUDA toolkit documentation, http://docs.nvidia.com/cuda/cuda\_c\_programming\_guide/index.html\#axzz4mVqP2TEC
-\bibitem{Thrust}
-Nvidia.Programming guide: CUDA toolkit documentation, http://docs.nvidia.com/cuda/pdf/Thrust\_Quick\_Start\_Guide.pdf.
-\bibitem{CUDAR}
-Jason Sanders,Edward Kandrot.GPU高性能之CUDA 实战[M],\emph{机械工业出版社},2011.
-
-\bibitem{ParaTE1}
-B. McCormick, F. Kelly, P. Plante, P. Gunning, and P. Ashwood-Smith. Real time alpha-fairness based traffic engineering, \emph{in Procedings of HotSDN}, 2014.
-\bibitem{ParaTE2}
-K. Kikuta, E. Oki, N. Yamanaka, N. Togawa, and H. Nakazato. Effective parallel algorithm for GPGPU-accelerated explicit routing optimization, \emph{in Procedings of GLOBECOM}, 2015.
-\bibitem{TEDef}
-Y. Lee and B. Mukherjee. Traffic engineering in next-generation optical networks, \emph{IEEE Communications Surveys \& Tutorials},2004,6(3),16-33.
-
-\bibitem{TESurvey1}
-A. Mendiola, J. Astorga, E. Jacob, and M. Higuero. A survey on the contributions of software-defined networking to traffic engineering, \emph{IEEE Communications Surveys \& Tutorials},2017,19(2),918-953.
-\bibitem{TESurvey}
-N. Wang, K. Ho, G. Pavlou, and M. Howarth. An overview of routing optimization for Internet traffic engineering, \emph{IEEE Communications Surveys \& Tutorials},2008,10(1),36-56.
-\bibitem{NP}
-Y. Wang and Z. Wang. Explicit routing algorithms for Internet traffic engineering, \emph{in Procedings of International Conference on Computer Communications and Networks}, 1999.
-
-\bibitem{multi-commodity}
-M. Pioro and D. Medhi. Routing, flow, and capacity design in communication and computer networks, Morgan Kaufmann Publishers, 2004.
-\bibitem{SDNTE}
-S. Agarwal, M. Kodialam, and T. V. Lakshman. Traffic engineering in software defined networks, \emph{in proceedings of INFOCOMM}, 2013.
-\bibitem{Time}
-J. Rexford. Route optimization in IP networks, \emph{in Handbook of Optimizationin Telecommunications}, Springer Science + Business Media, February 2006.
-
-\bibitem{mate}
-A. Elwalid, C. Jin, S. Low, and I. Widjaja. MATE: MPLS adaptive traffic engineering, \emph{in proceedings of INFOCOMM}, 2001.
-
-\bibitem{DATE}
-J. He, M. Chiang, and J. Rexford. DATE: distibuted adaptive traffic engineering, \emph{in proceedings of INFOCOMM}, 2006.
-
-\bibitem{GPUdeve}
-A. R. Brodtkorb, T. R. Hagen, C. Schulz, and G. Halse. GPU Computing in Discrete Optimization Part I: Introduction to the GPU, \emph{EURO Journal on Transportation and Logistics},2013,2(1),129-157.
-
-\bibitem{TSP}
-K. Rocki and R. Suda. Accelerating 2-opt and 3-opt local search using GPU in the travelling salesman problem, \emph{In Proceedings of IEEE/ACM International Conference on High Performance Computing
-and Simulation (HPCS)},2012,489-495.
-\bibitem{VRP}
-C. Schulz. Efficient local search on the GPU - investigations on the vehicle routing problem, \emph{Journal of Parallel and Distributed Computing},2013,73(1),14-31.
-
-\bibitem{SSP1}
-P. Harish and P. J. Narayanan, Accelerating large graph algorithms on the GPU using CUDA. \emph{In Proceedings of International Conference on High performance Computing},2007,197-208.
-\bibitem{SSP2}
-Q. N. Tran. Designing efficient many-core parallel algorithms for all-pairs shortest-poaths using CUDA. \emph{In Proceedings of International Conference on Information Technology: New Generations},2010,7-12.
-\bibitem{MST}
-S. Rostrup, S. Srivastava, K. Singhal. Fast and memory-efficient minimum spanning tree on the GPU. \emph{In Proceedings of International Workshop on GPUs and Scientific Applications}, 20011.
-
-
-\bibitem{MLU1}
-S. Kandula, D. Katabi, B. Davie, and A. Charny. Walking the tightrope: responsive yet stable traffic engineering, \emph{in Procedings of ACM SIGCOMM},2005,253-264.
-\bibitem{MLU2}
-H. Wang, H. Xie, and L. Qiu. COPE: traffic engineering in dynamic networks, \emph{in Procedings of ACM SIGCOMM},2006,99-110.
-\bibitem{Convex1}
-B. Fortz and M. Thorup. Internet traffic engineering by optimizing OSPF weights, \emph{in Procedings of IEEE INFOCOM},2000,519-528.
-\bibitem{Convex2}
-D. Xu, M. Chiang, and J. Rexford. Link-state routing with hop-by-hop forwarding can achieve optimal traffic engineering, \emph{IEEE/ACM Transactions on Networking},2011,19(6),1717-1730.
-\bibitem{BeyondMLU}
-A. Sharma, A. Mishra, V. Kumar, and A. Venkataramani. Beyond MLU: an application-centric comparison of traffic engineering schemes, \emph{in Procedings of INFOCOM}, 2011.
-
-\bibitem{NetworkFlow}
-R. K. Ahuja, T. L. Magnanti, and J. B. Orlin, Network flows: Theory, Algorithms, and Applications, Prentice Hall, 1993.
-\bibitem{ER}
-P. Erdos and A. Renyi. On the evolution of random graphs. \emph{Publications of the Mathematical Institute of the Hungarian Academy of
-Sciences},1960,5,17-61.
-\bibitem{BA}
-R. Albert and A. L. Barabasi. Statistical mechanics of complex networks. \emph{Reviews of Modern Physics}, 2002,74,47-97, 2002.
-\bibitem{CPLEX}
-IBM ILOG CPLEX Optimization Studio, https://www.ibm.com/bs-en/marketplace/ibm-ilog-cplex.
-
-\bibitem{EINC}
-A. A. M. Saleh and J. M. Simmons,Technology and architecture to enable the explosive growth of the Internet,\emph{IEEE Communication Magazine.},vol,49(1),126-132.
-\bibitem{ELAB}
-L. Zong, G. N. Liu, A. Lord, Y. R. Zhou and T. Ma.40/100/400 Gb/s mixed line rate transmission performance in flexgrid optical networks,\emph{in 2013 Optical Fiber Communication Conference,Anaheim},2013
-\bibitem{EDF}
-T. Wuth, M. W. Chbat, and V. F. kamalov, Multi-rate(100G/40G/10G) transport over deployed optical networks,\emph{in 2008 Optical Fiber Communication Conference,San Diego},2008.
-\bibitem{ETR}
-Spectral grids for WDM applications: DWDM frequencygrid,\emph{ITU-T},G.694.1.
-\bibitem{ETRP1}
-H. Zang, J. P. Jue, B. Mukherjee.A review of routing and wavelength assignment approaches for wavelengthrouted optical WDM networks,\emph{Optical Networks Magazine},2000,1,47-59.
-\bibitem{ETRP2}
-R. Ramaswami and K. N. Sivarajan,Routing and wavelength assignment in all-optical networks.\emph{IEEE Transactions on Networking},1995,3(5),489-500.
-\bibitem{ELAYER}
-敖发良 ,胡汉武,全光网静态路由选择和波长分配的分层图算法.\emph{光通信研究},vol.3,2003.
-\bibitem{shen}
-D. Awduche et. al,Overview and Principles of Internet Traffic Engineering. \emph{IETF, RFC 3272}, 313-324, 2003.
-\bibitem{555}
-M. Jinno, H. Takara, B. Kozicki, Y. Tsukishima, Y. Sone,and S. Matsuoka, Spectrum efficient and scalable elastic optical path network: architecture, benefits, and enabling technologies, \emph{IEEE Communication Magazine}, 2009,47(11),66-73.
-\bibitem{wan}
-X. Wan, L. Wang, N. Hua, H. Zhang, and X. Zheng,Dynamic routing and spectrum assignment in flexible optical path networks, \emph{in Optical Fiber Communication Conference}, 2011
-\end{thebibliography}
 \begin{thesisachievement}
 \bibitem{1} 2015 研究生新生奖学金
 \bibitem{2} 2016 研究生三等奖学金
