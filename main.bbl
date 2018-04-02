@@ -6,9 +6,8 @@
 \bibitem{OpenFlow} OpenFlow Switch Specification,
   https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.5.0.noipr.pdf
 \bibitem{SDN} N. McKeown, T. Anderson, H. Balakrishnan, G. Parulkar, L.
-  Peterson, J. Rexford, S. Shenker, and J. Turner. Openflow: enabling
-  innovation in campus networks[J].SIGCOMM Computer Communicaiton
-  Review,2008,38(2):69-74
+  Peterson, J. Rexford, S. Shenker,J. Turner. Openflow: enabling innovation in
+  campus networks[J].SIGCOMM Computer Communicaiton Review,2008,38(2):69-74
 \bibitem{Microsoft} C.Y. Hong, S. Kandula, R. Mahajan, M. Zhang, V. Gill, M.
   Nanduri, and R. Wattenhofer.Achieving high utilization with software-driven
   WAN[C]. ACM SIGCOMM 2013 Conference on SIGCOMM.ACM, 2013:15-26.
@@ -103,7 +102,7 @@
 \bibitem{Convex1} B. Fortz and M. Thorup. Internet traffic engineering by
   optimizing OSPF weights[C].INFOCOM 2000. Nineteenth Joint Conference of the
   IEEE Computer and Communications Societies. Proceedings. IEEE. IEEE,
-  2000:519-528 vol.2.
+  2000:519-528.
 \bibitem{Convex2} D. Xu, M. Chiang, and J. Rexford. Link-State Routing With
   Hop-by-Hop Forwarding Can Achieve Optimal Traffic Engineering[J]. IEEE/ACM
   Transactions on Networking, 2011, 19(6):1717-1730.
